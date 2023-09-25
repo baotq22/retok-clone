@@ -1,0 +1,245 @@
+#foryouPage #nav,
+#followingPage #nav,
+#userDetailsPage #nav {
+    flex: 25%;
+    max-width: 255px;
+    padding-right: 20px;
+    background-color: #121212;
+    overflow: scroll;
+    text-align: center;
+}
+
+#foryouPage #nav::-webkit-scrollbar, 
+#followingPage #nav::-webkit-scrollbar, 
+#userDetailsPage #nav::-webkit-scrollbar {
+    display: none;
+}
+
+#foryouPage #nav .itemLinkAll,
+#followingPage #nav .itemLinkAll,
+#userDetailsPage #nav .itemLinkAll {
+    margin-bottom: 20px;
+}
+
+#foryouPage #nav .itemLinkAll .itemLink,
+#followingPage #nav .itemLinkAll .itemLink,
+#userDetailsPage #nav .itemLinkAll .itemLink {
+    text-align: left;
+    list-style: none;
+    margin: 0 0 10px -20px;
+    font-size: 20px;
+    width: 240px;
+    padding: 5px 0 5px 0;
+}
+
+#foryouPage #nav .itemLinkAll .itemLink .mainLink,
+#followingPage #nav .itemLinkAll .itemLink .mainLink,
+#userDetailsPage #nav .itemLinkAll .itemLink .mainLink {
+    text-decoration: 0;
+    color: #fff;
+}
+
+#foryouPage #nav .itemLinkAll .itemLink .mainLink .nav:hover,
+#followingPage #nav .itemLinkAll .itemLink .mainLink .nav:hover,
+#userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav:hover {
+    background-color: #1b1b1b;
+}
+
+#foryouPage #nav .itemLinkAll .itemLink .mainLink .nav .icon,
+#followingPage #nav .itemLinkAll .itemLink .mainLink .nav .icon,
+#userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav .icon {
+    max-width: 20px;
+    margin-right: 15px;
+}
+
+#foryouPage #nav .itemLinkAll .itemLink .mainLink .nav #badge,
+#followingPage #nav .itemLinkAll .itemLink .mainLink .nav #badge,
+#userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav #badge {
+    background-color: #ff3b5c;
+    margin-left: 10px;
+    padding: 2px 10px 2px 10px;
+    border-radius: 50px;
+}
+
+#foryouPage #nav .itemLinkAll .itemLink .mainLink .selected,
+#followingPage #nav .itemLinkAll .itemLink .mainLink .selected,
+#userDetailsPage #nav .itemLinkAll .itemLink .mainLink .selected {
+    color: #ff3b5c;
+}
+
+#foryouPage #nav .title,
+#followingPage #nav .title,
+#userDetailsPage #nav .title {
+    text-align: left;
+    padding: 0 20px 20px 15px;
+    font-weight: 400;
+    color: #898989;
+}
+
+#foryouPage #nav #btn__signin,
+#followingPage #nav #btn__signin,
+#userDetailsPage #nav #btn__signin {
+    width: 80%;
+    height: 50px;
+    border-radius: 3px;
+    border: 1px solid #ff3b5c;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    background-color: #252525;
+    color: #ff3b5c;
+}
+
+#foryouPage #nav .example .example-1,
+#followingPage #nav .example .example-1,
+#userDetailsPage #nav .example .example-1 {
+    text-align: center;
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#foryouPage #nav .example .example-1::before,
+#followingPage #nav .example .example-1::before,
+#userDetailsPage #nav .example .example-1::before {
+    width: 220px;
+    height: 2px;
+    content: "";
+    display: inline-block;
+    background: #383838;
+    position: relative;
+    margin-right: 10px
+}
+
+#foryouPage #nav .example-2 .example-3,
+#followingPage #nav .example-2 .example-3,
+#userDetailsPage #nav .example-2 .example-3 {
+    text-align: center;
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#foryouPage #nav .example-2 .example-3::before,
+#followingPage #nav .example-2 .example-3::before,
+#userDetailsPage #nav .example-2 .example-3::before {
+    width: 220px;
+    height: 2px;
+    content: "";
+    display: inline-block;
+    background: #383838;
+    position: relative;
+    margin-right: 10px
+}
+
+#foryouPage #nav .bottom,
+#followingPage #nav .bottom,
+#userDetailsPage #nav .bottom {
+    position: relative;
+    padding-top: 16px;
+    padding-left: 8px;
+    text-align: left;
+}
+
+#foryouPage #nav .bottom .info,
+#followingPage #nav .bottom .info,
+#userDetailsPage #nav .bottom .info {
+    display: block;
+}
+
+#foryouPage #nav .bottom .info:nth-child(2),
+#followingPage #nav .bottom .info:nth-child(2),
+#userDetailsPage #nav .bottom .info:nth-child(2) {
+    margin-bottom: 20px;
+}
+
+#foryouPage #nav .bottom .info:nth-child(6),
+#followingPage #nav .bottom .info:nth-child(6),
+#userDetailsPage #nav .bottom .info:nth-child(6) {
+    margin-top: 20px;
+}
+
+#foryouPage #nav .bottom .info .link,
+#followingPage #nav .bottom .info .link,
+#userDetailsPage #nav .bottom .info .link {
+    margin-right: 5px;
+    font-size: 20px;
+    word-break: break-all;
+    font-weight: 500;
+    color: #898989;
+    text-decoration: inherit;
+}
+
+#foryouPage #nav .bottom .info .link:hover,
+#followingPage #nav .bottom .info .link:hover,
+#userDetailsPage #nav .bottom .info .link:hover {
+    text-decoration: underline;
+}
+
+#foryouPage #nav .bottom .more,
+#followingPage #nav .bottom .more,
+#userDetailsPage #nav .bottom .more {
+    margin-top: 20px;
+    background-color: transparent;
+    border: 0;
+    font: inherit;
+}
+
+#foryouPage #nav .userList,
+#followingPage #nav .userList,
+#userDetailsPage #nav .userList {
+    margin-bottom: 20px;
+}
+
+#foryouPage #nav .userList .userItem,
+#followingPage #nav .userList .userItem,
+#userDetailsPage #nav .userList .userItem {
+    text-align: left;
+    list-style: none;
+    margin: -20px 0 10px 15px;
+    font-size: 20px;
+    width: 240px;
+    padding: 5px 0 5px 0;
+}
+
+#foryouPage #nav .userList .userItem .itemUser,
+#followingPage #nav .userList .userItem .itemUser,
+#userDetailsPage #nav .userList .userItem .itemUser {
+    margin-bottom: 20px;
+}
+
+#foryouPage #nav .userList .userItem .itemUser .userAvatar,
+#followingPage #nav .userList .userItem .itemUser .userAvatar,
+#userDetailsPage #nav .userList .userItem .itemUser .userAvatar {
+    display: flex;
+}
+
+#foryouPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon,
+#followingPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon,
+#userDetailsPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon {
+    flex: 20%;
+    max-width: 20%;
+}
+
+#foryouPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon .avatarList,
+#followingPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon .avatarList,
+#userDetailsPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon .avatarList {
+    border-radius: 50%;
+    width: 70%;
+}
+
+#foryouPage #nav .userList .userItem .itemUser .userAvatar .infoUser,
+#followingPage #nav .userList .userItem .itemUser .userAvatar .infoUser,
+#userDetailsPage #nav .userList .userItem .itemUser .userAvatar .infoUser {
+    flex: 80%;
+    max-width: 80%;
+}
+
+#foryouPage #nav .userList .userItem .itemUser .userAvatar .infoUser .nameAll,
+#followingPage #nav .userList .userItem .itemUser .userAvatar .infoUser .nameAll,
+#userDetailsPage #nav .userList .userItem .itemUser .userAvatar .infoUser .nameAll {
+    margin-top: -5px;
+    margin-bottom: -8px;
+    font-size: 90%;
+}

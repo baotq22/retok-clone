@@ -1,0 +1,90 @@
+#foryouPage {
+    display: flex;
+    margin-top: 80px;
+    max-width: 100%;
+}
+
+#foryouPage #foryou {
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    flex: 80%;
+    max-width: 80%;
+}
+
+#foryouPage #foryou #video {
+    margin-left: 100px;
+}
+
+#foryouPage #foryou #video .videos__container .avatarContainer {
+    flex: 15%;
+    max-width: 15%;
+}
+
+#foryouPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar {
+    border-radius: 50%;
+    width: 40%;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer {
+    margin-top: -95px;
+    margin-bottom: 40px;
+    margin-left: 120px;
+    flex: 85%;
+    max-width: 60%;
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .video-user {
+
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .video-user .follow_btn {
+    float: right;
+    margin-top: 10px;
+    width: 140px;
+    height: 50px;
+    background-color: transparent;
+    border: 1px solid #f22459;
+    color: #f22459;
+    border-radius: 5px;
+    margin-right: 100px;
+    font-size: 15px;
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .video-user .videoDesc {
+    width: 400px;
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails {
+    display: flex;
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videos {
+    margin-right: 10px;
+    height: calc(450px + ((100vw - 768px) / 1152) * 200);
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    float: right;
+    padding-top: 280px;
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #2f2f2f;
+    margin-bottom: -10px;
+    font-size: 20px;
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn:hover {
+    background-color: #252525;
+}
+
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .actionAmount {
+    text-align: center;
+}

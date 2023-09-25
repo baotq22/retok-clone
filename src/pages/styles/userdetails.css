@@ -1,0 +1,9 @@
+#userDetailsPage {
+    display: flex;
+    margin-top: 80px;
+    max-width: 100%;
+}
+
+#userDetailsPage #detailedUser .detailedUserComponents {
+    margin: 35px 35px 35px 35px;
+}
