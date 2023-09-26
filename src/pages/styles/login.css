@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 #signInBody {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  max-width: 1280px;
+  width: 100%;
 }
 
 #signInBody .signin {
@@ -16,8 +13,7 @@
   padding: 40px;
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
-  margin-left: 400px;
-  margin-top: 30px;
+  margin: 20px auto;
 }
 
 #signInBody .signin .content {
@@ -28,6 +24,7 @@
   align-items: center;
   flex-direction: column;
   gap: 40px;
+  margin-left: -15px;
 }
 
 #signInBody .signin .content h2 {
@@ -58,7 +55,7 @@
   border-radius: 4px;
   color: #00cef1;
   font-weight: 500;
-  font-size: 1em;
+  font-size: 16px;
 }
 
 #signInBody .signin .content .form .links {
@@ -78,17 +75,17 @@
   font-weight: 600;
 }
 
-#signInBody .signin .content .form .inputBox input[type="submit"] {
+#signInBody .signin .content .form .inputBox .loginBtn {
   padding: 10px;
   background: #00cef1;
   color: #000;
   font-weight: 600;
-  font-size: 1.35em;
+  font-size: 1.05em;
   letter-spacing: 0.05em;
   cursor: pointer;
 }
 
-#signInBody .signin .content .form .inputBox input[type="submit"]:active {
+#signInBody .signin .content .form .inputBox .loginBtn:active {
   opacity: 0.6;
 }
 

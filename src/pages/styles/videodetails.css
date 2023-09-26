@@ -1,10 +1,13 @@
-#root {
-    overflow-y: hidden;
-}
-
 #videoDetailsContainer {
     display: flex;
+    overflow: hidden;
     height: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#videoDetailsContainer::-webkit-scrollbar {
+    display: none;
 }
 
 #videoDetailsContainer .videoInfo:nth-child(1) {
@@ -17,22 +20,111 @@
 #videoDetailsContainer .videoInfo:nth-child(2) {
     flex: 40%;
     max-width: 40%;
+    padding: 25px 25px 25px 25px;
+    background-color: #121212;
 }
 
 #videoDetailsContainer .videoInfo .videoDetailsPage {
-    height: 94%;
+    height: 80%;
 }
 
-.followBttn {
+#videoDetailsContainer .videoInfo .info-container {
+    border-radius: 15px;
+    display: flex;
+    background-color: #1b1b1b;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+}
+
+#videoDetailsContainer .videoInfo .info-container .avatarDetails {
+    border-radius: 50%;
+    width: 50px;
+    margin-right: 10px;
+}
+
+#videoDetailsContainer .videoInfo .info-container .infoContainer .followBttn {
     float: right;
-    margin-top: 10px;
-    width: 140px;
-    height: 50px;
+    width: 80px;
+    height: 40px;
     background-color: transparent;
-    border: 1px solid #f22459;
-    color: #f22459;
+    border: 0;
+    background-color: #f22459;
     border-radius: 5px;
     margin-right: 100px;
+}
+
+#videoDetailsContainer .videoInfo .info-container .infoContainer .descVid {
+    margin-left: -60px;
+    margin-top: 20px;
+}
+
+#videoDetailsContainer .videoInfo .actionContainer {
+    display: inline;
+}
+
+#videoDetailsContainer .videoInfo .actionContainer .videoActions {
+    display: flex;
+}
+
+#videoDetailsContainer .videoInfo .actionContainer .videoActions .action_btn {
+    display: inline;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #2f2f2f;
+    cursor: pointer;
+}
+
+#videoDetailsContainer .videoInfo .actionContainer .videoActions .action_btn:hover {
+    background-color: #252525;
+}
+
+#videoDetailsContainer .videoInfo .actionContainer .videoActions .actionAmount {
+    margin: 6px 18px 0 8px;
+}
+
+#videoDetailsContainer .videoInfo .actionContainer .shareBtnContainer {
+    margin-top: -32.5px;
+    float: right;
+}
+
+#videoDetailsContainer .videoInfo .actionContainer .shareBtnContainer .action_btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0;
+    margin-right: 5px;
+    background-color: #2f2f2f;
+    cursor: pointer;
+}
+
+#videoDetailsContainer .videoInfo .actionContainer .shareBtnContainer .action_btn:hover {
+    background-color: #252525;
+}
+
+#videoDetailsContainer .videoInfo .comment__container .comment__s {
+    display: flex;
+}
+
+#videoDetailsContainer .videoInfo .comment__container .comment__s .avatarComment {
+    border-radius: 50%;
+    width: 50px;
+    margin-right: 10px;
+}
+
+#videoDetailsContainer .videoInfo .comment__container .comment__s .reaction_comment {
+    float: right;
+    margin-top: -50px;
+}
+
+#videoDetailsContainer .videoInfo .comment__container .comment__s .reaction_comment .follow_btn {
+    background-color: transparent;
+    border: 0;
+}
+
+#videoDetailsContainer .videoInfo .comment__container .comment__s .reaction_comment .actionAmount {
+    margin: 3px 0 0 6px;
 }
 
 @media screen and (max-width: 1540px) {
