@@ -64,7 +64,7 @@ const ForYou = () => {
         fetchVideos();
     })
     const userLogin = useSelector(state => state.userLogin)
-    const userLogged = !userLogin?.name;
+    const userLogged = !userLogin?.username;
     let content;
     if (userLogged) {
         content =
@@ -147,10 +147,10 @@ const ForYou = () => {
                     <div className='userList'>
                         <ul className='userItem'>
                             {
-                                userList.map((user, index) =>
+                                videoList.map((user, index) =>
                                     <li key={index} className='itemUser'>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>
@@ -269,11 +269,15 @@ const ForYou = () => {
                             {
                                 userList.map((user, index) =>
                                     <div className='userInfo' key={index}>
-                                        <img src={user?.imageMain} className='imgUser' />
-                                        <img src={user?.image} className='avatarUser' />
+                                        <Link to={`/userFollow/${user.id}`}>
+                                            <img src={user?.imageMain} className='imgUser' />
+                                            <img src={user?.image} className='avatarUser' />
+                                        </Link>
                                         <div className='userFollow'>
-                                            <h3 className='user'><b>{user?.username}</b></h3>
-                                            <h4 className='user'>{user?.fullname}</h4>
+                                            <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
+                                                <h3 className='user'><b>{user?.username}</b></h3>
+                                                <h4 className='user'>{user?.fullname}</h4>
+                                            </Link>
                                             <button className='followBtn'>Follow</button>
                                         </div>
                                     </div>
@@ -287,24 +291,30 @@ const ForYou = () => {
                     <div id='video'>
                         {
                             videoList.map((video, index) =>
-                                <div className='videos__container' key={index}>
+                                <div className='videos__container'>
                                     <div className='avatarContainer'>
-                                        <span className='avatarVideo'>
-                                            <img src={video?.avatar} className='avatar' />
-                                        </span>
+                                        <Link to={`/users/${video?.id}`}>
+                                            <span className='avatarVideo'>
+                                                <img src={video?.avatar} className='avatar' />
+                                            </span>
+                                        </Link>
                                     </div>
                                     <div className='videoContainer'>
-                                        <div>
-                                            <span><b>{video?.username} </b></span>
-                                            <span>{video?.fullname}</span>
+                                        <div className='video-user'>
+                                            <Link to={`/users/${video?.id}`} style={{ textDecoration: '0', color: '#fff' }}>
+                                                <span><b>{video?.username} </b></span>
+                                                <span>{video?.fullname}</span>
+                                            </Link>
                                             <button className='follow_btn'>Follow</button>
-                                            <p>{video?.description}</p>
+                                            <p className='videoDesc'>{video?.description}</p>
                                         </div>
                                         <div className='videoDetails'>
                                             <div className="videoBox">
-                                                <video loop controls className='videos'>
-                                                    <source src={Video1} type='video/webm' />
-                                                </video>
+                                                <Link to={`/videos/${video?.id}`} >
+                                                    <video loop controls className='videos'>
+                                                        <source src={Video1} type='video/webm' />
+                                                    </video>
+                                                </Link>
                                                 <div className='videoAction'>
                                                     <button className='action_btn'>
                                                         <span>

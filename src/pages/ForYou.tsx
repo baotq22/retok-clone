@@ -2,7 +2,7 @@ import './styles/foryou.css'
 import './styles/sidebar.css'
 import NavBar from "../components/navbar"
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LoginModal from "../components/LoginModal";
 import Video1 from '../assets/videos/1.mp4'
 import { api, videoApis } from "../axios-instance";
@@ -32,7 +32,31 @@ async function getUser() {
 
 async function getVideos() {
     const response = await videoApis.get(`/videos`)
-    console.log(response);
+}
+
+const AutoPlayVideo = () => {
+    const [isPlaying, setIsPlaying] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const videoElement = document.getElementById('autoplay-video')
+            const rect = videoElement?.getBoundingClientRect();
+            const threshold = window.innerHeight / 2;
+
+            if (rect.top < threshold && !isPlaying) {
+                videoElement.play();
+                setIsPlaying(true);
+            } else if (rect.top > threshold && !isPlaying) {
+                videoElement.pause();
+                setIsPlaying(false);
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [isPlaying])
 }
 
 const ForYou = () => {
@@ -61,7 +85,7 @@ const ForYou = () => {
         fetchVideos();
     })
     const userLogin = useSelector(state => state.userLogin)
-    const userLogged = !userLogin?.name;
+    const userLogged = !userLogin?.username;
     let content;
     if (userLogged) {
         content =
@@ -144,10 +168,10 @@ const ForYou = () => {
                     <div className='userList'>
                         <ul className='userItem'>
                             {
-                                userList.map((user, index) =>
+                                videoList.map((user, index) =>
                                     <li key={index} className='itemUser'>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>
@@ -164,6 +188,8 @@ const ForYou = () => {
                 </div>
             </>
     }
+    AutoPlayVideo();
+
     return (
         <div id='foryouPage'>
             <NavBar />
@@ -263,21 +289,25 @@ const ForYou = () => {
                         videoList.map((video, index) =>
                             <div className='videos__container'>
                                 <div className='avatarContainer'>
-                                    <span className='avatarVideo'>
-                                        <img src={video?.avatar} className='avatar' />
-                                    </span>
+                                    <Link to={`/users/${video?.id}`}>
+                                        <span className='avatarVideo'>
+                                            <img src={video?.avatar} className='avatar' />
+                                        </span>
+                                    </Link>
                                 </div>
                                 <div className='videoContainer'>
                                     <div className='video-user'>
-                                        <span><b>{video?.username} </b></span>
-                                        <span>{video?.fullname}</span>
+                                        <Link to={`/users/${video?.id}`} style={{ textDecoration: '0', color: '#fff' }}>
+                                            <span><b>{video?.username} </b></span>
+                                            <span>{video?.fullname}</span>
+                                        </Link>
                                         <button className='follow_btn'>Follow</button>
                                         <p className='videoDesc'>{video?.description}</p>
                                     </div>
                                     <div className='videoDetails'>
                                         <div className="videoBox">
                                             <Link to={`/videos/${video?.id}`} >
-                                                <video loop controls className='videos'>
+                                                <video autoPlay controls className='videos' id='autoplay-video'>
                                                     <source src={Video1} type='video/webm' />
                                                 </video>
                                             </Link>

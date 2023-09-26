@@ -5,9 +5,9 @@ import '../library/fontawesome/css/all.min.css'
 import LoginModal from "./LoginModal"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import images from '../assets/309431756_799936498003792_6138006382387941828_n.jpg'
-
+import { logout } from "../slices/userLoginSlice"
 
 export const NavBar = () => {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const NavBar = () => {
 
     const userLogin = useSelector(state => state.userLogin)
 
-    const userLogged = !userLogin?.name;
+    const userLogged = !userLogin?.username;
 
     let content;
     if (userLogged) {
@@ -94,11 +94,18 @@ export const NavBar = () => {
     } else {
         content =
             <>
-                <span className="avatarNav"><img src={images} className='avatar' /></span>
+                <span className="avatarNav"><img src={images} className='avatar' onClick={logoutUser} /></span>
                 <span className="iconNav"><i className="fa-regular fa-message" style={{ color: '#fff' }}></i></span>
                 <span className="iconNav iconPlane"><i className="fa-regular fa-paper-plane" style={{ color: '#fff' }}></i></span>
             </>
     }
+    const dispatch = useDispatch();
+
+    function logoutUser() {
+        dispatch(logout());
+        navigate('/login');
+    }
+
     return (
         <header>
             <div id='header'>

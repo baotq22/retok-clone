@@ -34,7 +34,7 @@ async function getVideos() {
     console.log(response);
 }
 
-const UserDetails = () => {
+const UserFollowDetails = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
     const [userList, setUserList] = useState<Array<UserType>>([])
@@ -52,12 +52,7 @@ const UserDetails = () => {
             const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
             setUserList(res.data)
         }
-        const fetchVideos = async () => {
-            const res = await axios.get(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos`);
-            setVideoList(res.data)
-        }
         fetchUsers();
-        fetchVideos();
     })
     const [user, setUser] = useState();
 
@@ -65,7 +60,7 @@ const UserDetails = () => {
     const userId = params.userId;
 
     useEffect(() => {
-        videoApis.get(`/videos/${userId}`).then(res => {
+        api.get(`/users/${userId}`).then(res => {
             setUser(res.data)
         }).catch(e => console.log(e));
     }, [])
@@ -272,7 +267,7 @@ const UserDetails = () => {
                         <div className='detailedUserName'>
                             <div className='detailedUserAvatar'>
                                 <span className="avatarCircle">
-                                    <img src={user?.avatar} className='avatar' />
+                                    <img src={user?.image} className='avatar' />
                                 </span>
                             </div>
                             <div className='detailed__username'>
@@ -307,7 +302,7 @@ const UserDetails = () => {
                                         </Link>
                                         <div className='userFollow'>
                                             <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
-                                            <i className="fa-solid fa-play fa-fade"></i><span className="detailedViewers">{user?.viewers}</span>
+                                                <i className="fa-solid fa-play fa-fade"></i><span className="detailedViewers">{user?.viewers}</span>
                                             </Link>
                                         </div>
                                         <div className='video__desc'>{user?.description}</div>
@@ -322,4 +317,4 @@ const UserDetails = () => {
     )
 }
 
-export default UserDetails
+export default UserFollowDetails

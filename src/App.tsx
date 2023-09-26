@@ -6,10 +6,13 @@ import {
 import ForYou from './pages/ForYou'
 import Following from "./pages/Following";
 import UserLogin from "./pages/LogIn";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "./store";
 import VideoDetails from "./pages/VideoDetails";
 import UserDetails from "./pages/UserDetails";
+import UserFollowDetails from "./pages/FollowingDetails";
+import { useEffect } from "react";
+import { loginSuccess } from "./slices/userLoginSlice";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +32,28 @@ const router = createBrowserRouter([
     element: <VideoDetails />
   },
   {
-    path: '/users',
+    path: '/users/:userId',
     element: <UserDetails />
+  },
+  {
+    path: '/userFollow/:userId',
+    element: <UserFollowDetails />
   }
 ])
 
 function App() {
+  useEffect(() => {
+    const usernameLocalStorage = localStorage.getItem('username');
+    const passwordLocalStorage = localStorage.getItem('password');
+    const idLocalStorage = localStorage.getItem('id');
+    if (usernameLocalStorage) {
+      store.dispatch(loginSuccess({
+        username: usernameLocalStorage,
+        password: passwordLocalStorage,
+        id: idLocalStorage,
+      }))
+    }
+  }, [])
 
   return (
     <>
