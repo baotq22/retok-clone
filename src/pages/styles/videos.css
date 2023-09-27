@@ -1,6 +1,5 @@
 #followingPage,
 #foryouPage {
-    display: flex;
     margin-top: 80px;
     max-width: 100%;
     background-color: #121212;
@@ -11,8 +10,8 @@
     justify-content: center;
     padding: 2rem;
     position: relative;
-    flex: 80%;
-    max-width: 80%;
+    float: left;
+    margin: 0 300px 0 300px;
 }
 
 #followingPage #foryou #video,
@@ -20,18 +19,22 @@
     margin-left: 100px;
 }
 
+#followingPage #foryou #video .videos__container,
+#foryouPage #foryou #video .videos__container {
+    margin-top: 30px;
+}
+
 #followingPage #foryou #video .videos__container .avatarContainer,
 #foryouPage #foryou #video .videos__container .avatarContainer {
-    flex: 15%;
-    max-width: 15%;
+    flex: 40%;
+    max-width: 40%;
 }
 
 #followingPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar,
 #foryouPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar {
     border-radius: 50%;
     width: 40%;
-    margin-left: 20px;
-    margin-top: 30px;
+    margin-left: 30px;
 }
 
 #followingPage #foryou #video .videos__container .videoContainer,
@@ -39,7 +42,7 @@
     margin-top: -95px;
     margin-bottom: 40px;
     margin-left: 120px;
-    flex: 85%;
+    flex: 60%;
     max-width: 60%;
 }
 
@@ -48,23 +51,10 @@
 
 }
 
-#followingPage #foryou #video .videos__container .videoContainer .video-user .follow_btn,
-#foryouPage #foryou #video .videos__container .videoContainer .video-user .follow_btn {
-    float: right;
-    margin-top: 10px;
-    width: 100px;
-    height: 40px;
-    background-color: transparent;
-    border: 1px solid #f22459;
-    color: #f22459;
-    border-radius: 5px;
-    margin-right: 100px;
-    font-size: 15px;
-}
-
 #followingPage #foryou #video .videos__container .videoContainer .video-user .videoDesc,
 #foryouPage #foryou #video .videos__container .videoContainer .video-user .videoDesc {
     width: 400px;
+    margin-top: -0.5px;
 }
 
 #followingPage #foryou #video .videos__container .videoContainer .videoDetails,
@@ -81,7 +71,7 @@
 #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
 #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
     float: right;
-    padding-top: 280px;
+    margin-right: -60px;
 }
 
 #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn,
@@ -170,12 +160,6 @@
 }
 
 @media screen and (max-width: 1540px){
-    #followingPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar,
-    #foryouPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar {
-        width: 50%;
-        margin-top: 30px;
-    }
-
     #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
     #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
         padding-top: 215px;

@@ -1,12 +1,15 @@
 #foryouPage #nav,
 #followingPage #nav,
 #userDetailsPage #nav {
-    flex: 25%;
-    max-width: 255px;
+    float: left;
+    position: fixed;
+    max-width: 264px;
     padding-right: 20px;
     background-color: #121212;
-    overflow: scroll;
+    overflow-y: auto;
     text-align: center;
+    margin-top: 30px;
+    height: 100%;
 }
 
 #foryouPage #nav::-webkit-scrollbar, 

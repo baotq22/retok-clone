@@ -179,7 +179,7 @@ const ForYou = () => {
                     <div className="example-2">
                         <p className="example-3"></p>
                     </div>
-                    <h3 className='title'>Following accounts</h3>
+                    <h3 className='title' style={{marginTop: '-20px'}}>Following accounts</h3>
                     <div className='userList'>
                         <ul className='userItem'>
                             {
@@ -318,15 +318,14 @@ const ForYou = () => {
                                         <button className='follow_btn' onClick={interactionAction}
                                             style={{
                                                 float: 'right',
-                                                marginTop: '10px',
                                                 width: '100px',
                                                 height: '40px',
                                                 cursor: 'pointer',
-                                                backgroundColor: isActived ? '252525' : '#transparent',
+                                                backgroundColor: '#121212',
                                                 border: isActived ? '1px solid #2f2f2f' : '1px solid #f22459',
                                                 color: isActived ? '#fff' : '#f22459',
                                                 borderRadius: '5px',
-                                                marginRight: '100px',
+                                                marginRight: '-250px',
                                                 fontSize: '15px',
                                                 fontFamily: 'inherit'
                                             }}>{isActived ? 'Following' : 'Follow'}</button>
