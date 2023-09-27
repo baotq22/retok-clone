@@ -2,6 +2,7 @@
 
 #signInBody {
   width: 100%;
+  margin-top: 50px;
 }
 
 #signInBody .signin {
@@ -13,7 +14,7 @@
   padding: 40px;
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
-  margin: 20px auto;
+  margin: auto;
 }
 
 #signInBody .signin .content {

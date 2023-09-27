@@ -1,9 +1,9 @@
 #videoDetailsContainer {
     display: flex;
-    overflow: hidden;
-    height: 100%;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    overflow: hidden;
+    height: 100%;
 }
 
 #videoDetailsContainer::-webkit-scrollbar {
@@ -18,6 +18,7 @@
 }
 
 #videoDetailsContainer .videoInfo:nth-child(2) {
+    height: 100%;
     flex: 40%;
     max-width: 40%;
     padding: 25px 25px 25px 25px;
@@ -25,10 +26,11 @@
 }
 
 #videoDetailsContainer .videoInfo .videoDetailsPage {
-    height: 80%;
+    height: 100%;
+    position: absolute;
 }
 
-#videoDetailsContainer .videoInfo .info-container {
+#videoDetailsContainer .videoInfo .video_info_container .info-container {
     border-radius: 15px;
     display: flex;
     background-color: #1b1b1b;
@@ -36,26 +38,26 @@
     margin-bottom: 20px;
 }
 
-#videoDetailsContainer .videoInfo .info-container .avatarDetails {
+#videoDetailsContainer .videoInfo .video_info_container .info-container .avatarDetails {
     border-radius: 50%;
     width: 50px;
     margin-right: 10px;
 }
 
-#videoDetailsContainer .videoInfo .info-container .infoContainer .descVid {
+#videoDetailsContainer .videoInfo .video_info_container .info-container .infoContainer .descVid {
     margin-left: -60px;
     margin-top: 20px;
 }
 
-#videoDetailsContainer .videoInfo .actionContainer {
+#videoDetailsContainer .videoInfo .video_info_container .actionContainer {
     display: inline;
 }
 
-#videoDetailsContainer .videoInfo .actionContainer .videoActions {
+#videoDetailsContainer .videoInfo .video_info_container .actionContainer .videoActions {
     display: flex;
 }
 
-#videoDetailsContainer .videoInfo .actionContainer .videoActions .action_btn {
+#videoDetailsContainer .videoInfo .video_info_container .actionContainer .videoActions .action_btn {
     display: inline;
     width: 35px;
     height: 35px;
@@ -65,20 +67,20 @@
     cursor: pointer;
 }
 
-#videoDetailsContainer .videoInfo .actionContainer .videoActions .action_btn:hover {
+#videoDetailsContainer .videoInfo .video_info_container .actionContainer .videoActions .action_btn:hover {
     background-color: #252525;
 }
 
-#videoDetailsContainer .videoInfo .actionContainer .videoActions .actionAmount {
+#videoDetailsContainer .videoInfo .video_info_container .actionContainer .videoActions .actionAmount {
     margin: 6px 18px 0 8px;
 }
 
-#videoDetailsContainer .videoInfo .actionContainer .shareBtnContainer {
+#videoDetailsContainer .videoInfo .video_info_container .actionContainer .shareBtnContainer {
     margin-top: -32.5px;
     float: right;
 }
 
-#videoDetailsContainer .videoInfo .actionContainer .shareBtnContainer .action_btn {
+#videoDetailsContainer .videoInfo .video_info_container .actionContainer .shareBtnContainer .action_btn {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -88,37 +90,119 @@
     cursor: pointer;
 }
 
-#videoDetailsContainer .videoInfo .actionContainer .shareBtnContainer .action_btn:hover {
+#videoDetailsContainer .videoInfo .video_info_container .actionContainer .shareBtnContainer .action_btn:hover {
     background-color: #252525;
 }
 
-#videoDetailsContainer .videoInfo .comment__container .comment__s {
+#videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s {
     display: flex;
 }
 
-#videoDetailsContainer .videoInfo .comment__container .comment__s .avatarComment {
+#videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s .avatarComment {
     border-radius: 50%;
     width: 50px;
     margin-right: 10px;
 }
 
-#videoDetailsContainer .videoInfo .comment__container .comment__s .reaction_comment {
+#videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s .reaction_comment {
     float: right;
     margin-top: -50px;
 }
 
-#videoDetailsContainer .videoInfo .comment__container .comment__s .reaction_comment .follow_btn {
+#videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s .reaction_comment .follow_btn {
     background-color: transparent;
     border: 0;
 }
 
-#videoDetailsContainer .videoInfo .comment__container .comment__s .reaction_comment .actionAmount {
+#videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s .reaction_comment .actionAmount {
     margin: 3px 0 0 6px;
 }
 
-@media screen and (max-width: 1540px) {
+#videoDetailsContainer .videoInfo .comment_input_container {
+    position: absolute;
+    bottom: 0px;
+    border-top: 1px solid #414141;
+    margin: 0px 10px;
+    padding: 21px 0px;
+    display: flex;
+}
+
+#videoDetailsContainer .videoInfo .comment_input_container .comment_box .comment_input {
+    font-weight: 400;
+    width: 300px;
+    font-size: 16px;
+    line-height: 42px;
+    border: none;
+    background: #2f2f2f;
+    outline: none;
+    padding: 0 20px;
+    color: rgba(255, 255, 255, .9);
+    border-radius: 8px 0 0 8px;
+    font-family: inherit;
+}
+
+#videoDetailsContainer .videoInfo .comment_input_container .comment_box .mention_button{
+    height: 42px;
+    background: #2f2f2f;
+    border: 1px solid transparent;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    padding-bottom: 2px;
+}
+
+#videoDetailsContainer .videoInfo .comment_input_container .comment_box .emoji_button{
+    height: 42px;
+    border-radius: 0 8px 8px 0;
+    background: #2f2f2f;
+    border: 1px solid transparent;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    padding-bottom: 2px;
+    margin-right: 20px;
+}
+
+#videoDetailsContainer .videoInfo .comment_input_container .post_box .postBtn{
+    height: 42px;
+    font-family: inherit;
+    background-color: transparent;
+    margin-right: 25px;
+    border: 0;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1668px) {
+    #videoDetailsContainer .videoInfo .comment_input_container .comment_box .comment_input {
+        width: 290px;
+    }
+}
+
+@media screen and (max-width: 1646px) {
+    #videoDetailsContainer .videoInfo .comment_input_container .comment_box .comment_input {
+        width: 280px;
+    }
+}
+
+@media screen and (max-width: 1620px) {
+    #videoDetailsContainer .videoInfo .comment_input_container .comment_box .comment_input {
+        width: 270px;
+    }
+}
+
+@media screen and (max-width: 1596px) {
     #videoDetailsContainer .videoInfo:nth-child(1) {
         padding-left: 260px;
+    }
+}
+
+@media screen and (max-width: 1454px) {
+    #videoDetailsContainer .videoInfo:nth-child(1) {
+        padding-left: 250px;
     }
 }
 
