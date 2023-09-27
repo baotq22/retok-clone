@@ -64,6 +64,10 @@ const UserFollowDetails = () => {
             setUser(res.data)
         }).catch(e => console.log(e));
     }, [])
+    const [isActived, setIsActived] = useState(false);
+    const interactionAction = () => {
+        setIsActived(current => !current);
+    }
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
     let content;
@@ -274,7 +278,35 @@ const UserFollowDetails = () => {
                                 <p className='detailUsername'><b>{user?.username}</b></p>
                                 <p className='detailFullname'>{user?.fullname}</p>
                                 <div className='button__action'>
-                                    <button className='followBtn'>Follow</button>
+                                    <button className='followBtn' onClick={interactionAction}
+                                        style={{
+                                            marginTop: '-20px',
+                                            backgroundColor: isActived ? '#252525' : '#f22459',
+                                            borderRadius: '3px',
+                                            marginRight: '10px',
+                                            border: isActived ? '1px solid #f22459' : '1px solid transparent',
+                                            padding: '0.6em 0',
+                                            fontSize: '1em',
+                                            fontWeight: '500',
+                                            fontFamily: 'inherit',
+                                            color: isActived ? '#f22459' : '#fff',
+                                            cursor: 'pointer',
+                                            width: isActived ? '150px' : '210px',
+                                            transition: 'border-color 0.25s'
+                                        }}>{isActived ? 'Messages' : 'Follow'}</button>
+                                        {isActived ? <button style={{
+                                        marginTop: '-20px',
+                                        backgroundColor: '#252525',
+                                        borderRadius: '3px',
+                                        border: 0,
+                                        padding: '0.6em 0',
+                                        fontSize: '1em',
+                                        fontWeight: '500',
+                                        fontFamily: 'inherit',
+                                        cursor: 'pointer',
+                                        width: '50px',
+                                        transition: 'border-color 0.25s'
+                                    }}><i className="fa-solid fa-user-check"></i></button> : <></>}
                                 </div>
                             </div>
                         </div>

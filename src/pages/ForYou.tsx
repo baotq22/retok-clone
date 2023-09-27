@@ -1,4 +1,4 @@
-import './styles/foryou.css'
+import './styles/videos.css'
 import './styles/sidebar.css'
 import NavBar from "../components/navbar"
 import { Link, useNavigate } from "react-router-dom";
@@ -35,28 +35,35 @@ async function getVideos() {
 }
 
 const AutoPlayVideo = () => {
-    const [isPlaying, setIsPlaying] = useState(false)
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handleScroll = () => {
+        const videoElement = videoRef.current;
+        const rect = videoElement.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+        if (isVisible && !isPlaying) {
+            videoElement.play();
+            setIsPlaying(true);
+        } else if (!isVisible && isPlaying) {
+            videoElement.pause();
+            setIsPlaying(false);
+        }
+    };
 
     useEffect(() => {
-        const handleScroll = () => {
-            const videoElement = document.getElementById('autoplay-video')
-            const rect = videoElement?.getBoundingClientRect();
-            const threshold = window.innerHeight / 2;
-
-            if (rect.top < threshold && !isPlaying) {
-                videoElement.play();
-                setIsPlaying(true);
-            } else if (rect.top > threshold && !isPlaying) {
-                videoElement.pause();
-                setIsPlaying(false);
-            }
-        }
-        window.addEventListener('scroll', handleScroll);
-
+        window.addEventListener("scroll", handleScroll);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-        }
-    }, [isPlaying])
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    return (
+        <>
+            <video ref={videoRef} autoPlay muted controls className='videos' src={Video1} />
+        </>
+    )
 }
 
 const ForYou = () => {
@@ -84,6 +91,14 @@ const ForYou = () => {
         fetchUsers();
         fetchVideos();
     })
+    const [isReacted, setIsReacted] = useState(false);
+    const reactionAction = () => {
+        setIsReacted(current => !current);
+    }
+    const [isActived, setIsActived] = useState(false);
+    const interactionAction = () => {
+        setIsActived(current => !current);
+    }
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
     let content;
@@ -188,7 +203,6 @@ const ForYou = () => {
                 </div>
             </>
     }
-    AutoPlayVideo();
 
     return (
         <div id='foryouPage'>
@@ -301,24 +315,38 @@ const ForYou = () => {
                                             <span><b>{video?.username} </b></span>
                                             <span>{video?.fullname}</span>
                                         </Link>
-                                        <button className='follow_btn'>Follow</button>
+                                        <button className='follow_btn' onClick={interactionAction}
+                                            style={{
+                                                float: 'right',
+                                                marginTop: '10px',
+                                                width: '100px',
+                                                height: '40px',
+                                                cursor: 'pointer',
+                                                backgroundColor: isActived ? '252525' : '#transparent',
+                                                border: isActived ? '1px solid #2f2f2f' : '1px solid #f22459',
+                                                color: isActived ? '#fff' : '#f22459',
+                                                borderRadius: '5px',
+                                                marginRight: '100px',
+                                                fontSize: '15px',
+                                                fontFamily: 'inherit'
+                                            }}>{isActived ? 'Following' : 'Follow'}</button>
                                         <p className='videoDesc'>{video?.description}</p>
                                     </div>
                                     <div className='videoDetails'>
                                         <div className="videoBox">
                                             <Link to={`/videos/${video?.id}`} >
-                                                <video autoPlay controls className='videos' id='autoplay-video'>
-                                                    <source src={Video1} type='video/webm' />
-                                                </video>
+                                                <AutoPlayVideo />
                                             </Link>
                                             <div className='videoAction'>
-                                                <button className='action_btn'>
+                                                <button className='action_btn' onClick={reactionAction}>
                                                     <span>
-                                                        <i className="fa-solid fa-heart"></i>
+                                                        {isReacted ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
                                                     </span>
                                                 </button>
-                                                <p className='actionAmount'><strong>{video?.reactAmount}</strong></p>
-                                                <button className='action_btn'>
+                                                <p className='actionAmount'>
+                                                    {isReacted ? <strong>{video?.reactAmount + 1}</strong> : <strong>{video?.reactAmount}</strong>}
+                                                </p>
+                                                <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}>
                                                     <span>
                                                         <i className="fa-solid fa-comment-dots"></i>
                                                     </span>

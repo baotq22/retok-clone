@@ -2,6 +2,7 @@
     display: flex;
     margin-top: 80px;
     max-width: 100%;
+    background-color: #121212;
 }
 
 #userDetailsPage #detailedUser {
@@ -33,20 +34,6 @@
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName .detailed__username .detailFullname {
     font-size: 20px;
     margin-top: -40px;
-}
-
-#userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName .detailed__username .button__action .followBtn {
-    margin-top: -20px;
-    background-color: #f22459;
-    border-radius: 3px;
-    border: 1px solid transparent;
-    padding: 0.6em 0;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    width: 210px;
-    transition: border-color 0.25s;
 }
 
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName .detailed__username .button__action .followBtn:hover {

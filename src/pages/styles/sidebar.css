@@ -18,7 +18,7 @@
 #foryouPage #nav .itemLinkAll,
 #followingPage #nav .itemLinkAll,
 #userDetailsPage #nav .itemLinkAll {
-    margin-bottom: 20px;
+    margin-bottom: -30px;
 }
 
 #foryouPage #nav .itemLinkAll .itemLink,
@@ -177,6 +177,23 @@
     text-decoration: underline;
 }
 
+#foryouPage #nav .bottom .infoMore .link,
+#followingPage #nav .bottom .infoMore .link,
+#userDetailsPage #nav .bottom .infoMore .link {
+    margin-right: 5px;
+    font-size: 20px;
+    word-break: break-all;
+    font-weight: 500;
+    color: #898989;
+    text-decoration: inherit;
+}
+
+#foryouPage #nav .bottom .infoMore .link:hover,
+#followingPage #nav .bottom .infoMore .link:hover,
+#userDetailsPage #nav .bottom .infoMore .link:hover {
+    text-decoration: underline;
+}
+
 #foryouPage #nav .bottom .more,
 #followingPage #nav .bottom .more,
 #userDetailsPage #nav .bottom .more {
@@ -189,7 +206,7 @@
 #foryouPage #nav .userList,
 #followingPage #nav .userList,
 #userDetailsPage #nav .userList {
-    margin-bottom: 20px;
+    margin-bottom: -40px;
 }
 
 #foryouPage #nav .userList .userItem,

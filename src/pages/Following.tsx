@@ -1,8 +1,8 @@
-import './styles/following.css'
+import './styles/videos.css'
 import './styles/sidebar.css'
 import NavBar from "../components/navbar"
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LoginModal from "../components/LoginModal";
 import '../library/fontawesome/css/all.min.css'
 import Video1 from '../assets/videos/1.mp4'
@@ -34,6 +34,38 @@ async function getVideos() {
     console.log(response);
 }
 
+const AutoPlayVideo = () => {
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handleScroll = () => {
+        const videoElement = videoRef.current;
+        const rect = videoElement.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+        if (isVisible && !isPlaying) {
+            videoElement.play();
+            setIsPlaying(true);
+        } else if (!isVisible && isPlaying) {
+            videoElement.pause();
+            setIsPlaying(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    return (
+        <>
+            <video ref={videoRef} muted controls className='videos' src={Video1} />
+        </>
+    )
+}
+
 const ForYou = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
@@ -63,6 +95,10 @@ const ForYou = () => {
         fetchUsers();
         fetchVideos();
     })
+    const [isReacted, setIsReacted] = useState(false);
+    const reactionAction = () => {
+        setIsReacted(current => !current);
+    }
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
     let content;
@@ -305,23 +341,22 @@ const ForYou = () => {
                                                 <span><b>{video?.username} </b></span>
                                                 <span>{video?.fullname}</span>
                                             </Link>
-                                            <button className='follow_btn'>Follow</button>
                                             <p className='videoDesc'>{video?.description}</p>
                                         </div>
                                         <div className='videoDetails'>
                                             <div className="videoBox">
                                                 <Link to={`/videos/${video?.id}`} >
-                                                    <video loop controls className='videos'>
-                                                        <source src={Video1} type='video/webm' />
-                                                    </video>
+                                                    <AutoPlayVideo />
                                                 </Link>
                                                 <div className='videoAction'>
-                                                    <button className='action_btn'>
+                                                    <button className='action_btn' onClick={reactionAction}>
                                                         <span>
-                                                            <i className="fa-solid fa-heart"></i>
+                                                            {isReacted ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
                                                         </span>
                                                     </button>
-                                                    <p className='actionAmount'><strong>{video?.reactAmount}</strong></p>
+                                                    <p className='actionAmount'>
+                                                        {isReacted ? <strong>{video?.reactAmount + 1}</strong> : <strong>{video?.reactAmount}</strong>}
+                                                    </p>
                                                     <button className='action_btn'>
                                                         <span>
                                                             <i className="fa-solid fa-comment-dots"></i>
