@@ -8,6 +8,7 @@ import Video1 from '../assets/videos/1.mp4'
 import { api, videoApis } from "../axios-instance";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import LoginInputModal from "../components/LoginInputModal";
 
 type UserType = {
     username: string
@@ -75,6 +76,11 @@ const ForYou = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
+
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
+    const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
+    const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
     useEffect(() => {
         getUser();
         getVideos();
@@ -91,6 +97,7 @@ const ForYou = () => {
         fetchUsers();
         fetchVideos();
     })
+
     const [isReacted, setIsReacted] = useState(false);
     const reactionAction = () => {
         setIsReacted(current => !current);
@@ -98,7 +105,8 @@ const ForYou = () => {
     const [isActived, setIsActived] = useState(false);
     const interactionAction = () => {
         setIsActived(current => !current);
-    }
+    } 
+
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
     let content;
@@ -121,13 +129,13 @@ const ForYou = () => {
                                 <span>Scan QR Code</span>
                             </div>
                         </a>
-                        <a className='loginMethods' onClick={() => navigate(`/login`)}>
+                        <a className='loginMethods' onClick={openLoginModal}>
                             <div className='loginMethod'>
                                 <i className="fa-regular fa-user" style={{ float: 'left', marginTop: '5px' }}></i>
                                 <span>Use phone / email / username</span>
                             </div>
                         </a>
-                        <a href="#" className='loginMethods'>
+                        <a className='loginMethods' onClick={() => navigate(`/login`)}>
                             <div className='loginMethod'>
                                 <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
                                 <span>Continue with Facebook</span>
@@ -171,6 +179,9 @@ const ForYou = () => {
                         <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
                     </div>
                 </LoginModal>
+                <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal}>
+                    
+                </LoginInputModal>
             </>
     } else {
         content =
@@ -179,7 +190,7 @@ const ForYou = () => {
                     <div className="example-2">
                         <p className="example-3"></p>
                     </div>
-                    <h3 className='title' style={{marginTop: '-20px'}}>Following accounts</h3>
+                    <h3 className='title' style={{ marginTop: '-20px' }}>Following accounts</h3>
                     <div className='userList'>
                         <ul className='userItem'>
                             {
@@ -206,7 +217,81 @@ const ForYou = () => {
 
     return (
         <div id='foryouPage'>
-            <NavBar />
+            <div id='foryou'>
+                <div id='video'>
+                    {
+                        videoList.map((video, index) =>
+                            <div className='videos__container'>
+                                <div className='avatarContainer'>
+                                    <Link to={`/users/${video?.id}`}>
+                                        <span className='avatarVideo'>
+                                            <img src={video?.avatar} className='avatar' />
+                                        </span>
+                                    </Link>
+                                </div>
+                                <div className='videoContainer'>
+                                    <div className='video-user'>
+                                        <Link to={`/users/${video?.id}`} style={{ textDecoration: '0', color: '#fff' }}>
+                                            <span><b>{video?.username} </b></span>
+                                            <span>{video?.fullname}</span>
+                                        </Link>
+                                        <button className='follow_btn' onClick={interactionAction}
+                                            style={{
+                                                float: 'right',
+                                                width: '100px',
+                                                height: '40px',
+                                                cursor: 'pointer',
+                                                backgroundColor: '#121212',
+                                                border: isActived ? '1px solid #2f2f2f' : '1px solid #f22459',
+                                                color: isActived ? '#fff' : '#f22459',
+                                                borderRadius: '5px',
+                                                marginRight: '-250px',
+                                                fontSize: '15px',
+                                                fontFamily: 'inherit'
+                                            }}>{isActived ? 'Following' : 'Follow'}</button>
+                                        <p className='videoDesc'>{video?.description}</p>
+                                    </div>
+                                    <div className='videoDetails'>
+                                        <div className="videoBox">
+                                            <Link to={`/videos/${video?.id}`} >
+                                                <AutoPlayVideo />
+                                            </Link>
+                                            <div className='videoAction'>
+                                                <button className='action_btn' onClick={reactionAction}>
+                                                    <span>
+                                                        {isReacted ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
+                                                    </span>
+                                                </button>
+                                                <p className='actionAmount'>
+                                                    {isReacted ? <strong>{video?.reactAmount + 1}</strong> : <strong>{video?.reactAmount}</strong>}
+                                                </p>
+                                                <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}>
+                                                    <span>
+                                                        <i className="fa-solid fa-comment-dots"></i>
+                                                    </span>
+                                                </button>
+                                                <p className='actionAmount'><strong>{video?.commentAmount}</strong></p>
+                                                <button className='action_btn'>
+                                                    <span>
+                                                        <i className="fa-solid fa-bookmark"></i>
+                                                    </span>
+                                                </button>
+                                                <p className='actionAmount'><strong>{video?.savedAmount}</strong></p>
+                                                <button className='action_btn'>
+                                                    <span>
+                                                        <i className="fa-solid fa-share"></i>
+                                                    </span>
+                                                </button>
+                                                <p className='actionAmount'><strong>{video?.shareAmount}</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
             <div id='nav'>
                 <ul className='itemLinkAll'>
                     <li className='itemLink'>
@@ -297,81 +382,7 @@ const ForYou = () => {
                     </p>
                 </div>
             </div>
-            <div id='foryou'>
-                <div id='video'>
-                    {
-                        videoList.map((video, index) =>
-                            <div className='videos__container'>
-                                <div className='avatarContainer'>
-                                    <Link to={`/users/${video?.id}`}>
-                                        <span className='avatarVideo'>
-                                            <img src={video?.avatar} className='avatar' />
-                                        </span>
-                                    </Link>
-                                </div>
-                                <div className='videoContainer'>
-                                    <div className='video-user'>
-                                        <Link to={`/users/${video?.id}`} style={{ textDecoration: '0', color: '#fff' }}>
-                                            <span><b>{video?.username} </b></span>
-                                            <span>{video?.fullname}</span>
-                                        </Link>
-                                        <button className='follow_btn' onClick={interactionAction}
-                                            style={{
-                                                float: 'right',
-                                                width: '100px',
-                                                height: '40px',
-                                                cursor: 'pointer',
-                                                backgroundColor: '#121212',
-                                                border: isActived ? '1px solid #2f2f2f' : '1px solid #f22459',
-                                                color: isActived ? '#fff' : '#f22459',
-                                                borderRadius: '5px',
-                                                marginRight: '-250px',
-                                                fontSize: '15px',
-                                                fontFamily: 'inherit'
-                                            }}>{isActived ? 'Following' : 'Follow'}</button>
-                                        <p className='videoDesc'>{video?.description}</p>
-                                    </div>
-                                    <div className='videoDetails'>
-                                        <div className="videoBox">
-                                            <Link to={`/videos/${video?.id}`} >
-                                                <AutoPlayVideo />
-                                            </Link>
-                                            <div className='videoAction'>
-                                                <button className='action_btn' onClick={reactionAction}>
-                                                    <span>
-                                                        {isReacted ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
-                                                    </span>
-                                                </button>
-                                                <p className='actionAmount'>
-                                                    {isReacted ? <strong>{video?.reactAmount + 1}</strong> : <strong>{video?.reactAmount}</strong>}
-                                                </p>
-                                                <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}>
-                                                    <span>
-                                                        <i className="fa-solid fa-comment-dots"></i>
-                                                    </span>
-                                                </button>
-                                                <p className='actionAmount'><strong>{video?.commentAmount}</strong></p>
-                                                <button className='action_btn'>
-                                                    <span>
-                                                        <i className="fa-solid fa-bookmark"></i>
-                                                    </span>
-                                                </button>
-                                                <p className='actionAmount'><strong>{video?.savedAmount}</strong></p>
-                                                <button className='action_btn'>
-                                                    <span>
-                                                        <i className="fa-solid fa-share"></i>
-                                                    </span>
-                                                </button>
-                                                <p className='actionAmount'><strong>{video?.shareAmount}</strong></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    }
-                </div>
-            </div>
+            <NavBar />
         </div>
     )
 }

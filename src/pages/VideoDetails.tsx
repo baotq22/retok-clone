@@ -5,7 +5,7 @@ import { videoApis } from "../axios-instance";
 import { useDispatch } from "react-redux";
 import '../library/fontawesome/css/all.min.css'
 import './styles/videodetails.css'
-import images from '../assets/309431756_799936498003792_6138006382387941828_n.jpg'
+import Comments from '../components/comments/Comments'
 
 const VideoDetails = () => {
     const [video, setVideo] = useState();
@@ -27,10 +27,6 @@ const VideoDetails = () => {
     const interactionAction = () => {
         setIsActived(current => !current);
     }
-    const [isReactedCmt, setIsReactedCmt] = useState(false);
-    const cmtReactionAction = () => {
-        setIsReactedCmt(current => !current);
-    }
 
     return (
         <div id="videoDetailsContainer">
@@ -49,7 +45,7 @@ const VideoDetails = () => {
                     }}
                         onClick={() => navigate(`/`)}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
-                <video loop controls className='videoDetailsPage'>
+                <video loop controls autoPlay className='videoDetailsPage'>
                     <source src={Video1} type='video/webm' />
                 </video>
             </div>
@@ -140,32 +136,7 @@ const VideoDetails = () => {
                         </div>
                     </div>
                     <h2>Comments ({video?.commentAmount})</h2>
-                    <div className='comment__container'>
-                        <div className='comment__s'>
-                            <div>
-                                <img src={images} className='avatarComment' />
-                            </div>
-                            <div className='infoComment'>
-                                <span style={{ fontSize: '20px' }}><b>Ajakaui</b></span>
-                                <div>Carbonite web goalkeeper gloves are ergonomically designed to give easy fit</div>
-                                <div className='reaction_comment'>
-                                    <button className='follow_btn' onClick={cmtReactionAction}>{isReactedCmt ? <i className="fa-solid fa-heart" style={{ fontSize: '17px', color: '#fe22459' }}></i> : <i className="fa-solid fa-heart" style={{ fontSize: '17px' }}></i>}</button>
-                                    <div className='actionAmount'>{video?.reactAmount}</div>
-                                </div>
-                                <span>1h ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className='comment_input_container'>
-                    <div className='comment_box'>
-                        <input className='comment_input' placeholder="Add comment..."></input>
-                        <button className='mention_button'><i className="fa-solid fa-at" style={{ color: '#fff', marginRight: '5px' }}></i></button>
-                        <button className='emoji_button'><i className="fa-regular fa-face-smile" style={{ color: '#fff', marginRight: '5px' }}></i></button>
-                    </div>
-                    <div className='post_box'>
-                        <button className='postBtn'>Post</button>
-                    </div>
+                    <Comments currentUserId='1'/>
                 </div>
             </div>
         </div>

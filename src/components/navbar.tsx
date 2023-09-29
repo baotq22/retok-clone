@@ -3,24 +3,24 @@ import SearchBar from "./SearchBar"
 import './styles/navbar.css'
 import '../library/fontawesome/css/all.min.css'
 import LoginModal from "./LoginModal"
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import images from '../assets/309431756_799936498003792_6138006382387941828_n.jpg'
 import { logout } from "../slices/userLoginSlice"
+import LoginInputModal from "./LoginInputModal"
 
 export const NavBar = () => {
     const navigate = useNavigate();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const openModal = () => { setIsModalOpen(true); }
+    const closeModal = () => { setIsModalOpen(false); }
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    }
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    }
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
+    const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
+    const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
 
     const userLogin = useSelector(state => state.userLogin)
 
@@ -40,13 +40,13 @@ export const NavBar = () => {
                                 <span>Scan QR Code</span>
                             </div>
                         </a>
-                        <a className='loginMethods' onClick={() => navigate(`/login`)}>
+                        <a className='loginMethods' onClick={openLoginModal}>
                             <div className='loginMethod'>
                                 <i className="fa-regular fa-user" style={{ float: 'left', marginTop: '5px' }}></i>
                                 <span>Use phone / email / username</span>
                             </div>
                         </a>
-                        <a href="#" className='loginMethods'>
+                        <a className='loginMethods' onClick={() => navigate(`/login`)}>
                             <div className='loginMethod'>
                                 <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
                                 <span>Continue with Facebook</span>
@@ -90,6 +90,9 @@ export const NavBar = () => {
                         <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
                     </div>
                 </LoginModal>
+                <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal}>
+                    
+                </LoginInputModal>
             </>
     } else {
         content =
@@ -119,4 +122,4 @@ export const NavBar = () => {
     )
 }
 
-export default NavBar
+export default memo(NavBar)

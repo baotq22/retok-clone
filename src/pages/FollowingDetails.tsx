@@ -179,7 +179,7 @@ const UserFollowDetails = () => {
                 <ul className='itemLinkAll'>
                     <li className='itemLink'>
                         <Link to={`/`} className='mainLink'>
-                            <div className="nav selected">
+                            <div className="nav">
                                 <i className='icon fa-solid fa-home'></i><span>For you</span>
                             </div>
                         </Link>
