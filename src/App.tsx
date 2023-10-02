@@ -6,6 +6,7 @@ import {
 import ForYou from './pages/ForYou'
 import Following from "./pages/Following";
 import UserLogin from "./pages/LogIn";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Provider, useDispatch } from "react-redux";
 import store from "./store";
 import VideoDetails from "./pages/VideoDetails";
@@ -42,11 +43,13 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+  
+
   useEffect(() => {
     const usernameLocalStorage = localStorage.getItem('username');
     const passwordLocalStorage = localStorage.getItem('password');
     const idLocalStorage = localStorage.getItem('id');
-    if (usernameLocalStorage) {
+    if (usernameLocalStorage && passwordLocalStorage) {
       store.dispatch(loginSuccess({
         username: usernameLocalStorage,
         password: passwordLocalStorage,

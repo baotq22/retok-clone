@@ -67,6 +67,38 @@ const AutoPlayVideo = () => {
     )
 }
 
+export const reactionVideo = async (userId) => {
+    try {
+        const response = await axios.post(`api/videos/${userId}`)
+    } catch (e) {
+        console.log('')
+    }
+}
+
+export const unreactionVideo = async (userId) => {
+    try {
+        const response = await axios.delete(`api/videos/${userId}`)
+    } catch (e) {
+        console.log('')
+    }
+}
+
+export const addReaction = async () => {
+    try {
+        const response = await axios.post(`/api/videos/${postId}/reactions`);
+    } catch (error) {
+        console.log('')
+    }
+};
+
+export const removeReaction = async () => {
+    try {
+        const response = await axios.delete(`/api/videos/${postId}/reactions`);
+    } catch (error) {
+        console.log('')
+    }
+};
+
 const ForYou = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
@@ -105,7 +137,7 @@ const ForYou = () => {
     const [isActived, setIsActived] = useState(false);
     const interactionAction = () => {
         setIsActived(current => !current);
-    } 
+    }
 
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
@@ -180,7 +212,7 @@ const ForYou = () => {
                     </div>
                 </LoginModal>
                 <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal}>
-                    
+
                 </LoginInputModal>
             </>
     } else {
@@ -215,6 +247,42 @@ const ForYou = () => {
             </>
     }
 
+    const [isFollowing, setIsFollowing] = useState(false);
+
+    // Load the follow status from localStorage on component mount.
+    useEffect(() => {
+        const storedStatus = localStorage.getItem('isFollowing');
+        if (storedStatus) {
+            setIsFollowing(JSON.parse(storedStatus));
+        }
+    }, []);
+
+    const handleFollowClick = () => {
+        localStorage.setItem('isFollowing', JSON.stringify(!isFollowing));
+    };
+
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleLikeClick = () => {
+        if (isLiked) {
+            removeReaction(); // Call the remove reaction API function.
+            setIsLiked(false);
+            localStorage.removeItem(`like`);
+        } else {
+            addReaction(); // Call the add reaction API function.
+            setIsLiked(true);
+            localStorage.setItem(`like`, JSON.stringify(true));
+        }
+    };
+
+    useEffect(() => {
+        const storedLikeStatus = localStorage.getItem(`like`);
+        if (storedLikeStatus) {
+            setIsLiked(JSON.parse(storedLikeStatus));
+        }
+    }, []);
+
+
     return (
         <div id='foryouPage'>
             <div id='foryou'>
@@ -235,20 +303,20 @@ const ForYou = () => {
                                             <span><b>{video?.username} </b></span>
                                             <span>{video?.fullname}</span>
                                         </Link>
-                                        <button className='follow_btn' onClick={interactionAction}
+                                        <button className='follow_btn' onClick={handleFollowClick}
                                             style={{
                                                 float: 'right',
                                                 width: '100px',
                                                 height: '40px',
                                                 cursor: 'pointer',
                                                 backgroundColor: '#121212',
-                                                border: isActived ? '1px solid #2f2f2f' : '1px solid #f22459',
-                                                color: isActived ? '#fff' : '#f22459',
+                                                border: isFollowing ? '1px solid #2f2f2f' : '1px solid #f22459',
+                                                color: isFollowing ? '#fff' : '#f22459',
                                                 borderRadius: '5px',
                                                 marginRight: '-250px',
                                                 fontSize: '15px',
                                                 fontFamily: 'inherit'
-                                            }}>{isActived ? 'Following' : 'Follow'}</button>
+                                            }}>{isFollowing ? 'Following' : 'Follow'}</button>
                                         <p className='videoDesc'>{video?.description}</p>
                                     </div>
                                     <div className='videoDetails'>
@@ -257,13 +325,14 @@ const ForYou = () => {
                                                 <AutoPlayVideo />
                                             </Link>
                                             <div className='videoAction'>
-                                                <button className='action_btn' onClick={reactionAction}>
+                                                <button className='action_btn' onClick={handleLikeClick}>
                                                     <span>
-                                                        {isReacted ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
+                                                        {isLiked ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
+                                                        {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
                                                     </span>
                                                 </button>
                                                 <p className='actionAmount'>
-                                                    {isReacted ? <strong>{video?.reactAmount + 1}</strong> : <strong>{video?.reactAmount}</strong>}
+                                                    {isLiked ? <strong>{video?.reactAmount + 1}</strong> : <strong>{video?.reactAmount}</strong>}
                                                 </p>
                                                 <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}>
                                                     <span>

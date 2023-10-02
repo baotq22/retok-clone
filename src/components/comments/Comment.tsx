@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import images from '../../assets/309431756_799936498003792_6138006382387941828_n.jpg'
-import { videoApis } from "../../axios-instance";
-import { useParams } from "react-router-dom";
 
 const Comment = ({ comment, replies, currentUserId }) => {
     const canReply = Boolean(currentUserId);
@@ -32,8 +30,8 @@ const Comment = ({ comment, replies, currentUserId }) => {
                     <div className='subComment'>
                         {replies.map(reply => (
                             <Comment comment={reply}
-                                key={reply.id}
-                                replies={[]} />
+                            key={reply.id}
+                            replies={[]} currentUserId={undefined} />
                         ))}
                     </div>
                 )}

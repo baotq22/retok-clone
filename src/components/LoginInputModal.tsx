@@ -36,6 +36,7 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
             navigate('/');
         } catch (e) {
             console.log(e)
+            alert('Login failed! Try again')
         }
     }
 
@@ -44,10 +45,6 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
             navigate('/following')
         }
     }, [isLoginSuccess])
-
-    useEffect(() => {
-
-    }, [])
 
     const [isChanged, setIsChanged] = useState(false);
     const changeLoginMethod = () => {

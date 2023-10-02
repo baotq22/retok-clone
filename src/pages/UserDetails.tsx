@@ -34,6 +34,22 @@ async function getVideos() {
     console.log(response);
 }
 
+export const followUser = async (userId) => {
+    try {
+        const response = await axios.post(`api/follow/${userId}`)
+    } catch (e) {
+        console.log('')
+    }
+}
+
+export const unfollowUser = async (userId) => {
+    try {
+        const response = await axios.delete(`api/follow/${userId}`)
+    } catch (e) {
+        console.log('')
+    }
+}
+
 const UserDetails = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
@@ -59,6 +75,7 @@ const UserDetails = () => {
         fetchUsers();
         fetchVideos();
     })
+
     const [user, setUser] = useState();
 
     const params = useParams();
@@ -69,11 +86,14 @@ const UserDetails = () => {
             setUser(res.data)
         }).catch(e => console.log(e));
     }, [])
+
     const [isActived, setIsActived] = useState(false);
     const interactionAction = () => {
         setIsActived(current => !current);
     }
+
     const userLogin = useSelector(state => state.userLogin)
+    const userFollowId = userLogin?.id == params.userId;
     const userLogged = !userLogin?.username;
     let content;
     if (userLogged) {
@@ -177,6 +197,69 @@ const UserDetails = () => {
                 </div>
             </>
     }
+
+    const [isFollowing, setIsFollowing] = useState(false);
+
+    useEffect(() => {
+        const storedStatus = localStorage.getItem('isFollowing');
+        if (storedStatus) {
+            setIsFollowing(JSON.parse(storedStatus));
+        }
+    }, []);
+
+    const handleFollowClick = () => {
+        if (isFollowing) {
+            unfollowUser(userId);
+        } else {
+            followUser(userId);
+        }
+        setIsFollowing(!isFollowing);
+        localStorage.setItem('isFollowing', JSON.stringify(!isFollowing));
+    };
+
+    let followandEditBtn;
+    if (userFollowId) {
+        followandEditBtn =
+            <div className='button__action'>
+                <button className='followBtn'
+                    style={{
+                        marginTop: '-20px',
+                        backgroundColor: '#252525',
+                        borderRadius: '3px',
+                        marginRight: '10px',
+                        border: '1px solid #fff',
+                        padding: '0.6em 0',
+                        fontSize: '1em',
+                        fontWeight: '500',
+                        fontFamily: 'inherit',
+                        color: '#fff',
+                        cursor: 'pointer',
+                        width: '210px',
+                        transition: 'border-color 0.25s'
+                    }}><i className="fa-regular fa-pen-to-square" style={{ marginRight: '8px' }}></i>Edit Profile</button>
+            </div>
+    } else {
+        followandEditBtn =
+            <div className='button__action'>
+                <button className='followBtn' onClick={handleFollowClick}
+                    style={{
+                        marginTop: '-20px',
+                        backgroundColor: isFollowing ? '#252525' : '#f22459',
+                        borderRadius: '3px',
+                        marginRight: '10px',
+                        border: isFollowing ? '1px solid #f22459' : '1px solid transparent',
+                        padding: '0.6em 0',
+                        fontSize: '1em',
+                        fontWeight: '500',
+                        fontFamily: 'inherit',
+                        color: isFollowing ? '#f22459' : '#fff',
+                        cursor: 'pointer',
+                        width: '210px',
+                        transition: 'border-color 0.25s'
+                    }}>{isFollowing ? 'Following' : 'Follow'}</button>
+            </div>
+    }
+
     return (
         <div id='userDetailsPage'>
             <Navbar />
@@ -282,7 +365,7 @@ const UserDetails = () => {
                             <div className='detailed__username'>
                                 <p className='detailUsername'><b>{user?.username}</b></p>
                                 <p className='detailFullname'>{user?.fullname}</p>
-                                <div className='button__action'>
+                                {/* <div className='button__action'>
                                     <button className='followBtn' onClick={interactionAction}
                                         style={{
                                             marginTop: '-20px',
@@ -299,7 +382,7 @@ const UserDetails = () => {
                                             width: isActived ? '150px' : '210px',
                                             transition: 'border-color 0.25s'
                                         }}>{isActived ? 'Messages' : 'Follow'}</button>
-                                        {isActived ? <button style={{
+                                    {isActived ? <button style={{
                                         marginTop: '-20px',
                                         backgroundColor: '#252525',
                                         borderRadius: '3px',
@@ -312,7 +395,11 @@ const UserDetails = () => {
                                         width: '50px',
                                         transition: 'border-color 0.25s'
                                     }}><i className="fa-solid fa-user-check"></i></button> : <></>}
-                                </div>
+                                    <button onClick={handleFollowClick}>
+                                        {isFollowing ? 'Unfollow' : 'Follow'}
+                                    </button>
+                                </div> */}
+                                {followandEditBtn}
                             </div>
                         </div>
                         <h3 className='detailedAmount'>

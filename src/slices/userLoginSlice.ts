@@ -15,8 +15,12 @@ export const userLoginSlice = createSlice({
         password: '',
         id: '',
         isLoginSuccess: false,
+        loading: false
     },
     reducers: {
+        showLoading:(state) => {
+            state.loading = true;
+        },
         loginSuccess: (state, action) => {
             state.username = action.payload.username;
             state.password = action.payload.password;
@@ -40,9 +44,13 @@ export const userLoginSlice = createSlice({
                 localStorage.setItem('username', action.payload[0].username)
                 localStorage.setItem('password', action.payload[0].password)
                 localStorage.setItem('id', action.payload[0].id)
+                console.log(action.payload[0].username)
+                console.log(action.payload[0].password)
+                console.log(action.payload[0].id)
             } else {
                 state.isLoginSuccess = false;
             }
+            state.loading = false
         })
     }
 })
