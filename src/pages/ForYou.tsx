@@ -1,7 +1,7 @@
 import './styles/videos.css'
 import './styles/sidebar.css'
 import NavBar from "../components/navbar"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import LoginModal from "../components/LoginModal";
 import Video1 from '../assets/videos/1.mp4'
@@ -25,14 +25,6 @@ type VideoType = {
     savedAmount: number
     shareAmount: number
     avatar: string
-}
-
-async function getUser() {
-    const response = await api.get(`/users`);
-}
-
-async function getVideos() {
-    const response = await videoApis.get(`/videos`)
 }
 
 const AutoPlayVideo = () => {
@@ -67,44 +59,14 @@ const AutoPlayVideo = () => {
     )
 }
 
-export const reactionVideo = async (userId) => {
-    try {
-        const response = await axios.post(`api/videos/${userId}`)
-    } catch (e) {
-        console.log('')
-    }
-}
-
-export const unreactionVideo = async (userId) => {
-    try {
-        const response = await axios.delete(`api/videos/${userId}`)
-    } catch (e) {
-        console.log('')
-    }
-}
-
-export const addReaction = async () => {
-    try {
-        const response = await axios.post(`/api/videos/${postId}/reactions`);
-    } catch (error) {
-        console.log('')
-    }
-};
-
-export const removeReaction = async () => {
-    try {
-        const response = await axios.delete(`/api/videos/${postId}/reactions`);
-    } catch (error) {
-        console.log('')
-    }
-};
-
-const ForYou = () => {
+const ForYou = ({ items, initialVisibleItems }) => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
     const [userList, setUserList] = useState<Array<UserType>>([])
     const [videoList, setVideoList] = useState<Array<VideoType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
+
+    // Modal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
@@ -113,10 +75,7 @@ const ForYou = () => {
     const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
     const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
     const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
-    useEffect(() => {
-        getUser();
-        getVideos();
-    }, [])
+
     useEffect(() => {
         const fetchUsers = async () => {
             const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
@@ -130,14 +89,8 @@ const ForYou = () => {
         fetchVideos();
     })
 
-    const [isReacted, setIsReacted] = useState(false);
-    const reactionAction = () => {
-        setIsReacted(current => !current);
-    }
-    const [isActived, setIsActived] = useState(false);
-    const interactionAction = () => {
-        setIsActived(current => !current);
-    }
+    const params = useParams();
+    const videoId = params.userId;
 
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
@@ -224,10 +177,10 @@ const ForYou = () => {
                     </div>
                     <h3 className='title' style={{ marginTop: '-20px' }}>Following accounts</h3>
                     <div className='userList'>
-                        <ul className='userItem'>
+                        <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
                                 videoList.map((user, index) =>
-                                    <li key={index} className='itemUser'>
+                                    <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
                                             <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
                                             <span className='infoUser'>
@@ -248,39 +201,78 @@ const ForYou = () => {
     }
 
     const [isFollowing, setIsFollowing] = useState(false);
-
-    // Load the follow status from localStorage on component mount.
-    useEffect(() => {
-        const storedStatus = localStorage.getItem('isFollowing');
-        if (storedStatus) {
-            setIsFollowing(JSON.parse(storedStatus));
+    
+    const addFollow = async (videoId) => {
+        try {
+            const response = await axios.post(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
+        } catch (error) {
+            console.log('')
         }
-    }, []);
-
+    };
+    
+    const removeFollow = async (videoId) => {
+        try {
+            const response = await axios.delete(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
+        } catch (error) {
+            console.log('')
+        }
+    };
+    
     const handleFollowClick = () => {
-        localStorage.setItem('isFollowing', JSON.stringify(!isFollowing));
+        if (isFollowing) {
+            removeFollow(videoId); // Call the remove reaction API function.
+            setIsFollowing(false);
+            localStorage.removeItem(`isFollowing-${videoId}`);
+        } else {
+            addFollow(videoId); // Call the add reaction API function.
+            setIsFollowing(true);
+            localStorage.setItem(`isFollowing-${videoId}`, JSON.stringify(true));
+        }
     };
 
+    useEffect(() => {
+        const storedFollowStatus = localStorage.getItem(`isFollowing-${videoId}`);
+        if (storedFollowStatus) {
+            setIsFollowing(JSON.parse(storedFollowStatus));
+        }
+    }, [videoId]);
+    
     const [isLiked, setIsLiked] = useState(false);
 
+    const addReaction = async (videoId) => {
+        try {
+            const response = await axios.post(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
+        } catch (error) {
+            console.log('')
+        }
+    };
+
+    const removeReaction = async (videoId) => {
+        try {
+            const response = await axios.delete(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
+        } catch (error) {
+            console.log('')
+        }
+    };
+    
     const handleLikeClick = () => {
         if (isLiked) {
-            removeReaction(); // Call the remove reaction API function.
+            removeReaction(videoId); // Call the remove reaction API function.
             setIsLiked(false);
-            localStorage.removeItem(`like`);
+            localStorage.removeItem(`like-${videoId}`);
         } else {
-            addReaction(); // Call the add reaction API function.
+            addReaction(videoId); // Call the add reaction API function.
             setIsLiked(true);
-            localStorage.setItem(`like`, JSON.stringify(true));
+            localStorage.setItem(`like-${videoId}`, JSON.stringify(true));
         }
     };
 
     useEffect(() => {
-        const storedLikeStatus = localStorage.getItem(`like`);
+        const storedLikeStatus = localStorage.getItem(`like-${videoId}`);
         if (storedLikeStatus) {
             setIsLiked(JSON.parse(storedLikeStatus));
         }
-    }, []);
+    }, [videoId]);
 
 
     return (
@@ -393,7 +385,7 @@ const ForYou = () => {
                     </li>
                 </ul>
                 {content}
-                <div className='bottom'>
+                <div className='bottom' style={{marginBottom: '100px'}}>
                     <div className='info'>
                         <a href="#" className='link'><span>About</span></a>
                         <a href="#" className='link'><span>Newsroom</span></a>

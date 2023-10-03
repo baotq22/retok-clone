@@ -169,7 +169,7 @@ const UserFollowDetails = () => {
                     <div className="example-2">
                         <p className="example-3"></p>
                     </div>
-                    <h3 className='title'>Following accounts</h3>
+                    <h3 className='title' style={{ marginTop: '-20px' }}>Following accounts</h3>
                     <div className='userList'>
                         <ul className='userItem'>
                             {
@@ -290,7 +290,7 @@ const UserFollowDetails = () => {
                     </li>
                 </ul>
                 {content}
-                <div className='bottom'>
+                <div className='bottom' style={{marginBottom: '100px'}}>
                     <div className='info'>
                         <a href="#" className='link'><span>About</span></a>
                         <a href="#" className='link'><span>Newsroom</span></a>

@@ -6,6 +6,15 @@ import { useDispatch } from "react-redux";
 import '../library/fontawesome/css/all.min.css'
 import './styles/videodetails.css'
 import Comments from '../components/comments/Comments'
+import axios from "axios";
+
+const addReaction = async (videoId) => {
+    try {
+        const response = await axios.post(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/${videoId}/reactions`);
+    } catch (error) {
+        console.log('')
+    }
+}
 
 const VideoDetails = () => {
     const [video, setVideo] = useState();
@@ -23,9 +32,40 @@ const VideoDetails = () => {
     const reactionAction = () => {
         setIsReacted(current => !current);
     }
-    const [isActived, setIsActived] = useState(false);
-    const interactionAction = () => {
-        setIsActived(current => !current);
+
+    const [isFollowing, setIsFollowing] = useState(false);
+
+    const followUser = async (userId: string | undefined) => {
+        try {
+            const response = await axios.post(`/${userId}`)
+        } catch (e) {
+            console.log('')
+        }
+    }
+
+    const unfollowUser = async (userId: string | undefined) => {
+        try {
+            const response = await axios.delete(`/${userId}`)
+        } catch (e) {
+            console.log('')
+        }
+    }
+
+    useEffect(() => {
+        const storedStatus = localStorage.getItem('isFollowing');
+        if (storedStatus) {
+            setIsFollowing(JSON.parse(storedStatus));
+        }
+    }, [])
+
+    const handleFollowClick = () => {
+        if (isFollowing) {
+            unfollowUser(userId);
+        } else {
+            followUser(userId);
+        }
+        setIsFollowing(!isFollowing);
+        localStorage.setItem('isFollowing', JSON.stringify(!isFollowing))
     }
 
     return (
@@ -63,13 +103,13 @@ const VideoDetails = () => {
                                     float: 'right',
                                     width: '80px',
                                     height: '40px',
-                                    backgroundColor: isActived ? '#252525' : '#f22459',
+                                    backgroundColor: isFollowing ? '#252525' : '#f22459',
                                     border: isActived ? '1px solid #2f2f2f' : '1px solid transparent',
                                     borderRadius: '5px',
                                     marginRight: '10px',
                                     fontFamily: 'inherit',
                                     cursor: 'pointer'
-                                }} onClick={interactionAction}>{isActived ? 'Following' : 'Follow'}</button>
+                                }} onClick={handleFollowClick}>{isFollowing ? 'Following' : 'Follow'}</button>
                             <Link to={`/users/${userId}`} style={{ textDecoration: '0', color: '#fff' }}>
                                 <span><b>{video?.username}</b></span>
                                 <div>{video?.fullname}<span style={{ margin: '0px 4px' }}> · </span>  <span>1h ago</span></div>

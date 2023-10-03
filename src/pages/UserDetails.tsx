@@ -34,22 +34,6 @@ async function getVideos() {
     console.log(response);
 }
 
-export const followUser = async (userId) => {
-    try {
-        const response = await axios.post(`api/follow/${userId}`)
-    } catch (e) {
-        console.log('')
-    }
-}
-
-export const unfollowUser = async (userId) => {
-    try {
-        const response = await axios.delete(`api/follow/${userId}`)
-    } catch (e) {
-        console.log('')
-    }
-}
-
 const UserDetails = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
@@ -78,8 +62,6 @@ const UserDetails = () => {
 
     const [user, setUser] = useState();
 
-    const params = useParams();
-    const userId = params.userId;
 
     useEffect(() => {
         videoApis.get(`/videos/${userId}`).then(res => {
@@ -91,6 +73,9 @@ const UserDetails = () => {
     const interactionAction = () => {
         setIsActived(current => !current);
     }
+    
+    const params = useParams();
+    const userId = params.userId;
 
     const userLogin = useSelector(state => state.userLogin)
     const userFollowId = userLogin?.id == params.userId;
@@ -173,7 +158,7 @@ const UserDetails = () => {
                     <div className="example-2">
                         <p className="example-3"></p>
                     </div>
-                    <h3 className='title'>Following accounts</h3>
+                    <h3 className='title' style={{ marginTop: '-20px' }}>Following accounts</h3>
                     <div className='userList'>
                         <ul className='userItem'>
                             {
@@ -199,6 +184,23 @@ const UserDetails = () => {
     }
 
     const [isFollowing, setIsFollowing] = useState(false);
+
+
+    const followUser = async (userId: string | undefined) => {
+        try {
+            const response = await axios.post(`/${userId}`)
+        } catch (e) {
+            console.log('')
+        }
+    }
+
+    const unfollowUser = async (userId: string | undefined) => {
+        try {
+            const response = await axios.delete(`/${userId}`)
+        } catch (e) {
+            console.log('')
+        }
+    }
 
     useEffect(() => {
         const storedStatus = localStorage.getItem('isFollowing');
@@ -295,7 +297,7 @@ const UserDetails = () => {
                     </li>
                 </ul>
                 {content}
-                <div className='bottom'>
+                <div className='bottom' style={{marginBottom: '100px'}}>
                     <div className='info'>
                         <a href="#" className='link'><span>About</span></a>
                         <a href="#" className='link'><span>Newsroom</span></a>

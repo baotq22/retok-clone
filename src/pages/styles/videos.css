@@ -26,24 +26,24 @@
 
 #followingPage #foryou #video .videos__container .avatarContainer,
 #foryouPage #foryou #video .videos__container .avatarContainer {
-    flex: 40%;
-    max-width: 40%;
+    flex: 40% !important;
+    max-width: 40% !important;
 }
 
 #followingPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar,
 #foryouPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar {
     border-radius: 50%;
-    width: 40%;
-    margin-left: 30px;
+    width: 40% !important;
+    margin-left: 30px !important;
 }
 
 #followingPage #foryou #video .videos__container .videoContainer,
 #foryouPage #foryou #video .videos__container .videoContainer {
-    margin-top: -95px;
-    margin-bottom: 40px;
-    margin-left: 120px;
-    flex: 60%;
-    max-width: 60%;
+    margin-top: -95px !important;
+    margin-bottom: 40px !important;
+    margin-left: 120px !important;
+    flex: 60% !important;
+    max-width: 60% !important;
 }
 
 #followingPage #foryou #video .videos__container .videoContainer .video-user,

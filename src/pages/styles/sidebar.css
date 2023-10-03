@@ -15,7 +15,20 @@
 #foryouPage #nav::-webkit-scrollbar, 
 #followingPage #nav::-webkit-scrollbar, 
 #userDetailsPage #nav::-webkit-scrollbar {
-    display: none;
+    width: 10px;
+}
+
+#foryouPage #nav::-webkit-scrollbar-track, 
+#followingPage #nav::-webkit-scrollbar-track, 
+#userDetailsPage #nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#foryouPage #nav::-webkit-scrollbar-thumb, 
+#followingPage #nav::-webkit-scrollbar-thumb, 
+#userDetailsPage #nav::-webkit-scrollbar-thumb {
+    background: #252525;
+    border-radius: 50px;
 }
 
 #foryouPage #nav .itemLinkAll,
@@ -263,4 +276,8 @@
     margin-top: -5px;
     margin-bottom: -8px;
     font-size: 90%;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

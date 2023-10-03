@@ -29,12 +29,6 @@ type VideoType = {
     avatar: string
 }
 
-
-async function getVideos() {
-    const response = await videoApis.get(`/videos`)
-    console.log(response);
-}
-
 const AutoPlayVideo = () => {
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -81,14 +75,6 @@ const ForYou = () => {
     const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
     const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
     const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
-    async function getUser() {
-        const response = await api.get(`/users`);
-        setUserList(response.data);
-    }
-    useEffect(() => {
-        getUser();
-        getVideos();
-    }, [])
     useEffect(() => {
         const fetchUsers = async () => {
             const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
@@ -105,10 +91,7 @@ const ForYou = () => {
     const reactionAction = () => {
         setIsReacted(current => !current);
     }
-    const [isActived, setIsActived] = useState(false);
-    const interactionAction = () => {
-        setIsActived(current => !current);
-    } 
+
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
     let content;
@@ -192,7 +175,7 @@ const ForYou = () => {
                     <div className="example-2">
                         <p className="example-3"></p>
                     </div>
-                    <h3 className='title'>Following accounts</h3>
+                    <h3 className='title' style={{ marginTop: '-20px' }}>Following accounts</h3>
                     <div className='userList'>
                         <ul className='userItem'>
                             {
@@ -338,7 +321,7 @@ const ForYou = () => {
                     </li>
                 </ul>
                 {content}
-                <div className='bottom'>
+                <div className='bottom' style={{marginBottom: '100px'}}>
                     <div className='info'>
                         <a href="#" className='link'><span>About</span></a>
                         <a href="#" className='link'><span>Newsroom</span></a>
