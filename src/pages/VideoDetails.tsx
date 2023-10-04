@@ -104,7 +104,7 @@ const VideoDetails = () => {
                                     width: '80px',
                                     height: '40px',
                                     backgroundColor: isFollowing ? '#252525' : '#f22459',
-                                    border: isActived ? '1px solid #2f2f2f' : '1px solid transparent',
+                                    border: isFollowing ? '1px solid #2f2f2f' : '1px solid transparent',
                                     borderRadius: '5px',
                                     marginRight: '10px',
                                     fontFamily: 'inherit',

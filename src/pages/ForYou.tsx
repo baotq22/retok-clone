@@ -5,7 +5,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import LoginModal from "../components/LoginModal";
 import Video1 from '../assets/videos/1.mp4'
-import { api, videoApis } from "../axios-instance";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import LoginInputModal from "../components/LoginInputModal";
@@ -89,9 +88,6 @@ const ForYou = ({ items, initialVisibleItems }) => {
         fetchVideos();
     })
 
-    const params = useParams();
-    const videoId = params.userId;
-
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
     let content;
@@ -170,7 +166,7 @@ const ForYou = ({ items, initialVisibleItems }) => {
             </>
     } else {
         content =
-            <>
+        <>
                 <div>
                     <div className="example-2">
                         <p className="example-3"></p>
@@ -199,10 +195,13 @@ const ForYou = ({ items, initialVisibleItems }) => {
                 </div>
             </>
     }
-
-    const [isFollowing, setIsFollowing] = useState(false);
     
-    const addFollow = async (videoId) => {
+    const [isFollowing, setIsFollowing] = useState(false);
+    const [isLiked, setIsLiked] = useState(false);
+    const storedIdLogin = localStorage.getItem('id');
+    const videoId = videoList.map((video) => video?.id)
+    
+    const addFollow = async () => {
         try {
             const response = await axios.post(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
         } catch (error) {
@@ -210,36 +209,34 @@ const ForYou = ({ items, initialVisibleItems }) => {
         }
     };
     
-    const removeFollow = async (videoId) => {
+    const removeFollow = async () => {
         try {
             const response = await axios.delete(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
         } catch (error) {
             console.log('')
         }
     };
-    
+        
+    useEffect(() => {
+        const storedFollowStatus = localStorage.getItem(`userIdFollow-${storedIdLogin}`);
+        if (storedFollowStatus) {
+            setIsFollowing(JSON.parse(storedFollowStatus));
+        }
+    }, []);
+
     const handleFollowClick = () => {
         if (isFollowing) {
             removeFollow(videoId); // Call the remove reaction API function.
             setIsFollowing(false);
-            localStorage.removeItem(`isFollowing-${videoId}`);
+            localStorage.removeItem(`userIdFollow${storedIdLogin}`);
         } else {
             addFollow(videoId); // Call the add reaction API function.
             setIsFollowing(true);
-            localStorage.setItem(`isFollowing-${videoId}`, JSON.stringify(true));
+            localStorage.setItem(`userIdFollow${storedIdLogin}`, videoId);
         }
     };
 
-    useEffect(() => {
-        const storedFollowStatus = localStorage.getItem(`isFollowing-${videoId}`);
-        if (storedFollowStatus) {
-            setIsFollowing(JSON.parse(storedFollowStatus));
-        }
-    }, [videoId]);
-    
-    const [isLiked, setIsLiked] = useState(false);
-
-    const addReaction = async (videoId) => {
+    const addReaction = async () => {
         try {
             const response = await axios.post(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
         } catch (error) {
@@ -247,33 +244,33 @@ const ForYou = ({ items, initialVisibleItems }) => {
         }
     };
 
-    const removeReaction = async (videoId) => {
+    const removeReaction = async () => {
         try {
             const response = await axios.delete(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
         } catch (error) {
             console.log('')
         }
     };
-    
-    const handleLikeClick = () => {
-        if (isLiked) {
-            removeReaction(videoId); // Call the remove reaction API function.
-            setIsLiked(false);
-            localStorage.removeItem(`like-${videoId}`);
-        } else {
-            addReaction(videoId); // Call the add reaction API function.
-            setIsLiked(true);
-            localStorage.setItem(`like-${videoId}`, JSON.stringify(true));
-        }
-    };
 
+    const storedLikeStatus = localStorage.getItem(`userIdLike-${storedIdLogin}`);
+    
     useEffect(() => {
-        const storedLikeStatus = localStorage.getItem(`like-${videoId}`);
         if (storedLikeStatus) {
             setIsLiked(JSON.parse(storedLikeStatus));
         }
-    }, [videoId]);
+    }, []);
 
+    const handleLikeClick = () => {
+        if (isLiked && storedLikeStatus) {
+            removeReaction(videoId); // Call the remove reaction API function.
+            setIsLiked(false);
+            localStorage.removeItem(`userIdLike${storedIdLogin}`);
+        } else {
+            addReaction(videoId); // Call the add reaction API function.
+            setIsLiked(true);
+            localStorage.setItem(`userIdLike${storedIdLogin}`, videoId);
+        }
+    };
 
     return (
         <div id='foryouPage'>
