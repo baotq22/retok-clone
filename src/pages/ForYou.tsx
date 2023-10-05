@@ -8,6 +8,7 @@ import Video1 from '../assets/videos/1.mp4'
 import { useSelector } from "react-redux";
 import axios from "axios";
 import LoginInputModal from "../components/LoginInputModal";
+import VideoList from "../components/VideoList";
 
 type UserType = {
     username: string
@@ -30,30 +31,34 @@ const AutoPlayVideo = () => {
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const handleScroll = () => {
-        const videoElement = videoRef.current;
-        const rect = videoElement.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-
-        if (isVisible && !isPlaying) {
-            videoElement.play();
-            setIsPlaying(true);
-        } else if (!isVisible && isPlaying) {
-            videoElement.pause();
-            setIsPlaying(false);
-        }
-    };
-
     useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
+        const video = videoRef.current;
+
+        const handleScroll = () => {
+            const videoContainer = video.getBoundingClientRect();
+
+            if (videoContainer.top < window.innerHeight && videoContainer.bottom) {
+                if (!isPlaying) {
+                    video.play();
+                    setIsPlaying(true);
+                }
+            } else {
+                if (isPlaying) {
+                    video.pause();
+                    setIsPlaying(false);
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
         return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [isPlaying])
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls className='videos' src={Video1} />
         </>
     )
 }
@@ -89,6 +94,7 @@ const ForYou = ({ items, initialVisibleItems }) => {
     })
 
     const userLogin = useSelector(state => state.userLogin)
+    const user_id = userLogin?.id;
     const userLogged = !userLogin?.username;
     let content;
     if (userLogged) {
@@ -175,7 +181,7 @@ const ForYou = ({ items, initialVisibleItems }) => {
                     <div className='userList'>
                         <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
-                                videoList.map((user, index) =>
+                                videoList.slice(0,10).map((user, index) =>
                                     <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
                                             <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
@@ -195,159 +201,12 @@ const ForYou = ({ items, initialVisibleItems }) => {
                 </div>
             </>
     }
-    
-    const [isFollowing, setIsFollowing] = useState(false);
-    const [isLiked, setIsLiked] = useState(false);
-    const storedIdLogin = localStorage.getItem('id');
-    const videoId = videoList.map((video) => video?.id)
-    
-    const addFollow = async () => {
-        try {
-            const response = await axios.post(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
-        } catch (error) {
-            console.log('')
-        }
-    };
-    
-    const removeFollow = async () => {
-        try {
-            const response = await axios.delete(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
-        } catch (error) {
-            console.log('')
-        }
-    };
-        
-    useEffect(() => {
-        const storedFollowStatus = localStorage.getItem(`userIdFollow-${storedIdLogin}`);
-        if (storedFollowStatus) {
-            setIsFollowing(JSON.parse(storedFollowStatus));
-        }
-    }, []);
-
-    const handleFollowClick = () => {
-        if (isFollowing) {
-            removeFollow(videoId); // Call the remove reaction API function.
-            setIsFollowing(false);
-            localStorage.removeItem(`userIdFollow${storedIdLogin}`);
-        } else {
-            addFollow(videoId); // Call the add reaction API function.
-            setIsFollowing(true);
-            localStorage.setItem(`userIdFollow${storedIdLogin}`, videoId);
-        }
-    };
-
-    const addReaction = async () => {
-        try {
-            const response = await axios.post(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
-        } catch (error) {
-            console.log('')
-        }
-    };
-
-    const removeReaction = async () => {
-        try {
-            const response = await axios.delete(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/?id=${videoId}`);
-        } catch (error) {
-            console.log('')
-        }
-    };
-
-    const storedLikeStatus = localStorage.getItem(`userIdLike-${storedIdLogin}`);
-    
-    useEffect(() => {
-        if (storedLikeStatus) {
-            setIsLiked(JSON.parse(storedLikeStatus));
-        }
-    }, []);
-
-    const handleLikeClick = () => {
-        if (isLiked && storedLikeStatus) {
-            removeReaction(videoId); // Call the remove reaction API function.
-            setIsLiked(false);
-            localStorage.removeItem(`userIdLike${storedIdLogin}`);
-        } else {
-            addReaction(videoId); // Call the add reaction API function.
-            setIsLiked(true);
-            localStorage.setItem(`userIdLike${storedIdLogin}`, videoId);
-        }
-    };
 
     return (
         <div id='foryouPage'>
             <div id='foryou'>
                 <div id='video'>
-                    {
-                        videoList.map((video, index) =>
-                            <div className='videos__container'>
-                                <div className='avatarContainer'>
-                                    <Link to={`/users/${video?.id}`}>
-                                        <span className='avatarVideo'>
-                                            <img src={video?.avatar} className='avatar' />
-                                        </span>
-                                    </Link>
-                                </div>
-                                <div className='videoContainer'>
-                                    <div className='video-user'>
-                                        <Link to={`/users/${video?.id}`} style={{ textDecoration: '0', color: '#fff' }}>
-                                            <span><b>{video?.username} </b></span>
-                                            <span>{video?.fullname}</span>
-                                        </Link>
-                                        <button className='follow_btn' onClick={handleFollowClick}
-                                            style={{
-                                                float: 'right',
-                                                width: '100px',
-                                                height: '40px',
-                                                cursor: 'pointer',
-                                                backgroundColor: '#121212',
-                                                border: isFollowing ? '1px solid #2f2f2f' : '1px solid #f22459',
-                                                color: isFollowing ? '#fff' : '#f22459',
-                                                borderRadius: '5px',
-                                                marginRight: '-250px',
-                                                fontSize: '15px',
-                                                fontFamily: 'inherit'
-                                            }}>{isFollowing ? 'Following' : 'Follow'}</button>
-                                        <p className='videoDesc'>{video?.description}</p>
-                                    </div>
-                                    <div className='videoDetails'>
-                                        <div className="videoBox">
-                                            <Link to={`/videos/${video?.id}`} >
-                                                <AutoPlayVideo />
-                                            </Link>
-                                            <div className='videoAction'>
-                                                <button className='action_btn' onClick={handleLikeClick}>
-                                                    <span>
-                                                        {isLiked ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
-                                                        {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
-                                                    </span>
-                                                </button>
-                                                <p className='actionAmount'>
-                                                    {isLiked ? <strong>{video?.reactAmount + 1}</strong> : <strong>{video?.reactAmount}</strong>}
-                                                </p>
-                                                <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}>
-                                                    <span>
-                                                        <i className="fa-solid fa-comment-dots"></i>
-                                                    </span>
-                                                </button>
-                                                <p className='actionAmount'><strong>{video?.commentAmount}</strong></p>
-                                                <button className='action_btn'>
-                                                    <span>
-                                                        <i className="fa-solid fa-bookmark"></i>
-                                                    </span>
-                                                </button>
-                                                <p className='actionAmount'><strong>{video?.savedAmount}</strong></p>
-                                                <button className='action_btn'>
-                                                    <span>
-                                                        <i className="fa-solid fa-share"></i>
-                                                    </span>
-                                                </button>
-                                                <p className='actionAmount'><strong>{video?.shareAmount}</strong></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    }
+                    <VideoList userId={user_id} />
                 </div>
             </div>
             <div id='nav'>
@@ -367,14 +226,14 @@ const ForYou = ({ items, initialVisibleItems }) => {
                         </Link>
                     </li>
                     <li className='itemLink'>
-                        <Link to={`/following`} className='mainLink'>
+                        <Link to={`/#`} className='mainLink'>
                             <div className="nav">
                                 <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
                             </div>
                         </Link>
                     </li>
                     <li className='itemLink'>
-                        <Link to={`/following`} className='mainLink'>
+                        <Link to={`/#`} className='mainLink'>
                             <div className="nav">
                                 <i className='icon fa-solid fa-video'></i><span>LIVE</span>
                             </div>

@@ -111,8 +111,8 @@ export const NavBar = () => {
                         <li onClick={logoutUser}><i className="fa-solid fa-arrow-right-from-bracket" style={{marginRight: '10px'}}></i>Logout</li>
                     </ul>
                 </span>
-                <span className="iconNav"><i className="fa-regular fa-message" style={{ color: '#fff' }}></i></span>
-                <span className="iconNav iconPlane"><i className="fa-regular fa-paper-plane" style={{ color: '#fff' }}></i></span>
+                <span className="iconNav"><i className="fa-regular fa-message iconAction"></i></span>
+                <span className="iconNav iconPlane"><i className="fa-regular fa-paper-plane iconAction"></i></span>
             </>
     }
     const dispatch = useDispatch();
@@ -129,7 +129,7 @@ export const NavBar = () => {
                 <img src={logo} id="logo" alt="Logo" style={{cursor: 'pointer'}} onClick={() => navigate(`/`)}/>
                 <SearchBar />
                 {content}
-                <button id='btn__upload'><i className="fa-solid fa-plus" style={{ color: '#fff', marginRight: '5px' }}></i>Upload</button>
+                <button id='btn__upload'><i className="fa-solid fa-plus iconAction" style={{marginRight: '5px' }}></i>Upload</button>
                 <p></p>
             </div>
         </header>

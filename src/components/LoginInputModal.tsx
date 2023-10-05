@@ -42,7 +42,7 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
 
     useEffect(() => {
         if (isLoginSuccess) {
-            navigate('/following')
+            navigate('/')
         }
     }, [isLoginSuccess])
 

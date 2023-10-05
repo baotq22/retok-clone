@@ -1,20 +1,12 @@
 import { useEffect, useState } from "react";
 import Video1 from '../assets/videos/1.mp4'
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { videoApis } from "../axios-instance";
-import { useDispatch } from "react-redux";
 import '../library/fontawesome/css/all.min.css'
 import './styles/videodetails.css'
 import Comments from '../components/comments/Comments'
 import axios from "axios";
 
-const addReaction = async (videoId) => {
-    try {
-        const response = await axios.post(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos/${videoId}/reactions`);
-    } catch (error) {
-        console.log('')
-    }
-}
 
 const VideoDetails = () => {
     const [video, setVideo] = useState();

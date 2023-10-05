@@ -282,14 +282,14 @@ const UserDetails = () => {
                         </Link>
                     </li>
                     <li className='itemLink'>
-                        <Link to={`/following`} className='mainLink'>
+                        <Link to={`/#`} className='mainLink'>
                             <div className="nav">
                                 <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
                             </div>
                         </Link>
                     </li>
                     <li className='itemLink'>
-                        <Link to={`/following`} className='mainLink'>
+                        <Link to={`/#`} className='mainLink'>
                             <div className="nav">
                                 <i className='icon fa-solid fa-video'></i><span>LIVE</span>
                             </div>

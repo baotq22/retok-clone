@@ -122,3 +122,23 @@
 #header .iconPlane {
     margin-left: 15px;
 }
+
+@media (prefers-color-scheme: light) {
+    #header {
+        background-color: #fff;
+    }
+
+    #header .iconNav .iconAction,
+    #header #btn__upload .iconAction{
+        color: #000;
+    }
+
+    #header #btn__upload {
+        background-color: #fff;
+        border: 1px solid #e3e3e4;
+    }
+
+    #header #btn__upload:hover {
+        background-color: #f8f8f8;
+    }
+}

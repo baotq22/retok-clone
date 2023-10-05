@@ -28,3 +28,13 @@
 #search_button:hover {
     background: #484848;
 }
+
+@media (prefers-color-scheme: light) {
+    #search_box, #search_button {
+        background: #f1f1f2;
+    }
+
+    #search_button .iconAction {
+        color: #000;
+    }
+}

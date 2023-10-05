@@ -46,8 +46,22 @@
     max-width: 60% !important;
 }
 
-#followingPage #foryou #video .videos__container .videoContainer .video-user,
-#foryouPage #foryou #video .videos__container .videoContainer .video-user {}
+#followingPage #foryou #video .videos__container .videoContainer .video-user .user_details,
+#foryouPage #foryou #video .videos__container .videoContainer .video-user .user_details {
+    color: #fff;
+}
+
+#followingPage #foryou #video .videos__container .videoContainer .video-user .follow_btn,
+#foryouPage #foryou #video .videos__container .videoContainer .video-user .follow_btn {
+    float: right;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: -250px;
+    font-size: 15px;
+    font-family: inherit;
+}
 
 #followingPage #foryou #video .videos__container .videoContainer .video-user .videoDesc,
 #foryouPage #foryou #video .videos__container .videoContainer .video-user .videoDesc {
@@ -107,7 +121,7 @@
     position: relative;
     flex: 33.333%;
     max-width: 33.333%;
-    margin: 0 -30px 15px 0 ;
+    margin: 0 -30px 15px 0;
     /* padding: 20px 0 0 20px; */
     border-radius: 0 10px 10px 10px;
 }
@@ -154,6 +168,15 @@
 
 #followingPage #foryou .userContainer .userVideo .userInfo .userFollow #followBtn:hover {
     background-color: #e53154;
+}
+
+@media (prefers-color-scheme: light) {
+
+    #followingPage #foryou #video .videos__container .videoContainer .video-user .user_details,
+    #foryouPage #foryou #video .videos__container .videoContainer .video-user .user_details {
+        color: #000;
+    }
+
 }
 
 @media screen and (max-width: 2200px) {

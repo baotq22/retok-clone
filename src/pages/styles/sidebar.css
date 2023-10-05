@@ -12,20 +12,20 @@
     height: 100%;
 }
 
-#foryouPage #nav::-webkit-scrollbar, 
-#followingPage #nav::-webkit-scrollbar, 
+#foryouPage #nav::-webkit-scrollbar,
+#followingPage #nav::-webkit-scrollbar,
 #userDetailsPage #nav::-webkit-scrollbar {
     width: 10px;
 }
 
-#foryouPage #nav::-webkit-scrollbar-track, 
-#followingPage #nav::-webkit-scrollbar-track, 
+#foryouPage #nav::-webkit-scrollbar-track,
+#followingPage #nav::-webkit-scrollbar-track,
 #userDetailsPage #nav::-webkit-scrollbar-track {
     background: transparent;
 }
 
-#foryouPage #nav::-webkit-scrollbar-thumb, 
-#followingPage #nav::-webkit-scrollbar-thumb, 
+#foryouPage #nav::-webkit-scrollbar-thumb,
+#followingPage #nav::-webkit-scrollbar-thumb,
 #userDetailsPage #nav::-webkit-scrollbar-thumb {
     background: #252525;
     border-radius: 50px;
@@ -53,6 +53,12 @@
 #userDetailsPage #nav .itemLinkAll .itemLink .mainLink {
     text-decoration: 0;
     color: #fff;
+}
+
+#foryouPage #nav .itemLinkAll .itemLink .mainLink .nav span,
+#followingPage #nav .itemLinkAll .itemLink .mainLink .nav span,
+#userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav span {
+    font-weight: 800;
 }
 
 #foryouPage #nav .itemLinkAll .itemLink .mainLink .nav:hover,
@@ -280,4 +286,26 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+@media (prefers-color-scheme: light) {
+
+    #foryouPage #nav,
+    #followingPage #nav,
+    #userDetailsPage #nav {
+        background-color: #fff;
+    }
+
+    #foryouPage #nav .itemLinkAll .itemLink .mainLink .nav,
+    #followingPage #nav .itemLinkAll .itemLink .mainLink .nav,
+    #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav {
+        color: #000;
+    }
+
+    #foryouPage #nav .itemLinkAll .itemLink .mainLink .selected,
+    #followingPage #nav .itemLinkAll .itemLink .mainLink .selected,
+    #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .selected {
+        color: #ff3b5c;
+    }
+
 }

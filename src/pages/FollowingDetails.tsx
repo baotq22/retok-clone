@@ -173,7 +173,7 @@ const UserFollowDetails = () => {
                     <div className='userList'>
                         <ul className='userItem'>
                             {
-                                userList.map((user, index) =>
+                                userList.slice(0,10).map((user, index) =>
                                     <li key={index} className='itemUser'>
                                         <div className='userAvatar'>
                                             <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
@@ -275,14 +275,14 @@ const UserFollowDetails = () => {
                         </Link>
                     </li>
                     <li className='itemLink'>
-                        <Link to={`/following`} className='mainLink'>
+                        <Link to={`/#`} className='mainLink'>
                             <div className="nav">
                                 <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
                             </div>
                         </Link>
                     </li>
                     <li className='itemLink'>
-                        <Link to={`/following`} className='mainLink'>
+                        <Link to={`/#`} className='mainLink'>
                             <div className="nav">
                                 <i className='icon fa-solid fa-video'></i><span>LIVE</span>
                             </div>
