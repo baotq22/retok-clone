@@ -41,9 +41,16 @@ const UserDetails = () => {
     const [userList, setUserList] = useState<Array<UserType>>([])
     const [videoList, setVideoList] = useState<Array<VideoType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
+
+    // Modal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
+
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
+    const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
+    const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
     useEffect(() => {
         getUser();
         getVideos();
@@ -86,80 +93,80 @@ const UserDetails = () => {
         content =
             <>
                 <div>
-                    <h3 className='title'>Log in to follow creators, like videos, and view comments.</h3>
+                    <h3 className='titleNotLogin'>Log in to follow creators, like videos, and view comments.</h3>
                     <button id='btn__signin' onClick={openModal}>Log in</button>
                     <div className="example">
                         <p className="example-1"></p>
                     </div>
+                    <LoginModal isOpen={isModalOpen} onClose={closeModal}>
+                        <h2 style={{ margin: '60px 0 30px 0' }}>Log in to Retok</h2>
+                        <div className="login_methods">
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-solid fa-qrcode" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Scan QR Code</span>
+                                </div>
+                            </a>
+                            <a className='loginMethods' onClick={() => navigate(`/login`)}>
+                                <div className='loginMethod'>
+                                    <i className="fa-regular fa-user" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Use phone / email / username</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Facebook</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-google" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Google</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-twitter" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Twitter</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-line" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with LINE</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-apple" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Apple</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-instagram" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Instagram</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div className='license'>
+                            <p>By continuing, you agree to Retok’s <a href='#'>Terms of Service</a> and confirm that you have read Retok’s <a href='#'>Privacy Policy</a>.</p>
+                        </div>
+                        <div className='signUps'>
+                            <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
+                        </div>
+                    </LoginModal>
                 </div>
-                <LoginModal isOpen={isModalOpen} onClose={closeModal}>
-                    <h2 style={{ margin: '60px 0 30px 0' }}>Log in to Retok</h2>
-                    <div className="login_methods">
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-solid fa-qrcode" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Scan QR Code</span>
-                            </div>
-                        </a>
-                        <a className='loginMethods' onClick={() => navigate(`/login`)}>
-                            <div className='loginMethod'>
-                                <i className="fa-regular fa-user" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Use phone / email / username</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Facebook</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-google" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Google</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-twitter" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Twitter</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-line" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with LINE</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-apple" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Apple</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-instagram" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Instagram</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div className='license'>
-                        <p>By continuing, you agree to Retok’s <a href='#'>Terms of Service</a> and confirm that you have read Retok’s <a href='#'>Privacy Policy</a>.</p>
-                    </div>
-                    <div className='signUps'>
-                        <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
-                    </div>
-                </LoginModal>
             </>
     } else {
         content =
             <>
                 <div>
-                    <div className="example-2">
-                        <p className="example-3"></p>
+                    <div className="example">
+                        <p className="example-2"></p>
                     </div>
-                    <h3 className='title' style={{ marginTop: '-20px' }}>Following accounts</h3>
+                    <h3 className='titleLogin' style={{ marginTop: '-20px' }}>Following accounts</h3>
                     <div className='userList'>
                         <ul className='userItem'>
                             {

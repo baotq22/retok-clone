@@ -177,6 +177,7 @@
 #foryouPage #nav .bottom .info,
 #followingPage #nav .bottom .info,
 #userDetailsPage #nav .bottom .info {
+    color: #898989;
     display: block;
 }
 
