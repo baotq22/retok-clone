@@ -14,7 +14,7 @@
     left: 0;
     bottom: 0;
     z-index: 1;
-    border-bottom: 1px solid #2f2f2f;
+    box-shadow: rgba(255, 255, 255, 0.12) 0px 1px 1px
 }
 
 #header #logo {
@@ -40,6 +40,7 @@
     cursor: pointer;
     transition: border-color 0.25s;
     margin-right: 15px;
+    color: #000;
 }
 
 #header #btn__login:hover {
@@ -126,6 +127,7 @@
 @media (prefers-color-scheme: light) {
     #header {
         background-color: #fff;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
     }
 
     #header .iconNav .iconAction,
@@ -140,5 +142,14 @@
 
     #header #btn__upload:hover {
         background-color: #f8f8f8;
+    }
+
+    #header .menu-container .menu {
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+    }
+
+    #header #btn__login {
+        color: #fff;
     }
 }

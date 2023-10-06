@@ -308,4 +308,28 @@
         color: #ff3b5c;
     }
 
+    #foryouPage #nav::-webkit-scrollbar-thumb,
+    #followingPage #nav::-webkit-scrollbar-thumb,
+    #userDetailsPage #nav::-webkit-scrollbar-thumb {
+        background: #f1f1f2;
+        border-radius: 50px;
+    }
+
+    #foryouPage #nav .example .example-1::before,
+    #followingPage #nav .example .example-1::before,
+    #userDetailsPage #nav .example .example-1::before {
+        background: #e3e3e4;
+    }
+
+    #foryouPage #nav .example-2 .example-3::before,
+    #followingPage #nav .example-2 .example-3::before,
+    #userDetailsPage #nav .example-2 .example-3::before {
+        background: #e3e3e4;
+    }
+
+    #foryouPage #nav #btn__signin,
+    #followingPage #nav #btn__signin,
+    #userDetailsPage #nav #btn__signin {
+        background-color: #fff;
+    }
 }

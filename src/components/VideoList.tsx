@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect, useRef } from "react"
+import { Waypoint } from "react-waypoint"
 import { Link } from "react-router-dom"
 import avatar1 from '../assets/avatar/583.jpg'
 import avatar2 from '../assets/avatar/518.jpg'
@@ -107,7 +108,132 @@ const setFollowStatus5 = (userId, isFollowed5) => {
     localStorage.setItem(`video-follow5-${userId}`, isFollowed5 ? 'followed5' : 'not-followed5')
 }
 
-const VideoList = ({userId}) => {
+const AutoPlayVideo1 = () => {
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handleVideo = () => {
+        if (isPlaying) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        } else {
+            videoRef.current.play();
+            setIsPlaying(true);
+        }
+    }
+
+    return (
+        <>
+            <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
+                <video ref={videoRef} autoPlay muted controls loop onClick={handleVideo} className='videos'>
+                    <source src={Video1} type="video/mp4" />
+                </video>
+            </Waypoint>
+        </>
+    )
+}
+
+const AutoPlayVideo2 = () => {
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handleVideo = () => {
+        if (isPlaying) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        } else {
+            videoRef.current.play();
+            setIsPlaying(true);
+        }
+    }
+
+    return (
+        <>
+            <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
+                <video ref={videoRef} autoPlay muted controls loop onClick={handleVideo} className='videos'>
+                    <source src={Video2} type="video/mp4" />
+                </video>
+            </Waypoint>
+        </>
+    )
+}
+
+const AutoPlayVideo3 = () => {
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handleVideo = () => {
+        if (isPlaying) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        } else {
+            videoRef.current.play();
+            setIsPlaying(true);
+        }
+    }
+
+    return (
+        <>
+            <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
+                <video ref={videoRef} autoPlay muted controls loop onClick={handleVideo} className='videos'>
+                    <source src={Video3} type="video/mp4" />
+                </video>
+            </Waypoint>
+        </>
+    )
+}
+
+const AutoPlayVideo4 = () => {
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handleVideo = () => {
+        if (isPlaying) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        } else {
+            videoRef.current.play();
+            setIsPlaying(true);
+        }
+    }
+
+    return (
+        <>
+            <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
+                <video ref={videoRef} autoPlay muted controls loop onClick={handleVideo} className='videos'>
+                    <source src={Video4} type="video/mp4" />
+                </video>
+            </Waypoint>
+        </>
+    )
+}
+
+const AutoPlayVideo5 = () => {
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handleVideo = () => {
+        if (isPlaying) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        } else {
+            videoRef.current.play();
+            setIsPlaying(true);
+        }
+    }
+
+    return (
+        <>
+            <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
+                <video ref={videoRef} autoPlay muted controls loop onClick={handleVideo} className='videos'>
+                    <source src={Video5} type="video/mp4" />
+                </video>
+            </Waypoint>
+        </>
+    )
+}
+
+const VideoList = ({ userId }) => {
 
     //video 1
     const [isLiked1, setIsLiked1] = useState(getReactionStatus1(userId));
@@ -289,7 +415,7 @@ const VideoList = ({userId}) => {
                     <div className='videoDetails'>
                         <div className="videoBox">
                             <Link to={`videoDetails/1`} >
-                                <video autoPlay muted controls className='videos' src={Video1} />
+                                <AutoPlayVideo1 />
                             </Link>
                             <div className='videoAction'>
                                 <button className='action_btn' onClick={handleLikeClick1}>
@@ -346,7 +472,7 @@ const VideoList = ({userId}) => {
                     <div className='videoDetails'>
                         <div className="videoBox">
                             <Link to={`/videoDetails/2`} >
-                                <video autoPlay muted controls className='videos' src={Video2} />
+                                <AutoPlayVideo2 />
                             </Link>
                             <div className='videoAction'>
                                 <button className='action_btn' onClick={handleLikeClick2}>
@@ -403,7 +529,7 @@ const VideoList = ({userId}) => {
                     <div className='videoDetails'>
                         <div className="videoBox">
                             <Link to={`/videoDetails/3`} >
-                                <video autoPlay muted controls className='videos' src={Video3} />
+                                <AutoPlayVideo3 />
                             </Link>
                             <div className='videoAction'>
                                 <button className='action_btn' onClick={handleLikeClick3}>
@@ -460,7 +586,7 @@ const VideoList = ({userId}) => {
                     <div className='videoDetails'>
                         <div className="videoBox">
                             <Link to={`/videoDetails/4`} >
-                                <video autoPlay muted controls className='videos' src={Video4} />
+                                <AutoPlayVideo4 />
                             </Link>
                             <div className='videoAction'>
                                 <button className='action_btn' onClick={handleLikeClick4}>
@@ -517,7 +643,7 @@ const VideoList = ({userId}) => {
                     <div className='videoDetails'>
                         <div className="videoBox">
                             <Link to={`/videoDetails/5`} >
-                                <video autoPlay muted controls className='videos' src={Video5} />
+                                <AutoPlayVideo5 />
                             </Link>
                             <div className='videoAction'>
                                 <button className='action_btn' onClick={handleLikeClick5}>

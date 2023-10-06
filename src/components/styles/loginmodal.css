@@ -56,7 +56,7 @@
 
 .login_methods {
     overflow: auto;
-    height: 300px;
+    height: 450px;
     -ms-overflow-style: none;
     /* for Internet Explorer, Edge */
     scrollbar-width: none;
@@ -82,4 +82,34 @@
     width: 80%;
     margin: auto;
     margin-bottom: 20px;
+}
+
+@media (prefers-color-scheme: light) {
+    .modal-overlay .modal-content {
+        background-color: #fff;
+    }
+
+    .modal-overlay .modal-content .close-button {
+        background-color: #f8f8f8;
+    }
+    
+    .modal-overlay .modal-content .back-button {
+        background-color: #f8f8f8;
+    }
+
+    .loginMethod {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #e3e3e4;
+    }
+
+    .license {
+        background-color: #fff;
+    }
+}
+
+@media screen and (max-width: 1536px) {
+    .login_methods {
+        height: 250px;
+    }
 }

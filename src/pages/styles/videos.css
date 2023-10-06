@@ -22,6 +22,7 @@
 #followingPage #foryou #video .videos__container,
 #foryouPage #foryou #video .videos__container {
     margin-top: 30px;
+    margin-bottom: 80px;
 }
 
 #followingPage #foryou #video .videos__container .avatarContainer,
@@ -175,6 +176,11 @@
     #followingPage #foryou #video .videos__container .videoContainer .video-user .user_details,
     #foryouPage #foryou #video .videos__container .videoContainer .video-user .user_details {
         color: #000;
+    }
+
+    #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn,
+    #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn {
+        background-color: #f1f1f2;
     }
 
 }

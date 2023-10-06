@@ -27,42 +27,6 @@ type VideoType = {
     avatar: string
 }
 
-const AutoPlayVideo = () => {
-    const videoRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-
-    useEffect(() => {
-        const video = videoRef.current;
-
-        const handleScroll = () => {
-            const videoContainer = video.getBoundingClientRect();
-
-            if (videoContainer.top < window.innerHeight && videoContainer.bottom) {
-                if (!isPlaying) {
-                    video.play();
-                    setIsPlaying(true);
-                }
-            } else {
-                if (isPlaying) {
-                    video.pause();
-                    setIsPlaying(false);
-                }
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        }
-    }, [isPlaying])
-
-    return (
-        <>
-        </>
-    )
-}
-
 const ForYou = ({ items, initialVisibleItems }) => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);

@@ -109,6 +109,12 @@
     white-space: nowrap;
 }
 
+@media (prefers-color-scheme: light) {
+    #userDetailsPage {
+        background-color: #fff;
+    }
+}
+
 @media screen and (max-width: 1540px) {
     #userDetailsPage #detailedUser .userContainer .userVideo .userInfo {
         flex: calc(20% - 30px);
