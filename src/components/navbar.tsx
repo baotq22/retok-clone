@@ -112,15 +112,15 @@ export const NavBar = () => {
                 <span className="menu-container">
                     <span className="avatarNav"><img src={images} className='avatar' /></span>
                     <ul className="menu" style={{ listStyleType: 'none' }}>
-                        <li onClick={() => navigate(`/userFollow/${userLogin?.id}`)}><i className="fa-regular fa-user" style={{ marginRight: '10px' }}></i>View profile</li>
-                        <li><i className="fa-regular fa-bookmark" style={{ marginRight: '10px' }}></i>Favourites</li>
-                        <li><i className="fa-solid fa-coins" style={{ marginRight: '10px' }}></i>Get coins</li>
-                        <li><i className="fa-regular fa-lightbulb" style={{ marginRight: '10px' }}></i>LIVE Creator Hub</li>
-                        <li><i className="fa-solid fa-gear" style={{ marginRight: '10px' }}></i>Setting</li>
-                        <li><i className="fa-solid fa-earth-americas" style={{ marginRight: '10px' }}></i>English</li>
-                        <li><i className="fa-regular fa-circle-question" style={{ marginRight: '10px' }}></i>Feedback and help</li>
-                        <li><i className="fa-regular fa-keyboard" style={{ marginRight: '10px' }}></i>Keyboard shortcuts</li>
-                        <li onClick={logoutUser}><i className="fa-solid fa-arrow-right-from-bracket" style={{ marginRight: '10px' }}></i>Logout</li>
+                        <li onClick={() => navigate(`/userFollow/${userLogin?.id}`)}><span><i className="fa-regular fa-user" style={{ marginRight: '16px' }}></i></span><span>View profile</span></li>
+                        <li><span><i className="fa-regular fa-bookmark" style={{ marginRight: '18px' }}></i></span><span>Favourites</span></li>
+                        <li><span><i className="fa-solid fa-coins" style={{ marginRight: '14px' }}></i></span><span>Get coins</span></li>
+                        <li><span><i className="fa-regular fa-lightbulb" style={{ marginRight: '18px' }}></i></span><span>LIVE Creator Hub</span></li>
+                        <li><span><i className="fa-solid fa-gear" style={{ marginRight: '14px' }}></i></span><span>Setting</span></li>
+                        <li><span><i className="fa-solid fa-earth-americas" style={{ marginRight: '14px' }}></i></span><span>English</span></li>
+                        <li><span><i className="fa-regular fa-circle-question" style={{ marginRight: '14px' }}></i></span><span>Feedback and help</span></li>
+                        <li><span><i className="fa-regular fa-keyboard" style={{ marginRight: '12px' }}></i></span><span>Keyboard shortcuts</span></li>
+                        <li onClick={logoutUser}><span><i className="fa-solid fa-arrow-right-from-bracket" style={{ marginRight: '14px' }}></i></span><span>Logout</span></li>
                     </ul>
                 </span>
                 <span className="iconNav"><i className="fa-regular fa-message iconAction"></i></span>

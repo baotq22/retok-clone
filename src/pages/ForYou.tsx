@@ -66,7 +66,7 @@ const ForYou = ({ items, initialVisibleItems }) => {
         content =
             <>
                 <div>
-                    <h3 className='title'>Log in to follow creators, like videos, and view comments.</h3>
+                    <h3 className='titleNotLogin'>Log in to follow creators, like videos, and view comments.</h3>
                     <button id='btn__signin' onClick={openModal}>Log in</button>
                     <div className="example">
                         <p className="example-1"></p>
@@ -139,10 +139,10 @@ const ForYou = ({ items, initialVisibleItems }) => {
         content =
             <>
                 <div>
-                    <div className="example-2">
-                        <p className="example-3"></p>
+                    <div className="example">
+                        <p className="example-2"></p>
                     </div>
-                    <h3 className='title' style={{ marginTop: '-20px' }}>Following accounts</h3>
+                    <h3 className='titleLogin' style={{ marginTop: '-20px' }}>Following accounts</h3>
                     <div className='userList'>
                         <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {

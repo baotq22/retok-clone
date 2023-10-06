@@ -4,7 +4,6 @@
     float: left;
     position: fixed;
     max-width: 270px;
-    padding-right: 20px;
     background-color: #121212;
     overflow-y: auto;
     text-align: center;
@@ -34,7 +33,7 @@
 #foryouPage #nav .itemLinkAll,
 #followingPage #nav .itemLinkAll,
 #userDetailsPage #nav .itemLinkAll {
-    margin-bottom: -30px;
+    margin-bottom: -50px;
 }
 
 #foryouPage #nav .itemLinkAll .itemLink,
@@ -42,10 +41,16 @@
 #userDetailsPage #nav .itemLinkAll .itemLink {
     text-align: left;
     list-style: none;
-    margin: 0 0 10px -20px;
+    margin: 0 0 0 -35px;
     font-size: 20px;
     width: 240px;
-    padding: 5px 0 5px 0;
+    padding: 0.6em 0.8em;
+}
+
+#foryouPage #nav .itemLinkAll .itemLink:hover,
+#followingPage #nav .itemLinkAll .itemLink:hover,
+#userDetailsPage #nav .itemLinkAll .itemLink:hover {
+    background-color: #1b1b1b;
 }
 
 #foryouPage #nav .itemLinkAll .itemLink .mainLink,
@@ -59,12 +64,6 @@
 #followingPage #nav .itemLinkAll .itemLink .mainLink .nav span,
 #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav span {
     font-weight: 800;
-}
-
-#foryouPage #nav .itemLinkAll .itemLink .mainLink .nav:hover,
-#followingPage #nav .itemLinkAll .itemLink .mainLink .nav:hover,
-#userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav:hover {
-    background-color: #1b1b1b;
 }
 
 #foryouPage #nav .itemLinkAll .itemLink .mainLink .nav .icon,
@@ -90,24 +89,35 @@
     color: #ff3b5c;
 }
 
-#foryouPage #nav .title,
-#followingPage #nav .title,
-#userDetailsPage #nav .title {
+#foryouPage #nav .titleNotLogin,
+#followingPage #nav .titleNotLogin,
+#userDetailsPage #nav .titleNotLogin {
     text-align: left;
-    padding: 40px 20px 20px 15px;
-    font-weight: 400;
+    padding: 50px 20px 0 15px;
+    font-weight: 700;
     color: #898989;
+    font-size: 18px;
+}
+
+#foryouPage #nav .titleLogin,
+#followingPage #nav .titleLogin,
+#userDetailsPage #nav .titleLogin {
+    text-align: left;
+    padding: 10px 20px 0 15px;
+    font-weight: 700;
+    color: #c4c4c4;
 }
 
 #foryouPage #nav #btn__signin,
 #followingPage #nav #btn__signin,
 #userDetailsPage #nav #btn__signin {
-    width: 80%;
+    width: 90%;
     height: 50px;
     border-radius: 3px;
     border: 1px solid #ff3b5c;
-    font-size: 1em;
+    font-size: 18px;
     font-weight: 500;
+    font-family: inherit;
     cursor: pointer;
     transition: border-color 0.25s;
     background-color: #252525;
@@ -119,7 +129,6 @@
 #followingPage #nav .example .example-1,
 #userDetailsPage #nav .example .example-1 {
     text-align: center;
-    font-size: 30px;
     display: block;
     margin-bottom: 10px;
 }
@@ -127,29 +136,29 @@
 #foryouPage #nav .example .example-1::before,
 #followingPage #nav .example .example-1::before,
 #userDetailsPage #nav .example .example-1::before {
-    width: 220px;
-    height: 2px;
+    width: 270px;
+    height: 0.5px;
     content: "";
     display: inline-block;
     background: #383838;
     position: relative;
-    margin-right: 10px;
+    margin-right: 10px
 }
 
-#foryouPage #nav .example-2 .example-3,
-#followingPage #nav .example-2 .example-3,
-#userDetailsPage #nav .example-2 .example-3 {
+#foryouPage #nav .example .example-2,
+#followingPage #nav .example .example-2,
+#userDetailsPage #nav .example .example-2 {
     text-align: center;
     font-size: 30px;
     display: block;
     margin-bottom: 10px;
 }
 
-#foryouPage #nav .example-2 .example-3::before,
-#followingPage #nav .example-2 .example-3::before,
-#userDetailsPage #nav .example-2 .example-3::before {
-    width: 220px;
-    height: 2px;
+#foryouPage #nav .example .example-2::before,
+#followingPage #nav .example .example-2::before,
+#userDetailsPage #nav .example .example-2::before {
+    width: 270px;
+    height: 0.5px;
     content: "";
     display: inline-block;
     background: #383838;
@@ -161,7 +170,6 @@
 #followingPage #nav .bottom,
 #userDetailsPage #nav .bottom {
     position: relative;
-    padding-top: 16px;
     padding-left: 8px;
     text-align: left;
 }
@@ -231,7 +239,7 @@
 #foryouPage #nav .userList,
 #followingPage #nav .userList,
 #userDetailsPage #nav .userList {
-    margin-bottom: -40px;
+    margin-bottom: -20px;
 }
 
 #foryouPage #nav .userList .userItem,
@@ -248,7 +256,18 @@
 #foryouPage #nav .userList .userItem .itemUser,
 #followingPage #nav .userList .userItem .itemUser,
 #userDetailsPage #nav .userList .userItem .itemUser {
-    margin-bottom: 20px;
+    text-align: left;
+    list-style: none;
+    margin: 0 0 -10px -15px;
+    font-size: 20px;
+    width: 240px;
+    padding: 0.6em 0.8em;
+}
+
+#foryouPage #nav .userList .userItem .itemUser:hover,
+#followingPage #nav .userList .userItem .itemUser:hover,
+#userDetailsPage #nav .userList .userItem .itemUser:hover {
+    background-color: #1b1b1b;
 }
 
 #foryouPage #nav .userList .userItem .itemUser .userAvatar,
@@ -333,5 +352,11 @@
     #followingPage #nav #btn__signin,
     #userDetailsPage #nav #btn__signin {
         background-color: #fff;
+    }
+
+    #foryouPage #nav .itemLinkAll .itemLink:hover,
+    #followingPage #nav .itemLinkAll .itemLink:hover,
+    #userDetailsPage #nav .itemLinkAll .itemLink:hover {
+        background-color: #f8f8f8;
     }
 }

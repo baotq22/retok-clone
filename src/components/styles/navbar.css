@@ -82,7 +82,7 @@
 #header .menu-container .menu {
     position: absolute;
     background: #242526;
-    width: 160px;
+    width: 180px;
     line-height: 45px;
     top: 85px;
     opacity: 0;
@@ -103,6 +103,17 @@
 #header .menu-container:hover .menu li {
     margin-left: -20px;
     cursor: pointer;
+    font-weight: 700;
+    height: 50px;
+}
+
+#header .menu-container:hover .menu li:nth-child(1) {
+    margin-top: 15px;
+}
+
+#header .menu-container:hover .menu li:nth-child(9) {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 15px;
 }
 
 #header .menu-container:hover .menu li:hover {
