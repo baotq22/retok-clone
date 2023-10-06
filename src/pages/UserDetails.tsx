@@ -265,7 +265,6 @@ const UserDetails = () => {
 
     return (
         <>
-            <RightBottomActionButton />
             <div id='userDetailsPage'>
                 <Navbar />
                 <div id='nav'>
@@ -360,6 +359,7 @@ const UserDetails = () => {
                 </div>
                 <div id='detailedUser'>
                     <div className='detailedUserComponents'>
+                        <RightBottomActionButton />
                         <div className='detailedUserInfo'>
                             <div className='detailedUserName'>
                                 <div className='detailedUserAvatar'>

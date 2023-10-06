@@ -258,7 +258,6 @@ const UserFollowDetails = () => {
     }
     return (
         <>
-            <RightBottomActionButton />
             <div id='userDetailsPage'>
                 <Navbar />
                 <div id='nav'>
@@ -353,6 +352,7 @@ const UserFollowDetails = () => {
                 </div>
                 <div id='detailedUser'>
                     <div className='detailedUserComponents'>
+                        <RightBottomActionButton />
                         <div className='detailedUserInfo'>
                             <div className='detailedUserName'>
                                 <div className='detailedUserAvatar'>

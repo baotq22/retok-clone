@@ -1,4 +1,5 @@
-import logo from '../assets/logo.png'
+import logoDark from '../assets/logo_dark.png'
+import logoLight from '../assets/logo_light.png'
 import SearchBar from "./SearchBar"
 import './styles/navbar.css'
 import '../library/fontawesome/css/all.min.css'
@@ -21,6 +22,17 @@ export const NavBar = () => {
     const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
     const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
     const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
+
+    const [mode, setMode] = useState();
+
+    useEffect(() => {
+        window.matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', event => {
+                const colorScheme = event.matches ? "dark" : "light";
+                console.log(colorScheme);
+                setMode(colorScheme);
+            });
+    }, []);
 
     const userLogin = useSelector(state => state.userLogin)
 
@@ -98,17 +110,17 @@ export const NavBar = () => {
         content =
             <>
                 <span className="menu-container">
-                    <span className="avatarNav"><img src={images} className='avatar'/></span>
-                    <ul className="menu" style={{listStyleType: 'none'}}>
-                        <li onClick={() => navigate(`/userFollow/${userLogin?.id}`)}><i className="fa-regular fa-user" style={{marginRight: '10px'}}></i>View profile</li>
-                        <li><i className="fa-regular fa-bookmark" style={{marginRight: '10px'}}></i>Favourites</li>
-                        <li><i className="fa-solid fa-coins" style={{marginRight: '10px'}}></i>Get coins</li>
-                        <li><i className="fa-regular fa-lightbulb" style={{marginRight: '10px'}}></i>LIVE Creator Hub</li>
-                        <li><i className="fa-solid fa-gear" style={{marginRight: '10px'}}></i>Setting</li>
-                        <li><i className="fa-solid fa-earth-americas" style={{marginRight: '10px'}}></i>English</li>
-                        <li><i className="fa-regular fa-circle-question" style={{marginRight: '10px'}}></i>Feedback and help</li>
-                        <li><i className="fa-regular fa-keyboard" style={{marginRight: '10px'}}></i>Keyboard shortcuts</li>
-                        <li onClick={logoutUser}><i className="fa-solid fa-arrow-right-from-bracket" style={{marginRight: '10px'}}></i>Logout</li>
+                    <span className="avatarNav"><img src={images} className='avatar' /></span>
+                    <ul className="menu" style={{ listStyleType: 'none' }}>
+                        <li onClick={() => navigate(`/userFollow/${userLogin?.id}`)}><i className="fa-regular fa-user" style={{ marginRight: '10px' }}></i>View profile</li>
+                        <li><i className="fa-regular fa-bookmark" style={{ marginRight: '10px' }}></i>Favourites</li>
+                        <li><i className="fa-solid fa-coins" style={{ marginRight: '10px' }}></i>Get coins</li>
+                        <li><i className="fa-regular fa-lightbulb" style={{ marginRight: '10px' }}></i>LIVE Creator Hub</li>
+                        <li><i className="fa-solid fa-gear" style={{ marginRight: '10px' }}></i>Setting</li>
+                        <li><i className="fa-solid fa-earth-americas" style={{ marginRight: '10px' }}></i>English</li>
+                        <li><i className="fa-regular fa-circle-question" style={{ marginRight: '10px' }}></i>Feedback and help</li>
+                        <li><i className="fa-regular fa-keyboard" style={{ marginRight: '10px' }}></i>Keyboard shortcuts</li>
+                        <li onClick={logoutUser}><i className="fa-solid fa-arrow-right-from-bracket" style={{ marginRight: '10px' }}></i>Logout</li>
                     </ul>
                 </span>
                 <span className="iconNav"><i className="fa-regular fa-message iconAction"></i></span>
@@ -126,10 +138,10 @@ export const NavBar = () => {
     return (
         <header>
             <div id='header'>
-                <img src={logo} id="logo" alt="Logo" style={{cursor: 'pointer'}} onClick={() => navigate(`/`)}/>
+                <img src={mode === "dark" ? logoDark : logoLight} id="logo" alt="Logo" style={{ cursor: 'pointer' }} onClick={() => navigate(`/`)} />
                 <SearchBar />
                 {content}
-                <button id='btn__upload'><i className="fa-solid fa-plus iconAction" style={{marginRight: '5px' }}></i>Upload</button>
+                <button id='btn__upload'><i className="fa-solid fa-plus iconAction" style={{ marginRight: '5px' }}></i>Upload</button>
                 <p></p>
             </div>
         </header>

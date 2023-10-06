@@ -734,7 +734,6 @@ const ForYou = () => {
 
     return (
         <>
-            <RightBottomActionButton />
             <div id='followingPage'>
                 {userLogged ? (
                     <div id='foryou'>
@@ -758,12 +757,14 @@ const ForYou = () => {
                                     )
                                 }
                             </div>
+                            <RightBottomActionButton />
                         </div>
                     </div>
                 ) : (
                     <div id='foryou'>
                         <div id='video'>
                             <Video userId={user_id} />
+                            <RightBottomActionButton />
                         </div>
                     </div>
                 )
