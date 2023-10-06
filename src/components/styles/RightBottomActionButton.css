@@ -1,0 +1,43 @@
+.RBABContainer {
+    right: 24px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 8px;
+    transform: none;
+    transition: all 400ms cubic-bezier(0.65, 0, 0.35, 1) 0s;
+}
+
+.RBABContainer .getApp {
+    height: 40px;
+    width: 100%;
+    padding: 0 1em;
+    font-size: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #252525;
+    cursor: pointer;
+}
+
+.getApp:hover {
+    background-color: #2e2e2e;
+}
+
+.RBABContainer .RightBottomActionButton {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #ff3b5c;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.RightBottomActionButton:hover {
+    background-color: #ef2950;
+}

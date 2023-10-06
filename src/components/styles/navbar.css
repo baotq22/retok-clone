@@ -40,7 +40,7 @@
     cursor: pointer;
     transition: border-color 0.25s;
     margin-right: 15px;
-    color: #000;
+    color: #fff;
 }
 
 #header #btn__login:hover {
@@ -147,9 +147,5 @@
     #header .menu-container .menu {
         background: #fff;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
-    }
-
-    #header #btn__login {
-        color: #fff;
     }
 }

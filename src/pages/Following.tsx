@@ -20,6 +20,7 @@ import { api, videoApis } from "../axios-instance";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import LoginInputModal from "../components/LoginInputModal";
+import RightBottomActionButton from "../components/RightBottomActionButton";
 
 type UserType = {
     username: string
@@ -732,133 +733,136 @@ const ForYou = () => {
 
 
     return (
-        <div id='followingPage'>
-            {userLogged ? (
-                <div id='foryou'>
-                    <div className='userContainer'>
-                        <div className='userVideo'>
-                            {
-                                userList.map((user, index) =>
-                                    <div className='userInfo' key={index}>
-                                        <Link to={`/userFollow/${user.id}`}>
-                                            <img src={user?.imageMain} className='imgUser' />
-                                            <img src={user?.image} className='avatarUser' />
-                                        </Link>
-                                        <div className='userFollow'>
-                                            <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
-                                                <h3 className='user'><b>{user?.username}</b></h3>
-                                                <h4 className='user'>{user?.fullname}</h4>
+        <>
+            <RightBottomActionButton />
+            <div id='followingPage'>
+                {userLogged ? (
+                    <div id='foryou'>
+                        <div className='userContainer'>
+                            <div className='userVideo'>
+                                {
+                                    userList.map((user, index) =>
+                                        <div className='userInfo' key={index}>
+                                            <Link to={`/userFollow/${user.id}`}>
+                                                <img src={user?.imageMain} className='imgUser' />
+                                                <img src={user?.image} className='avatarUser' />
                                             </Link>
-                                            <button className='followBtn'>Follow</button>
+                                            <div className='userFollow'>
+                                                <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
+                                                    <h3 className='user'><b>{user?.username}</b></h3>
+                                                    <h4 className='user'>{user?.fullname}</h4>
+                                                </Link>
+                                                <button className='followBtn'>Follow</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            }
+                                    )
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-            ) : (
-                <div id='foryou'>
-                    <div id='video'>
-                        <Video userId={user_id} />
+                ) : (
+                    <div id='foryou'>
+                        <div id='video'>
+                            <Video userId={user_id} />
+                        </div>
                     </div>
-                </div>
-            )
-            }
-            <div id='nav'>
-                <ul className='itemLinkAll'>
-                    <li className='itemLink'>
-                        <Link to={`/`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-home'></i><span>For you</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink'>
-                        <Link to={`/following`} className='mainLink'>
-                            <div className="nav selected">
-                                <i className="icon fa-solid fa-user-group"></i><span>Following</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink'>
-                        <Link to={`/#`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink'>
-                        <Link to={`/#`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-video'></i><span>LIVE</span>
-                            </div>
-                        </Link>
-                    </li>
-                </ul>
-                {content}
-                <div className='bottom' style={{ marginBottom: '100px' }}>
-                    <div className='info'>
-                        <a href="#" className='link'><span>About</span></a>
-                        <a href="#" className='link'><span>Newsroom</span></a>
-                        <a href="#" className='link'><span>Contact</span></a>
+                )
+                }
+                <div id='nav'>
+                    <ul className='itemLinkAll'>
+                        <li className='itemLink'>
+                            <Link to={`/`} className='mainLink'>
+                                <div className="nav">
+                                    <i className='icon fa-solid fa-home'></i><span>For you</span>
+                                </div>
+                            </Link>
+                        </li>
+                        <li className='itemLink'>
+                            <Link to={`/following`} className='mainLink'>
+                                <div className="nav selected">
+                                    <i className="icon fa-solid fa-user-group"></i><span>Following</span>
+                                </div>
+                            </Link>
+                        </li>
+                        <li className='itemLink'>
+                            <Link to={`/#`} className='mainLink'>
+                                <div className="nav">
+                                    <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
+                                </div>
+                            </Link>
+                        </li>
+                        <li className='itemLink'>
+                            <Link to={`/#`} className='mainLink'>
+                                <div className="nav">
+                                    <i className='icon fa-solid fa-video'></i><span>LIVE</span>
+                                </div>
+                            </Link>
+                        </li>
+                    </ul>
+                    {content}
+                    <div className='bottom' style={{ marginBottom: '100px' }}>
                         <div className='info'>
-                            <a href="#" className='link'><span>Careers</span></a>
+                            <a href="#" className='link'><span>About</span></a>
+                            <a href="#" className='link'><span>Newsroom</span></a>
+                            <a href="#" className='link'><span>Contact</span></a>
+                            <div className='info'>
+                                <a href="#" className='link'><span>Careers</span></a>
+                            </div>
                         </div>
-                    </div>
-                    <div className='info'>
-                        <a href="#" className='link'><span>Retok for Good</span></a>
-                        <a href="#" className='link'><span>Advertise</span></a>
-                        <a href="#" className='link'><span>Developers</span></a>
-                        <a href="#" className='link'><span>Transparency</span></a>
-                    </div>
-                    <div className='info'>
-                        <a href="#" className='link'><span>Retok Rewards</span></a>
                         <div className='info'>
-                            <a href="#" className='link'><span>Retok Embeds</span></a>
+                            <a href="#" className='link'><span>Retok for Good</span></a>
+                            <a href="#" className='link'><span>Advertise</span></a>
+                            <a href="#" className='link'><span>Developers</span></a>
+                            <a href="#" className='link'><span>Transparency</span></a>
                         </div>
-                    </div>
-                    <div className='info'>
-                        <a href="#" className='link'><span>Helps</span></a>
-                        <a href="#" className='link'><span>Safety</span></a>
-                        <a href="#" className='link'><span>Terms</span></a>
-                        <a href="#" className='link'><span>Privacy</span></a>
-                        <a href="#" className='link'><span>Creator Portal</span></a>
-                    </div>
-                    <div className='info'>
-                        <a href="#" className='link'><span>Community Guidelines</span></a>
-                    </div>
+                        <div className='info'>
+                            <a href="#" className='link'><span>Retok Rewards</span></a>
+                            <div className='info'>
+                                <a href="#" className='link'><span>Retok Embeds</span></a>
+                            </div>
+                        </div>
+                        <div className='info'>
+                            <a href="#" className='link'><span>Helps</span></a>
+                            <a href="#" className='link'><span>Safety</span></a>
+                            <a href="#" className='link'><span>Term</span></a>
+                            <a href="#" className='link'><span>Privacy</span></a>
+                            <a href="#" className='link'><span>Creator Portal</span></a>
+                        </div>
+                        <div className='info'>
+                            <a href="#" className='link'><span>Community Guidelines</span></a>
+                        </div>
 
-                    {viewMore && (
-                        <p>
-                            <div className='infoMore'>
-                                <a href="#" className='link'><span>Dance</span></a>
-                                <a href="#" className='link'><span>Arts</span></a>
-                                <a href="#" className='link'><span>Food and Drink</span></a>
-                                <a href="#" className='link'><span>Tourism</span></a>
-                            </div>
-                            <div className='infoMore'>
-                                <a href="#" className='link'><span>Production and Manufacturing</span></a>
-                                <a href="#" className='link'><span>Vehicles and Transportation</span></a>
-                                <a href="#" className='link'><span>Relationship</span></a>
-                                <a href="#" className='link'><span>Retok Style</span></a>
-                                <a href="#" className='link'><span>Athletics</span></a>
-                                <a href="#" className='link'><span>Hobbies</span></a>
-                            </div>
+                        {viewMore && (
+                            <p>
+                                <div className='infoMore'>
+                                    <a href="#" className='link'><span>Dance</span></a>
+                                    <a href="#" className='link'><span>Arts</span></a>
+                                    <a href="#" className='link'><span>Food and Drink</span></a>
+                                    <a href="#" className='link'><span>Tourism</span></a>
+                                </div>
+                                <div className='infoMore'>
+                                    <a href="#" className='link'><span>Production and Manufacturing</span></a>
+                                    <a href="#" className='link'><span>Vehicles and Transportation</span></a>
+                                    <a href="#" className='link'><span>Relationship</span></a>
+                                    <a href="#" className='link'><span>Retok Style</span></a>
+                                    <a href="#" className='link'><span>Athletics</span></a>
+                                    <a href="#" className='link'><span>Hobbies</span></a>
+                                </div>
+                            </p>
+                        )}
+
+                        <button className="more" onClick={toggleContent}>
+                            {viewMore ? 'See Less' : 'See More'}
+                        </button>
+
+                        <p className='info' style={{ paddingBottom: '30px' }}>
+                            © 2023 ReTok
                         </p>
-                    )}
-
-                    <button className="more" onClick={toggleContent}>
-                        {viewMore ? 'See Less' : 'See More'}
-                    </button>
-
-                    <p className='info' style={{ paddingBottom: '30px' }}>
-                        © 2023 ReTok
-                    </p>
+                    </div>
                 </div>
+                <NavBar />
             </div>
-            <NavBar />
-        </div>
+        </>
     )
 }
 
