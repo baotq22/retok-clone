@@ -381,14 +381,16 @@ const VideoList = ({ userId }) => {
     }, [userId])
 
     const followBtnStyleActive = {
-        border: '1px solid #2f2f2f',
+        border: '1px solid #ccc',
         backgroundColor: 'transparent',
+        fontWeight: '900',
         color: '#ccc',
     }
 
     const followBtnStyleUnactive = {
         border: '1px solid #f22459',
         backgroundColor: 'transparent',
+        fontWeight: '900',
         color: '#f22459',
     }
 

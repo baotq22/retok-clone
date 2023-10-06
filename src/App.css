@@ -19,3 +19,25 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212; 
+  border-radius: 40%;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252525; 
+}
+
+@media (prefers-color-scheme: light) {
+  ::-webkit-scrollbar-track {
+    background: #fff; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #f1f1f2; 
+  }
+}
