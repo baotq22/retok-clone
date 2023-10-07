@@ -74,6 +74,36 @@ const VideoDetails3 = () => {
                     }}
                         onClick={() => navigate(`/`)}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
+                <div>
+                    <button style={{
+                        right: '35%',
+                        bottom: '50%',
+                        position: 'absolute',
+                        margin: '15px 0 0 15px',
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '50%',
+                        border: '0',
+                        fontSize: '30px',
+                        cursor: 'pointer'
+                    }}
+                        onClick={() => navigate(`/videoDetails/2`)}><i className="fa-solid fa-chevron-up"></i></button>
+                </div>
+                <div>
+                    <button style={{
+                        right: '35%',
+                        bottom: '40%',
+                        position: 'absolute',
+                        margin: '15px 0 0 15px',
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '50%',
+                        border: '0',
+                        fontSize: '30px',
+                        cursor: 'pointer'
+                    }}
+                        onClick={() => navigate(`/videoDetails/4`)}><i className="fa-solid fa-chevron-down"></i></button>
+                </div>
                 <video loop controls autoPlay className='videoDetailsPage'>
                     <source src={Video3} type='video/webm' />
                 </video>
@@ -83,7 +113,7 @@ const VideoDetails3 = () => {
                     <div className='info-container'>
                         <div>
                             {/* <Link to={`/users/${userId}`}> */}
-                                <img src={avatar3} className='avatarDetails' />
+                            <img src={avatar3} className='avatarDetails' />
                             {/* </Link> */}
                         </div>
                         <div className='infoContainer'>
@@ -100,8 +130,8 @@ const VideoDetails3 = () => {
                                     cursor: 'pointer'
                                 }} onClick={handleFollowClick3}>{isFollowed3 ? 'Following' : 'Follow'}</button>
                             {/* <Link to={`/users/${userId}`} style={{ textDecoration: '0', color: '#fff' }}> */}
-                                <span><b>Grover32</b></span>
-                                <div>Nina Mills IV<span style={{ margin: '0px 4px' }}> · </span>  <span>1h ago</span></div>
+                            <span><b>Grover32</b></span>
+                            <div>Nina Mills IV<span style={{ margin: '0px 4px' }}> · </span>  <span>1h ago</span></div>
                             {/* </Link> */}
                             <div className='descVid'>The Football Is Good For Training And Recreational Purposes</div>
                         </div>
@@ -165,7 +195,7 @@ const VideoDetails3 = () => {
                         </div>
                     </div>
                     <h2>Comments (25)</h2>
-                    <Comments currentUserId='1'/>
+                    <Comments currentUserId='1' />
                 </div>
             </div>
         </div>

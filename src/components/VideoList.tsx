@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState, useEffect, useRef } from "react"
 import { Waypoint } from "react-waypoint"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import avatar1 from '../assets/avatar/583.jpg'
 import avatar2 from '../assets/avatar/518.jpg'
 import avatar3 from '../assets/avatar/867.jpg'
@@ -12,6 +12,7 @@ import Video2 from '../assets/videos/2.mp4'
 import Video3 from '../assets/videos/3.mp4'
 import Video4 from '../assets/videos/4.mp4'
 import Video5 from '../assets/videos/5.mp4'
+
 
 // video 1
 const getReactionStatus1 = (userId) => {
@@ -121,7 +122,7 @@ const AutoPlayVideo1 = () => {
             setIsPlaying(true);
         }
     }
-
+    
     return (
         <>
             <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
@@ -171,7 +172,7 @@ const AutoPlayVideo3 = () => {
             setIsPlaying(true);
         }
     }
-
+    
     return (
         <>
             <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
@@ -186,7 +187,7 @@ const AutoPlayVideo3 = () => {
 const AutoPlayVideo4 = () => {
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
-
+    
     const handleVideo = () => {
         if (isPlaying) {
             videoRef.current.pause();
@@ -235,6 +236,7 @@ const AutoPlayVideo5 = () => {
 
 const VideoList = ({ userId }) => {
 
+    const navigate = useNavigate();
     //video 1
     const [isLiked1, setIsLiked1] = useState(getReactionStatus1(userId));
     const [isFollowed1, setIsFollowed1] = useState(getFollowStatus1(userId));
@@ -248,7 +250,7 @@ const VideoList = ({ userId }) => {
             setReactionStatus1(userId, true);
         }
     };
-
+    
     const handleFollowClick1 = () => {
         if (isFollowed1) {
             setIsFollowed1(false);
@@ -263,7 +265,7 @@ const VideoList = ({ userId }) => {
         setIsLiked1(getReactionStatus1(userId));
         setIsFollowed1(getFollowStatus1(userId));
     }, [userId])
-
+    
     //video 2
     const [isLiked2, setIsLiked2] = useState(getReactionStatus2(userId));
     const [isFollowed2, setIsFollowed2] = useState(getFollowStatus2(userId));
@@ -430,7 +432,7 @@ const VideoList = ({ userId }) => {
                                     {isLiked1 ? <strong>73</strong> : <strong>72</strong>}
                                 </p>
                                 {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn'>
+                                <button className='action_btn' onClick={() => navigate(`videoDetails/1`)}>
                                     <span>
                                         <i className="fa-solid fa-comment-dots"></i>
                                     </span>
@@ -487,7 +489,7 @@ const VideoList = ({ userId }) => {
                                     {isLiked2 ? <strong>73</strong> : <strong>72</strong>}
                                 </p>
                                 {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn'>
+                                <button className='action_btn' onClick={() => navigate(`videoDetails/2`)}>
                                     <span>
                                         <i className="fa-solid fa-comment-dots"></i>
                                     </span>
@@ -544,7 +546,7 @@ const VideoList = ({ userId }) => {
                                     {isLiked3 ? <strong>73</strong> : <strong>72</strong>}
                                 </p>
                                 {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn'>
+                                <button className='action_btn' onClick={() => navigate(`videoDetails/3`)}>
                                     <span>
                                         <i className="fa-solid fa-comment-dots"></i>
                                     </span>
@@ -601,7 +603,7 @@ const VideoList = ({ userId }) => {
                                     {isLiked4 ? <strong>73</strong> : <strong>72</strong>}
                                 </p>
                                 {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn'>
+                                <button className='action_btn' onClick={() => navigate(`videoDetails/4`)}>
                                     <span>
                                         <i className="fa-solid fa-comment-dots"></i>
                                     </span>
@@ -658,7 +660,7 @@ const VideoList = ({ userId }) => {
                                     {isLiked5 ? <strong>73</strong> : <strong>72</strong>}
                                 </p>
                                 {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn'>
+                                <button className='action_btn' onClick={() => navigate(`videoDetails/5`)}>
                                     <span>
                                         <i className="fa-solid fa-comment-dots"></i>
                                     </span>

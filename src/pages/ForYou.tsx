@@ -1,6 +1,7 @@
 import './styles/videos.css'
 import './styles/sidebar.css'
 import NavBar from "../components/navbar"
+import effectBtn from '../assets/d8db931296c3e5645b1e.png'
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import LoginModal from "../components/LoginModal";
@@ -209,6 +210,11 @@ const ForYou = ({ items, initialVisibleItems }) => {
                         </li>
                     </ul>
                     {content}
+                    <div className='effectContainer'>
+                        <a href='#'>
+                            <img src={effectBtn} className='effectBtn' />
+                        </a>
+                    </div>
                     <div className='bottom' style={{ marginBottom: '100px' }}>
                         <div className='info'>
                             <a href="#" className='link'><span>About</span></a>
@@ -266,8 +272,8 @@ const ForYou = ({ items, initialVisibleItems }) => {
                             © 2023 ReTok
                         </p>
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
         </>
     )
 }

@@ -89,6 +89,22 @@
     color: #ff3b5c;
 }
 
+#foryouPage #nav .effectContainer a,
+#followingPage #nav .effectContainer a,
+#userDetailsPage #nav .effectContainer a {
+    color: #fff;
+    align-items: center;
+}
+
+#foryouPage #nav .effectContainer a .effectBtn,
+#followingPage #nav .effectContainer a .effectBtn,
+#userDetailsPage #nav .effectContainer a .effectBtn {
+    width: 243px;
+    height: 52px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
 #foryouPage #nav .titleNotLogin,
 #followingPage #nav .titleNotLogin,
 #userDetailsPage #nav .titleNotLogin {
@@ -358,6 +374,12 @@
     #foryouPage #nav .itemLinkAll .itemLink:hover,
     #followingPage #nav .itemLinkAll .itemLink:hover,
     #userDetailsPage #nav .itemLinkAll .itemLink:hover {
+        background-color: #f8f8f8;
+    }
+
+    #foryouPage #nav .userList .userItem .itemUser:hover,
+    #followingPage #nav .userList .userItem .itemUser:hover,
+    #userDetailsPage #nav .userList .userItem .itemUser:hover {
         background-color: #f8f8f8;
     }
 }

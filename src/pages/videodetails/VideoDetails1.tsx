@@ -74,6 +74,21 @@ const VideoDetails1 = () => {
                     }}
                         onClick={() => navigate(`/`)}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
+                <div>
+                    <button style={{
+                        right: '35%',
+                        bottom: '40%',
+                        position: 'absolute',
+                        margin: '15px 0 0 15px',
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '50%',
+                        border: '0',
+                        fontSize: '30px',
+                        cursor: 'pointer'
+                    }}
+                        onClick={() => navigate(`/videoDetails/2`)}><i className="fa-solid fa-chevron-down"></i></button>
+                </div>
                 <video loop controls autoPlay className='videoDetailsPage'>
                     <source src={Video1} type='video/webm' />
                 </video>

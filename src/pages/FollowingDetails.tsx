@@ -167,17 +167,17 @@ const UserFollowDetails = () => {
         content =
             <>
                 <div>
-                    <div className="example-2">
-                        <p className="example-3"></p>
+                    <div className="example">
+                        <p className="example-2"></p>
                     </div>
-                    <h3 className='title' style={{ marginTop: '-20px' }}>Following accounts</h3>
+                    <h3 className='titleLogin' style={{ marginTop: '-20px' }}>Following accounts</h3>
                     <div className='userList'>
-                        <ul className='userItem'>
+                        <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
-                                userList.slice(0, 10).map((user, index) =>
-                                    <li key={index} className='itemUser'>
+                                videoList.slice(0, 10).map((user, index) =>
+                                    <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>

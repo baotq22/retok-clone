@@ -109,11 +109,15 @@
     margin-right: 10px;
 }
 
+#videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s .infoComment {
+    width: 100%;
+}
+
 #videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s .infoComment .subComment {
     margin-top: 15px;
 }
 
-#videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s .reaction_comment {
+#videoDetailsContainer .videoInfo .video_info_container .comment__container .comment__s .infoComment .reaction_comment {
     float: right;
     margin-top: -50px;
 }
@@ -139,7 +143,7 @@
 
 #videoDetailsContainer .videoInfo .comment_input_container .comment_box .comment_input {
     font-weight: 400;
-    width: 380px;
+    width: 400px;
     font-size: 16px;
     line-height: 42px;
     border: none;
@@ -151,7 +155,7 @@
     font-family: inherit;
 }
 
-#videoDetailsContainer .videoInfo .comment_input_container .comment_box .mention_button{
+#videoDetailsContainer .videoInfo .comment_input_container .comment_box .mention_button {
     height: 42px;
     background: #2f2f2f;
     border: 1px solid transparent;
@@ -163,7 +167,7 @@
     padding-bottom: 2px;
 }
 
-#videoDetailsContainer .videoInfo .comment_input_container .comment_box .emoji_button{
+#videoDetailsContainer .videoInfo .comment_input_container .comment_box .emoji_button {
     height: 42px;
     border-radius: 0 8px 8px 0;
     background: #2f2f2f;
@@ -177,13 +181,60 @@
     margin-right: 20px;
 }
 
-#videoDetailsContainer .videoInfo .comment_input_container .comment_box .postBtn{
+#videoDetailsContainer .videoInfo .comment_input_container .comment_box .postBtn {
     height: 42px;
     font-family: inherit;
     background-color: transparent;
     margin-right: 25px;
     border: 0;
     cursor: pointer;
+}
+
+@media (prefers-color-scheme: light) {
+    #videoDetailsContainer .videoInfo:nth-child(1) {
+        background-color: #fff;
+    }
+
+    #videoDetailsContainer .videoInfo:nth-child(2) {
+        background-color: #fff;
+    }
+
+    #videoDetailsContainer .videoInfo .video_info_container .info-container {
+        background-color: #f8f8f8;
+        padding: 10px 10px 10px 10px;
+    }
+
+    #videoDetailsContainer .videoInfo .video_info_container .actionContainer .videoActions .action_btn,
+    #videoDetailsContainer .videoInfo .video_info_container .actionContainer .shareBtnContainer .action_btn {
+        background-color: #f1f1f2;
+    }
+
+    #videoDetailsContainer .videoInfo .video_info_container .actionContainer .videoActions .action_btn:hover,
+    #videoDetailsContainer .videoInfo .video_info_container .actionContainer .shareBtnContainer .action_btn:hover {
+        background-color: #f1f1f3;
+    }
+
+    #videoDetailsContainer .videoInfo .comment_input_container {
+        border-top: 1px solid #d0d1d3;
+    }
+
+    #videoDetailsContainer .videoInfo .comment_input_container .comment_box .comment_input {
+        background: #f0f1f3;
+    }
+
+    #videoDetailsContainer .videoInfo .comment_input_container .comment_box .mention_button {
+        background: #f0f1f3;
+        color: #252525;
+    }
+
+    #videoDetailsContainer .videoInfo .comment_input_container .comment_box .emoji_button {
+        background: #f0f1f3;
+        color: #252525;
+    }
+
+    #videoDetailsContainer .videoInfo .comment_input_container .comment_box .postBtn {
+        color: #252525;
+    }
 }
 
 @media screen and (max-width: 1872px) {
@@ -293,6 +344,7 @@
         width: 200px;
     }
 }
+
 @media screen and (max-width: 1596px) {
     #videoDetailsContainer .videoInfo:nth-child(1) {
         padding-left: 260px;

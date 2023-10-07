@@ -15,8 +15,8 @@ const CommentForm = ({handleSubmit, submitLabel}) => {
                         placeholder="Add comment..." 
                         value={text}
                         onChange={(e) => setText(e.target.value)}></input>
-                <button className='mention_button'><i className="fa-solid fa-at" style={{ color: '#fff', marginRight: '5px' }}></i></button>
-                <button className='emoji_button'><i className="fa-regular fa-face-smile" style={{ color: '#fff', marginRight: '5px' }}></i></button>
+                <button className='mention_button'><i className="fa-solid fa-at" style={{ marginRight: '5px' }}></i></button>
+                <button className='emoji_button'><i className="fa-regular fa-face-smile" style={{ marginRight: '5px' }}></i></button>
                 <button className='postBtn' disabled={isInputDisabled}>{submitLabel}</button>
             </div>
         </form>
