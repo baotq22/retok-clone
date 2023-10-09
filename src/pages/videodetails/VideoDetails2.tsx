@@ -25,6 +25,26 @@ const setFollowStatus2 = (isFollowed2) => {
 }
 
 const VideoDetails2 = () => {
+    
+    const escapeBack = () => {
+        navigate(`/`)
+        
+    }
+    useEffect(() => {
+        const keyDownHandler = event => {
+            console.log(event.key)
+            if (event.key === 'Escape') {
+                escapeBack();
+            }
+        }
+
+        document.addEventListener('keydown', keyDownHandler);
+        
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        }
+    }, [])
+    
     const navigate = useNavigate();
     const storedIdLogin = localStorage.getItem('id');
     console.log(storedIdLogin)
@@ -117,6 +137,7 @@ const VideoDetails2 = () => {
                             {/* </Link> */}
                         </div>
                         <div className='infoContainer'>
+                            {/* <Link to={`/users/${userId}`} style={{ textDecoration: '0', color: '#fff' }}> */}
                             <button className='followBttn'
                                 style={{
                                     float: 'right',
@@ -129,11 +150,10 @@ const VideoDetails2 = () => {
                                     fontFamily: 'inherit',
                                     cursor: 'pointer'
                                 }} onClick={handleFollowClick2}>{isFollowed2 ? 'Following' : 'Follow'}</button>
-                            {/* <Link to={`/users/${userId}`} style={{ textDecoration: '0', color: '#fff' }}> */}
                             <span><b>Chris.Franecki48</b></span>
                             <div>Anthony Waters<span style={{ margin: '0px 4px' }}> · </span>  <span>1h ago</span></div>
                             {/* </Link> */}
-                            <div className='descVid'>The Football Is Good For Training And Recreational Purposes</div>
+                            <div className='descVid'>The Football Is Good For Training And Recreational Purposes. The Football Is Good For Training And Recreational Purposes.</div>
                         </div>
                     </div>
                     <div className='actionContainer'>

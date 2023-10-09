@@ -9,6 +9,26 @@ import axios from "axios";
 
 
 const VideoDetails = () => {
+    
+    const escapeBack = () => {
+        navigate(`/`)
+        
+    }
+    useEffect(() => {
+        const keyDownHandler = event => {
+            console.log(event.key)
+            if (event.key === 'Escape') {
+                escapeBack();
+            }
+        }
+
+        document.addEventListener('keydown', keyDownHandler);
+        
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        }
+    }, [])
+
     const [video, setVideo] = useState();
 
     const params = useParams();

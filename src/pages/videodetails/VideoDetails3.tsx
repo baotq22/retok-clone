@@ -25,6 +25,26 @@ const setFollowStatus3 = (isFollowed3) => {
 }
 
 const VideoDetails3 = () => {
+    
+    const escapeBack = () => {
+        navigate(`/`)
+        
+    }
+    useEffect(() => {
+        const keyDownHandler = event => {
+            console.log(event.key)
+            if (event.key === 'Escape') {
+                escapeBack();
+            }
+        }
+
+        document.addEventListener('keydown', keyDownHandler);
+        
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        }
+    }, [])
+    
     const navigate = useNavigate();
     const storedIdLogin = localStorage.getItem('id');
     console.log(storedIdLogin)
@@ -133,7 +153,7 @@ const VideoDetails3 = () => {
                             <span><b>Grover32</b></span>
                             <div>Nina Mills IV<span style={{ margin: '0px 4px' }}> · </span>  <span>1h ago</span></div>
                             {/* </Link> */}
-                            <div className='descVid'>The Football Is Good For Training And Recreational Purposes</div>
+                            <div className='descVid'>The Football Is Good For Training And Recreational Purposes. The Football Is Good For Training And Recreational Purposes</div>
                         </div>
                     </div>
                     <div className='actionContainer'>

@@ -25,6 +25,26 @@ const setFollowStatus1 = (isFollowed1) => {
 }
 
 const VideoDetails1 = () => {
+
+    const escapeBack = () => {
+        navigate(`/`)
+        
+    }
+    useEffect(() => {
+        const keyDownHandler = event => {
+            console.log(event.key)
+            if (event.key === 'Escape') {
+                escapeBack();
+            }
+        }
+
+        document.addEventListener('keydown', keyDownHandler);
+        
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        }
+    }, [])
+    
     const navigate = useNavigate();
     const storedIdLogin = localStorage.getItem('id');
     console.log(storedIdLogin)
