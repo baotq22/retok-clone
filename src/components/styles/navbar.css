@@ -159,4 +159,8 @@
         background: #fff;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
     }
+
+    #header .menu-container:hover .menu li:hover {
+        background-color: #f8f8f8;
+    }
 }

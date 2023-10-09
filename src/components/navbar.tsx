@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux"
 import images from '../assets/309431756_799936498003792_6138006382387941828_n.jpg'
 import { logout } from "../slices/userLoginSlice"
 import LoginInputModal from "./LoginInputModal"
+import ShortcutModal from "./ShortcutModal"
 
 export const NavBar = () => {
     const navigate = useNavigate();
@@ -22,6 +23,10 @@ export const NavBar = () => {
     const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
     const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
     const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
+
+    const [isShortcutModalOpen, setIsShortcutModalOpen] = useState(false);
+    const openShortcutModal = () => { setIsShortcutModalOpen(true) }
+    const closeShortcutModal = () => { setIsShortcutModalOpen(false) }
 
     const [mode, setMode] = useState();
 
@@ -102,9 +107,7 @@ export const NavBar = () => {
                         <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
                     </div>
                 </LoginModal>
-                <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal}>
-
-                </LoginInputModal>
+                <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal}/>
             </>
     } else {
         content =
@@ -119,9 +122,10 @@ export const NavBar = () => {
                         <li><span><i className="fa-solid fa-gear" style={{ marginRight: '14px' }}></i></span><span>Setting</span></li>
                         <li><span><i className="fa-solid fa-earth-americas" style={{ marginRight: '14px' }}></i></span><span>English</span></li>
                         <li><span><i className="fa-regular fa-circle-question" style={{ marginRight: '14px' }}></i></span><span>Feedback and help</span></li>
-                        <li><span><i className="fa-regular fa-keyboard" style={{ marginRight: '12px' }}></i></span><span>Keyboard shortcuts</span></li>
+                        <li onClick={openShortcutModal}><span><i className="fa-regular fa-keyboard" style={{ marginRight: '12px' }}></i></span><span>Keyboard shortcuts</span></li>
                         <li onClick={logoutUser}><span><i className="fa-solid fa-arrow-right-from-bracket" style={{ marginRight: '14px' }}></i></span><span>Logout</span></li>
                     </ul>
+                    <ShortcutModal isShortcutOpen={isShortcutModalOpen} onShortcutClose={closeShortcutModal} />
                 </span>
                 <span className="iconNav"><i className="fa-regular fa-message iconAction"></i></span>
                 <span className="iconNav iconPlane"><i className="fa-regular fa-paper-plane iconAction"></i></span>

@@ -28,13 +28,33 @@ const VideoDetails2 = () => {
     
     const escapeBack = () => {
         navigate(`/`)
-        
+    }
+    const previousVideo = () => {
+        navigate(`/videoDetails/1`)
+    }
+    const nextVideo = () => {
+        navigate(`/videoDetails/3`)
+    }
+    const likeVideoByKey = () => {
+        handleLikeClick2()
     }
     useEffect(() => {
         const keyDownHandler = event => {
             console.log(event.key)
             if (event.key === 'Escape') {
                 escapeBack();
+            }
+
+            if (event.key === 'ArrowUp') {
+                previousVideo();
+            }
+
+            if (event.key === 'ArrowDown') {
+                nextVideo();
+            }
+            
+            if (event.key === 'L' || event.key === 'l') {
+                likeVideoByKey();
             }
         }
 
