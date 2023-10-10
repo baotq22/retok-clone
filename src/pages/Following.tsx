@@ -370,6 +370,9 @@ function Video({ userId }) {
                     </div>
                 </div>
             </div>
+            <div className="borderVideo">
+                <p className="border_video"></p>
+            </div>
             <div className='videos__container'>
                 <div className='avatarContainer'>
                     <Link to={`/users/2`}>
@@ -424,6 +427,9 @@ function Video({ userId }) {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="borderVideo">
+                <p className="border_video"></p>
             </div>
             <div className='videos__container'>
                 <div className='avatarContainer'>
@@ -480,6 +486,9 @@ function Video({ userId }) {
                     </div>
                 </div>
             </div>
+            <div className="borderVideo">
+                <p className="border_video"></p>
+            </div>
             <div className='videos__container'>
                 <div className='avatarContainer'>
                     <Link to={`/users/4`}>
@@ -534,6 +543,9 @@ function Video({ userId }) {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="borderVideo">
+                <p className="border_video"></p>
             </div>
             <div className='videos__container'>
                 <div className='avatarContainer'>
@@ -630,74 +642,72 @@ const ForYou = () => {
         content =
             <>
                 <div>
-                    <h3 className='title'>Log in to follow creators, like videos, and view comments.</h3>
+                    <h3 className='titleNotLogin'>Log in to follow creators, like videos, and view comments.</h3>
                     <button id='btn__signin' onClick={openModal}>Log in</button>
                     <div className="example">
                         <p className="example-1"></p>
                     </div>
+                    <LoginModal isOpen={isModalOpen} onClose={closeModal}>
+                        <h2 style={{ margin: '60px 0 30px 0' }}>Log in to Retok</h2>
+                        <div className="login_methods">
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-solid fa-qrcode" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Scan QR Code</span>
+                                </div>
+                            </a>
+                            <a className='loginMethods' onClick={openLoginModal}>
+                                <div className='loginMethod'>
+                                    <i className="fa-regular fa-user" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Use phone / email / username</span>
+                                </div>
+                            </a>
+                            <a className='loginMethods' onClick={() => navigate(`/login`)}>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Facebook</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-google" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Google</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-twitter" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Twitter</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-line" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with LINE</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-apple" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Apple</span>
+                                </div>
+                            </a>
+                            <a href="#" className='loginMethods'>
+                                <div className='loginMethod'>
+                                    <i className="fa-brands fa-instagram" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <span>Continue with Instagram</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div className='license'>
+                            <p>By continuing, you agree to Retok’s <a href='#'>Terms of Service</a> and confirm that you have read Retok’s <a href='#'>Privacy Policy</a>.</p>
+                        </div>
+                        <div className='signUps'>
+                            <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
+                        </div>
+                    </LoginModal>
+                    <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal} />
                 </div>
-                <LoginModal isOpen={isModalOpen} onClose={closeModal}>
-                    <h2 style={{ margin: '60px 0 30px 0' }}>Log in to Retok</h2>
-                    <div className="login_methods">
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-solid fa-qrcode" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Scan QR Code</span>
-                            </div>
-                        </a>
-                        <a className='loginMethods' onClick={openLoginModal}>
-                            <div className='loginMethod'>
-                                <i className="fa-regular fa-user" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Use phone / email / username</span>
-                            </div>
-                        </a>
-                        <a className='loginMethods' onClick={() => navigate(`/login`)}>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Facebook</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-google" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Google</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-twitter" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Twitter</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-line" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with LINE</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-apple" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Apple</span>
-                            </div>
-                        </a>
-                        <a href="#" className='loginMethods'>
-                            <div className='loginMethod'>
-                                <i className="fa-brands fa-instagram" style={{ float: 'left', marginTop: '5px' }}></i>
-                                <span>Continue with Instagram</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div className='license'>
-                        <p>By continuing, you agree to Retok’s <a href='#'>Terms of Service</a> and confirm that you have read Retok’s <a href='#'>Privacy Policy</a>.</p>
-                    </div>
-                    <div className='signUps'>
-                        <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
-                    </div>
-                </LoginModal>
-                <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal}>
-
-                </LoginInputModal>
             </>
     } else {
         content =
@@ -736,7 +746,7 @@ const ForYou = () => {
         <>
             <div id='followingPage'>
                 {userLogged ? (
-                    <div id='foryou'>
+                    <div id='userNotLogin'>
                         <div className='userContainer'>
                             <div className='userVideo'>
                                 {
@@ -744,10 +754,10 @@ const ForYou = () => {
                                         <div className='userInfo' key={index}>
                                             <Link to={`/userFollow/${user.id}`}>
                                                 <img src={user?.imageMain} className='imgUser' />
-                                                <img src={user?.image} className='avatarUser' />
                                             </Link>
                                             <div className='userFollow'>
                                                 <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
+                                                    <img src={user?.image} className='avatarUser' />
                                                     <h3 className='user'><b>{user?.username}</b></h3>
                                                     <h4 className='user'>{user?.fullname}</h4>
                                                 </Link>

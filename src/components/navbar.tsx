@@ -30,6 +30,12 @@ export const NavBar = () => {
 
     const [mode, setMode] = useState();
 
+
+    const directToHomePage = () => {
+        window.location.reload(false)
+        navigate('/');
+    }
+
     useEffect(() => {
         window.matchMedia('(prefers-color-scheme: dark)')
             .addEventListener('change', event => {
@@ -142,7 +148,7 @@ export const NavBar = () => {
     return (
         <header>
             <div id='header'>
-                <img src={mode === "dark" ? logoDark : logoLight} id="logo" alt="Logo" style={{ cursor: 'pointer' }} onClick={() => navigate(`/`)} />
+                <img src={mode === "dark" ? logoDark : logoLight} id="logo" alt="Logo" style={{ cursor: 'pointer' }} onClick={directToHomePage} />
                 <SearchBar />
                 {content}
                 <button id='btn__upload'><i className="fa-solid fa-plus iconAction" style={{ marginRight: '5px' }}></i>Upload</button>

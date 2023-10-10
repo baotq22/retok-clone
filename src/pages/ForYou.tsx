@@ -131,9 +131,7 @@ const ForYou = ({ items, initialVisibleItems }) => {
                             <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
                         </div>
                     </LoginModal>
-                    <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal}>
-
-                    </LoginInputModal>
+                    <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal} />
                 </div>
             </>
     } else {

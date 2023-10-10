@@ -122,7 +122,7 @@ const AutoPlayVideo1 = () => {
             setIsPlaying(true);
         }
     }
-    
+
     return (
         <>
             <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
@@ -172,7 +172,7 @@ const AutoPlayVideo3 = () => {
             setIsPlaying(true);
         }
     }
-    
+
     return (
         <>
             <Waypoint onEnter={handleVideo} onLeave={handleVideo}>
@@ -187,7 +187,7 @@ const AutoPlayVideo3 = () => {
 const AutoPlayVideo4 = () => {
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
-    
+
     const handleVideo = () => {
         if (isPlaying) {
             videoRef.current.pause();
@@ -250,7 +250,7 @@ const VideoList = ({ userId }) => {
             setReactionStatus1(userId, true);
         }
     };
-    
+
     const handleFollowClick1 = () => {
         if (isFollowed1) {
             setIsFollowed1(false);
@@ -265,7 +265,7 @@ const VideoList = ({ userId }) => {
         setIsLiked1(getReactionStatus1(userId));
         setIsFollowed1(getFollowStatus1(userId));
     }, [userId])
-    
+
     //video 2
     const [isLiked2, setIsLiked2] = useState(getReactionStatus2(userId));
     const [isFollowed2, setIsFollowed2] = useState(getFollowStatus2(userId));
@@ -455,6 +455,9 @@ const VideoList = ({ userId }) => {
                     </div>
                 </div>
             </div>
+            <div className="borderVideo">
+                <p className="border_video"></p>
+            </div>
             <div className='videos__container'>
                 <div className='avatarContainer'>
                     <Link to={`/users/2`}>
@@ -511,6 +514,9 @@ const VideoList = ({ userId }) => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="borderVideo">
+                <p className="border_video"></p>
             </div>
             <div className='videos__container'>
                 <div className='avatarContainer'>
@@ -569,6 +575,9 @@ const VideoList = ({ userId }) => {
                     </div>
                 </div>
             </div>
+            <div className="borderVideo">
+                <p className="border_video"></p>
+            </div>
             <div className='videos__container'>
                 <div className='avatarContainer'>
                     <Link to={`/users/4`}>
@@ -625,6 +634,9 @@ const VideoList = ({ userId }) => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="borderVideo">
+                <p className="border_video"></p>
             </div>
             <div className='videos__container'>
                 <div className='avatarContainer'>
