@@ -234,6 +234,122 @@ const AutoPlayVideo5 = () => {
     )
 }
 
+const CollapseVideo1 = ({ text, maxLength }) => {
+    const [collapseText1, setCollapseText1] = useState(true);
+
+    const toggleCollapse1 = () => {
+        setCollapseText1(!collapseText1);
+    }
+
+    return (
+        <>
+            {collapseText1 ? (
+                <>
+                    {text.slice(0, maxLength)}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{cursor: 'pointer'}} onClick={toggleCollapse1}><b>more</b></span>
+                </>
+            ) : (
+                <>
+                    {text}
+                    <p style={{cursor: 'pointer'}} onClick={toggleCollapse1}><b>less</b></p>
+                </>
+            )}
+        </>
+    )
+}
+const CollapseVideo2 = ({ text, maxLength }) => {
+    const [collapseText2, setCollapseText2] = useState(true);
+
+    const toggleCollapse2 = () => {
+        setCollapseText2(!collapseText2);
+    }
+
+    return (
+        <>
+            {collapseText2 ? (
+                <>
+                    {text.slice(0, maxLength)}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{cursor: 'pointer'}} onClick={toggleCollapse2}><b>more</b></span>
+                </>
+            ) : (
+                <>
+                    {text}
+                    <p style={{cursor: 'pointer'}} onClick={toggleCollapse2}><b>less</b></p>
+                </>
+            )}
+        </>
+    )
+}
+const CollapseVideo3 = ({ text, maxLength }) => {
+    const [collapseText3, setCollapseText3] = useState(true);
+
+    const toggleCollapse3 = () => {
+        setCollapseText3(!collapseText3);
+    }
+
+    return (
+        <>
+            {collapseText3 ? (
+                <>
+                    {text.slice(0, maxLength)}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{cursor: 'pointer'}} onClick={toggleCollapse3}><b>more</b></span>
+                </>
+            ) : (
+                <>
+                    {text}
+                    <p style={{cursor: 'pointer'}} onClick={toggleCollapse3}><b>less</b></p>
+                </>
+            )}
+        </>
+    )
+}
+const CollapseVideo4 = ({ text, maxLength }) => {
+    const [collapseText4, setCollapseText4] = useState(true);
+
+    const toggleCollapse4 = () => {
+        setCollapseText4(!collapseText4);
+    }
+
+    return (
+        <>
+            {collapseText4 ? (
+                <>
+                    {text.slice(0, maxLength)}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{cursor: 'pointer'}} onClick={toggleCollapse4}><b>more</b></span>
+                </>
+            ) : (
+                <>
+                    {text}
+                    <p style={{cursor: 'pointer'}} onClick={toggleCollapse4}><b>less</b></p>
+                </>
+            )}
+        </>
+    )
+}
+const CollapseVideo5 = ({ text, maxLength }) => {
+    const [collapseText5, setCollapseText5] = useState(true);
+
+    const toggleCollapse5 = () => {
+        setCollapseText5(!collapseText5);
+    }
+
+    return (
+        <>
+            {collapseText5 ? (
+                <>
+                    {text.slice(0, maxLength)}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{cursor: 'pointer'}} onClick={toggleCollapse5}><b>more</b></span>
+                </>
+            ) : (
+                <>
+                    {text}
+                    <p style={{cursor: 'pointer'}} onClick={toggleCollapse5}><b>less</b></p>
+                </>
+            )}
+        </>
+    )
+}
+
 const VideoList = ({ userId }) => {
 
     const navigate = useNavigate();
@@ -414,7 +530,7 @@ const VideoList = ({ userId }) => {
                         </Link>
                         <button className='follow_btn' onClick={handleFollowClick1}
                             style={isFollowed1 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed1 ? 'Following' : 'Follow'}</button>
-                        <p className='videoDesc'>The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients</p>
+                        <p className='videoDesc'><CollapseVideo1 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
@@ -474,7 +590,7 @@ const VideoList = ({ userId }) => {
                         </Link>
                         <button className='follow_btn' onClick={handleFollowClick2}
                             style={isFollowed2 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed2 ? 'Following' : 'Follow'}</button>
-                        <p className='videoDesc'>The Football Is Good For Training And Recreational Purposes</p>
+                        <p className='videoDesc'><CollapseVideo2 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
@@ -534,7 +650,7 @@ const VideoList = ({ userId }) => {
                         </Link>
                         <button className='follow_btn' onClick={handleFollowClick3}
                             style={isFollowed3 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed3 ? 'Following' : 'Follow'}</button>
-                        <p className='videoDesc'>The Football Is Good For Training And Recreational Purposes</p>
+                        <p className='videoDesc'><CollapseVideo3 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
@@ -594,7 +710,7 @@ const VideoList = ({ userId }) => {
                         </Link>
                         <button className='follow_btn' onClick={handleFollowClick4}
                             style={isFollowed4 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed4 ? 'Following' : 'Follow'}</button>
-                        <p className='videoDesc'>The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients</p>
+                        <p className='videoDesc'><CollapseVideo4 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
@@ -654,7 +770,7 @@ const VideoList = ({ userId }) => {
                         </Link>
                         <button className='follow_btn' onClick={handleFollowClick5}
                             style={isFollowed5 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed5 ? 'Following' : 'Follow'}</button>
-                        <p className='videoDesc'>The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design</p>
+                        <p className='videoDesc'><CollapseVideo5 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">

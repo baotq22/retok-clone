@@ -75,13 +75,13 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
                 </button>
                 <h1 style={{ fontSize: '200%', marginTop: '40px' }}>Log in</h1>
                 <div>
-                    <span style={{ float: 'left' }}>{isChanged ? 'Email or username' : 'Phone'}</span>
-                    <span style={{ float: 'right', cursor: 'pointer' }} onClick={changeLoginMethod}>{isChanged ? 'Log in with phone' : 'Log in with email or username'}</span>
+                    <span style={{ float: 'left', marginLeft: '3px' }}>{isChanged ? 'Email or username' : 'Phone'}</span>
+                    <span style={{ float: 'right', marginRight: '3px', cursor: 'pointer' }} onClick={changeLoginMethod}>{isChanged ? 'Log in with phone' : 'Log in with email or username'}</span>
                 </div>
                 <br />
-                <div >
+                <div className='inputContainer'>
                     {isChanged ?
-                        <div style={{ marginTop: '15px' }}>
+                        <div className='input_container' style={{ marginTop: '15px' }}>
                             <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} style={{
                                 width: '92%',
                                 height: '48px',
@@ -100,11 +100,7 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
                                 marginTop: '15px'
                             }} placeholder='Password' required ref={Pass} />
                             <p>Forgot password</p>
-                            <button disabled={isInputDisabled} style={{
-                                width: '100%',
-                                height: '48px',
-                                fontFamily: 'inherit'
-                            }} onClick={loginClick}>Log in</button>
+                            <button disabled={isInputDisabled} onClick={loginClick} className='btnLogin'>Log in</button>
                         </div>
                         :
                         <>
@@ -152,11 +148,7 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
                                 </button>
                             </div>
                             <p>Login with password</p>
-                            <button disabled style={{
-                                width: '100%',
-                                height: '48px',
-                                fontFamily: 'inherit'
-                            }}>Log in</button>
+                            <button disabled className='btnLogin'>Log in</button>
                         </>
                     }
                     <div className='signUps' style={{ marginTop: '90px', borderTop: '1px solid #e3e3e4' }}>

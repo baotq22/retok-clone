@@ -48,6 +48,25 @@
     position: relative;
 }
 
+.modal-overlay .modal-content .inputContainer .input_container .btnLogin {
+    width: 99%;
+    height: 48px;
+    font-family: inherit;
+    border-radius: 10px;
+    background-color: #fe2c55;
+    border: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-overlay .modal-content .inputContainer .input_container .btnLogin:hover {
+    background-color: #ef2950;
+}
+
+.modal-overlay .modal-content .inputContainer .input_container .btnLogin:disabled {
+    background-color: #363636;
+}
+
 .license {
     width: 100%;
     padding: 5px 0 5px 0;
@@ -105,6 +124,10 @@
 
     .license {
         background-color: #fff;
+    }
+
+    .modal-overlay .modal-content .inputContainer .input_container .btnLogin:disabled {
+        background-color: #f1f1f2;
     }
 }
 
