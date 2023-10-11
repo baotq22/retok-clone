@@ -60,7 +60,6 @@ const VideoDetails1 = () => {
     
     const navigate = useNavigate();
     const storedIdLogin = localStorage.getItem('id');
-    console.log(storedIdLogin)
 
     const [isLiked1, setIsLiked1] = useState(getReactionStatus1());
     const [isFollowed1, setIsFollowed1] = useState(getFollowStatus1());
@@ -213,7 +212,7 @@ const VideoDetails1 = () => {
                         </div>
                     </div>
                     <h2>Comments (25)</h2>
-                    <Comments currentUserId='1'/>
+                    <Comments currentUserId={storedIdLogin}/>
                 </div>
             </div>
         </div>

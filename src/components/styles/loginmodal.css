@@ -144,17 +144,15 @@
     color: #fe2c55;
 }
 
-.modal-overlay .modal-content .login_methods {
+.login_methods {
     overflow: auto;
     height: 450px;
     -ms-overflow-style: none;
-    /* for Internet Explorer, Edge */
     scrollbar-width: none;
-    /* for Firefox */
     overflow-y: scroll;
 }
 
-.modal-overlay .modal-content .login_methods::-webkit-scrollbar {
+.login_methods::-webkit-scrollbar {
     display: none;
     /* for Chrome, Safari, and Opera */
 }
@@ -234,10 +232,6 @@
         background-color: #fff;
         color: #000;
         border: 1px solid #d7d7d9;
-        padding: 0.8em 1.4em;
-        width: 80%;
-        margin: auto;
-        margin-bottom: 20px;
     }
 }
 

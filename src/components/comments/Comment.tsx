@@ -1,9 +1,10 @@
 import { useState } from "react"
 import images from '../../assets/309431756_799936498003792_6138006382387941828_n.jpg'
+import { deleteComment } from "../../apiCmt";
 
-const Comment = ({ comment, replies, currentUserId }) => {
+const Comment = ({ comment, replies, currentUserId, deleteComment }) => {
     const canReply = Boolean(currentUserId);
-    const fiveMinutes = 300000;
+    const fiveMinutes = 300000; // 300000 miliseconds = 300 seconds = 5 minutes
     const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes
     const canDelete = currentUserId === comment.userId && timePassed;
     const [isReactedCmt, setIsReactedCmt] = useState(false);
@@ -25,13 +26,15 @@ const Comment = ({ comment, replies, currentUserId }) => {
                 </div>
                 <span>{createdAt}</span>
                 {canReply && <span style={{cursor: 'pointer'}}> Reply</span>}
-                {canDelete && <span style={{cursor: 'pointer'}}> Delete</span>}
+                {canDelete && <span style={{cursor: 'pointer'}} onClick={() => deleteComment(comment.id)}> Delete</span>}
                 {replies.length > 0 && (
                     <div className='subComment'>
                         {replies.map(reply => (
                             <Comment comment={reply}
                             key={reply.id}
-                            replies={[]} currentUserId={undefined} />
+                            replies={[]} 
+                            currentUserId={currentUserId}
+                            deleteComment={deleteComment} />
                         ))}
                     </div>
                 )}

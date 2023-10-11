@@ -39,14 +39,18 @@ export const getComments = async () => {
       },
     ];
   };
+
+  const userComment = localStorage.getItem('username');
+  const user_id = localStorage.getItem('id')
+  console.log(userComment)
   
   export const createComment = async (text: any, parentId = null) => {
     return {
       id: Math.random().toString(36).substr(2, 9),
       body: text,
       parentId,
-      userId: "1",
-      username: "John",
+      userId: user_id,
+      username: userComment,
       createdAt: new Date().toISOString(),
       reactionAmount: "0"
     };

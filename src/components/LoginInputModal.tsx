@@ -49,8 +49,22 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
     const [password, setPassword] = useState('')
     const isInputDisabled = username.length === 0 || password.length === 0
 
-    if (!isLoginOpen) return null;
+    useEffect(() => {
+        const keyDownHandler = event => {
+            console.log(event.key)
+            if (event.key === 'Enter') {
+                loginClick();
+            }
+        }
 
+        document.addEventListener('keydown', keyDownHandler);
+        
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        }
+    }, [])
+
+    if (!isLoginOpen) return null;
 
     return (
         <div className='modal-overlay'>
