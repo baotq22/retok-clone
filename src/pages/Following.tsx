@@ -40,38 +40,6 @@ type VideoType = {
     avatar: string
 }
 
-const AutoPlayVideo = () => {
-    const videoRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-
-    const handleScroll = () => {
-        const videoElement = videoRef.current;
-        const rect = videoElement.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-
-        if (isVisible && !isPlaying) {
-            videoElement.play();
-            setIsPlaying(true);
-        } else if (!isVisible && isPlaying) {
-            videoElement.pause();
-            setIsPlaying(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    return (
-        <>
-            <video ref={videoRef} muted controls className='videos' src={Video1} />
-        </>
-    )
-}
-
 // video 1
 const getReactionStatus1 = (userId) => {
     const storedStatus1 = localStorage.getItem(`video-reaction1-fl-${userId}`);
@@ -166,6 +134,8 @@ const getFollowStatus5 = (userId) => {
 const setFollowStatus5 = (userId, isFollowed5) => {
     localStorage.setItem(`video-follow5-${userId}`, isFollowed5 ? 'followed5' : 'not-followed5')
 }
+
+
 
 function Video({ userId }) {
     //video 1
@@ -700,7 +670,7 @@ const ForYou = () => {
                             </a>
                         </div>
                         <div className='license'>
-                            <p>By continuing, you agree to Retok’s <a href='#'>Terms of Service</a> and confirm that you have read Retok’s <a href='#'>Privacy Policy</a>.</p>
+                            <p>By continuing, you agree to Retok's <a href='#' className='links'>Terms of Service</a> and confirm that you have read Retok's <a href='#' className='links'>Privacy Policy</a>.</p>
                         </div>
                         <div className='signUps'>
                             <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>

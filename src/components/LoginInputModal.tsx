@@ -11,32 +11,19 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // const user = useContext(UserContext);
-    // console.log(user);
     const { isLoginSuccess } = useSelector(state => state.userLogin)
-    // const userLogin = useSelector(state => state.userLogin);
+
+    const [error, setError] = useState('')
 
     async function loginClick() {
         const username = User.current?.value;
         const password = Pass.current?.value;
-        // api.get(`/users?username=${username}&&password=${password}`).then(res => {
-        //     if (res.data.length > 0) {
-        //         // user.setUser(username);
-        //         dispatch(loginSuccess({username: username, password: password}));
-        //         navigate('/')
-        //     } else {
-        //         alert('lol');
-        //     }
-        // }).catch(e => {
-        //     console.log(e);
-        //     alert('lol');
-        // })
         try {
             await dispatch(login({ username, password })).unwrap();
             navigate('/');
         } catch (e) {
             console.log(e)
-            alert('Login failed! Try again')
+            setError("Username or password doesn't match our records. Try again.")
         }
     }
 
@@ -64,6 +51,7 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
 
     if (!isLoginOpen) return null;
 
+
     return (
         <div className='modal-overlay'>
             <div className='modal-content'>
@@ -75,84 +63,41 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
                 </button>
                 <h1 style={{ fontSize: '200%', marginTop: '40px' }}>Log in</h1>
                 <div>
-                    <span style={{ float: 'left', marginLeft: '3px' }}>{isChanged ? 'Email or username' : 'Phone'}</span>
-                    <span style={{ float: 'right', marginRight: '3px', cursor: 'pointer' }} onClick={changeLoginMethod}>{isChanged ? 'Log in with phone' : 'Log in with email or username'}</span>
+                    <span style={{ float: 'left', marginLeft: '7px' }}>{isChanged ? 'Email or username' : 'Phone'}</span>
+                    <span style={{ float: 'right', marginRight: '7px', cursor: 'pointer' }} onClick={changeLoginMethod}>{isChanged ? 'Log in with phone' : 'Log in with email or username'}</span>
                 </div>
                 <br />
                 <div className='inputContainer'>
                     {isChanged ?
                         <div className='input_container' style={{ marginTop: '15px' }}>
-                            <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} style={{
-                                width: '92%',
-                                height: '48px',
-                                border: '0',
-                                padding: '1px 1.2em',
-                                borderRadius: '0 4px 4px 0',
-                                fontFamily: 'inherit'
-                            }} placeholder='Email or username' required ref={User} />
-                            <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} style={{
-                                width: '92%',
-                                height: '48px',
-                                border: '0',
-                                padding: '1px 1.2em',
-                                borderRadius: '0 4px 4px 0',
-                                fontFamily: 'inherit',
-                                marginTop: '15px'
-                            }} placeholder='Password' required ref={Pass} />
-                            <p>Forgot password</p>
+                            <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} className='inputBox' placeholder='Email or username' required ref={User} />
+                            <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} className='inputBox' placeholder='Password' required ref={Pass} />
+                            <div className='inputValidate'>{error && <span>{error}</span>}</div>
+                            <div className='forgotPwd'><span>Forgot password</span></div>
                             <button disabled={isInputDisabled} onClick={loginClick} className='btnLogin'>Log in</button>
                         </div>
                         :
                         <>
-                            <div style={{ marginTop: '15px' }}>
-                                <select style={{
-                                    width: '28%',
-                                    height: '50px',
-                                    border: '0',
-                                    padding: '2px 1.2em',
-                                    borderRadius: '4px 0 0 4px',
-                                    fontFamily: 'inherit'
-                                }}>
+                            <div className='input_container' style={{ marginTop: '15px' }}>
+                                <select className='countryDropDownList'>
                                     {
                                         rootCountry.map((rootCountries) => (
                                             <option>{rootCountries.name} {rootCountries.dial_code}</option>
                                         ))
                                     }
                                 </select>
-                                <input type='text' style={{
-                                    width: '64%',
-                                    height: '48px',
-                                    border: '0',
-                                    padding: '1px 1.2em',
-                                    borderRadius: '0 4px 4px 0',
-                                    fontFamily: 'inherit'
-                                }} placeholder='Phone number' />
+                                <input className='phoneNoBox' type='text' placeholder='Phone number' />
                             </div>
-                            <div style={{ marginTop: '15px' }}>
-                                <input type='text' style={{
-                                    width: '64%',
-                                    height: '48px',
-                                    border: '0',
-                                    padding: '1px 1.2em',
-                                    borderRadius: '0 4px 4px 0',
-                                    fontFamily: 'inherit'
-                                }} placeholder='Enter 6-digit code' />
-                                <button style={{
-                                    width: '28%',
-                                    height: '50px',
-                                    border: '0',
-                                    padding: '2px 1.2em',
-                                    borderRadius: '4px 0 0 4px',
-                                    fontFamily: 'inherit'
-                                }}>Send Code
-                                </button>
+                            <div className='input_container' style={{ marginTop: '15px' }}>
+                                <input className='sixDigitCodeBox' type='text' placeholder='Enter 6-digit code' />
+                                <button className='sendbtn'>Send Code</button>
                             </div>
-                            <p>Login with password</p>
+                            <div className='forgotPwd'><span>Login with password</span></div>
                             <button disabled className='btnLogin'>Log in</button>
                         </>
                     }
                     <div className='signUps' style={{ marginTop: '90px', borderTop: '1px solid #e3e3e4' }}>
-                        <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
+                        <p style={{textDecoration: 0, fontWeight: '600'}}>Don't have an account? <a href='#' style={{textDecoration: 0, fontWeight: '600', color: '#fe2c55'}}>Sign Up</a></p>
                     </div>
                 </div>
             </div>

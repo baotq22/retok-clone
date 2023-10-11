@@ -125,7 +125,7 @@ const ForYou = ({ items, initialVisibleItems }) => {
                             </a>
                         </div>
                         <div className='license'>
-                            <p>By continuing, you agree to Retok’s <a href='#'>Terms of Service</a> and confirm that you have read Retok’s <a href='#'>Privacy Policy</a>.</p>
+                            <p>By continuing, you agree to Retok's <a href='#' className='links'>Terms of Service</a> and confirm that you have read Retok's <a href='#' className='links'>Privacy Policy</a>.</p>
                         </div>
                         <div className='signUps'>
                             <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>

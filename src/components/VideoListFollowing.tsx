@@ -110,7 +110,7 @@ const setFollowStatus5 = (userId, isFollowed5) => {
 }
 
 const AutoPlayVideo1 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -123,33 +123,41 @@ const AutoPlayVideo1 = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
         }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.unobserve(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
     }, []);
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video1} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video1} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
 
 const AutoPlayVideo2 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -162,33 +170,41 @@ const AutoPlayVideo2 = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
         }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.unobserve(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
     }, []);
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video2} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video2} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
 
 const AutoPlayVideo3 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -196,39 +212,46 @@ const AutoPlayVideo3 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        }
+        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
         }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.unobserve(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
     }, []);
 
-
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video3} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video3} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
 
 const AutoPlayVideo4 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -236,38 +259,46 @@ const AutoPlayVideo4 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        }
+        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
-        }, options);
+        }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.observe(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
-    })
+    }, []);
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video4} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video4} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
 
 const AutoPlayVideo5 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -275,32 +306,40 @@ const AutoPlayVideo5 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        }
+        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
-        }, options);
+        }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.observe(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
-    })
+    }, []);
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video5} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video5} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
@@ -421,7 +460,7 @@ const CollapseVideo5 = ({ text, maxLength }) => {
     )
 }
 
-const VideoList = ({ userId }) => {
+const VideoListFollowing = ({ userId }) => {
 
     const navigate = useNavigate();
     //video 1
@@ -599,8 +638,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Andre57 </b></span>
                             <span>Manuel Rogahn</span>
                         </Link>
-                        <button className='follow_btn' onClick={handleFollowClick1}
-                            style={isFollowed1 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed1 ? 'Following' : 'Follow'}</button>
                         <p className='videoDesc'><CollapseVideo1 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -659,8 +696,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Chris.Franecki48 </b></span>
                             <span>Anthony Waters</span>
                         </Link>
-                        <button className='follow_btn' onClick={handleFollowClick2}
-                            style={isFollowed2 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed2 ? 'Following' : 'Follow'}</button>
                         <p className='videoDesc'><CollapseVideo2 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -719,8 +754,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Grover32 </b></span>
                             <span>Nina Mills IV</span>
                         </Link>
-                        <button className='follow_btn' onClick={handleFollowClick3}
-                            style={isFollowed3 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed3 ? 'Following' : 'Follow'}</button>
                         <p className='videoDesc'><CollapseVideo3 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -779,8 +812,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Jonathon_Kuvalis18 </b></span>
                             <span>Harold Daugherty</span>
                         </Link>
-                        <button className='follow_btn' onClick={handleFollowClick4}
-                            style={isFollowed4 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed4 ? 'Following' : 'Follow'}</button>
                         <p className='videoDesc'><CollapseVideo4 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -839,8 +870,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Terrell_OKeefe3 </b></span>
                             <span>Krystal Heller V</span>
                         </Link>
-                        <button className='follow_btn' onClick={handleFollowClick5}
-                            style={isFollowed5 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed5 ? 'Following' : 'Follow'}</button>
                         <p className='videoDesc'><CollapseVideo5 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -886,4 +915,4 @@ const VideoList = ({ userId }) => {
     )
 }
 
-export default VideoList
+export default VideoListFollowing

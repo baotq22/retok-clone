@@ -30,7 +30,6 @@ const Comments = ({ currentUserId }) => {
         })
     }
 
-    
     return (
         <>
             <div className='comment__container'>

@@ -48,8 +48,9 @@
     position: relative;
 }
 
+.modal-overlay .modal-content .inputContainer .btnLogin,
 .modal-overlay .modal-content .inputContainer .input_container .btnLogin {
-    width: 99%;
+    width: 97%;
     height: 48px;
     font-family: inherit;
     border-radius: 10px;
@@ -57,23 +58,93 @@
     border: 0;
     font-size: 20px;
     font-weight: 600;
+    color: #fff;
 }
 
+.modal-overlay .modal-content .inputContainer .btnLogin:hover,
 .modal-overlay .modal-content .inputContainer .input_container .btnLogin:hover {
     background-color: #ef2950;
 }
 
+.modal-overlay .modal-content .inputContainer .btnLogin:disabled,
 .modal-overlay .modal-content .inputContainer .input_container .btnLogin:disabled {
     background-color: #363636;
 }
 
-.license {
-    width: 100%;
-    padding: 5px 0 5px 0;
-    background-color: #121212;
+.modal-overlay .modal-content .inputContainer .input_container .countryDropDownList {
+    width: 28%;
+    height: 50px;
+    border: 0;
+    padding: 2px 1.2em;
+    border-radius: 4px 0 0 4px;
+    font-family: inherit;
 }
 
-.login_methods {
+.modal-overlay .modal-content .inputContainer .input_container .phoneNoBox,
+.modal-overlay .modal-content .inputContainer .input_container .sixDigitCodeBox {
+    width: 64%;
+    height: 48px;
+    border: 0;
+    padding: 1px 1.2em;
+    border-radius: 0 4px 4px 0;
+    font-family: inherit;
+}
+
+.modal-overlay .modal-content .inputContainer .input_container .sendbtn {
+    width: 28%;
+    height: 50px;
+    border: 0;
+    padding: 2px 1.2em;
+    border-radius: 4px 0 0 4px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.modal-overlay .modal-content .inputContainer .input_container .inputBox {
+    width: 92%;
+    height: 48px;
+    border: 0;
+    padding: 1px 1.2em;
+    border-radius: 0 4px 4px 0;
+    font-family: inherit;
+    margin-bottom: 15px;
+}
+
+.modal-overlay .modal-content .inputContainer .input_container .inputValidate {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 4px 7px;
+    color: rgb(255, 76, 58);
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.modal-overlay .modal-content .inputContainer .forgotPwd, 
+.modal-overlay .modal-content .inputContainer .input_container .forgotPwd {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 4px 7px;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.modal-overlay .modal-content .license {
+    width: 100%;
+    padding: 5px 0 5px 0;
+}
+
+.modal-overlay .modal-content .license .links {
+    text-decoration: 0;
+    color: #fff;
+    font-weight: 700;
+}
+
+.modal-overlay .modal-content .signUps .signUp {
+    text-decoration: 0;
+    color: #fe2c55;
+}
+
+.modal-overlay .modal-content .login_methods {
     overflow: auto;
     height: 450px;
     -ms-overflow-style: none;
@@ -83,18 +154,18 @@
     overflow-y: scroll;
 }
 
-.login_methods::-webkit-scrollbar {
+.modal-overlay .modal-content .login_methods::-webkit-scrollbar {
     display: none;
     /* for Chrome, Safari, and Opera */
 }
 
-.loginMethods {
+.modal-overlay .modal-content .login_methods .loginMethods {
     text-decoration: 0;
     color: #898989;
     font-size: 20px;
 }
 
-.loginMethod {
+.modal-overlay .modal-content .login_methods .loginMethods .loginMethod {
     background-color: #2e2e2e;
     color: #fff;
     padding: 0.8em 1.4em;
@@ -111,7 +182,7 @@
     .modal-overlay .modal-content .close-button {
         background-color: #f8f8f8;
     }
-    
+
     .modal-overlay .modal-content .back-button {
         background-color: #f8f8f8;
     }
@@ -128,6 +199,45 @@
 
     .modal-overlay .modal-content .inputContainer .input_container .btnLogin:disabled {
         background-color: #f1f1f2;
+    }
+
+    .modal-overlay .modal-content .inputContainer .input_container .inputBox {
+        background-color: #f1f1f2;
+        border: 1px solid #d7d7d9
+    }
+
+    .modal-overlay .modal-content .inputContainer .input_container .countryDropDownList {
+        border: 1px solid #d7d7d9;
+        background-color: #f1f1f2;
+    }
+    
+    .modal-overlay .modal-content .inputContainer .input_container .phoneNoBox,
+    .modal-overlay .modal-content .inputContainer .input_container .sixDigitCodeBox {
+        border: 1px solid #d7d7d9;
+        background-color: #f1f1f2;
+    }
+    
+    .modal-overlay .modal-content .inputContainer .input_container .sendbtn {
+        border: 1px solid #d7d7d9;
+        background-color: #f1f1f2;
+    }
+
+    .modal-overlay .modal-content .license {
+        background-color: #fff;
+    }
+
+    .modal-overlay .modal-content .license .links {
+        color: #000;
+    }
+
+    .modal-overlay .modal-content .login_methods .loginMethods .loginMethod {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #d7d7d9;
+        padding: 0.8em 1.4em;
+        width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
     }
 }
 
