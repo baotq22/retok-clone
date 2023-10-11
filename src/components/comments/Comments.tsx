@@ -10,6 +10,7 @@ import CommentForm from "./CommentForm";
 const Comments = ({ currentUserId }) => {
 
     const [BEcomments, setBEcomments] = useState([]);
+    const [activeCmt, setActiveCmt] = useState(null);
     const rootComments = BEcomments.filter(
         (BEcomment) => BEcomment.parentId === null
     );
@@ -29,12 +30,13 @@ const Comments = ({ currentUserId }) => {
         console.log('addComment', text, parentId)
         createCommentApi(text, parentId).then(comment => {
             setBEcomments([comment, ...BEcomments])
+            setActiveCmt(null)
         })
     }
 
     const deleteComment = (commentId) => {
         deleteCommentApi(commentId).then(() => {
-            const updatedBEcomments = BEcomments.filter(BEComment => BEComment.commentId !== commentId);
+            const updatedBEcomments = BEcomments.filter(BEComment => BEComment.id !== commentId);
             setBEcomments(updatedBEcomments);
         })
     }
@@ -48,7 +50,10 @@ const Comments = ({ currentUserId }) => {
                             comment={rootComment}
                             replies={getReplies(rootComment.id)}
                             currentUserId={currentUserId}
-                            deleteComment={deleteComment} />
+                            deleteComment={deleteComment} 
+                            activeCmt={activeCmt}
+                            setActiveCmt={setActiveCmt}
+                            addComment={addComment}/>
                     ))
                 }
             </div>
