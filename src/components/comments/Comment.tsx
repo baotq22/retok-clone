@@ -1,6 +1,5 @@
 import { useState } from "react"
 import images from '../../assets/309431756_799936498003792_6138006382387941828_n.jpg'
-import { deleteComment } from "../../apiCmt";
 import CommentForm from "./CommentForm";
 
 const Comment = ({ comment, replies, currentUserId, deleteComment, activeCmt, setActiveCmt, addComment, parentId = null }) => {
@@ -31,7 +30,10 @@ const Comment = ({ comment, replies, currentUserId, deleteComment, activeCmt, se
                 {canReply && <span style={{ cursor: 'pointer' }} onClick={() => setActiveCmt({ id: comment.id, type: "replying" })}> Reply</span>}
                 {canDelete && <span style={{ cursor: 'pointer' }} onClick={() => deleteComment(comment.id)}> Delete</span>}
                 {isReplying && (
-                    <CommentForm submitLabel='Reply' handleSubmit={(text) => addComment(text, replyId)} />
+                    <>
+                        <CommentForm submitLabel='Reply' handleSubmit={(text) => addComment(text, replyId)}  />
+                        <button className='cancelCmt' onClick={() => setActiveCmt(null)}><i className="fa-solid fa-xmark"></i></button>
+                    </>
                 )}
                 {replies.length > 0 && (
                     <div className='subComment'>
@@ -42,8 +44,8 @@ const Comment = ({ comment, replies, currentUserId, deleteComment, activeCmt, se
                                 currentUserId={currentUserId}
                                 deleteComment={deleteComment}
                                 addComment={addComment}
-                                parentId={comment.id} 
-                                activeCmt={activeCmt} 
+                                parentId={comment.id}
+                                activeCmt={activeCmt}
                                 setActiveCmt={setActiveCmt} />
                         ))}
                     </div>

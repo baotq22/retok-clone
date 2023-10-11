@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSelector } from "react-redux";
 
-const CommentForm = ({ handleSubmit, submitLabel }) => {
+const CommentForm = ({ handleSubmit, submitLabel}) => {
     const [text, setText] = useState('')
     const isInputDisabled = text.length === 0;
     const onSubmit = event => {
