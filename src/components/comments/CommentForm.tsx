@@ -13,8 +13,6 @@ const CommentForm = ({ handleSubmit, submitLabel}) => {
     const userLogin = useSelector(state => state.userLogin);
     const userLogged = !userLogin?.username;
 
-    const logged = userLogin?.username;
-
     let content;
 
     if (userLogged) {

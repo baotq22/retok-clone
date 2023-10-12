@@ -6,12 +6,9 @@ import {
 } from "../../apiCmt"
 import Comment from './Comment'
 import CommentForm from "./CommentForm";
-import images from '../../assets/309431756_799936498003792_6138006382387941828_n.jpg'
-import { useSelector } from "react-redux";
 import CommentLS from "./CommentLS";
 
 const Comments = ({ currentUserId }) => {
-    const createdAt = new Date().toLocaleDateString()
     const [BEcomments, setBEcomments] = useState([]);
     const [activeCmt, setActiveCmt] = useState(null);
     const rootComments = BEcomments.filter(

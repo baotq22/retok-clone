@@ -15,27 +15,6 @@ const Comment = ({ comment, replies, currentUserId, deleteComment, activeCmt, se
     const isReplying = activeCmt && activeCmt.id === comment.id && activeCmt.type === 'replying';
     const replyId = parentId ? parentId : comment.id;
 
-    // const userName = localStorage.getItem('username');
-    // console.log(userName)
-
-    // useEffect(() => {
-    //     const storedComments = localStorage.getItem('userComments');
-    //     if (storedComments) {
-    //         setComments(JSON.parse(storedComments));
-    //     }
-    // }, []);
-
-    // const handleSubmit = () => {
-    //     const newComment = {
-    //         user: userName,
-    //         comment: commentInput
-    //     };
-
-    //     const updatedComments = [...comments, newComment];
-    //     setComments(updatedComments);
-    //     setCommentInput('');
-    // }
-
     return (
         <>
             <div className='comment__s'>
