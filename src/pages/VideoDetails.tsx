@@ -49,7 +49,7 @@ const VideoDetails = () => {
 
     const followUser = async (userId: string | undefined) => {
         try {
-            const response = await axios.post(`/${userId}`)
+            await axios.post(`/${userId}`)
         } catch (e) {
             console.log('')
         }
@@ -57,7 +57,7 @@ const VideoDetails = () => {
 
     const unfollowUser = async (userId: string | undefined) => {
         try {
-            const response = await axios.delete(`/${userId}`)
+            await axios.delete(`/${userId}`)
         } catch (e) {
             console.log('')
         }

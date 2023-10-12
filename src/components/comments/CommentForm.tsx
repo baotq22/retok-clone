@@ -15,8 +15,6 @@ const CommentForm = ({ handleSubmit, submitLabel}) => {
 
     const logged = userLogin?.username;
 
-    console.log(logged)
-
     let content;
 
     if (userLogged) {

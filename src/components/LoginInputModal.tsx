@@ -22,7 +22,6 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
             await dispatch(login({ username, password })).unwrap();
             navigate('/');
         } catch (e) {
-            console.log(e)
             setError("Username or password doesn't match our records. Try again.")
         }
     }
@@ -51,7 +50,6 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
 
     useEffect(() => {
         const keyDownHandler = event => {
-            console.log(event.key)
             if (event.key === 'Enter') {
                 loginClick();
             }

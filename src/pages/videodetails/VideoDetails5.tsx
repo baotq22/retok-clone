@@ -37,7 +37,7 @@ const VideoDetails5 = () => {
     }
     useEffect(() => {
         const keyDownHandler = event => {
-            console.log(event.key)
+            // console.log(event.key)
             if (event.key === 'Escape') {
                 escapeBack();
             }
@@ -60,7 +60,6 @@ const VideoDetails5 = () => {
     
     const navigate = useNavigate();
     const storedIdLogin = localStorage.getItem('id');
-    console.log(storedIdLogin)
 
     const [isLiked5, setIsLiked5] = useState(getReactionStatus5());
     const [isFollowed5, setIsFollowed5] = useState(getFollowStatus5());

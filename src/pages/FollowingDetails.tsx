@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import LoginModal from "../components/LoginModal";
-import { api, videoApis } from "../axios-instance";
+import { api } from "../axios-instance";
 import './styles/sidebar.css'
 import './styles/userdetails.css'
 import RightBottomActionButton from "../components/RightBottomActionButton";
@@ -26,21 +26,13 @@ type VideoType = {
     avatar: string
 }
 
-async function getUser() {
-    const response = await api.get(`/users`);
-}
-
-async function getVideos() {
-    const response = await videoApis.get(`/videos`)
-}
-
 export const followUser = async () => {
     const params = useParams();
     const userId = params.userId;
     try {
-        const response = await axios.post(`api/follow/${userId}`)
+        await axios.post(`api/follow/${userId}`)
     } catch (e) {
-        console.log('')
+        console.log(e)
     }
 }
 
@@ -48,9 +40,9 @@ export const unfollowUser = async () => {
     const params = useParams();
     const userId = params.userId;
     try {
-        const response = await axios.delete(`api/follow/${userId}`)
+        await axios.delete(`api/follow/${userId}`)
     } catch (e) {
-        console.log('')
+        console.log(e)
     }
 }
 
@@ -63,32 +55,23 @@ const UserFollowDetails = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
+    const fetchUsers = async () => {
+        const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
+        setUserList(res.data)
+    }
     useEffect(() => {
-        getUser();
-        getVideos();
-    }, [])
-    useEffect(() => {
-        const fetchUsers = async () => {
-            const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
-            setUserList(res.data)
-        }
         fetchUsers();
     })
     const [user, setUser] = useState();
 
     const params = useParams();
     const userId = params.userId;
-    console.log(params.userId)
 
     useEffect(() => {
         api.get(`/users/${userId}`).then(res => {
             setUser(res.data)
         }).catch(e => console.log(e));
     }, [])
-    const [isActived, setIsActived] = useState(false);
-    const interactionAction = () => {
-        setIsActived(current => !current);
-    }
     const userLogin = useSelector(state => state.userLogin)
     const userFollowId = userLogin?.id == params.userId;
     const userLogged = !userLogin?.username;

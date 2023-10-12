@@ -2,21 +2,14 @@ import './styles/videos.css'
 import './styles/sidebar.css'
 import NavBar from "../components/navbar"
 import effectBtn from '../assets/d8db931296c3e5645b1e.png'
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
 import LoginModal from "../components/LoginModal";
-import Video1 from '../assets/videos/1.mp4'
 import { useSelector } from "react-redux";
 import axios from "axios";
 import LoginInputModal from "../components/LoginInputModal";
 import VideoList from "../components/VideoList";
 import RightBottomActionButton from "../components/RightBottomActionButton";
-
-type UserType = {
-    username: string
-    fullname: string
-    image: string
-}
 
 type VideoType = {
     username: string
@@ -32,7 +25,6 @@ type VideoType = {
 const ForYou = ({ items, initialVisibleItems }) => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
-    const [userList, setUserList] = useState<Array<UserType>>([])
     const [videoList, setVideoList] = useState<Array<VideoType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
 
@@ -45,17 +37,12 @@ const ForYou = ({ items, initialVisibleItems }) => {
     const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
     const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
     const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
-
+    
+    const fetchVideos = async () => {
+        const res = await axios.get(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos`);
+        setVideoList(res.data)
+    }
     useEffect(() => {
-        const fetchUsers = async () => {
-            const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
-            setUserList(res.data)
-        }
-        const fetchVideos = async () => {
-            const res = await axios.get(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos`);
-            setVideoList(res.data)
-        }
-        fetchUsers();
         fetchVideos();
     })
 
@@ -166,6 +153,10 @@ const ForYou = ({ items, initialVisibleItems }) => {
             </>
     }
 
+    const preventFailedScreen = () => {
+        window.location.reload(false);
+    }
+
     return (
         <>
             <div id='foryouPage'>
@@ -178,14 +169,14 @@ const ForYou = ({ items, initialVisibleItems }) => {
                 </div>
                 <div id='nav'>
                     <ul className='itemLinkAll'>
-                        <li className='itemLink'>
+                        <li className='itemLink' onClick={preventFailedScreen}>
                             <Link to={`/`} className='mainLink'>
                                 <div className="nav selected">
                                     <i className='icon fa-solid fa-home'></i><span>For you</span>
                                 </div>
                             </Link>
                         </li>
-                        <li className='itemLink'>
+                        <li className='itemLink' onClick={preventFailedScreen}>
                             <Link to={`/following`} className='mainLink'>
                                 <div className="nav">
                                     <i className="icon fa-solid fa-user-group"></i><span>Following</span>

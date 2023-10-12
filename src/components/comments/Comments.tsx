@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import {
     getComments as getCmtsApi,
     createComment as createCommentApi,
@@ -6,9 +6,12 @@ import {
 } from "../../apiCmt"
 import Comment from './Comment'
 import CommentForm from "./CommentForm";
+import images from '../../assets/309431756_799936498003792_6138006382387941828_n.jpg'
+import { useSelector } from "react-redux";
+import CommentLS from "./CommentLS";
 
 const Comments = ({ currentUserId }) => {
-
+    const createdAt = new Date().toLocaleDateString()
     const [BEcomments, setBEcomments] = useState([]);
     const [activeCmt, setActiveCmt] = useState(null);
     const rootComments = BEcomments.filter(
@@ -26,13 +29,38 @@ const Comments = ({ currentUserId }) => {
         })
     }, [])
 
-    const addComment = (text, parentId) => {
-        console.log('addComment', text, parentId)
-        createCommentApi(text, parentId).then(comment => {
-            setBEcomments([comment, ...BEcomments])
-            setActiveCmt(null)
-        })
+    const userCmts = useMemo(() => {
+        return localStorage.getItem(`userCmt_${currentUserId}`)
+    }, [currentUserId]);
+
+    const userCmtsArray = JSON.parse(userCmts) || [];
+
+    const saveCmtToLS = (comments) => {
+        localStorage.setItem(`userCmt_${currentUserId}`, JSON.stringify(comments));
+        console.log(JSON.stringify(comments))
     }
+
+    const addComment = (text, parentId) => {
+        const user_id = currentUserId;
+        createCommentApi(parentId).then(comment => {
+            setBEcomments([comment, ...BEcomments]);
+            const updatedComments = [{ body: text, parentId }, ...userCmtsArray];
+            saveCmtToLS(updatedComments);
+            setActiveCmt(null)
+        });
+    }
+
+    useEffect(() => {
+        getCmtsApi().then(data => {
+            setBEcomments(data);
+        })
+        if (currentUserId) {
+            const userCmts = localStorage.getItem(`userCmt_${currentUserId}`);
+            if (userCmts) {
+                const parsedCmt = JSON.parse(userCmts);
+            }
+        }
+    }, [currentUserId])
 
     const deleteComment = (commentId) => {
         deleteCommentApi(commentId).then(() => {
@@ -41,19 +69,33 @@ const Comments = ({ currentUserId }) => {
         })
     }
 
+
+
     return (
         <>
             <div className='comment__container'>
+                {
+                    userCmtsArray.map((userCmt, index) => (
+                        <CommentLS key={index}
+                            comment={userCmt}
+                            replies={getReplies(userCmt.id)}
+                            currentUserId={currentUserId}
+                            deleteComment={deleteComment}
+                            activeCmt={activeCmt}
+                            setActiveCmt={setActiveCmt}
+                            addComment={addComment} />
+                    ))
+                }
                 {
                     rootComments.map((rootComment) => (
                         <Comment key={rootComment.id}
                             comment={rootComment}
                             replies={getReplies(rootComment.id)}
                             currentUserId={currentUserId}
-                            deleteComment={deleteComment} 
+                            deleteComment={deleteComment}
                             activeCmt={activeCmt}
                             setActiveCmt={setActiveCmt}
-                            addComment={addComment}/>
+                            addComment={addComment} />
                     ))
                 }
             </div>

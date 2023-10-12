@@ -37,7 +37,6 @@ const VideoDetails1 = () => {
     }
     useEffect(() => {
         const keyDownHandler = event => {
-            console.log(event.key)
             if (event.key === 'Escape') {
                 escapeBack();
             }

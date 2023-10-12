@@ -44,9 +44,6 @@ export const userLoginSlice = createSlice({
                 localStorage.setItem('username', action.payload[0].username)
                 localStorage.setItem('password', action.payload[0].password)
                 localStorage.setItem('id', action.payload[0].id)
-                console.log(action.payload[0].username)
-                console.log(action.payload[0].password)
-                console.log(action.payload[0].id)
             } else {
                 state.isLoginSuccess = false;
             }

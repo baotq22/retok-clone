@@ -16,8 +16,6 @@ import Video2 from '../assets/videos/2.mp4'
 import Video3 from '../assets/videos/3.mp4'
 import Video4 from '../assets/videos/4.mp4'
 import Video5 from '../assets/videos/5.mp4'
-import { api, videoApis } from "../axios-instance";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import LoginInputModal from "../components/LoginInputModal";
 import RightBottomActionButton from "../components/RightBottomActionButton";

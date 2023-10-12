@@ -6,8 +6,7 @@ import {
 import ForYou from './pages/ForYou'
 import Following from "./pages/Following";
 import UserLogin from "./pages/LogIn";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import store from "./store";
 import VideoDetails from "./pages/VideoDetails";
 import UserDetails from "./pages/UserDetails";

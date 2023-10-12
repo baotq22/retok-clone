@@ -32,15 +32,14 @@ export const NavBar = () => {
 
 
     const directToHomePage = () => {
-        window.location.reload(false)
         navigate('/');
+        window.location.reload(false)
     }
 
     useEffect(() => {
         window.matchMedia('(prefers-color-scheme: dark)')
             .addEventListener('change', event => {
                 const colorScheme = event.matches ? "dark" : "light";
-                console.log(colorScheme);
                 setMode(colorScheme);
             });
     }, []);

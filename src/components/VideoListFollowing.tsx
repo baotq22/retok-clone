@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useState, useEffect, useRef } from "react"
 import { Waypoint } from "react-waypoint"
 import { Link, useNavigate } from "react-router-dom"

@@ -41,8 +41,7 @@ export const getComments = async () => {
   };
 
   const userComment = localStorage.getItem('username');
-  const user_id = localStorage.getItem('id')
-  console.log(userComment)
+  const user_id = localStorage.getItem('id');
   
   export const createComment = async (text: any, parentId = null) => {
     return {

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import LoginModal from "../components/LoginModal";
-import { api, videoApis } from "../axios-instance";
+import { videoApis } from "../axios-instance";
 import './styles/sidebar.css'
 import './styles/userdetails.css'
 import RightBottomActionButton from "../components/RightBottomActionButton";
@@ -26,13 +26,8 @@ type VideoType = {
     avatar: string
 }
 
-async function getUser() {
-    const response = await api.get(`/users`);
-}
-
 async function getVideos() {
-    const response = await videoApis.get(`/videos`)
-    console.log(response);
+    await videoApis.get(`/videos`)
 }
 
 const UserDetails = () => {
@@ -46,24 +41,18 @@ const UserDetails = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
-
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-    const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
-    const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
-    const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
     useEffect(() => {
-        getUser();
         getVideos();
     }, [])
+    const fetchUsers = async () => {
+        const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
+        setUserList(res.data)
+    }
+    const fetchVideos = async () => {
+        const res = await axios.get(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos`);
+        setVideoList(res.data)
+    }
     useEffect(() => {
-        const fetchUsers = async () => {
-            const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
-            setUserList(res.data)
-        }
-        const fetchVideos = async () => {
-            const res = await axios.get(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos`);
-            setVideoList(res.data)
-        }
         fetchUsers();
         fetchVideos();
     })
@@ -76,11 +65,6 @@ const UserDetails = () => {
             setUser(res.data)
         }).catch(e => console.log(e));
     }, [])
-
-    const [isActived, setIsActived] = useState(false);
-    const interactionAction = () => {
-        setIsActived(current => !current);
-    }
 
     const params = useParams();
     const userId = params.userId;
@@ -196,17 +180,17 @@ const UserDetails = () => {
 
     const followUser = async (userId: string | undefined) => {
         try {
-            const response = await axios.post(`/${userId}`)
+            await axios.post(`/${userId}`)
         } catch (e) {
-            console.log('')
+            console.log(e)
         }
     }
 
     const unfollowUser = async (userId: string | undefined) => {
         try {
-            const response = await axios.delete(`/${userId}`)
+            await axios.delete(`/${userId}`)
         } catch (e) {
-            console.log('')
+            console.log(e)
         }
     }
 

@@ -1,6 +1,4 @@
-import axios from "axios"
 import { useState, useEffect, useRef } from "react"
-import { Waypoint } from "react-waypoint"
 import { Link, useNavigate } from "react-router-dom"
 import avatar1 from '../assets/avatar/583.jpg'
 import avatar2 from '../assets/avatar/518.jpg'
