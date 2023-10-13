@@ -9,23 +9,6 @@ import './styles/sidebar.css'
 import './styles/userdetails.css'
 import RightBottomActionButton from "../components/RightBottomActionButton";
 
-type UserType = {
-    username: string
-    fullname: string
-    image: string
-}
-
-type VideoType = {
-    username: string
-    fullname: string
-    description: string
-    reactAmount: number
-    commentAmount: number
-    savedAmount: number
-    shareAmount: number
-    avatar: string
-}
-
 const followUser = async (userId: string | undefined) => {
     try {
         await axios.post(`/${userId}`)
@@ -45,26 +28,26 @@ const unfollowUser = async (userId: string | undefined) => {
 const UserFollowDetails = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
-    const [userList, setUserList] = useState<Array<UserType>>([])
+    const [videoList, setVideoList] = useState([])
     const toggleContent = () => { setViewMore(!viewMore) };
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
-    const fetchUsers = async () => {
+    const fetchVideos = async () => {
         try {
-            const res = await api.get('users');
-            setUserList(res.data)
+            const res = await videoApis.get('videos');
+            setVideoList(res.data)
         } catch (e) {
             if (e.response && e.response.status == 429) {
                 const retryDelay = 500;
-                setTimeout(() => fetchUsers(), retryDelay)
+                setTimeout(() => fetchVideos(), retryDelay)
             } else {
                 console.log("fail")
             }
         }
     }
     useEffect(() => {
-        fetchUsers();
+        fetchVideos();
     })
     const [user, setUser] = useState();
 
@@ -161,10 +144,10 @@ const UserFollowDetails = () => {
                     <div className='userList'>
                         <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
-                                userList.slice(0, 10).map((user, index) =>
+                                videoList.slice(0, 10).map((user, index) =>
                                     <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>
@@ -369,15 +352,15 @@ const UserFollowDetails = () => {
                     <div className='userContainer'>
                         <div className='userVideo'>
                             {
-                                userList.map((user, index) =>
+                                videoList.map((user, index) =>
                                     <>
                                         <div className='userInfo' key={index}>
                                             <Link to={`/userFollow/${user.id}`}>
-                                                <img src={user?.imageMain} className='imgUser' />
+                                                <img src={user?.imgVideo} className='imgUser' />
                                             </Link>
                                             <div className='userFollow'>
                                                 <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
-                                                    <i className="fa-solid fa-play fa-fade"></i><span className="detailedViewers">{user?.viewers}</span>
+                                                    <i className="fa-solid fa-play fa-fade"></i><span className="detailedViewers">{user?.savedAmount}</span>
                                                 </Link>
                                             </div>
                                             <div className='video__desc'>{user?.description}</div>

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import LoginModal from "../components/LoginModal";
-import { videoApis } from "../axios-instance";
+import { api, videoApis } from "../axios-instance";
 import './styles/sidebar.css'
 import './styles/userdetails.css'
 import RightBottomActionButton from "../components/RightBottomActionButton";
@@ -13,21 +13,6 @@ type UserType = {
     username: string
     fullname: string
     image: string
-}
-
-type VideoType = {
-    username: string
-    fullname: string
-    description: string
-    reactAmount: number
-    commentAmount: number
-    savedAmount: number
-    shareAmount: number
-    avatar: string
-}
-
-async function getVideos() {
-    await videoApis.get(`/videos`)
 }
 
 const UserDetails = () => {
@@ -40,9 +25,6 @@ const UserDetails = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
-    useEffect(() => {
-        getVideos();
-    }, [])
     const fetchUsers = async () => {
         try {
             const res = await api.get('users');
@@ -51,8 +33,6 @@ const UserDetails = () => {
             if (e.response && e.response.status == 429) {
                 const retryDelay = 500;
                 setTimeout(() => fetchUsers(), retryDelay)
-            } else {
-                console.log("fail")
             }
         }
     }

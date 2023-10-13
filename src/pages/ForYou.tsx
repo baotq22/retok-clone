@@ -3,10 +3,9 @@ import './styles/sidebar.css'
 import NavBar from "../components/navbar"
 import effectBtn from '../assets/d8db931296c3e5645b1e.png'
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModal from "../components/LoginModal";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import LoginInputModal from "../components/LoginInputModal";
 import VideoList from "../components/VideoList";
 import RightBottomActionButton from "../components/RightBottomActionButton";

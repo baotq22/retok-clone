@@ -846,7 +846,7 @@ const VideoList = ({ userId }) => {
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
-                            <Link to={`videoDetails/1`} >
+                            <Link to={`videoDetails/1`}>
                                 <AutoPlayVideo1 />
                             </Link>
                             {content1}

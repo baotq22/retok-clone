@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import images from '../../assets/309431756_799936498003792_6138006382387941828_n.jpg'
 import CommentForm from "./CommentForm";
 

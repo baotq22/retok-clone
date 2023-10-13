@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import './styles/videos.css'
 import './styles/sidebar.css'
 import NavBar from "../components/navbar"
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModal from "../components/LoginModal";
 import '../library/fontawesome/css/all.min.css'
 import avatar1 from '../assets/avatar/583.jpg'
@@ -19,8 +18,7 @@ import Video5 from '../assets/videos/5.mp4'
 import { useSelector } from "react-redux";
 import LoginInputModal from "../components/LoginInputModal";
 import RightBottomActionButton from "../components/RightBottomActionButton";
-import axios from "axios";
-import { api, videoApis } from "../axios-instance";
+import { videoApis } from "../axios-instance";
 
 type UserType = {
     username: string
@@ -28,7 +26,7 @@ type UserType = {
     image: string
     imageMain: string
 }
-   
+
 // video 1
 const getReactionStatus1 = (userId) => {
     const storedStatus1 = localStorage.getItem(`video-reaction1-fl-${userId}`);
@@ -44,9 +42,6 @@ const getFollowStatus1 = (userId) => {
     return storedStatus1 === 'followed1';
 }
 
-const setFollowStatus1 = (userId, isFollowed1) => {
-    localStorage.setItem(`video-follow1-${userId}`, isFollowed1 ? 'followed1' : 'not-followed1')
-}
 
 // video 2
 const getReactionStatus2 = (userId) => {
@@ -63,9 +58,6 @@ const getFollowStatus2 = (userId) => {
     return storedStatus2 === 'followed2';
 }
 
-const setFollowStatus2 = (userId, isFollowed2) => {
-    localStorage.setItem(`video-follow2-${userId}`, isFollowed2 ? 'followed2' : 'not-followed2')
-}
 
 // video 3
 const getReactionStatus3 = (userId) => {
@@ -82,9 +74,6 @@ const getFollowStatus3 = (userId) => {
     return storedStatus3 === 'followed3';
 }
 
-const setFollowStatus3 = (userId, isFollowed3) => {
-    localStorage.setItem(`video-follow3-${userId}`, isFollowed3 ? 'followed3' : 'not-followed3')
-}
 
 // video 4
 const getReactionStatus4 = (userId) => {
@@ -101,9 +90,6 @@ const getFollowStatus4 = (userId) => {
     return storedStatus4 === 'followed4';
 }
 
-const setFollowStatus4 = (userId, isFollowed4) => {
-    localStorage.setItem(`video-follow4-${userId}`, isFollowed4 ? 'followed4' : 'not-followed4')
-}
 
 // video 5
 const getReactionStatus5 = (userId) => {
@@ -120,9 +106,6 @@ const getFollowStatus5 = (userId) => {
     return storedStatus5 === 'followed5';
 }
 
-const setFollowStatus5 = (userId, isFollowed5) => {
-    localStorage.setItem(`video-follow5-${userId}`, isFollowed5 ? 'followed5' : 'not-followed5')
-}
 
 
 
@@ -518,7 +501,7 @@ function Video({ userId }) {
 const ForYou = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
-    const [userList, setUserList] = useState<Array<UserType>>([])
+    const [videoList, setVideoList] = useState<Array<UserType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
@@ -528,23 +511,22 @@ const ForYou = () => {
     const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
     const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
     const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
-    const fetchUsers = async () => {
+    const fetchVideos = async () => {
         try {
-            const res = await api.get('users');
-            setUserList(res.data)
+            const res = await videoApis.get('videos');
+            setVideoList(res.data)
         } catch (e) {
             if (e.response && e.response.status == 429) {
                 const retryDelay = 500;
-                setTimeout(() => fetchUsers(), retryDelay)
+                setTimeout(() => fetchVideos(), retryDelay)
             } else {
                 console.log("fail")
             }
         }
     }
     useEffect(() => {
-        fetchUsers();
-    })
-
+        fetchVideos();
+    }, [])
     const userLogin = useSelector(state => state.userLogin)
     const userLogged = !userLogin?.username;
 
@@ -632,7 +614,7 @@ const ForYou = () => {
                     <div className='userList'>
                         <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
-                                userList.slice(0, 10).map((user, index) =>
+                                videoList.slice(0, 10).map((user, index) =>
                                     <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
                                             <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
@@ -661,15 +643,15 @@ const ForYou = () => {
                     <div id='userNotLogin'>
                         <div className='userContainer'>
                             <div className='userVideo'>
-                                {
-                                    userList.map((user, index) =>
+                            {
+                                    videoList.map((user, index) =>
                                         <div className='userInfo' key={index}>
                                             <Link to={`/userFollow/${user.id}`}>
-                                                <img src={user?.imageMain} className='imgUser' />
+                                                <img src={user?.imgVideo} className='imgUser' />
                                             </Link>
                                             <div className='userFollow'>
                                                 <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
-                                                    <img src={user?.image} className='avatarUser' />
+                                                    <img src={user?.avatar} className='avatarUser' />
                                                     <h3 className='user'><b>{user?.username}</b></h3>
                                                     <h4 className='user'>{user?.fullname}</h4>
                                                 </Link>
