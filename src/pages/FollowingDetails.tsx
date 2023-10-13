@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import LoginModal from "../components/LoginModal";
-import { api } from "../axios-instance";
+import { api, videoApis } from "../axios-instance";
 import './styles/sidebar.css'
 import './styles/userdetails.css'
 import RightBottomActionButton from "../components/RightBottomActionButton";
@@ -26,21 +26,17 @@ type VideoType = {
     avatar: string
 }
 
-export const followUser = async () => {
-    const params = useParams();
-    const userId = params.userId;
+const followUser = async (userId: string | undefined) => {
     try {
-        await axios.post(`api/follow/${userId}`)
+        await axios.post(`/${userId}`)
     } catch (e) {
         console.log(e)
     }
 }
 
-export const unfollowUser = async () => {
-    const params = useParams();
-    const userId = params.userId;
+const unfollowUser = async (userId: string | undefined) => {
     try {
-        await axios.delete(`api/follow/${userId}`)
+        await axios.delete(`/${userId}`)
     } catch (e) {
         console.log(e)
     }
@@ -50,14 +46,22 @@ const UserFollowDetails = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
     const [userList, setUserList] = useState<Array<UserType>>([])
-    const [videoList, setVideoList] = useState<Array<VideoType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
     const fetchUsers = async () => {
-        const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
-        setUserList(res.data)
+        try {
+            const res = await api.get('users');
+            setUserList(res.data)
+        } catch (e) {
+            if (e.response && e.response.status == 429) {
+                const retryDelay = 500;
+                setTimeout(() => fetchUsers(), retryDelay)
+            } else {
+                console.log("fail")
+            }
+        }
     }
     useEffect(() => {
         fetchUsers();
@@ -157,10 +161,10 @@ const UserFollowDetails = () => {
                     <div className='userList'>
                         <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
-                                videoList.slice(0, 10).map((user, index) =>
+                                userList.slice(0, 10).map((user, index) =>
                                     <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>

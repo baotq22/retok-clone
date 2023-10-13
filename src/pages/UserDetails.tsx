@@ -34,7 +34,6 @@ const UserDetails = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
     const [userList, setUserList] = useState<Array<UserType>>([])
-    const [videoList, setVideoList] = useState<Array<VideoType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
 
     // Modal
@@ -45,16 +44,20 @@ const UserDetails = () => {
         getVideos();
     }, [])
     const fetchUsers = async () => {
-        const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
-        setUserList(res.data)
-    }
-    const fetchVideos = async () => {
-        const res = await axios.get(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos`);
-        setVideoList(res.data)
+        try {
+            const res = await api.get('users');
+            setUserList(res.data)
+        } catch (e) {
+            if (e.response && e.response.status == 429) {
+                const retryDelay = 500;
+                setTimeout(() => fetchUsers(), retryDelay)
+            } else {
+                console.log("fail")
+            }
+        }
     }
     useEffect(() => {
         fetchUsers();
-        fetchVideos();
     })
 
     const [user, setUser] = useState();
@@ -154,10 +157,10 @@ const UserDetails = () => {
                     <div className='userList'>
                         <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
-                                videoList.slice(0, 10).map((user, index) =>
+                                userList.slice(0, 10).map((user, index) =>
                                     <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>

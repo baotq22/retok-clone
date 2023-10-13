@@ -1,5 +1,4 @@
 import '../library/fontawesome/css/all.min.css';
-import React from 'react';
 import './styles/loginmodal.css'
 
 const LoginModal = ({ isOpen, onClose, children }) => {

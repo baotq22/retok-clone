@@ -10,6 +10,7 @@ import axios from "axios";
 import LoginInputModal from "../components/LoginInputModal";
 import VideoList from "../components/VideoList";
 import RightBottomActionButton from "../components/RightBottomActionButton";
+import { videoApis } from "../axios-instance";
 
 type VideoType = {
     username: string
@@ -37,14 +38,23 @@ const ForYou = ({ items, initialVisibleItems }) => {
     const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
     const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
     const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
-    
+
     const fetchVideos = async () => {
-        const res = await axios.get(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos`);
-        setVideoList(res.data)
+        try {
+            const res = await videoApis.get('videos');
+            setVideoList(res.data)
+        } catch (e) {
+            if (e.response && e.response.status == 429) {
+                const retryDelay = 500;
+                setTimeout(() => fetchVideos(), retryDelay)
+            } else {
+                console.log("fail")
+            }
+        }
     }
     useEffect(() => {
         fetchVideos();
-    })
+    }, [])
 
     const userLogin = useSelector(state => state.userLogin)
     const user_id = userLogin?.id;

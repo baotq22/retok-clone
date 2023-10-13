@@ -19,6 +19,8 @@ import Video5 from '../assets/videos/5.mp4'
 import { useSelector } from "react-redux";
 import LoginInputModal from "../components/LoginInputModal";
 import RightBottomActionButton from "../components/RightBottomActionButton";
+import axios from "axios";
+import { api, videoApis } from "../axios-instance";
 
 type UserType = {
     username: string
@@ -26,18 +28,7 @@ type UserType = {
     image: string
     imageMain: string
 }
-
-type VideoType = {
-    username: string
-    fullname: string
-    description: string
-    reactAmount: number
-    commentAmount: number
-    savedAmount: number
-    shareAmount: number
-    avatar: string
-}
-
+   
 // video 1
 const getReactionStatus1 = (userId) => {
     const storedStatus1 = localStorage.getItem(`video-reaction1-fl-${userId}`);
@@ -150,16 +141,6 @@ function Video({ userId }) {
         }
     };
 
-    const handleFollowClick1 = () => {
-        if (isFollowed1) {
-            setIsFollowed1(false);
-            setFollowStatus1(userId, false);
-        } else {
-            setIsFollowed1(true);
-            setFollowStatus1(userId, true);
-        }
-    }
-
     useEffect(() => {
         setIsLiked1(getReactionStatus1(userId));
         setIsFollowed1(getFollowStatus1(userId));
@@ -178,16 +159,6 @@ function Video({ userId }) {
             setReactionStatus2(userId, true);
         }
     };
-
-    const handleFollowClick2 = () => {
-        if (isFollowed2) {
-            setIsFollowed2(false);
-            setFollowStatus2(userId, false);
-        } else {
-            setIsFollowed2(true);
-            setFollowStatus2(userId, true);
-        }
-    }
 
     useEffect(() => {
         setIsLiked2(getReactionStatus2(userId));
@@ -208,16 +179,6 @@ function Video({ userId }) {
         }
     };
 
-    const handleFollowClick3 = () => {
-        if (isFollowed3) {
-            setIsFollowed3(false);
-            setFollowStatus3(userId, false);
-        } else {
-            setIsFollowed3(true);
-            setFollowStatus3(userId, true);
-        }
-    }
-
     useEffect(() => {
         setIsLiked3(getReactionStatus3(userId));
         setIsFollowed3(getFollowStatus3(userId));
@@ -237,16 +198,6 @@ function Video({ userId }) {
         }
     };
 
-    const handleFollowClick4 = () => {
-        if (isFollowed4) {
-            setIsFollowed4(false);
-            setFollowStatus4(userId, false);
-        } else {
-            setIsFollowed4(true);
-            setFollowStatus4(userId, true);
-        }
-    }
-
     useEffect(() => {
         setIsLiked4(getReactionStatus4(userId));
         setIsFollowed4(getFollowStatus4(userId));
@@ -265,16 +216,6 @@ function Video({ userId }) {
             setReactionStatus5(userId, true);
         }
     };
-
-    const handleFollowClick5 = () => {
-        if (isFollowed5) {
-            setIsFollowed5(false);
-            setFollowStatus5(userId, false);
-        } else {
-            setIsFollowed5(true);
-            setFollowStatus5(userId, true);
-        }
-    }
 
     useEffect(() => {
         setIsLiked5(getReactionStatus5(userId));
@@ -578,7 +519,6 @@ const ForYou = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
     const [userList, setUserList] = useState<Array<UserType>>([])
-    const [videoList, setVideoList] = useState<Array<VideoType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
@@ -588,17 +528,21 @@ const ForYou = () => {
     const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
     const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
     const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
-    useEffect(() => {
-        const fetchUsers = async () => {
-            const res = await axios.get(`https://64f71db49d77540849531dc0.mockapi.io/users`);
+    const fetchUsers = async () => {
+        try {
+            const res = await api.get('users');
             setUserList(res.data)
+        } catch (e) {
+            if (e.response && e.response.status == 429) {
+                const retryDelay = 500;
+                setTimeout(() => fetchUsers(), retryDelay)
+            } else {
+                console.log("fail")
+            }
         }
-        const fetchVideos = async () => {
-            const res = await axios.get(`https://650d3e71a8b42265ec2be0f7.mockapi.io/videos`);
-            setVideoList(res.data)
-        }
+    }
+    useEffect(() => {
         fetchUsers();
-        fetchVideos();
     })
 
     const userLogin = useSelector(state => state.userLogin)
@@ -688,10 +632,10 @@ const ForYou = () => {
                     <div className='userList'>
                         <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
-                                videoList.slice(0, 10).map((user, index) =>
+                                userList.slice(0, 10).map((user, index) =>
                                     <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>
