@@ -606,20 +606,6 @@ const VideoListFollowing = ({ userId }) => {
         setIsFollowed5(getReactionStatus5(userId));
     }, [userId])
 
-    const followBtnStyleActive = {
-        border: '1px solid #ccc',
-        backgroundColor: 'transparent',
-        fontWeight: '900',
-        color: '#ccc',
-    }
-
-    const followBtnStyleUnactive = {
-        border: '1px solid #f22459',
-        backgroundColor: 'transparent',
-        fontWeight: '900',
-        color: '#f22459',
-    }
-
     return (
         <>
             <div className='videos__container'>
@@ -640,7 +626,7 @@ const VideoListFollowing = ({ userId }) => {
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
-                            <Link to={`videoDetails/1`} >
+                            <Link to={`/videoDetails/1`}>
                                 <AutoPlayVideo1 />
                             </Link>
                             <div className='videoAction'>

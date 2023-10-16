@@ -37,6 +37,7 @@ const VideoDetails1 = () => {
     }
     useEffect(() => {
         const keyDownHandler = event => {
+            console.log(event.key)
             if (event.key === 'Escape') {
                 escapeBack();
             }
@@ -51,12 +52,12 @@ const VideoDetails1 = () => {
         }
 
         document.addEventListener('keydown', keyDownHandler);
-        
+
         return () => {
             document.removeEventListener('keydown', keyDownHandler);
         }
     }, [])
-    
+
     const navigate = useNavigate();
     const storedIdLogin = localStorage.getItem('id');
 
@@ -92,33 +93,10 @@ const VideoDetails1 = () => {
         <div id='videoDetailsContainer'>
             <div className="videoInfo">
                 <div>
-                    <button style={{
-                        left: '0',
-                        position: 'absolute',
-                        margin: '15px 0 0 15px',
-                        width: '50px',
-                        height: '50px',
-                        borderRadius: '50%',
-                        border: '0',
-                        fontSize: '30px',
-                        cursor: 'pointer'
-                    }}
-                        onClick={() => navigate(`/`)}><i className="fa-solid fa-arrow-left"></i></button>
+                    <button className='btnClose' onClick={() => navigate(`/`)}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
                 <div>
-                    <button style={{
-                        right: '35%',
-                        bottom: '40%',
-                        position: 'absolute',
-                        margin: '15px 0 0 15px',
-                        width: '50px',
-                        height: '50px',
-                        borderRadius: '50%',
-                        border: '0',
-                        fontSize: '30px',
-                        cursor: 'pointer'
-                    }}
-                        onClick={() => navigate(`/videoDetails/2`)}><i className="fa-solid fa-chevron-down"></i></button>
+                    <button onClick={() => navigate(`/videoDetails/2`)} className='btnDown'><i className="fa-solid fa-chevron-down"></i></button>
                 </div>
                 <video loop controls autoPlay className='videoDetailsPage'>
                     <source src={Video1} type='video/webm' />
@@ -129,7 +107,7 @@ const VideoDetails1 = () => {
                     <div className='info-container'>
                         <div>
                             {/* <Link to={`/users/${userId}`}> */}
-                                <img src={avatar1} className='avatarDetails' />
+                            <img src={avatar1} className='avatarDetails' />
                             {/* </Link> */}
                         </div>
                         <div className='infoContainer'>
@@ -143,11 +121,12 @@ const VideoDetails1 = () => {
                                     borderRadius: '5px',
                                     marginRight: '10px',
                                     fontFamily: 'inherit',
-                                    cursor: 'pointer'
+                                    cursor: 'pointer',
+                                    color: '#fff',
                                 }} onClick={handleFollowClick1}>{isFollowed1 ? 'Following' : 'Follow'}</button>
                             {/* <Link to={`/users/${userId}`} style={{ textDecoration: '0', color: '#fff' }}> */}
-                                <span><b>Andre57</b></span>
-                                <div>Manuel Rogahn<span style={{ margin: '0px 4px' }}> · </span>  <span>1h ago</span></div>
+                            <span><b>Andre57</b></span>
+                            <div>Manuel Rogahn<span style={{ margin: '0px 4px' }}> · </span>  <span>1h ago</span></div>
                             {/* </Link> */}
                             <div className='descVid'>The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients</div>
                         </div>
@@ -211,7 +190,7 @@ const VideoDetails1 = () => {
                         </div>
                     </div>
                     <h2>Comments (25)</h2>
-                    <Comments currentUserId={storedIdLogin}/>
+                    <Comments currentUserId={storedIdLogin} />
                 </div>
             </div>
         </div>

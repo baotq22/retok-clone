@@ -132,8 +132,8 @@ export const NavBar = () => {
                     </ul>
                     <ShortcutModal isShortcutOpen={isShortcutModalOpen} onShortcutClose={closeShortcutModal} />
                 </span>
-                <span className="iconNav"><i className="fa-regular fa-message iconAction"></i></span>
-                <span className="iconNav iconPlane"><i className="fa-regular fa-paper-plane iconAction"></i></span>
+                <span className="iconNav" style={{cursor: 'pointer'}}><i className="fa-regular fa-message iconAction"></i></span>
+                <span className="iconNav iconPlane" style={{cursor: 'pointer'}}><i className="fa-regular fa-paper-plane iconAction"></i></span>
             </>
     }
     const dispatch = useDispatch();

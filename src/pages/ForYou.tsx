@@ -25,8 +25,10 @@ type VideoType = {
 const ForYou = ({ items, initialVisibleItems }) => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
+    const [viewMoreUser, setViewMoreUser] = useState(false);
     const [videoList, setVideoList] = useState<Array<VideoType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
+    const toogleUser = () => { setViewMoreUser(!viewMoreUser) };
 
     // Modal
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -154,6 +156,26 @@ const ForYou = ({ items, initialVisibleItems }) => {
                                 )
                             }
                         </ul>
+                        {viewMoreUser && (
+                            <ul className='userItem' style={{ cursor: 'pointer' }}>
+                                {
+                                    videoList.slice(11, 20).map((user, index) =>
+                                        <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
+                                            <div className='userAvatar'>
+                                                <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
+                                                <span className='infoUser'>
+                                                    <p className='nameAll'><b>{user?.username}</b></p>
+                                                    <p className='nameAll'>{user?.fullname}</p>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        )}
+                        <button className="moreUser" style={{ display: viewMoreUser ? 'none' : '' }} onClick={toogleUser}>
+                            {viewMoreUser ? '' : 'See More'}
+                        </button>
                     </div>
                     <div className="example">
                         <p className="example-1"></p>

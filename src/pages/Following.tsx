@@ -225,7 +225,7 @@ function Video({ userId }) {
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
-                            <Link to={`videoDetails/1`} >
+                            <Link to={`/videoDetails/1`}>
                                 <video autoPlay muted controls className='videos' src={Video1} />
                             </Link>
                             <div className='videoAction'>
@@ -501,8 +501,10 @@ function Video({ userId }) {
 const ForYou = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
-    const [videoList, setVideoList] = useState<Array<UserType>>([])
+    const [viewMoreUser, setViewMoreUser] = useState(false);
+    const [videoList, setVideoList] = useState<Array<VideoType>>([])
     const toggleContent = () => { setViewMore(!viewMore) };
+    const toogleUser = () => { setViewMoreUser(!viewMoreUser) };
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
@@ -617,7 +619,7 @@ const ForYou = () => {
                                 videoList.slice(0, 10).map((user, index) =>
                                     <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>
@@ -627,6 +629,26 @@ const ForYou = () => {
                                 )
                             }
                         </ul>
+                        {viewMoreUser && (
+                            <ul className='userItem' style={{ cursor: 'pointer' }}>
+                                {
+                                    videoList.slice(11, 20).map((user, index) =>
+                                        <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
+                                            <div className='userAvatar'>
+                                                <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
+                                                <span className='infoUser'>
+                                                    <p className='nameAll'><b>{user?.username}</b></p>
+                                                    <p className='nameAll'>{user?.fullname}</p>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        )}
+                        <button className="moreUser" style={{ display: viewMoreUser ? 'none' : '' }} onClick={toogleUser}>
+                            {viewMoreUser ? '' : 'See More'}
+                        </button>
                     </div>
                     <div className="example">
                         <p className="example-1"></p>
@@ -643,7 +665,7 @@ const ForYou = () => {
                     <div id='userNotLogin'>
                         <div className='userContainer'>
                             <div className='userVideo'>
-                            {
+                                {
                                     videoList.map((user, index) =>
                                         <div className='userInfo' key={index}>
                                             <Link to={`/userFollow/${user.id}`}>

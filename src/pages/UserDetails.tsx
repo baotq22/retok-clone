@@ -9,35 +9,33 @@ import './styles/sidebar.css'
 import './styles/userdetails.css'
 import RightBottomActionButton from "../components/RightBottomActionButton";
 
-type UserType = {
-    username: string
-    fullname: string
-    image: string
-}
-
 const UserDetails = () => {
     const navigate = useNavigate();
     const [viewMore, setViewMore] = useState(false);
-    const [userList, setUserList] = useState<Array<UserType>>([])
+    const [viewMoreUser, setViewMoreUser] = useState(false);
+    const [videoList, setVideoList] = useState([]);
     const toggleContent = () => { setViewMore(!viewMore) };
+    const toogleUser = () => { setViewMoreUser(!viewMoreUser) };
 
     // Modal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => { setIsModalOpen(true); }
     const closeModal = () => { setIsModalOpen(false); }
-    const fetchUsers = async () => {
+    const fetchVideos = async () => {
         try {
-            const res = await api.get('users');
-            setUserList(res.data)
+            const res = await videoApis.get('videos');
+            setVideoList(res.data)
         } catch (e) {
             if (e.response && e.response.status == 429) {
                 const retryDelay = 500;
-                setTimeout(() => fetchUsers(), retryDelay)
+                setTimeout(() => fetchVideos(), retryDelay)
+            } else {
+                console.log("fail")
             }
         }
     }
     useEffect(() => {
-        fetchUsers();
+        fetchVideos();
     })
 
     const [user, setUser] = useState();
@@ -137,10 +135,10 @@ const UserDetails = () => {
                     <div className='userList'>
                         <ul className='userItem' style={{ cursor: 'pointer' }}>
                             {
-                                userList.slice(0, 10).map((user, index) =>
+                                videoList.slice(0, 10).map((user, index) =>
                                     <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
                                         <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.image} className='avatarList' /></span>
+                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
                                             <span className='infoUser'>
                                                 <p className='nameAll'><b>{user?.username}</b></p>
                                                 <p className='nameAll'>{user?.fullname}</p>
@@ -150,6 +148,26 @@ const UserDetails = () => {
                                 )
                             }
                         </ul>
+                        {viewMoreUser && (
+                            <ul className='userItem' style={{ cursor: 'pointer' }}>
+                                {
+                                    videoList.slice(11, 20).map((user, index) =>
+                                        <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
+                                            <div className='userAvatar'>
+                                                <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
+                                                <span className='infoUser'>
+                                                    <p className='nameAll'><b>{user?.username}</b></p>
+                                                    <p className='nameAll'>{user?.fullname}</p>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        )}
+                        <button className="moreUser" style={{ display: viewMoreUser ? 'none' : '' }} onClick={toogleUser}>
+                            {viewMoreUser ? '' : 'See More'}
+                        </button>
                     </div>
                     <div className="example">
                         <p className="example-1"></p>
@@ -344,40 +362,6 @@ const UserDetails = () => {
                                 <div className='detailed__username'>
                                     <p className='detailUsername'><b>{user?.username}</b></p>
                                     <p className='detailFullname'>{user?.fullname}</p>
-                                    {/* <div className='button__action'>
-                                    <button className='followBtn' onClick={interactionAction}
-                                        style={{
-                                            marginTop: '-20px',
-                                            backgroundColor: isActived ? '#252525' : '#f22459',
-                                            borderRadius: '3px',
-                                            marginRight: '10px',
-                                            border: isActived ? '1px solid #f22459' : '1px solid transparent',
-                                            padding: '0.6em 0',
-                                            fontSize: '1em',
-                                            fontWeight: '500',
-                                            fontFamily: 'inherit',
-                                            color: isActived ? '#f22459' : '#fff',
-                                            cursor: 'pointer',
-                                            width: isActived ? '150px' : '210px',
-                                            transition: 'border-color 0.25s'
-                                        }}>{isActived ? 'Messages' : 'Follow'}</button>
-                                    {isActived ? <button style={{
-                                        marginTop: '-20px',
-                                        backgroundColor: '#252525',
-                                        borderRadius: '3px',
-                                        border: 0,
-                                        padding: '0.6em 0',
-                                        fontSize: '1em',
-                                        fontWeight: '500',
-                                        fontFamily: 'inherit',
-                                        cursor: 'pointer',
-                                        width: '50px',
-                                        transition: 'border-color 0.25s'
-                                    }}><i className="fa-solid fa-user-check"></i></button> : <></>}
-                                    <button onClick={handleFollowClick}>
-                                        {isFollowing ? 'Unfollow' : 'Follow'}
-                                    </button>
-                                </div> */}
                                     {followandEditBtn}
                                 </div>
                             </div>
@@ -397,15 +381,15 @@ const UserDetails = () => {
                     <div className='userContainer'>
                         <div className='userVideo'>
                             {
-                                userList.map((user, index) =>
+                                videoList.map((user, index) =>
                                     <>
                                         <div className='userInfo' key={index}>
                                             <Link to={`/userFollow/${user.id}`}>
-                                                <img src={user?.imageMain} className='imgUser' />
+                                                <img src={user?.imgVideo} className='imgUser' />
                                             </Link>
                                             <div className='userFollow'>
                                                 <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
-                                                    <i className="fa-solid fa-play fa-fade"></i><span className="detailedViewers">{user?.viewers}</span>
+                                                    <i className="fa-solid fa-play fa-fade"></i><span className="detailedViewers">{user?.savedAmount}</span>
                                                 </Link>
                                             </div>
                                             <div className='video__desc'>{user?.description}</div>

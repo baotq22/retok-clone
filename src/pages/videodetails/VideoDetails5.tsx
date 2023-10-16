@@ -25,7 +25,7 @@ const setFollowStatus5 = (isFollowed5) => {
 }
 
 const VideoDetails5 = () => {
-    
+
     const escapeBack = () => {
         navigate(`/`)
     }
@@ -45,19 +45,19 @@ const VideoDetails5 = () => {
             if (event.key === 'ArrowUp') {
                 previousVideo();
             }
-            
+
             if (event.key === 'L' || event.key === 'l') {
                 likeVideoByKey();
             }
         }
 
         document.addEventListener('keydown', keyDownHandler);
-        
+
         return () => {
             document.removeEventListener('keydown', keyDownHandler);
         }
     }, [])
-    
+
     const navigate = useNavigate();
     const storedIdLogin = localStorage.getItem('id');
 
@@ -93,33 +93,12 @@ const VideoDetails5 = () => {
         <div id='videoDetailsContainer'>
             <div className="videoInfo">
                 <div>
-                    <button style={{
-                        left: '0',
-                        position: 'absolute',
-                        margin: '15px 0 0 15px',
-                        width: '50px',
-                        height: '50px',
-                        borderRadius: '50%',
-                        border: '0',
-                        fontSize: '30px',
-                        cursor: 'pointer'
-                    }}
-                        onClick={() => navigate(`/`)}><i className="fa-solid fa-arrow-left"></i></button>
+                    <button onClick={() => navigate(`/`)} className='btnClose'><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
                 <div>
-                    <button style={{
-                        right: '35%',
-                        bottom: '50%',
-                        position: 'absolute',
-                        margin: '15px 0 0 15px',
-                        width: '50px',
-                        height: '50px',
-                        borderRadius: '50%',
-                        border: '0',
-                        fontSize: '30px',
-                        cursor: 'pointer'
-                    }}
-                        onClick={() => navigate(`/videoDetails/4`)}><i className="fa-solid fa-chevron-up"></i></button>
+                <div>
+                    <button onClick={() => navigate(`/videoDetails/4`)} className='btnUp'><i className="fa-solid fa-chevron-up"></i></button>
+                </div>
                 </div>
                 <video loop controls autoPlay className='videoDetailsPage'>
                     <source src={Video5} type='video/webm' />

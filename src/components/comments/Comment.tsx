@@ -22,7 +22,7 @@ const Comment = ({ comment, replies, currentUserId, deleteComment, activeCmt, se
                     <img src={images} className='avatarComment' />
                 </div>
                 <div className='infoComment'>
-                    <span style={{ fontSize: '20px' }}><b>{comment.username}</b></span>
+                    <span className='userCmt'><b>{comment.username}</b></span>
                     <div className='mainComment'>{comment.body}</div>
                     <div className='reaction_comment'>
                         <button className='follow_btn' onClick={cmtReactionAction}>{isReactedCmt ? <i className="fa-solid fa-heart" style={{ fontSize: '17px', color: '#fe22459' }}></i> : <i className="fa-solid fa-heart" style={{ fontSize: '17px' }}></i>}</button>

@@ -326,6 +326,19 @@
     white-space: nowrap;
 }
 
+#foryouPage #nav .userList .moreUser,
+#followingPage #nav .userList .moreUser,
+#userDetailsPage #nav .userList .moreUser {
+    margin-left: 10px;
+    float: left;
+    background-color: transparent;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+    color: #fe2c55;
+    font-weight: 700;
+}
+
 @media (prefers-color-scheme: light) {
 
     #foryouPage #nav,
