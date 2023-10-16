@@ -3,14 +3,14 @@ import logoLight from '../assets/logo_light.png'
 import SearchBar from "./SearchBar"
 import '../styles/css/navbar.css'
 import '../library/fontawesome/css/all.min.css'
-import LoginModal from "./LoginModal"
+import LoginModal from "./Modal/LoginModal"
 import { memo, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import images from '../assets/309431756_799936498003792_6138006382387941828_n.jpg'
 import { logout } from "../slices/userLoginSlice"
-import LoginInputModal from "./LoginInputModal"
-import ShortcutModal from "./ShortcutModal"
+import LoginInputModal from "./Modal/LoginInputModal"
+import ShortcutModal from "./Modal/ShortcutModal"
 
 export const NavBar = () => {
     const navigate = useNavigate();

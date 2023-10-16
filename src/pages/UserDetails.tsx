@@ -1,26 +1,17 @@
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import Navbar from "../components/navbar";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import LoginModal from "../components/LoginModal";
 import { videoApis } from "../axios-instance";
 import '../styles/css/sidebar.css'
 import '../styles/css/userdetails.css'
 import RightBottomActionButton from "../components/RightBottomActionButton";
+import AboutSidebar from "../components/Sidebar/AboutSidebar";
+import FollowingSideBar from "../components/Sidebar/FollowingSideBar";
 
 const UserDetails = () => {
-    const navigate = useNavigate();
-    const [viewMore, setViewMore] = useState(false);
-    const [viewMoreUser, setViewMoreUser] = useState(false);
     const [videoList, setVideoList] = useState([]);
-    const toggleContent = () => { setViewMore(!viewMore) };
-    const toogleUser = () => { setViewMoreUser(!viewMoreUser) };
-
-    // Modal
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const openModal = () => { setIsModalOpen(true); }
-    const closeModal = () => { setIsModalOpen(false); }
     const fetchVideos = async () => {
         try {
             const res = await videoApis.get('videos');
@@ -52,129 +43,6 @@ const UserDetails = () => {
 
     const userLogin = useSelector(state => state.userLogin)
     const userFollowId = userLogin?.id == params.userId;
-    const userLogged = !userLogin?.username;
-    let content;
-    if (userLogged) {
-        content =
-            <>
-                <div>
-                    <h3 className='titleNotLogin'>Log in to follow creators, like videos, and view comments.</h3>
-                    <button id='btn__signin' onClick={openModal}>Log in</button>
-                    <div className="example">
-                        <p className="example-1"></p>
-                    </div>
-                    <LoginModal isOpen={isModalOpen} onClose={closeModal}>
-                        <h2 style={{ margin: '60px 0 30px 0' }}>Log in to Retok</h2>
-                        <div className="login_methods">
-                            <a href="#" className='loginMethods'>
-                                <div className='loginMethod'>
-                                    <i className="fa-solid fa-qrcode" style={{ float: 'left', marginTop: '5px' }}></i>
-                                    <span>Scan QR Code</span>
-                                </div>
-                            </a>
-                            <a className='loginMethods' onClick={() => navigate(`/login`)}>
-                                <div className='loginMethod'>
-                                    <i className="fa-regular fa-user" style={{ float: 'left', marginTop: '5px' }}></i>
-                                    <span>Use phone / email / username</span>
-                                </div>
-                            </a>
-                            <a href="#" className='loginMethods'>
-                                <div className='loginMethod'>
-                                    <i className="fa-brands fa-facebook" style={{ float: 'left', marginTop: '5px' }}></i>
-                                    <span>Continue with Facebook</span>
-                                </div>
-                            </a>
-                            <a href="#" className='loginMethods'>
-                                <div className='loginMethod'>
-                                    <i className="fa-brands fa-google" style={{ float: 'left', marginTop: '5px' }}></i>
-                                    <span>Continue with Google</span>
-                                </div>
-                            </a>
-                            <a href="#" className='loginMethods'>
-                                <div className='loginMethod'>
-                                    <i className="fa-brands fa-twitter" style={{ float: 'left', marginTop: '5px' }}></i>
-                                    <span>Continue with Twitter</span>
-                                </div>
-                            </a>
-                            <a href="#" className='loginMethods'>
-                                <div className='loginMethod'>
-                                    <i className="fa-brands fa-line" style={{ float: 'left', marginTop: '5px' }}></i>
-                                    <span>Continue with LINE</span>
-                                </div>
-                            </a>
-                            <a href="#" className='loginMethods'>
-                                <div className='loginMethod'>
-                                    <i className="fa-brands fa-apple" style={{ float: 'left', marginTop: '5px' }}></i>
-                                    <span>Continue with Apple</span>
-                                </div>
-                            </a>
-                            <a href="#" className='loginMethods'>
-                                <div className='loginMethod'>
-                                    <i className="fa-brands fa-instagram" style={{ float: 'left', marginTop: '5px' }}></i>
-                                    <span>Continue with Instagram</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div className='license'>
-                            <p>By continuing, you agree to Retok's <a href='#' className='links'>Terms of Service</a> and confirm that you have read Retok's <a href='#' className='links'>Privacy Policy</a>.</p>
-                        </div>
-                        <div className='signUps'>
-                            <p>Don't have an account? <a href='#' className="signUp">Sign Up</a></p>
-                        </div>
-                    </LoginModal>
-                </div>
-            </>
-    } else {
-        content =
-            <>
-                <div>
-                    <div className="example">
-                        <p className="example-2"></p>
-                    </div>
-                    <h3 className='titleLogin' style={{ marginTop: '-20px' }}>Following accounts</h3>
-                    <div className='userList'>
-                        <ul className='userItem' style={{ cursor: 'pointer' }}>
-                            {
-                                videoList.slice(0, 10).map((user, index) =>
-                                    <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
-                                        <div className='userAvatar'>
-                                            <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
-                                            <span className='infoUser'>
-                                                <p className='nameAll'><b>{user?.username}</b></p>
-                                                <p className='nameAll'>{user?.fullname}</p>
-                                            </span>
-                                        </div>
-                                    </li>
-                                )
-                            }
-                        </ul>
-                        {viewMoreUser && (
-                            <ul className='userItem' style={{ cursor: 'pointer' }}>
-                                {
-                                    videoList.slice(11, 20).map((user, index) =>
-                                        <li key={index} className='itemUser' onClick={() => navigate(`/users/${user?.id}`)}>
-                                            <div className='userAvatar'>
-                                                <span className='avatarIcon'><img src={user?.avatar} className='avatarList' /></span>
-                                                <span className='infoUser'>
-                                                    <p className='nameAll'><b>{user?.username}</b></p>
-                                                    <p className='nameAll'>{user?.fullname}</p>
-                                                </span>
-                                            </div>
-                                        </li>
-                                    )
-                                }
-                            </ul>
-                        )}
-                        <button className="moreUser" style={{ display: viewMoreUser ? 'none' : '' }} onClick={toogleUser}>
-                            {viewMoreUser ? '' : 'See More'}
-                        </button>
-                    </div>
-                    <div className="example">
-                        <p className="example-1"></p>
-                    </div>
-                </div>
-            </>
-    }
 
     const [isFollowing, setIsFollowing] = useState(false);
 
@@ -290,64 +158,8 @@ const UserDetails = () => {
                             </Link>
                         </li>
                     </ul>
-                    {content}
-                    <div className='bottom' style={{ marginBottom: '100px' }}>
-                        <div className='info'>
-                            <a href="#" className='link'><span>About</span></a>
-                            <a href="#" className='link'><span>Newsroom</span></a>
-                            <a href="#" className='link'><span>Contact</span></a>
-                            <div className='info'>
-                                <a href="#" className='link'><span>Careers</span></a>
-                            </div>
-                        </div>
-                        <div className='info'>
-                            <a href="#" className='link'><span>Retok for Good</span></a>
-                            <a href="#" className='link'><span>Advertise</span></a>
-                            <a href="#" className='link'><span>Developers</span></a>
-                            <a href="#" className='link'><span>Transparency</span></a>
-                        </div>
-                        <div className='info'>
-                            <a href="#" className='link'><span>Retok Rewards</span></a>
-                            <div className='info'>
-                                <a href="#" className='link'><span>Retok Embeds</span></a>
-                            </div>
-                        </div>
-                        <div className='info'>
-                            <a href="#" className='link'><span>Helps</span></a>
-                            <a href="#" className='link'><span>Safety</span></a>
-                            <a href="#" className='link'><span>Term</span></a>
-                            <a href="#" className='link'><span>Privacy</span></a>
-                            <a href="#" className='link'><span>Creator Portal</span></a>
-                        </div>
-                        <div className='info'>
-                            <a href="#" className='link'><span>Community Guidelines</span></a>
-                        </div>
-
-                        {viewMore && (
-                            <p>
-                                <div className='infoMore'>
-                                    <a href="#" className='link'><span>Dance</span></a>
-                                    <a href="#" className='link'><span>Arts</span></a>
-                                    <a href="#" className='link'><span>Food and Drink</span></a>
-                                    <a href="#" className='link'><span>Tourism</span></a>
-                                </div>
-                                <div className='infoMore'>
-                                    <a href="#" className='link'><span>Production and Manufacturing</span></a>
-                                    <a href="#" className='link'><span>Vehicles and Transportation</span></a>
-                                    <a href="#" className='link'><span>Relationship</span></a>
-                                    <a href="#" className='link'><span>Retok Style</span></a>
-                                    <a href="#" className='link'><span>Athletics</span></a>
-                                    <a href="#" className='link'><span>Hobbies</span></a>
-                                </div>
-                            </p>
-                        )}
-                        <button className="more" onClick={toggleContent}>
-                            {viewMore ? 'See Less' : 'See More'}
-                        </button>
-                        <p className='info' style={{ paddingBottom: '30px' }}>
-                            © 2023 ReTok
-                        </p>
-                    </div>
+                    <FollowingSideBar />
+                    <AboutSidebar />
                 </div>
                 <div id='detailedUser'>
                     <div className='detailedUserComponents'>

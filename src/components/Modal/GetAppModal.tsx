@@ -1,9 +1,9 @@
-import '../styles/css/GetAppModal.css'
-import qrCode from '../assets/47624c235266dedd8e4d.png'
-import msstore from '../assets/msstore.png'
-import appstore from '../assets/appstore.png'
-import amazon from '../assets/amazon.png'
-import ggplay from '../assets/ggplay.png'
+import '../../styles/css/GetAppModal.css'
+import qrCode from '../../assets/47624c235266dedd8e4d.png'
+import msstore from '../../assets/msstore.png'
+import appstore from '../../assets/appstore.png'
+import amazon from '../../assets/amazon.png'
+import ggplay from '../../assets/ggplay.png'
 
 const GetAppModal = ({ isGetAppOpen, onGetAppClose }) => {
     if (!isGetAppOpen) return null;
