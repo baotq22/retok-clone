@@ -1,7 +1,7 @@
 import { useState } from "react";
-import '../library/fontawesome/css/all.min.css'
-import GetAppModal from "./Modal/GetAppModal";
-import '../styles/css/RightBottomActionButton.css'
+import '../../library/fontawesome/css/all.min.css'
+import GetAppModal from "../Modal/GetAppModal";
+import '../../styles/css/RightBottomActionButton.css'
 
 const RightBottomActionButton = () => {
     

@@ -1,12 +1,12 @@
 import { Link, useParams } from "react-router-dom"
-import Navbar from "../components/navbar";
+import Navbar from "../components/NavBar/navbar";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { api, videoApis } from "../axios-instance";
+import { api, videoApis } from "../api/axios-instance";
 import '../styles/css/sidebar.css'
 import '../styles/css/userdetails.css'
-import RightBottomActionButton from "../components/RightBottomActionButton";
+import RightBottomActionButton from "../components/PageComponents/RightBottomActionButton";
 import AboutSidebar from "../components/Sidebar/AboutSidebar";
 import FollowingSideBar from "../components/Sidebar/FollowingSideBar";
 
@@ -119,96 +119,94 @@ const UserFollowDetails = () => {
             </div>
     }
     return (
-        <>
-            <div id='userDetailsPage'>
-                <Navbar />
-                <div id='nav'>
-                    <ul className='itemLinkAll'>
-                        <li className='itemLink'>
-                            <Link to={`/`} className='mainLink'>
-                                <div className="nav">
-                                    <i className='icon fa-solid fa-home'></i><span>For you</span>
-                                </div>
-                            </Link>
-                        </li>
-                        <li className='itemLink'>
-                            <Link to={`/following`} className='mainLink'>
-                                <div className="nav">
-                                    <i className="icon fa-solid fa-user-group"></i><span>Following</span>
-                                </div>
-                            </Link>
-                        </li>
-                        <li className='itemLink'>
-                            <Link to={`/#`} className='mainLink'>
-                                <div className="nav">
-                                    <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
-                                </div>
-                            </Link>
-                        </li>
-                        <li className='itemLink'>
-                            <Link to={`/#`} className='mainLink'>
-                                <div className="nav">
-                                    <i className='icon fa-solid fa-video'></i><span>LIVE</span>
-                                </div>
-                            </Link>
-                        </li>
-                    </ul>
-                    <FollowingSideBar />
-                    <AboutSidebar />
-                </div>
-                <div id='detailedUser'>
-                    <div className='detailedUserComponents'>
-                        <RightBottomActionButton />
-                        <div className='detailedUserInfo'>
-                            <div className='detailedUserName'>
-                                <div className='detailedUserAvatar'>
-                                    <span className="avatarCircle">
-                                        <img src={user?.image} className='avatar' />
-                                    </span>
-                                </div>
-                                <div className='detailed__username'>
-                                    <p className='detailUsername'><b>{user?.username}</b></p>
-                                    <p className='detailFullname'>{user?.fullname}</p>
-                                    {followandEditBtn}
-                                </div>
+        <div id='userDetailsPage'>
+            <Navbar />
+            <div id='nav'>
+                <ul className='itemLinkAll'>
+                    <li className='itemLink'>
+                        <Link to={`/`} className='mainLink'>
+                            <div className="nav">
+                                <i className='icon fa-solid fa-home'></i><span>For you</span>
                             </div>
-                            <h3 className='detailedAmount'>
-                                <div><b>{user?.followingAmount}</b><span>Following</span></div>
-                                <div><b>{user?.followersAmount}</b><span>Followers</span></div>
-                                <div><b>{user?.reactAllAmount}</b><span>Likes</span></div>
-                                <div className='advancedAction'>
-                                    <span><i className="fa-solid fa-ellipsis"></i></span>
-                                    <span><i className="fa-solid fa-share"></i></span>
-                                </div>
-                            </h3>
-                            <h2 className='user__desc'>{user?.description}</h2>
+                        </Link>
+                    </li>
+                    <li className='itemLink'>
+                        <Link to={`/following`} className='mainLink'>
+                            <div className="nav">
+                                <i className="icon fa-solid fa-user-group"></i><span>Following</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li className='itemLink'>
+                        <Link to={`/#`} className='mainLink'>
+                            <div className="nav">
+                                <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li className='itemLink'>
+                        <Link to={`/#`} className='mainLink'>
+                            <div className="nav">
+                                <i className='icon fa-solid fa-video'></i><span>LIVE</span>
+                            </div>
+                        </Link>
+                    </li>
+                </ul>
+                <FollowingSideBar />
+                <AboutSidebar />
+            </div>
+            <div id='detailedUser'>
+                <div className='detailedUserComponents'>
+                    <RightBottomActionButton />
+                    <div className='detailedUserInfo'>
+                        <div className='detailedUserName'>
+                            <div className='detailedUserAvatar'>
+                                <span className="avatarCircle">
+                                    <img src={user?.image} className='avatar' />
+                                </span>
+                            </div>
+                            <div className='detailed__username'>
+                                <p className='detailUsername'><b>{user?.username}</b></p>
+                                <p className='detailFullname'>{user?.fullname}</p>
+                                {followandEditBtn}
+                            </div>
                         </div>
+                        <h3 className='detailedAmount'>
+                            <div><b>{user?.followingAmount}</b><span>Following</span></div>
+                            <div><b>{user?.followersAmount}</b><span>Followers</span></div>
+                            <div><b>{user?.reactAllAmount}</b><span>Likes</span></div>
+                            <div className='advancedAction'>
+                                <span><i className="fa-solid fa-ellipsis"></i></span>
+                                <span><i className="fa-solid fa-share"></i></span>
+                            </div>
+                        </h3>
+                        <h2 className='user__desc'>{user?.description}</h2>
                     </div>
-                    <h3 className='videosHeaders'>Videos</h3>
-                    <div className='userContainer'>
-                        <div className='userVideo'>
-                            {
-                                videoList.map((user, index) =>
-                                    <>
-                                        <div className='userInfo' key={index}>
-                                            <Link to={`/userFollow/${user.id}`}>
-                                                <img src={user?.imgVideo} className='imgUser' />
+                </div>
+                <h3 className='videosHeaders'>Videos</h3>
+                <div className='userContainer'>
+                    <div className='userVideo'>
+                        {
+                            videoList.map((user, index) =>
+                                <>
+                                    <div className='userInfo' key={index}>
+                                        <Link to={`/userFollow/${user.id}`}>
+                                            <img src={user?.imgVideo} className='imgUser' />
+                                        </Link>
+                                        <div className='userFollow'>
+                                            <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
+                                                <i className="fa-solid fa-play fa-fade"></i><span className="detailedViewers">{user?.savedAmount}</span>
                                             </Link>
-                                            <div className='userFollow'>
-                                                <Link to={`/userFollow/${user.id}`} style={{ textDecoration: '0', color: '#fff' }}>
-                                                    <i className="fa-solid fa-play fa-fade"></i><span className="detailedViewers">{user?.savedAmount}</span>
-                                                </Link>
-                                            </div>
-                                            <div className='video__desc'>{user?.description}</div>
                                         </div>
-                                    </>
-                                )
-                            }
-                        </div>
+                                        <div className='video__desc'>{user?.description}</div>
+                                    </div>
+                                </>
+                            )
+                        }
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

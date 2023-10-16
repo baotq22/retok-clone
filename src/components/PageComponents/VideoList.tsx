@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import avatar1 from '../assets/avatar/583.jpg'
-import avatar2 from '../assets/avatar/518.jpg'
-import avatar3 from '../assets/avatar/867.jpg'
-import avatar4 from '../assets/avatar/66.jpg'
-import avatar5 from '../assets/avatar/859.jpg'
-import Video1 from '../assets/videos/1.mp4'
-import Video2 from '../assets/videos/2.mp4'
-import Video3 from '../assets/videos/3.mp4'
-import Video4 from '../assets/videos/4.mp4'
-import Video5 from '../assets/videos/5.mp4'
+import avatar1 from '../../assets/avatar/583.jpg'
+import avatar2 from '../../assets/avatar/518.jpg'
+import avatar3 from '../../assets/avatar/867.jpg'
+import avatar4 from '../../assets/avatar/66.jpg'
+import avatar5 from '../../assets/avatar/859.jpg'
+import Video1 from '../../assets/videos/1.mp4'
+import Video2 from '../../assets/videos/2.mp4'
+import Video3 from '../../assets/videos/3.mp4'
+import Video4 from '../../assets/videos/4.mp4'
+import Video5 from '../../assets/videos/5.mp4'
+import { useSelector } from "react-redux"
 
 
 // video 1
@@ -108,7 +109,7 @@ const setFollowStatus5 = (userId, isFollowed5) => {
 }
 
 const AutoPlayVideo1 = () => {
-    const videoContainerRef = useRef(null);
+    const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -121,41 +122,33 @@ const AutoPlayVideo1 = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.play();
-                        setIsPlaying(true);
-                    }
+                    videoRef.current.play();
+                    setIsPlaying(true);
                 } else {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.pause();
-                        setIsPlaying(false);
-                    }
+                    videoRef.current.pause();
+                    setIsPlaying(false);
                 }
             })
         }, options)
 
-        observer.observe(videoContainerRef.current);
+        observer.observe(videoRef.current);
 
         return () => {
-            observer.unobserve(videoContainerRef.current);
+            observer.unobserve(videoRef.current);
         }
     }, []);
 
     return (
         <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className='videos'>
-                    <source src={Video1} type="video/mp4" />
-                </video>
-            </div>
+            <video ref={videoRef} autoPlay muted controls loop className='videos'>
+                <source src={Video1} type="video/mp4" />
+            </video>
         </>
     )
 }
 
 const AutoPlayVideo2 = () => {
-    const videoContainerRef = useRef(null);
+    const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -168,41 +161,33 @@ const AutoPlayVideo2 = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.play();
-                        setIsPlaying(true);
-                    }
+                    videoRef.current.play();
+                    setIsPlaying(true);
                 } else {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.pause();
-                        setIsPlaying(false);
-                    }
+                    videoRef.current.pause();
+                    setIsPlaying(false);
                 }
             })
         }, options)
 
-        observer.observe(videoContainerRef.current);
+        observer.observe(videoRef.current);
 
         return () => {
-            observer.unobserve(videoContainerRef.current);
+            observer.unobserve(videoRef.current);
         }
     }, []);
 
     return (
         <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className='videos'>
-                    <source src={Video2} type="video/mp4" />
-                </video>
-            </div>
+            <video ref={videoRef} autoPlay muted controls loop className='videos'>
+                <source src={Video2} type="video/mp4" />
+            </video>
         </>
     )
 }
 
 const AutoPlayVideo3 = () => {
-    const videoContainerRef = useRef(null);
+    const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -210,46 +195,39 @@ const AutoPlayVideo3 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        };
+        }
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.play();
-                        setIsPlaying(true);
-                    }
+                    videoRef.current.play();
+                    setIsPlaying(true);
                 } else {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.pause();
-                        setIsPlaying(false);
-                    }
+                    videoRef.current.pause();
+                    setIsPlaying(false);
                 }
             })
         }, options)
 
-        observer.observe(videoContainerRef.current);
+        observer.observe(videoRef.current);
 
         return () => {
-            observer.unobserve(videoContainerRef.current);
+            observer.unobserve(videoRef.current);
         }
     }, []);
 
+
     return (
         <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className='videos'>
-                    <source src={Video3} type="video/mp4" />
-                </video>
-            </div>
+            <video ref={videoRef} autoPlay muted controls loop className='videos'>
+                <source src={Video3} type="video/mp4" />
+            </video>
         </>
     )
 }
 
 const AutoPlayVideo4 = () => {
-    const videoContainerRef = useRef(null);
+    const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -257,46 +235,38 @@ const AutoPlayVideo4 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        };
+        }
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.play();
-                        setIsPlaying(true);
-                    }
+                    videoRef.current.play();
+                    setIsPlaying(true);
                 } else {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.pause();
-                        setIsPlaying(false);
-                    }
+                    videoRef.current.pause();
+                    setIsPlaying(false);
                 }
             })
-        }, options)
+        }, options);
 
-        observer.observe(videoContainerRef.current);
+        observer.observe(videoRef.current);
 
         return () => {
-            observer.unobserve(videoContainerRef.current);
+            observer.observe(videoRef.current);
         }
-    }, []);
+    })
 
     return (
         <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className='videos'>
-                    <source src={Video4} type="video/mp4" />
-                </video>
-            </div>
+            <video ref={videoRef} autoPlay muted controls loop className='videos'>
+                <source src={Video4} type="video/mp4" />
+            </video>
         </>
     )
 }
 
 const AutoPlayVideo5 = () => {
-    const videoContainerRef = useRef(null);
+    const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -304,40 +274,32 @@ const AutoPlayVideo5 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        };
+        }
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.play();
-                        setIsPlaying(true);
-                    }
+                    videoRef.current.play();
+                    setIsPlaying(true);
                 } else {
-                    const videoElement = videoContainerRef.current.querySelector('video');
-                    if (videoElement) {
-                        videoElement.current.pause();
-                        setIsPlaying(false);
-                    }
+                    videoRef.current.pause();
+                    setIsPlaying(false);
                 }
             })
-        }, options)
+        }, options);
 
-        observer.observe(videoContainerRef.current);
+        observer.observe(videoRef.current);
 
         return () => {
-            observer.unobserve(videoContainerRef.current);
+            observer.observe(videoRef.current);
         }
-    }, []);
+    })
 
     return (
         <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className='videos'>
-                    <source src={Video5} type="video/mp4" />
-                </video>
-            </div>
+            <video ref={videoRef} autoPlay muted controls loop className='videos'>
+                <source src={Video5} type="video/mp4" />
+            </video>
         </>
     )
 }
@@ -458,7 +420,7 @@ const CollapseVideo5 = ({ text, maxLength }) => {
     )
 }
 
-const VideoListFollowing = ({ userId }) => {
+const VideoList = ({ userId }) => {
 
     const navigate = useNavigate();
     //video 1
@@ -606,6 +568,259 @@ const VideoListFollowing = ({ userId }) => {
         setIsFollowed5(getReactionStatus5(userId));
     }, [userId])
 
+    const followBtnStyleActive = {
+        border: '1px solid #ccc',
+        backgroundColor: 'transparent',
+        fontWeight: '900',
+        color: '#ccc',
+    }
+
+    const followBtnStyleUnactive = {
+        border: '1px solid #f22459',
+        backgroundColor: 'transparent',
+        fontWeight: '900',
+        color: '#f22459',
+    }
+
+    const userLogin = useSelector(state => state.userLogin);
+    const userLogged = !userLogin?.username;
+    const actionBtnUnlogged = (
+        <>
+            <div className='videoAction'>
+                <button className='action_btn'>
+                    <span>
+                        <i className="fa-solid fa-heart"></i>
+                    </span>
+                </button>
+                <p className='actionAmount'>
+                    <strong>72</strong>
+                </p>
+                <button className='action_btn' onClick={() => navigate(`videoDetails/1`)}>
+                    <span>
+                        <i className="fa-solid fa-comment-dots"></i>
+                    </span>
+                </button>
+                <p className='actionAmount'><strong>25</strong></p>
+                <button className='action_btn'>
+                    <span>
+                        <i className="fa-solid fa-bookmark"></i>
+                    </span>
+                </button>
+                <p className='actionAmount'><strong>16</strong></p>
+                <button className='action_btn'>
+                    <span>
+                        <i className="fa-solid fa-share"></i>
+                    </span>
+                </button>
+                <p className='actionAmount'><strong>8</strong></p>
+            </div>
+        </>
+    )
+    let content1
+    let content2
+    let content3
+    let content4
+    let content5
+
+    if (userLogged) {
+        content1 = (
+            <>
+                {actionBtnUnlogged}
+            </>
+        )
+        content2 = (
+            <>
+                {actionBtnUnlogged}
+            </>
+        )
+        content3 = (
+            <>
+                {actionBtnUnlogged}
+            </>
+        )
+        content4 = (
+            <>
+                {actionBtnUnlogged}
+            </>
+        )
+        content5 = (
+            <>
+                {actionBtnUnlogged}
+            </>
+        )
+    } else {
+        content1 = (
+            <>
+                <div className='videoAction'>
+                    <button className='action_btn' onClick={handleLikeClick1}>
+                        <span>
+                            {isLiked1 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
+                            {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
+                        </span>
+                    </button>
+                    <p className='actionAmount'>
+                        {isLiked1 ? <strong>73</strong> : <strong>72</strong>}
+                    </p>
+                    {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
+                    <button className='action_btn' onClick={() => navigate(`videoDetails/1`)}>
+                        <span>
+                            <i className="fa-solid fa-comment-dots"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>25</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-bookmark"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>16</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-share"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>8</strong></p>
+                </div>
+            </>
+        )
+        content2 = (
+            <>
+                <div className='videoAction'>
+                    <button className='action_btn' onClick={handleLikeClick2}>
+                        <span>
+                            {isLiked2 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
+                            {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
+                        </span>
+                    </button>
+                    <p className='actionAmount'>
+                        {isLiked2 ? <strong>73</strong> : <strong>72</strong>}
+                    </p>
+                    {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
+                    <button className='action_btn' onClick={() => navigate(`videoDetails/2`)}>
+                        <span>
+                            <i className="fa-solid fa-comment-dots"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>25</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-bookmark"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>16</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-share"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>8</strong></p>
+                </div>
+            </>
+        )
+        content3 = (
+            <>
+                <div className='videoAction'>
+                    <button className='action_btn' onClick={handleLikeClick3}>
+                        <span>
+                            {isLiked3 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
+                            {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
+                        </span>
+                    </button>
+                    <p className='actionAmount'>
+                        {isLiked3 ? <strong>73</strong> : <strong>72</strong>}
+                    </p>
+                    {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
+                    <button className='action_btn' onClick={() => navigate(`videoDetails/3`)}>
+                        <span>
+                            <i className="fa-solid fa-comment-dots"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>25</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-bookmark"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>16</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-share"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>8</strong></p>
+                </div>
+            </>
+        )
+        content4 = (
+            <>
+                <div className='videoAction'>
+                    <button className='action_btn' onClick={handleLikeClick4}>
+                        <span>
+                            {isLiked4 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
+                            {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
+                        </span>
+                    </button>
+                    <p className='actionAmount'>
+                        {isLiked4 ? <strong>73</strong> : <strong>72</strong>}
+                    </p>
+                    {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
+                    <button className='action_btn' onClick={() => navigate(`videoDetails/4`)}>
+                        <span>
+                            <i className="fa-solid fa-comment-dots"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>25</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-bookmark"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>16</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-share"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>8</strong></p>
+                </div>
+            </>
+        )
+        content5 = (
+            <>
+                <div className='videoAction'>
+                    <button className='action_btn' onClick={handleLikeClick5}>
+                        <span>
+                            {isLiked5 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
+                            {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
+                        </span>
+                    </button>
+                    <p className='actionAmount'>
+                        {isLiked5 ? <strong>73</strong> : <strong>72</strong>}
+                    </p>
+                    {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
+                    <button className='action_btn' onClick={() => navigate(`videoDetails/5`)}>
+                        <span>
+                            <i className="fa-solid fa-comment-dots"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>25</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-bookmark"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>16</strong></p>
+                    <button className='action_btn'>
+                        <span>
+                            <i className="fa-solid fa-share"></i>
+                        </span>
+                    </button>
+                    <p className='actionAmount'><strong>8</strong></p>
+                </div>
+            </>
+        )
+    }
+
     return (
         <>
             <div className='videos__container'>
@@ -622,43 +837,19 @@ const VideoListFollowing = ({ userId }) => {
                             <span><b>Andre57 </b></span>
                             <span>Manuel Rogahn</span>
                         </Link>
+                        {userLogged ? <button className='follow_btn'
+                            style={followBtnStyleUnactive}>Follow</button> :
+                            <button className='follow_btn'
+                                onClick={handleFollowClick1}
+                                style={isFollowed1 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed1 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo1 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
-                            <Link to={`/videoDetails/1`}>
+                            <Link to={`videoDetails/1`}>
                                 <AutoPlayVideo1 />
                             </Link>
-                            <div className='videoAction'>
-                                <button className='action_btn' onClick={handleLikeClick1}>
-                                    <span>
-                                        {isLiked1 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
-                                        {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
-                                    </span>
-                                </button>
-                                <p className='actionAmount'>
-                                    {isLiked1 ? <strong>73</strong> : <strong>72</strong>}
-                                </p>
-                                {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn' onClick={() => navigate(`videoDetails/1`)}>
-                                    <span>
-                                        <i className="fa-solid fa-comment-dots"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>25</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-bookmark"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>16</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-share"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>8</strong></p>
-                            </div>
+                            {content1}
                         </div>
                     </div>
                 </div>
@@ -680,6 +871,11 @@ const VideoListFollowing = ({ userId }) => {
                             <span><b>Chris.Franecki48 </b></span>
                             <span>Anthony Waters</span>
                         </Link>
+                        {userLogged ? <button className='follow_btn'
+                            style={followBtnStyleUnactive}>Follow</button> :
+                            <button className='follow_btn'
+                                onClick={handleFollowClick2}
+                                style={isFollowed2 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed2 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo2 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -687,36 +883,7 @@ const VideoListFollowing = ({ userId }) => {
                             <Link to={`/videoDetails/2`} >
                                 <AutoPlayVideo2 />
                             </Link>
-                            <div className='videoAction'>
-                                <button className='action_btn' onClick={handleLikeClick2}>
-                                    <span>
-                                        {isLiked2 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
-                                        {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
-                                    </span>
-                                </button>
-                                <p className='actionAmount'>
-                                    {isLiked2 ? <strong>73</strong> : <strong>72</strong>}
-                                </p>
-                                {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn' onClick={() => navigate(`videoDetails/2`)}>
-                                    <span>
-                                        <i className="fa-solid fa-comment-dots"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>25</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-bookmark"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>16</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-share"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>8</strong></p>
-                            </div>
+                            {content2}
                         </div>
                     </div>
                 </div>
@@ -738,6 +905,11 @@ const VideoListFollowing = ({ userId }) => {
                             <span><b>Grover32 </b></span>
                             <span>Nina Mills IV</span>
                         </Link>
+                        {userLogged ? <button className='follow_btn'
+                            style={followBtnStyleUnactive}>Follow</button> :
+                            <button className='follow_btn'
+                                onClick={handleFollowClick3}
+                                style={isFollowed3 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed3 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo3 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -745,36 +917,7 @@ const VideoListFollowing = ({ userId }) => {
                             <Link to={`/videoDetails/3`} >
                                 <AutoPlayVideo3 />
                             </Link>
-                            <div className='videoAction'>
-                                <button className='action_btn' onClick={handleLikeClick3}>
-                                    <span>
-                                        {isLiked3 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
-                                        {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
-                                    </span>
-                                </button>
-                                <p className='actionAmount'>
-                                    {isLiked3 ? <strong>73</strong> : <strong>72</strong>}
-                                </p>
-                                {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn' onClick={() => navigate(`videoDetails/3`)}>
-                                    <span>
-                                        <i className="fa-solid fa-comment-dots"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>25</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-bookmark"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>16</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-share"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>8</strong></p>
-                            </div>
+                            {content3}
                         </div>
                     </div>
                 </div>
@@ -796,6 +939,11 @@ const VideoListFollowing = ({ userId }) => {
                             <span><b>Jonathon_Kuvalis18 </b></span>
                             <span>Harold Daugherty</span>
                         </Link>
+                        {userLogged ? <button className='follow_btn'
+                            style={followBtnStyleUnactive}>Follow</button> :
+                            <button className='follow_btn'
+                                onClick={handleFollowClick4}
+                                style={isFollowed4 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed4 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo4 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -803,36 +951,7 @@ const VideoListFollowing = ({ userId }) => {
                             <Link to={`/videoDetails/4`} >
                                 <AutoPlayVideo4 />
                             </Link>
-                            <div className='videoAction'>
-                                <button className='action_btn' onClick={handleLikeClick4}>
-                                    <span>
-                                        {isLiked4 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
-                                        {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
-                                    </span>
-                                </button>
-                                <p className='actionAmount'>
-                                    {isLiked4 ? <strong>73</strong> : <strong>72</strong>}
-                                </p>
-                                {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn' onClick={() => navigate(`videoDetails/4`)}>
-                                    <span>
-                                        <i className="fa-solid fa-comment-dots"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>25</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-bookmark"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>16</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-share"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>8</strong></p>
-                            </div>
+                            {content4}
                         </div>
                     </div>
                 </div>
@@ -854,6 +973,11 @@ const VideoListFollowing = ({ userId }) => {
                             <span><b>Terrell_OKeefe3 </b></span>
                             <span>Krystal Heller V</span>
                         </Link>
+                        {userLogged ? <button className='follow_btn'
+                            style={followBtnStyleUnactive}>Follow</button> :
+                            <button className='follow_btn'
+                                onClick={handleFollowClick5}
+                                style={isFollowed5 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed5 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo5 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -861,36 +985,7 @@ const VideoListFollowing = ({ userId }) => {
                             <Link to={`/videoDetails/5`} >
                                 <AutoPlayVideo5 />
                             </Link>
-                            <div className='videoAction'>
-                                <button className='action_btn' onClick={handleLikeClick5}>
-                                    <span>
-                                        {isLiked5 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
-                                        {/* <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> */}
-                                    </span>
-                                </button>
-                                <p className='actionAmount'>
-                                    {isLiked5 ? <strong>73</strong> : <strong>72</strong>}
-                                </p>
-                                {/* <button className='action_btn' onClick={() => navigate(`/videos/${video?.id}`)}> */}
-                                <button className='action_btn' onClick={() => navigate(`videoDetails/5`)}>
-                                    <span>
-                                        <i className="fa-solid fa-comment-dots"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>25</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-bookmark"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>16</strong></p>
-                                <button className='action_btn'>
-                                    <span>
-                                        <i className="fa-solid fa-share"></i>
-                                    </span>
-                                </button>
-                                <p className='actionAmount'><strong>8</strong></p>
-                            </div>
+                            {content5}
                         </div>
                     </div>
                 </div>
@@ -899,4 +994,4 @@ const VideoListFollowing = ({ userId }) => {
     )
 }
 
-export default VideoListFollowing
+export default VideoList

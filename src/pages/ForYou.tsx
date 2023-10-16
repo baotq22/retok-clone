@@ -1,12 +1,12 @@
 import '../styles/css/videos.css'
 import '../styles/css/sidebar.css'
-import NavBar from "../components/navbar"
+import NavBar from "../components/NavBar/navbar"
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import VideoList from "../components/VideoList";
-import RightBottomActionButton from "../components/RightBottomActionButton";
-import { videoApis } from "../axios-instance";
+import VideoList from "../components/PageComponents/VideoList";
+import RightBottomActionButton from "../components/PageComponents/RightBottomActionButton";
+import { videoApis } from "../api/axios-instance";
 import AboutSidebar from "../components/Sidebar/AboutSidebar";
 import FollowingSideBar from "../components/Sidebar/FollowingSideBar";
 
@@ -38,51 +38,51 @@ const ForYou = () => {
     }
 
     return (
-        <>
-            <div id='foryouPage'>
-                <NavBar />
-                <div id='foryou'>
-                    <div id='video'>
-                        <VideoList userId={user_id} />
-                        <RightBottomActionButton />
-                    </div>
+
+        <div id='foryouPage'>
+            <NavBar />
+            <div id='foryou'>
+                <div id='video'>
+                    <VideoList userId={user_id} />
+                    <RightBottomActionButton />
                 </div>
-                <div id='nav'>
-                    <ul className='itemLinkAll'>
-                        <li className='itemLink' onClick={preventFailedScreen}>
-                            <Link to={`/`} className='mainLink'>
-                                <div className="nav selected">
-                                    <i className='icon fa-solid fa-home'></i><span>For you</span>
-                                </div>
-                            </Link>
-                        </li>
-                        <li className='itemLink' onClick={preventFailedScreen}>
-                            <Link to={`/following`} className='mainLink'>
-                                <div className="nav">
-                                    <i className="icon fa-solid fa-user-group"></i><span>Following</span>
-                                </div>
-                            </Link>
-                        </li>
-                        <li className='itemLink'>
-                            <Link to={`/#`} className='mainLink'>
-                                <div className="nav">
-                                    <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
-                                </div>
-                            </Link>
-                        </li>
-                        <li className='itemLink'>
-                            <Link to={`/#`} className='mainLink'>
-                                <div className="nav">
-                                    <i className='icon fa-solid fa-video'></i><span>LIVE</span>
-                                </div>
-                            </Link>
-                        </li>
-                    </ul>
-                    <FollowingSideBar />
-                    <AboutSidebar />
-                </div >
-            </div >
-        </>
+            </div>
+            <div id='nav'>
+                <ul className='itemLinkAll'>
+                    <li className='itemLink' onClick={preventFailedScreen}>
+                        <Link to={`/`} className='mainLink'>
+                            <div className="nav selected">
+                                <i className='icon fa-solid fa-home'></i><span>For you</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li className='itemLink' onClick={preventFailedScreen}>
+                        <Link to={`/following`} className='mainLink'>
+                            <div className="nav">
+                                <i className="icon fa-solid fa-user-group"></i><span>Following</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li className='itemLink'>
+                        <Link to={`/#`} className='mainLink'>
+                            <div className="nav">
+                                <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li className='itemLink'>
+                        <Link to={`/#`} className='mainLink'>
+                            <div className="nav">
+                                <i className='icon fa-solid fa-video'></i><span>LIVE</span>
+                            </div>
+                        </Link>
+                    </li>
+                </ul>
+                <FollowingSideBar />
+                <AboutSidebar />
+            </div>
+        </div>
+
     )
 }
 

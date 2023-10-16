@@ -5,9 +5,8 @@ import {
 } from "react-router-dom";
 import ForYou from './pages/ForYou'
 import Following from "./pages/Following";
-import UserLogin from "./pages/LogIn";
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./slices/store";
 import VideoDetails from "./pages/VideoDetails";
 import UserDetails from "./pages/UserDetails";
 import UserFollowDetails from "./pages/FollowingDetails";
@@ -18,6 +17,7 @@ import VideoDetails2 from "./pages/videodetails/VideoDetails2";
 import VideoDetails3 from "./pages/videodetails/VideoDetails3";
 import VideoDetails4 from "./pages/videodetails/VideoDetails4";
 import VideoDetails5 from "./pages/videodetails/VideoDetails5";
+import { NavBar } from "./components/NavBar/navbar";
 
 const router = createBrowserRouter([
   {

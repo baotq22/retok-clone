@@ -3,7 +3,7 @@ import {
     getComments as getCmtsApi,
     createComment as createCommentApi,
     deleteComment as deleteCommentApi
-} from "../../apiCmt"
+} from "../../api/apiCmt"
 import Comment from './Comment'
 import CommentForm from "./CommentForm";
 import CommentLS from "./CommentLS";

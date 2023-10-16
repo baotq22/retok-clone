@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import LoginModal from "../Modal/LoginModal";
 import LoginInputModal from "../Modal/LoginInputModal";
-import { videoApis } from "../../axios-instance";
+import { videoApis } from "../../api/axios-instance";
 
 const FollowingSideBar = () => {
     const navigate = useNavigate();

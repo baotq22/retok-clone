@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import avatar1 from '../assets/avatar/583.jpg'
-import avatar2 from '../assets/avatar/518.jpg'
-import avatar3 from '../assets/avatar/867.jpg'
-import avatar4 from '../assets/avatar/66.jpg'
-import avatar5 from '../assets/avatar/859.jpg'
-import Video1 from '../assets/videos/1.mp4'
-import Video2 from '../assets/videos/2.mp4'
-import Video3 from '../assets/videos/3.mp4'
-import Video4 from '../assets/videos/4.mp4'
-import Video5 from '../assets/videos/5.mp4'
+import avatar1 from '../../assets/avatar/583.jpg'
+import avatar2 from '../../assets/avatar/518.jpg'
+import avatar3 from '../../assets/avatar/867.jpg'
+import avatar4 from '../../assets/avatar/66.jpg'
+import avatar5 from '../../assets/avatar/859.jpg'
+import Video1 from '../../assets/videos/1.mp4'
+import Video2 from '../../assets/videos/2.mp4'
+import Video3 from '../../assets/videos/3.mp4'
+import Video4 from '../../assets/videos/4.mp4'
+import Video5 from '../../assets/videos/5.mp4'
 import { useSelector } from "react-redux"
 
 
@@ -109,7 +109,7 @@ const setFollowStatus5 = (userId, isFollowed5) => {
 }
 
 const AutoPlayVideo1 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -122,33 +122,41 @@ const AutoPlayVideo1 = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
         }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.unobserve(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
     }, []);
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video1} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video1} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
 
 const AutoPlayVideo2 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -161,33 +169,41 @@ const AutoPlayVideo2 = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
         }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.unobserve(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
     }, []);
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video2} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video2} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
 
 const AutoPlayVideo3 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -195,39 +211,46 @@ const AutoPlayVideo3 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        }
+        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
         }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.unobserve(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
     }, []);
 
-
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video3} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video3} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
 
 const AutoPlayVideo4 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -235,38 +258,46 @@ const AutoPlayVideo4 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        }
+        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
-        }, options);
+        }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.observe(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
-    })
+    }, []);
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video4} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video4} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
 
 const AutoPlayVideo5 = () => {
-    const videoRef = useRef(null);
+    const videoContainerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
@@ -274,32 +305,40 @@ const AutoPlayVideo5 = () => {
             root: null,
             rootMargin: '0px',
             threshold: 0.5,
-        }
+        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    videoRef.current.play();
-                    setIsPlaying(true);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.play();
+                        setIsPlaying(true);
+                    }
                 } else {
-                    videoRef.current.pause();
-                    setIsPlaying(false);
+                    const videoElement = videoContainerRef.current.querySelector('video');
+                    if (videoElement) {
+                        videoElement.current.pause();
+                        setIsPlaying(false);
+                    }
                 }
             })
-        }, options);
+        }, options)
 
-        observer.observe(videoRef.current);
+        observer.observe(videoContainerRef.current);
 
         return () => {
-            observer.observe(videoRef.current);
+            observer.unobserve(videoContainerRef.current);
         }
-    })
+    }, []);
 
     return (
         <>
-            <video ref={videoRef} autoPlay muted controls loop className='videos'>
-                <source src={Video5} type="video/mp4" />
-            </video>
+            <div ref={videoContainerRef}>
+                <video autoPlay muted controls loop className='videos'>
+                    <source src={Video5} type="video/mp4" />
+                </video>
+            </div>
         </>
     )
 }
@@ -420,7 +459,7 @@ const CollapseVideo5 = ({ text, maxLength }) => {
     )
 }
 
-const VideoList = ({ userId }) => {
+const VideoListFollowing = ({ userId }) => {
 
     const navigate = useNavigate();
     //video 1
@@ -437,21 +476,6 @@ const VideoList = ({ userId }) => {
         }
     };
 
-    const handleFollowClick1 = () => {
-        if (isFollowed1) {
-            setIsFollowed1(false);
-            setFollowStatus1(userId, false);
-        } else {
-            setIsFollowed1(true);
-            setFollowStatus1(userId, true);
-        }
-    }
-
-    useEffect(() => {
-        setIsLiked1(getReactionStatus1(userId));
-        setIsFollowed1(getFollowStatus1(userId));
-    }, [userId])
-
     //video 2
     const [isLiked2, setIsLiked2] = useState(getReactionStatus2(userId));
     const [isFollowed2, setIsFollowed2] = useState(getFollowStatus2(userId));
@@ -465,21 +489,6 @@ const VideoList = ({ userId }) => {
             setReactionStatus2(userId, true);
         }
     };
-
-    const handleFollowClick2 = () => {
-        if (isFollowed2) {
-            setIsFollowed2(false);
-            setFollowStatus2(userId, false);
-        } else {
-            setIsFollowed2(true);
-            setFollowStatus2(userId, true);
-        }
-    }
-
-    useEffect(() => {
-        setIsLiked2(getReactionStatus2(userId));
-        setIsFollowed2(getFollowStatus2(userId));
-    }, [userId])
 
     //video 3
     const [isLiked3, setIsLiked3] = useState(getReactionStatus3(userId));
@@ -495,21 +504,6 @@ const VideoList = ({ userId }) => {
         }
     };
 
-    const handleFollowClick3 = () => {
-        if (isFollowed3) {
-            setIsFollowed3(false);
-            setFollowStatus3(userId, false);
-        } else {
-            setIsFollowed3(true);
-            setFollowStatus3(userId, true);
-        }
-    }
-
-    useEffect(() => {
-        setIsLiked3(getReactionStatus3(userId));
-        setIsFollowed3(getFollowStatus3(userId));
-    }, [userId])
-
     //video 4
     const [isLiked4, setIsLiked4] = useState(getReactionStatus4(userId));
     const [isFollowed4, setIsFollowed4] = useState(getFollowStatus4(userId));
@@ -523,21 +517,6 @@ const VideoList = ({ userId }) => {
             setReactionStatus4(userId, true);
         }
     };
-
-    const handleFollowClick4 = () => {
-        if (isFollowed4) {
-            setIsFollowed4(false);
-            setFollowStatus4(userId, false);
-        } else {
-            setIsFollowed4(true);
-            setFollowStatus4(userId, true);
-        }
-    }
-
-    useEffect(() => {
-        setIsLiked4(getReactionStatus4(userId));
-        setIsFollowed4(getFollowStatus4(userId));
-    }, [userId])
 
     //video 5
     const [isLiked5, setIsLiked5] = useState(getReactionStatus5(userId));
@@ -553,40 +532,24 @@ const VideoList = ({ userId }) => {
         }
     };
 
-    const handleFollowClick5 = () => {
-        if (isFollowed5) {
-            setIsFollowed5(false);
-            setFollowStatus5(userId, false);
-        } else {
-            setIsFollowed5(true);
-            setFollowStatus5(userId, true);
-        }
-    }
-
     useEffect(() => {
+        setIsLiked1(getReactionStatus1(userId));
+        setIsFollowed1(getFollowStatus1(userId));
+        setIsLiked2(getReactionStatus2(userId));
+        setIsFollowed2(getFollowStatus2(userId));
+        setIsLiked3(getReactionStatus3(userId));
+        setIsFollowed3(getFollowStatus3(userId));
+        setIsLiked4(getReactionStatus4(userId));
+        setIsFollowed4(getFollowStatus4(userId));
         setIsLiked5(getReactionStatus5(userId));
         setIsFollowed5(getReactionStatus5(userId));
     }, [userId])
-
-    const followBtnStyleActive = {
-        border: '1px solid #ccc',
-        backgroundColor: 'transparent',
-        fontWeight: '900',
-        color: '#ccc',
-    }
-
-    const followBtnStyleUnactive = {
-        border: '1px solid #f22459',
-        backgroundColor: 'transparent',
-        fontWeight: '900',
-        color: '#f22459',
-    }
 
     const userLogin = useSelector(state => state.userLogin);
     const userLogged = !userLogin?.username;
     const actionBtnUnlogged = (
         <>
-            <div className='videoAction'>
+            <div className='videoAction' style={{marginTop: '-590px'}}>
                 <button className='action_btn'>
                     <span>
                         <i className="fa-solid fa-heart"></i>
@@ -651,7 +614,7 @@ const VideoList = ({ userId }) => {
     } else {
         content1 = (
             <>
-                <div className='videoAction'>
+                <div className='videoAction' style={{marginTop: '-590px'}}>
                     <button className='action_btn' onClick={handleLikeClick1}>
                         <span>
                             {isLiked1 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
@@ -685,7 +648,7 @@ const VideoList = ({ userId }) => {
         )
         content2 = (
             <>
-                <div className='videoAction'>
+                <div className='videoAction' style={{marginTop: '-590px'}}>
                     <button className='action_btn' onClick={handleLikeClick2}>
                         <span>
                             {isLiked2 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
@@ -719,7 +682,7 @@ const VideoList = ({ userId }) => {
         )
         content3 = (
             <>
-                <div className='videoAction'>
+                <div className='videoAction' style={{marginTop: '-590px'}}>
                     <button className='action_btn' onClick={handleLikeClick3}>
                         <span>
                             {isLiked3 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
@@ -753,7 +716,7 @@ const VideoList = ({ userId }) => {
         )
         content4 = (
             <>
-                <div className='videoAction'>
+                <div className='videoAction' style={{marginTop: '-590px'}}>
                     <button className='action_btn' onClick={handleLikeClick4}>
                         <span>
                             {isLiked4 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
@@ -787,7 +750,7 @@ const VideoList = ({ userId }) => {
         )
         content5 = (
             <>
-                <div className='videoAction'>
+                <div className='videoAction' style={{marginTop: '-590px'}}>
                     <button className='action_btn' onClick={handleLikeClick5}>
                         <span>
                             {isLiked5 ? <i className="fa-solid fa-heart" style={{ color: '#fe2c55' }}></i> : <i className="fa-solid fa-heart"></i>}
@@ -837,16 +800,11 @@ const VideoList = ({ userId }) => {
                             <span><b>Andre57 </b></span>
                             <span>Manuel Rogahn</span>
                         </Link>
-                        {userLogged ? <button className='follow_btn'
-                            style={followBtnStyleUnactive}>Follow</button> :
-                            <button className='follow_btn'
-                                onClick={handleFollowClick1}
-                                style={isFollowed1 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed1 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo1 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
                         <div className="videoBox">
-                            <Link to={`videoDetails/1`}>
+                            <Link to={`/videoDetails/1`}>
                                 <AutoPlayVideo1 />
                             </Link>
                             {content1}
@@ -871,11 +829,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Chris.Franecki48 </b></span>
                             <span>Anthony Waters</span>
                         </Link>
-                        {userLogged ? <button className='follow_btn'
-                            style={followBtnStyleUnactive}>Follow</button> :
-                            <button className='follow_btn'
-                                onClick={handleFollowClick2}
-                                style={isFollowed2 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed2 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo2 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -905,11 +858,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Grover32 </b></span>
                             <span>Nina Mills IV</span>
                         </Link>
-                        {userLogged ? <button className='follow_btn'
-                            style={followBtnStyleUnactive}>Follow</button> :
-                            <button className='follow_btn'
-                                onClick={handleFollowClick3}
-                                style={isFollowed3 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed3 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo3 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -939,11 +887,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Jonathon_Kuvalis18 </b></span>
                             <span>Harold Daugherty</span>
                         </Link>
-                        {userLogged ? <button className='follow_btn'
-                            style={followBtnStyleUnactive}>Follow</button> :
-                            <button className='follow_btn'
-                                onClick={handleFollowClick4}
-                                style={isFollowed4 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed4 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo4 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -973,11 +916,6 @@ const VideoList = ({ userId }) => {
                             <span><b>Terrell_OKeefe3 </b></span>
                             <span>Krystal Heller V</span>
                         </Link>
-                        {userLogged ? <button className='follow_btn'
-                            style={followBtnStyleUnactive}>Follow</button> :
-                            <button className='follow_btn'
-                                onClick={handleFollowClick5}
-                                style={isFollowed5 ? followBtnStyleActive : followBtnStyleUnactive}>{isFollowed5 ? 'Following' : 'Follow'}</button>}
                         <p className='videoDesc'><CollapseVideo5 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
@@ -994,4 +932,4 @@ const VideoList = ({ userId }) => {
     )
 }
 
-export default VideoList
+export default VideoListFollowing

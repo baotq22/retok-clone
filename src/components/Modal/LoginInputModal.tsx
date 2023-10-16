@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../slices/userLoginSlice";
 import '../../styles/css/loginmodal.css'
-import { getAllCountry as getAllCountryApi } from "../../countryApi";
+import { getAllCountry as getAllCountryApi } from "../../api/countryApi";
 
 const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
     const User = useRef(null);
