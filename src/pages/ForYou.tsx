@@ -1,5 +1,5 @@
-import './styles/videos.css'
-import './styles/sidebar.css'
+import '../styles/css/videos.css'
+import '../styles/css/sidebar.css'
 import NavBar from "../components/navbar"
 import effectBtn from '../assets/d8db931296c3e5645b1e.png'
 import { Link, useNavigate } from "react-router-dom";
@@ -87,7 +87,7 @@ const ForYou = ({ items, initialVisibleItems }) => {
                             </a>
                             <a className='loginMethods' onClick={() => navigate(`/login`)}>
                                 <div className='loginMethod'>
-                                    <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
+                                    <i className="fa-brands fa-facebook" style={{ float: 'left', marginTop: '5px' }}></i>
                                     <span>Continue with Facebook</span>
                                 </div>
                             </a>

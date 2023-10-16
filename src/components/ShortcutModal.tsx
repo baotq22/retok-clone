@@ -1,4 +1,4 @@
-import './styles/ShortcutModal.css'
+import '../styles/css/ShortcutModal.css'
 
 const ShortcutModal = ({isShortcutOpen, onShortcutClose}) => {
     if (!isShortcutOpen) return null;

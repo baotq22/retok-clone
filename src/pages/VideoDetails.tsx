@@ -3,7 +3,7 @@ import Video1 from '../assets/videos/1.mp4'
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { videoApis } from "../axios-instance";
 import '../library/fontawesome/css/all.min.css'
-import './styles/videodetails.css'
+import '../styles/css/videodetails.css'
 import Comments from '../components/comments/Comments'
 import axios from "axios";
 

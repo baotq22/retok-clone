@@ -1,5 +1,5 @@
 import '../library/fontawesome/css/all.min.css';
-import './styles/loginmodal.css'
+import '../styles/css/loginmodal.css'
 
 const LoginModal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;

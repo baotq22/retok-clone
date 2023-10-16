@@ -1,4 +1,4 @@
-import './styles/SearchBar.css'
+import '../styles/css/SearchBar.css'
 import '../library/fontawesome/css/all.min.css'
 
 const SearchBar = () => {

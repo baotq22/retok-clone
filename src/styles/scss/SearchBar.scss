@@ -24,18 +24,23 @@
     font-family: inherit;
     cursor: pointer;
     transition: border-color 0.25s;
-}
+    padding-top: 2px;
 
-#search_button:hover {
-    background: #484848;
+    &:hover {
+        background: #484848;
+    }
 }
 
 @media (prefers-color-scheme: light) {
-    #search_box, #search_button {
+    #search_box {
         background: #f1f1f2;
     }
 
-    #search_button .iconAction {
-        color: #000;
+    #search_button {
+        background: #f1f1f2;
+
+        .iconAction {
+            color: #000;
+        }
     }
 }

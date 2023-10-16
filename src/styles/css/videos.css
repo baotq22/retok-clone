@@ -1,0 +1,525 @@
+#followingPage,
+#foryouPage {
+  margin-top: 80px;
+  max-width: 100%;
+  background-color: #121212;
+}
+#followingPage #foryou,
+#foryouPage #foryou {
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  float: left;
+  margin: 0 300px 0 300px;
+}
+#followingPage #foryou #video,
+#foryouPage #foryou #video {
+  margin: 0 150px;
+}
+#followingPage #foryou #video .videos__container,
+#foryouPage #foryou #video .videos__container {
+  margin-bottom: 20px;
+  width: 100%;
+}
+#followingPage #foryou #video .videos__container .avatarContainer,
+#foryouPage #foryou #video .videos__container .avatarContainer {
+  flex: 40%;
+  max-width: 40%;
+}
+#followingPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar,
+#foryouPage #foryou #video .videos__container .avatarContainer .avatarVideo .avatar {
+  border-radius: 50%;
+  width: 20%;
+  margin-left: 30px;
+}
+#followingPage #foryou #video .videos__container .videoContainer,
+#foryouPage #foryou #video .videos__container .videoContainer {
+  margin-top: -75px;
+  margin-bottom: 20px;
+  margin-left: 120px;
+  flex: 60%;
+  max-width: 60%;
+}
+#followingPage #foryou #video .videos__container .videoContainer .video-user .user_details,
+#foryouPage #foryou #video .videos__container .videoContainer .video-user .user_details {
+  color: #fff;
+}
+#followingPage #foryou #video .videos__container .videoContainer .video-user .follow_btn,
+#foryouPage #foryou #video .videos__container .videoContainer .video-user .follow_btn {
+  float: right;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: -50px;
+  font-size: 15px;
+  font-family: inherit;
+}
+#followingPage #foryou #video .videos__container .videoContainer .video-user .videoDesc,
+#foryouPage #foryou #video .videos__container .videoContainer .video-user .videoDesc {
+  width: 400px;
+  margin-top: -0.5px;
+}
+#followingPage #foryou #video .videos__container .videoContainer .videoDetails,
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails {
+  display: flex;
+}
+#followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videos,
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videos {
+  margin-right: 10px;
+  height: calc(450px + (100vw - 768px) / 1152 * 200);
+}
+#followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+  float: right;
+  margin-right: -60px;
+}
+#followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn,
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 0;
+  background-color: #2f2f2f;
+  margin-bottom: -10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+#followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn:hover,
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn:hover {
+  background-color: #252525;
+}
+#followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .actionAmount,
+#foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .actionAmount {
+  text-align: center;
+}
+#followingPage #foryou #video .borderVideo .border_video,
+#foryouPage #foryou #video .borderVideo .border_video {
+  text-align: center;
+  display: block;
+  margin-bottom: 10px;
+}
+#followingPage #foryou #video .borderVideo .border_video::before,
+#foryouPage #foryou #video .borderVideo .border_video::before {
+  width: 800px;
+  height: 0.5px;
+  content: "";
+  display: inline-block;
+  background: #414141;
+  position: relative;
+  margin-right: 10px;
+}
+
+#followingPage #userNotLogin {
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  float: right;
+  margin-left: 480px;
+  margin-right: 190px;
+}
+#followingPage #userNotLogin .userContainer {
+  margin: 0 20px;
+}
+#followingPage #userNotLogin .userContainer .userVideo {
+  display: flex;
+  flex-wrap: wrap;
+}
+#followingPage #userNotLogin .userContainer .userVideo .userInfo {
+  position: relative;
+  flex: 33%;
+  max-width: 33%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+#followingPage #userNotLogin .userContainer .userVideo .userInfo .imgUser {
+  width: 230px;
+  height: 302px;
+  position: relative;
+  border-radius: 10px;
+}
+#followingPage #userNotLogin .userContainer .userVideo .userInfo .userFollow {
+  position: absolute;
+  bottom: 8px;
+  text-align: center;
+  margin: 15px 15px;
+}
+#followingPage #userNotLogin .userContainer .userVideo .userInfo .userFollow .avatarUser {
+  position: absolute;
+  border-radius: 50%;
+  width: 20%;
+  bottom: 120px;
+  left: 80px;
+}
+#followingPage #userNotLogin .userContainer .userVideo .userInfo .userFollow .user {
+  margin: 10px;
+}
+#followingPage #userNotLogin .userContainer .userVideo .userInfo .userFollow .followBtn {
+  background-color: #f22459;
+  border-radius: 3px;
+  border: 0;
+  padding: 0.6em 0;
+  width: 200px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #fff;
+}
+#followingPage #userNotLogin .userContainer .userVideo .userInfo .userFollow .followBtn:hover {
+  background-color: #e53154;
+}
+
+@media (prefers-color-scheme: light) {
+  #followingPage #foryou #video .videos__container .videoContainer .video-user .user_details,
+  #foryouPage #foryou #video .videos__container .videoContainer .video-user .user_details {
+    color: #000;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction .action_btn {
+    background-color: #f1f1f2;
+  }
+  #followingPage #foryou #video .borderVideo .border_video::before,
+  #foryouPage #foryou #video .borderVideo .border_video::before {
+    background: #d0d1d3;
+  }
+}
+@media screen and (max-width: 2200px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 360px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 310px;
+  }
+}
+@media screen and (max-width: 2180px) {
+  #followingPage #userNotLogin {
+    margin-left: 805px;
+    margin-right: 505px;
+  }
+}
+@media screen and (max-width: 2160px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 350px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 305px;
+  }
+}
+@media screen and (max-width: 2150px) {
+  #followingPage #userNotLogin {
+    margin-left: 790px;
+    margin-right: 490px;
+  }
+}
+@media screen and (max-width: 2120px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 340px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 300px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 775px;
+    margin-right: 475px;
+  }
+}
+@media screen and (max-width: 2090px) {
+  #followingPage #userNotLogin {
+    margin-left: 760px;
+    margin-right: 460px;
+  }
+}
+@media screen and (max-width: 2080px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 330px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 295px;
+  }
+}
+@media screen and (max-width: 2060px) {
+  #followingPage #userNotLogin {
+    margin-left: 745px;
+    margin-right: 445px;
+  }
+}
+@media screen and (max-width: 2040px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 320px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 290px;
+  }
+}
+@media screen and (max-width: 2030px) {
+  #followingPage #userNotLogin {
+    margin-left: 720px;
+    margin-right: 420px;
+  }
+}
+@media screen and (max-width: 2000px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 310px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 285px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 705px;
+    margin-right: 405px;
+  }
+}
+@media screen and (max-width: 1970px) {
+  #followingPage #userNotLogin {
+    margin-left: 690px;
+    margin-right: 390px;
+  }
+}
+@media screen and (max-width: 1960px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 300px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 280px;
+  }
+}
+@media screen and (max-width: 1940px) {
+  #followingPage #userNotLogin {
+    margin-left: 675px;
+    margin-right: 385px;
+  }
+}
+@media screen and (max-width: 1920px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 290px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 275px;
+  }
+}
+@media screen and (max-width: 1910px) {
+  #followingPage #userNotLogin {
+    margin-left: 660px;
+    margin-right: 370px;
+  }
+}
+@media screen and (max-width: 1880px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 280px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 270px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 645px;
+    margin-right: 355px;
+  }
+}
+@media screen and (max-width: 1850px) {
+  #followingPage #userNotLogin {
+    margin-left: 630px;
+    margin-right: 340px;
+  }
+}
+@media screen and (max-width: 1840px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 270px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 265px;
+  }
+}
+@media screen and (max-width: 1820px) {
+  #followingPage #userNotLogin {
+    margin-left: 615px;
+    margin-right: 325px;
+  }
+}
+@media screen and (max-width: 1800px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 260px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 260px;
+  }
+}
+@media screen and (max-width: 1790px) {
+  #followingPage #userNotLogin {
+    margin-left: 595px;
+    margin-right: 310px;
+  }
+}
+@media screen and (max-width: 1760px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 250px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 255px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 580px;
+    margin-right: 295px;
+  }
+}
+@media screen and (max-width: 1730px) {
+  #followingPage #userNotLogin {
+    margin-left: 570px;
+    margin-right: 280px;
+  }
+}
+@media screen and (max-width: 1720px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 240px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 250px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 565px;
+    margin-right: 275px;
+  }
+}
+@media screen and (max-width: 1700px) {
+  #followingPage #userNotLogin {
+    margin-left: 550px;
+    margin-right: 260px;
+  }
+}
+@media screen and (max-width: 1680px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 230px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 245px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 540px;
+    margin-right: 250px;
+  }
+}
+@media screen and (max-width: 1640px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 220px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 240px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 520px;
+    margin-right: 230px;
+  }
+}
+@media screen and (max-width: 1620px) {
+  #followingPage #userNotLogin {
+    margin-left: 515px;
+    margin-right: 225px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 210px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 235px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 510px;
+    margin-right: 220px;
+  }
+}
+@media screen and (max-width: 1580px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 190px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 225px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 500px;
+    margin-right: 210px;
+  }
+}
+@media screen and (max-width: 1560px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 160px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 220px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 490px;
+    margin-right: 200px;
+  }
+}
+@media screen and (max-width: 1540px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 130px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 215px;
+  }
+  #followingPage #userNotLogin {
+    margin-left: 480px;
+    margin-right: 190px;
+  }
+}
+@media screen and (max-width: 1500px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 100px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 210px;
+  }
+}
+@media screen and (max-width: 1460px) {
+  #followingPage #foryou #video,
+  #foryouPage #foryou #video {
+    margin: 0 70px;
+  }
+  #followingPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction,
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    padding-top: 205px;
+  }
+}

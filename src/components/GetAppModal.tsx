@@ -1,4 +1,4 @@
-import './styles/GetAppModal.css'
+import '../styles/css/GetAppModal.css'
 import qrCode from '../assets/47624c235266dedd8e4d.png'
 import msstore from '../assets/msstore.png'
 import appstore from '../assets/appstore.png'

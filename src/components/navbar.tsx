@@ -1,7 +1,7 @@
 import logoDark from '../assets/logo_dark.png'
 import logoLight from '../assets/logo_light.png'
 import SearchBar from "./SearchBar"
-import './styles/navbar.css'
+import '../styles/css/navbar.css'
 import '../library/fontawesome/css/all.min.css'
 import LoginModal from "./LoginModal"
 import { memo, useEffect, useState } from "react"
@@ -70,7 +70,7 @@ export const NavBar = () => {
                         </a>
                         <a className='loginMethods' onClick={() => navigate(`/login`)}>
                             <div className='loginMethod'>
-                                <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
+                                <i className="fa-brands fa-facebook" style={{ float: 'left', marginTop: '5px' }}></i>
                                 <span>Continue with Facebook</span>
                             </div>
                         </a>

@@ -5,8 +5,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import LoginModal from "../components/LoginModal";
 import { api, videoApis } from "../axios-instance";
-import './styles/sidebar.css'
-import './styles/userdetails.css'
+import '../styles/css/sidebar.css'
+import '../styles/css/userdetails.css'
 import RightBottomActionButton from "../components/RightBottomActionButton";
 
 const followUser = async (userId: string | undefined) => {
@@ -92,7 +92,7 @@ const UserFollowDetails = () => {
                         </a>
                         <a href="#" className='loginMethods'>
                             <div className='loginMethod'>
-                                <i className="fa-brands fa-facebook fa-spin" style={{ float: 'left', marginTop: '5px' }}></i>
+                                <i className="fa-brands fa-facebook" style={{ float: 'left', marginTop: '5px' }}></i>
                                 <span>Continue with Facebook</span>
                             </div>
                         </a>

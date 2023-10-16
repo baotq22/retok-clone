@@ -1,0 +1,145 @@
+#userDetailsPage {
+    display: flex;
+    margin-top: 80px;
+    max-width: 100%;
+    background-color: #121212;
+
+    #detailedUser {
+        flex: 75%;
+        margin: 0 0 0 300px;
+
+        .detailedUserComponents {
+            margin: 35px 35px 35px 35px;
+
+            .detailedUserInfo {
+                .detailedUserName {
+                    display: flex;
+
+                    .detailedUserAvatar {
+                        margin-top: 30px;
+
+                        .avatarCircle {
+                            .avatar {
+                                border-radius: 50%;
+                                margin-right: 20px;
+                            }
+                        }
+                    }
+
+                    .detailed__username {
+                        .detailUsername {
+                            font-size: 35px;
+                            margin-top: 20px;
+                        }
+
+                        .detailFullname {
+                            font-size: 20px;
+                            margin-top: -40px;
+                        }
+
+                        .button__action {
+                            .followBtn:hover {
+                                background-color: #e53154;
+                            }
+                        }
+                    }
+                }
+
+                .detailedAmount {
+                    display: flex;
+                    font-weight: 100;
+
+                    div {
+                        margin-right: 20px;
+
+                        b {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+
+                .user__desc {
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+
+                .detailedAmount {
+                    .advancedAction {
+                        span {
+                            float: right;
+                            cursor: pointer;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .videosHeaders {
+            margin-left: 35px;
+        }
+
+        .userContainer {
+            .userVideo {
+                display: flex;
+                flex-wrap: wrap;
+
+                .userInfo {
+                    position: relative;
+                    flex: calc(15% - 30px);
+                    max-width: calc(15% - 30px);
+                    margin: 0 0 0 15px;
+                    padding: 20px 0 0 20px;
+                    border-radius: 0 10px 10px 10px;
+
+                    .imgUser {
+                        width: 230px;
+                        height: 302px;
+                        position: relative;
+                        border-radius: 10px;
+                    }
+
+                    .userFollow {
+                        position: absolute;
+                        bottom: 8px;
+                        text-align: center;
+                        margin-left: 15px;
+                        margin-bottom: 35px;
+
+                        .detailedViewers {
+                            margin-left: 10px;
+                        }
+                    }
+
+                    .video__desc {
+                        word-break: break-word;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    #userDetailsPage {
+        background-color: #fff;
+    }
+}
+
+@media screen and (max-width: 1540px) {
+    #userDetailsPage {
+        #detailedUser {
+            .userContainer {
+                .userVideo {
+                    .userInfo {
+                        flex: calc(20% - 30px);
+                        max-width: calc(20% - 30px);
+                    }
+                }
+            }
+        }
+    }
+}

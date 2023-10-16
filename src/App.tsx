@@ -29,10 +29,6 @@ const router = createBrowserRouter([
     element: <Following />
   },
   {
-    path: '/login',
-    element: <UserLogin />
-  },
-  {
     path: '/videos/:userId',
     element: <VideoDetails />
   },

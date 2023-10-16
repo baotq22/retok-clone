@@ -3,7 +3,7 @@ import avatar3 from '../../assets/avatar/583.jpg'
 import Video3 from '../../assets/videos/3.mp4'
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import '../../library/fontawesome/css/all.min.css'
-import '../styles/videodetails.css'
+import '../../styles/css/videodetails.css'
 import Comments from '../../components/comments/Comments'
 
 const getReactionStatus3 = () => {
