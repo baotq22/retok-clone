@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import avatar3 from "../../assets/avatar/583.jpg"
 import Video3 from "../../assets/videos/3.mp4"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import "../../library/fontawesome/css/all.min.css"
 import "../../styles/css/videodetails.css"
 import Comments from "../../components/comments/Comments"
 
 const getReactionStatus3 = () => {
-    const storedStatus3 = localStorage.getItem("video-reaction3");
-    return storedStatus3 === "liked3";
+    const storedStatus3 = localStorage.getItem("video-reaction3")
+    return storedStatus3 === "liked3"
 }
 
 const setReactionStatus3 = (isLiked3) => {
@@ -16,8 +16,8 @@ const setReactionStatus3 = (isLiked3) => {
 }
 
 const getFollowStatus3 = () => {
-    const storedStatus3 = localStorage.getItem("video-follow3");
-    return storedStatus3 === "followed3";
+    const storedStatus3 = localStorage.getItem("video-follow3")
+    return storedStatus3 === "followed3"
 }
 
 const setFollowStatus3 = (isFollowed3) => {
@@ -25,7 +25,6 @@ const setFollowStatus3 = (isFollowed3) => {
 }
 
 const VideoDetails3 = () => {
-
     const escapeBack = () => {
         navigate(`/`)
     }
@@ -39,73 +38,79 @@ const VideoDetails3 = () => {
         handleLikeClick3()
     }
     useEffect(() => {
-        const keyDownHandler = event => {
+        const keyDownHandler = (event) => {
             if (event.key === "Escape") {
-                escapeBack();
+                escapeBack()
             }
 
             if (event.key === "ArrowUp") {
-                previousVideo();
+                previousVideo()
             }
 
             if (event.key === "ArrowDown") {
-                nextVideo();
+                nextVideo()
             }
 
             if (event.key === "L" || event.key === "l") {
-                likeVideoByKey();
+                likeVideoByKey()
             }
         }
 
-        document.addEventListener("keydown", keyDownHandler);
+        document.addEventListener("keydown", keyDownHandler)
 
         return () => {
-            document.removeEventListener("keydown", keyDownHandler);
+            document.removeEventListener("keydown", keyDownHandler)
         }
     }, [])
 
-    const navigate = useNavigate();
-    const storedIdLogin = localStorage.getItem("id");
+    const navigate = useNavigate()
+    const storedIdLogin = localStorage.getItem("id")
 
-    const [isLiked3, setIsLiked3] = useState(getReactionStatus3());
-    const [isFollowed3, setIsFollowed3] = useState(getFollowStatus3());
+    const [isLiked3, setIsLiked3] = useState(getReactionStatus3())
+    const [isFollowed3, setIsFollowed3] = useState(getFollowStatus3())
 
     const handleLikeClick3 = () => {
         if (isLiked3) {
-            setIsLiked3(false);
-            setReactionStatus3(false);
+            setIsLiked3(false)
+            setReactionStatus3(false)
         } else {
-            setIsLiked3(true);
-            setReactionStatus3(true);
+            setIsLiked3(true)
+            setReactionStatus3(true)
         }
-    };
+    }
 
     const handleFollowClick3 = () => {
         if (isFollowed3) {
-            setIsFollowed3(false);
-            setFollowStatus3(false);
+            setIsFollowed3(false)
+            setFollowStatus3(false)
         } else {
-            setIsFollowed3(true);
-            setFollowStatus3(true);
+            setIsFollowed3(true)
+            setFollowStatus3(true)
         }
     }
 
     useEffect(() => {
-        setIsLiked3(getReactionStatus3());
-        setIsFollowed3(getFollowStatus3());
+        setIsLiked3(getReactionStatus3())
+        setIsFollowed3(getFollowStatus3())
     }, [])
 
     return (
         <div id="videoDetailsContainer">
             <div className="videoInfo">
                 <div>
-                    <button onClick={() => navigate(`/`)} className="btnClose"><i className="fa-solid fa-arrow-left"></i></button>
+                    <button onClick={() => navigate(`/`)} className="btnClose">
+                        <i className="fa-solid fa-arrow-left"></i>
+                    </button>
                 </div>
                 <div>
-                    <button onClick={() => navigate(`/videoDetails/2`)} className="btnUp"><i className="fa-solid fa-chevron-up"></i></button>
+                    <button onClick={() => navigate(`/videoDetails/2`)} className="btnUp">
+                        <i className="fa-solid fa-chevron-up"></i>
+                    </button>
                 </div>
                 <div>
-                    <button onClick={() => navigate(`/videoDetails/4`)} className="btnDown"><i className="fa-solid fa-chevron-down"></i></button>
+                    <button onClick={() => navigate(`/videoDetails/4`)} className="btnDown">
+                        <i className="fa-solid fa-chevron-down"></i>
+                    </button>
                 </div>
                 <video loop controls autoPlay className="videoDetailsPage">
                     <source src={Video3} type="video/webm" />
@@ -120,7 +125,8 @@ const VideoDetails3 = () => {
                             {/* </Link> */}
                         </div>
                         <div className="infoContainer">
-                            <button className="followBttn"
+                            <button
+                                className="followBttn"
                                 style={{
                                     float: "right",
                                     width: "80px",
@@ -131,38 +137,55 @@ const VideoDetails3 = () => {
                                     marginRight: "10px",
                                     fontFamily: "inherit",
                                     cursor: "pointer"
-                                }} onClick={handleFollowClick3}>{isFollowed3 ? "Following" : "Follow"}</button>
+                                }}
+                                onClick={handleFollowClick3}
+                            >
+                                {isFollowed3 ? "Following" : "Follow"}
+                            </button>
                             {/* <Link to={`/users/${userId}`} style={{ textDecoration: "0", color: "#fff" }}> */}
-                            <span><b>Grover32</b></span>
-                            <div>Nina Mills IV<span style={{ margin: "0px 4px" }}> · </span>  <span>1h ago</span></div>
+                            <span>
+                                <b>Grover32</b>
+                            </span>
+                            <div>
+                                Nina Mills IV<span style={{ margin: "0px 4px" }}> · </span> <span>1h ago</span>
+                            </div>
                             {/* </Link> */}
-                            <div className="descVid">The Football Is Good For Training And Recreational Purposes. The Football Is Good For Training And Recreational Purposes</div>
+                            <div className="descVid">
+                                The Football Is Good For Training And Recreational Purposes. The Football Is Good For
+                                Training And Recreational Purposes
+                            </div>
                         </div>
                     </div>
                     <div className="actionContainer">
                         <div className="videoActions">
                             <button className="action_btn" onClick={handleLikeClick3}>
                                 <span>
-                                    {isLiked3 ? <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> : <i className="fa-solid fa-heart"></i>}
+                                    {isLiked3 ? (
+                                        <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
+                                    ) : (
+                                        <i className="fa-solid fa-heart"></i>
+                                    )}
                                 </span>
                             </button>
-                            <div className="actionAmount">
-                                {isLiked3 ? <strong>73</strong> : <strong>72</strong>}
-                            </div>
+                            <div className="actionAmount">{isLiked3 ? <strong>73</strong> : <strong>72</strong>}</div>
 
                             <button className="action_btn">
                                 <span>
                                     <i className="fa-solid fa-comment-dots" style={{ fontSize: "20px" }}></i>
                                 </span>
                             </button>
-                            <div className="actionAmount"><strong>25</strong></div>
+                            <div className="actionAmount">
+                                <strong>25</strong>
+                            </div>
 
                             <button className="action_btn">
                                 <span>
                                     <i className="fa-solid fa-bookmark" style={{ fontSize: "20px" }}></i>
                                 </span>
                             </button>
-                            <div className="actionAmount"><strong>16</strong></div>
+                            <div className="actionAmount">
+                                <strong>16</strong>
+                            </div>
                         </div>
                         <div className="shareBtnContainer">
                             <button className="action_btn">

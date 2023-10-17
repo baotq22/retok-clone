@@ -49,12 +49,12 @@
     .RBABContainer {
         .getApp {
             background-color: #fff;
-            color: rgba(22, 24, 35, .75);
+            color: rgba(22, 24, 35, 0.75);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(22, 24, 35, .12);
+            border: 1px solid rgba(22, 24, 35, 0.12);
 
             &:hover {
-                border: 1px solid rgba(22, 24, 35, .4);
+                border: 1px solid rgba(22, 24, 35, 0.4);
             }
         }
     }

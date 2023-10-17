@@ -1,7 +1,7 @@
 import "../../styles/css/ShortcutModal.css"
 
-const ShortcutModal = ({isShortcutOpen, onShortcutClose}) => {
-    if (!isShortcutOpen) return null;
+const ShortcutModal = ({ isShortcutOpen, onShortcutClose }) => {
+    if (!isShortcutOpen) return null
     return (
         <>
             <div className="modal-overlay">

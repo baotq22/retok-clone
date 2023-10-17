@@ -1,19 +1,19 @@
 import { useState } from "react"
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux"
 
-const CommentForm = ({ handleSubmit, submitLabel}) => {
+const CommentForm = ({ handleSubmit, submitLabel }) => {
     const [text, setText] = useState("")
-    const isInputDisabled = text.length === 0;
-    const onSubmit = event => {
-        event.preventDefault();
-        handleSubmit(text);
+    const isInputDisabled = text.length === 0
+    const onSubmit = (event) => {
+        event.preventDefault()
+        handleSubmit(text)
         setText("")
     }
 
-    const userLogin = useSelector(state => state.userLogin);
-    const userLogged = !userLogin?.username;
+    const userLogin = useSelector((state) => state.userLogin)
+    const userLogged = !userLogin?.username
 
-    let content;
+    let content
 
     if (userLogged) {
         content = (
@@ -30,25 +30,28 @@ const CommentForm = ({ handleSubmit, submitLabel}) => {
             <>
                 <form onSubmit={onSubmit}>
                     <div className="comment_box">
-                        <input className="comment_input"
+                        <input
+                            className="comment_input"
                             placeholder="Add comment..."
                             value={text}
-                            onChange={(e) => setText(e.target.value)}></input>
-                        <button className="mention_button"><i className="fa-solid fa-at" style={{ marginRight: "5px" }}></i></button>
-                        <button className="emoji_button"><i className="fa-regular fa-face-smile" style={{ marginRight: "5px" }}></i></button>
-                        <button className="postBtn" disabled={isInputDisabled}>{submitLabel}</button>
+                            onChange={(e) => setText(e.target.value)}
+                        ></input>
+                        <button className="mention_button">
+                            <i className="fa-solid fa-at" style={{ marginRight: "5px" }}></i>
+                        </button>
+                        <button className="emoji_button">
+                            <i className="fa-regular fa-face-smile" style={{ marginRight: "5px" }}></i>
+                        </button>
+                        <button className="postBtn" disabled={isInputDisabled}>
+                            {submitLabel}
+                        </button>
                     </div>
                 </form>
             </>
         )
     }
 
-    return (
-        <>
-            {content}
-        </>
-
-    )
+    return <>{content}</>
 }
 
 export default CommentForm

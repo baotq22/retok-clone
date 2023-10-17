@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import avatar2 from "../../assets/avatar/347.jpg"
 import Video2 from "../../assets/videos/2.mp4"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import "../../library/fontawesome/css/all.min.css"
 import "../../styles/css/videodetails.css"
 import Comments from "../../components/comments/Comments"
 
 const getReactionStatus2 = () => {
-    const storedStatus2 = localStorage.getItem("video-reaction2");
-    return storedStatus2 === "liked2";
+    const storedStatus2 = localStorage.getItem("video-reaction2")
+    return storedStatus2 === "liked2"
 }
 
 const setReactionStatus2 = (isLiked2) => {
@@ -16,8 +16,8 @@ const setReactionStatus2 = (isLiked2) => {
 }
 
 const getFollowStatus2 = () => {
-    const storedStatus2 = localStorage.getItem("video-follow2");
-    return storedStatus2 === "followed2";
+    const storedStatus2 = localStorage.getItem("video-follow2")
+    return storedStatus2 === "followed2"
 }
 
 const setFollowStatus2 = (isFollowed2) => {
@@ -25,7 +25,6 @@ const setFollowStatus2 = (isFollowed2) => {
 }
 
 const VideoDetails2 = () => {
-    
     const escapeBack = () => {
         navigate(`/`)
     }
@@ -39,72 +38,78 @@ const VideoDetails2 = () => {
         handleLikeClick2()
     }
     useEffect(() => {
-        const keyDownHandler = event => {
+        const keyDownHandler = (event) => {
             if (event.key === "Escape") {
-                escapeBack();
+                escapeBack()
             }
 
             if (event.key === "ArrowUp") {
-                previousVideo();
+                previousVideo()
             }
 
             if (event.key === "ArrowDown") {
-                nextVideo();
+                nextVideo()
             }
-            
+
             if (event.key === "L" || event.key === "l") {
-                likeVideoByKey();
+                likeVideoByKey()
             }
         }
 
-        document.addEventListener("keydown", keyDownHandler);
-        
+        document.addEventListener("keydown", keyDownHandler)
+
         return () => {
-            document.removeEventListener("keydown", keyDownHandler);
+            document.removeEventListener("keydown", keyDownHandler)
         }
     }, [])
-    
-    const navigate = useNavigate();
-    const storedIdLogin = localStorage.getItem("id");
 
-    const [isLiked2, setIsLiked2] = useState(getReactionStatus2());
-    const [isFollowed2, setIsFollowed2] = useState(getFollowStatus2());
+    const navigate = useNavigate()
+    const storedIdLogin = localStorage.getItem("id")
+
+    const [isLiked2, setIsLiked2] = useState(getReactionStatus2())
+    const [isFollowed2, setIsFollowed2] = useState(getFollowStatus2())
 
     const handleLikeClick2 = () => {
         if (isLiked2) {
-            setIsLiked2(false);
-            setReactionStatus2(false);
+            setIsLiked2(false)
+            setReactionStatus2(false)
         } else {
-            setIsLiked2(true);
-            setReactionStatus2(true);
+            setIsLiked2(true)
+            setReactionStatus2(true)
         }
-    };
+    }
 
     const handleFollowClick2 = () => {
         if (isFollowed2) {
-            setIsFollowed2(false);
-            setFollowStatus2(false);
+            setIsFollowed2(false)
+            setFollowStatus2(false)
         } else {
-            setIsFollowed2(true);
-            setFollowStatus2(true);
+            setIsFollowed2(true)
+            setFollowStatus2(true)
         }
     }
 
     useEffect(() => {
-        setIsLiked2(getReactionStatus2());
-        setIsFollowed2(getFollowStatus2());
+        setIsLiked2(getReactionStatus2())
+        setIsFollowed2(getFollowStatus2())
     }, [])
 
     return (
         <div id="videoDetailsContainer">
             <div className="videoInfo">
                 <div>
-                    <button onClick={() => navigate(`/`)} className="btnClose"><i className="fa-solid fa-arrow-left"></i></button>
+                    <button onClick={() => navigate(`/`)} className="btnClose">
+                        <i className="fa-solid fa-arrow-left"></i>
+                    </button>
                     <div>
-                        <button onClick={() => navigate(`/videoDetails/1`)} className="btnUp"><i className="fa-solid fa-chevron-up"></i></button>
+                        <button onClick={() => navigate(`/videoDetails/1`)} className="btnUp">
+                            <i className="fa-solid fa-chevron-up"></i>
+                        </button>
                     </div>
                     <div>
-                        <button onClick={() => navigate(`/videoDetails/3`)} className="btnDown"><i className="fa-solid fa-chevron-down"></i></button>
+                        <button onClick={() => navigate(`/videoDetails/3`)} className="btnDown">
+                            <i className="fa-solid fa-chevron-down"></i>
+                        </button>
                     </div>
                 </div>
                 <video loop controls autoPlay className="videoDetailsPage">
@@ -121,7 +126,8 @@ const VideoDetails2 = () => {
                         </div>
                         <div className="infoContainer">
                             {/* <Link to={`/users/${userId}`} style={{ textDecoration: "0", color: "#fff" }}> */}
-                            <button className="followBttn"
+                            <button
+                                className="followBttn"
                                 style={{
                                     float: "right",
                                     width: "80px",
@@ -132,37 +138,54 @@ const VideoDetails2 = () => {
                                     marginRight: "10px",
                                     fontFamily: "inherit",
                                     cursor: "pointer"
-                                }} onClick={handleFollowClick2}>{isFollowed2 ? "Following" : "Follow"}</button>
-                            <span><b>Chris.Franecki48</b></span>
-                            <div>Anthony Waters<span style={{ margin: "0px 4px" }}> · </span>  <span>1h ago</span></div>
+                                }}
+                                onClick={handleFollowClick2}
+                            >
+                                {isFollowed2 ? "Following" : "Follow"}
+                            </button>
+                            <span>
+                                <b>Chris.Franecki48</b>
+                            </span>
+                            <div>
+                                Anthony Waters<span style={{ margin: "0px 4px" }}> · </span> <span>1h ago</span>
+                            </div>
                             {/* </Link> */}
-                            <div className="descVid">The Football Is Good For Training And Recreational Purposes. The Football Is Good For Training And Recreational Purposes.</div>
+                            <div className="descVid">
+                                The Football Is Good For Training And Recreational Purposes. The Football Is Good For
+                                Training And Recreational Purposes.
+                            </div>
                         </div>
                     </div>
                     <div className="actionContainer">
                         <div className="videoActions">
                             <button className="action_btn" onClick={handleLikeClick2}>
                                 <span>
-                                    {isLiked2 ? <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> : <i className="fa-solid fa-heart"></i>}
+                                    {isLiked2 ? (
+                                        <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
+                                    ) : (
+                                        <i className="fa-solid fa-heart"></i>
+                                    )}
                                 </span>
                             </button>
-                            <div className="actionAmount">
-                                {isLiked2 ? <strong>73</strong> : <strong>72</strong>}
-                            </div>
+                            <div className="actionAmount">{isLiked2 ? <strong>73</strong> : <strong>72</strong>}</div>
 
                             <button className="action_btn">
                                 <span>
                                     <i className="fa-solid fa-comment-dots" style={{ fontSize: "20px" }}></i>
                                 </span>
                             </button>
-                            <div className="actionAmount"><strong>25</strong></div>
+                            <div className="actionAmount">
+                                <strong>25</strong>
+                            </div>
 
                             <button className="action_btn">
                                 <span>
                                     <i className="fa-solid fa-bookmark" style={{ fontSize: "20px" }}></i>
                                 </span>
                             </button>
-                            <div className="actionAmount"><strong>16</strong></div>
+                            <div className="actionAmount">
+                                <strong>16</strong>
+                            </div>
                         </div>
                         <div className="shareBtnContainer">
                             <button className="action_btn">

@@ -1,24 +1,24 @@
 import "../styles/css/videos.css"
 import "../styles/css/sidebar.css"
 import NavBar from "../components/NavBar/navbar"
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 import "../library/fontawesome/css/all.min.css"
-import { useSelector } from "react-redux";
-import RightBottomActionButton from "../components/PageComponents/RightBottomActionButton";
-import { videoApis } from "../api/axios-instance";
-import VideoListFollowing from "../components/PageComponents/VideoListFollowing";
-import MainSidebar from "../components/Sidebar/MainSidebar";
+import { useSelector } from "react-redux"
+import RightBottomActionButton from "../components/PageComponents/RightBottomActionButton"
+import { videoApis } from "../api/axios-instance"
+import VideoListFollowing from "../components/PageComponents/VideoListFollowing"
+import MainSidebar from "../components/Sidebar/MainSidebar"
 
 const ForYou = () => {
     const [videoList, setVideoList] = useState([])
     const fetchVideos = async () => {
         try {
-            const res = await videoApis.get("videos");
+            const res = await videoApis.get("videos")
             setVideoList(res.data)
         } catch (e) {
             if (e.response && e.response.status == 429) {
-                const retryDelay = 500;
+                const retryDelay = 500
                 setTimeout(() => fetchVideos(), retryDelay)
             } else {
                 console.log("fail")
@@ -26,12 +26,12 @@ const ForYou = () => {
         }
     }
     useEffect(() => {
-        fetchVideos();
+        fetchVideos()
     }, [])
-    const userLogin = useSelector(state => state.userLogin)
-    const userLogged = !userLogin?.username;
+    const userLogin = useSelector((state) => state.userLogin)
+    const userLogged = !userLogin?.username
 
-    const user_id = userLogin?.id;
+    const user_id = userLogin?.id
 
     return (
         <div id="followingPage">
@@ -39,23 +39,26 @@ const ForYou = () => {
                 <div id="userNotLogin">
                     <div className="userContainer">
                         <div className="userVideo">
-                            {
-                                videoList.map((user, index) =>
-                                    <div className="userInfo" key={index}>
-                                        <Link to={`/userFollow/${user.id}`}>
-                                            <img src={user?.imgVideo} className="imgUser" />
+                            {videoList.map((user, index) => (
+                                <div className="userInfo" key={index}>
+                                    <Link to={`/userFollow/${user.id}`}>
+                                        <img src={user?.imgVideo} className="imgUser" />
+                                    </Link>
+                                    <div className="userFollow">
+                                        <Link
+                                            to={`/userFollow/${user.id}`}
+                                            style={{ textDecoration: "0", color: "#fff" }}
+                                        >
+                                            <img src={user?.avatar} className="avatarUser" />
+                                            <h3 className="user">
+                                                <b>{user?.username}</b>
+                                            </h3>
+                                            <h4 className="user">{user?.fullname}</h4>
                                         </Link>
-                                        <div className="userFollow">
-                                            <Link to={`/userFollow/${user.id}`} style={{ textDecoration: "0", color: "#fff" }}>
-                                                <img src={user?.avatar} className="avatarUser" />
-                                                <h3 className="user"><b>{user?.username}</b></h3>
-                                                <h4 className="user">{user?.fullname}</h4>
-                                            </Link>
-                                            <button className="followBtn">Follow</button>
-                                        </div>
+                                        <button className="followBtn">Follow</button>
                                     </div>
-                                )
-                            }
+                                </div>
+                            ))}
                         </div>
                         <RightBottomActionButton />
                     </div>
@@ -67,8 +70,7 @@ const ForYou = () => {
                         <RightBottomActionButton />
                     </div>
                 </div>
-            )
-            }
+            )}
             <div id="nav">
                 <MainSidebar />
             </div>

@@ -6,7 +6,7 @@ import amazon from "../../assets/amazon.png"
 import ggplay from "../../assets/ggplay.png"
 
 const GetAppModal = ({ isGetAppOpen, onGetAppClose }) => {
-    if (!isGetAppOpen) return null;
+    if (!isGetAppOpen) return null
 
     return (
         <div className="modal-overlay">

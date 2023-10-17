@@ -1,329 +1,345 @@
 #foryouPage #nav,
 #followingPage #nav,
 #userDetailsPage #nav {
-  float: left;
-  position: fixed;
-  max-width: 270px;
-  background-color: #121212;
-  overflow-y: auto;
-  text-align: center;
-  margin-top: 30px;
-  height: 100%;
+    float: left;
+    position: fixed;
+    max-width: 270px;
+    background-color: #121212;
+    overflow-y: auto;
+    text-align: center;
+    margin-top: 30px;
+    height: 100%;
 }
 #foryouPage #nav::-webkit-scrollbar,
 #followingPage #nav::-webkit-scrollbar,
 #userDetailsPage #nav::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 #foryouPage #nav::-webkit-scrollbar-track,
 #followingPage #nav::-webkit-scrollbar-track,
 #userDetailsPage #nav::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 #foryouPage #nav::-webkit-scrollbar-thumb,
 #followingPage #nav::-webkit-scrollbar-thumb,
 #userDetailsPage #nav::-webkit-scrollbar-thumb {
-  background: #252525;
-  border-radius: 50px;
+    background: #252525;
+    border-radius: 50px;
 }
 #foryouPage #nav .itemLinkAll,
 #followingPage #nav .itemLinkAll,
 #userDetailsPage #nav .itemLinkAll {
-  margin-bottom: -50px;
+    margin-bottom: -50px;
 }
 #foryouPage #nav .itemLinkAll .itemLink,
 #followingPage #nav .itemLinkAll .itemLink,
 #userDetailsPage #nav .itemLinkAll .itemLink {
-  text-align: left;
-  list-style: none;
-  margin: 0 0 0 -35px;
-  font-size: 20px;
-  width: 240px;
-  padding: 0.6em 0.8em;
+    text-align: left;
+    list-style: none;
+    margin: 0 0 0 -35px;
+    font-size: 20px;
+    width: 240px;
+    padding: 0.6em 0.8em;
 }
 #foryouPage #nav .itemLinkAll .itemLink:hover,
 #followingPage #nav .itemLinkAll .itemLink:hover,
 #userDetailsPage #nav .itemLinkAll .itemLink:hover {
-  background-color: #1b1b1b;
+    background-color: #1b1b1b;
 }
 #foryouPage #nav .itemLinkAll .itemLink .mainLink,
 #followingPage #nav .itemLinkAll .itemLink .mainLink,
 #userDetailsPage #nav .itemLinkAll .itemLink .mainLink {
-  text-decoration: 0;
-  color: #fff;
+    text-decoration: 0;
+    color: #fff;
 }
 #foryouPage #nav .itemLinkAll .itemLink .mainLink .nav span,
 #followingPage #nav .itemLinkAll .itemLink .mainLink .nav span,
 #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav span {
-  font-weight: 800;
+    font-weight: 800;
 }
 #foryouPage #nav .itemLinkAll .itemLink .mainLink .nav .icon,
 #followingPage #nav .itemLinkAll .itemLink .mainLink .nav .icon,
 #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav .icon {
-  max-width: 20px;
-  margin-right: 15px;
+    max-width: 20px;
+    margin-right: 15px;
 }
 #foryouPage #nav .itemLinkAll .itemLink .mainLink .nav #badge,
 #followingPage #nav .itemLinkAll .itemLink .mainLink .nav #badge,
 #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav #badge {
-  background-color: #ff3b5c;
-  margin-left: 10px;
-  padding: 2px 10px 2px 10px;
-  border-radius: 50px;
-  color: #fff;
+    background-color: #ff3b5c;
+    margin-left: 10px;
+    padding: 2px 10px 2px 10px;
+    border-radius: 50px;
+    color: #fff;
 }
 #foryouPage #nav .itemLinkAll .itemLink .mainLink .selected,
 #followingPage #nav .itemLinkAll .itemLink .mainLink .selected,
 #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .selected {
-  color: #ff3b5c;
+    color: #ff3b5c;
 }
 #foryouPage #nav .effectContainer a,
 #followingPage #nav .effectContainer a,
 #userDetailsPage #nav .effectContainer a {
-  color: #fff;
-  align-items: center;
+    color: #fff;
+    align-items: center;
 }
 #foryouPage #nav .effectContainer a .effectBtn,
 #followingPage #nav .effectContainer a .effectBtn,
 #userDetailsPage #nav .effectContainer a .effectBtn {
-  width: 243px;
-  height: 52px;
-  border-radius: 8px;
-  margin-bottom: 40px;
+    width: 243px;
+    height: 52px;
+    border-radius: 8px;
+    margin-bottom: 40px;
 }
 #foryouPage #nav .titleNotLogin,
 #followingPage #nav .titleNotLogin,
 #userDetailsPage #nav .titleNotLogin {
-  text-align: left;
-  padding: 50px 20px 0 15px;
-  font-weight: 700;
-  color: #898989;
-  font-size: 18px;
+    text-align: left;
+    padding: 50px 20px 0 15px;
+    font-weight: 700;
+    color: #898989;
+    font-size: 18px;
 }
 #foryouPage #nav .titleLogin,
 #followingPage #nav .titleLogin,
 #userDetailsPage #nav .titleLogin {
-  text-align: left;
-  padding: 10px 20px 0 15px;
-  font-weight: 700;
-  color: #c4c4c4;
+    text-align: left;
+    padding: 10px 20px 0 15px;
+    font-weight: 700;
+    color: #c4c4c4;
 }
 #foryouPage #nav #btn__signin,
 #followingPage #nav #btn__signin,
 #userDetailsPage #nav #btn__signin {
-  width: 90%;
-  height: 50px;
-  border-radius: 3px;
-  border: 1px solid #ff3b5c;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  background-color: #252525;
-  color: #ff3b5c;
-  margin-bottom: -10px;
+    width: 90%;
+    height: 50px;
+    border-radius: 3px;
+    border: 1px solid #ff3b5c;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    background-color: #252525;
+    color: #ff3b5c;
+    margin-bottom: -10px;
 }
 #foryouPage #nav .example .example-1,
 #followingPage #nav .example .example-1,
 #userDetailsPage #nav .example .example-1 {
-  text-align: center;
-  display: block;
-  margin-bottom: 10px;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
 }
 #foryouPage #nav .example .example-1::before,
 #followingPage #nav .example .example-1::before,
 #userDetailsPage #nav .example .example-1::before {
-  width: 270px;
-  height: 0.5px;
-  content: "";
-  display: inline-block;
-  background: #383838;
-  position: relative;
-  margin-right: 10px;
+    width: 270px;
+    height: 0.5px;
+    content: "";
+    display: inline-block;
+    background: #383838;
+    position: relative;
+    margin-right: 10px;
 }
 #foryouPage #nav .example .example-2,
 #followingPage #nav .example .example-2,
 #userDetailsPage #nav .example .example-2 {
-  text-align: center;
-  font-size: 30px;
-  display: block;
-  margin-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
 }
 #foryouPage #nav .example .example-2::before,
 #followingPage #nav .example .example-2::before,
 #userDetailsPage #nav .example .example-2::before {
-  width: 270px;
-  height: 0.5px;
-  content: "";
-  display: inline-block;
-  background: #383838;
-  position: relative;
-  margin-right: 10px;
+    width: 270px;
+    height: 0.5px;
+    content: "";
+    display: inline-block;
+    background: #383838;
+    position: relative;
+    margin-right: 10px;
 }
 #foryouPage #nav .bottom,
 #followingPage #nav .bottom,
 #userDetailsPage #nav .bottom {
-  position: relative;
-  padding-left: 8px;
-  text-align: left;
+    position: relative;
+    padding-left: 8px;
+    text-align: left;
 }
 #foryouPage #nav .bottom .info,
 #followingPage #nav .bottom .info,
 #userDetailsPage #nav .bottom .info {
-  color: #898989;
-  display: block;
+    color: #898989;
+    display: block;
 }
 #foryouPage #nav .bottom .info:nth-child(2),
 #followingPage #nav .bottom .info:nth-child(2),
 #userDetailsPage #nav .bottom .info:nth-child(2) {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 #foryouPage #nav .bottom .info:nth-child(6),
 #followingPage #nav .bottom .info:nth-child(6),
 #userDetailsPage #nav .bottom .info:nth-child(6) {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 #foryouPage #nav .bottom .info .link,
 #followingPage #nav .bottom .info .link,
 #userDetailsPage #nav .bottom .info .link {
-  margin-right: 5px;
-  font-size: 20px;
-  word-break: break-all;
-  font-weight: 500;
-  color: #898989;
-  text-decoration: inherit;
+    margin-right: 5px;
+    font-size: 20px;
+    word-break: break-all;
+    font-weight: 500;
+    color: #898989;
+    text-decoration: inherit;
 }
 #foryouPage #nav .bottom .info .link:hover,
 #followingPage #nav .bottom .info .link:hover,
 #userDetailsPage #nav .bottom .info .link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 #foryouPage #nav .bottom .infoMore .link,
 #followingPage #nav .bottom .infoMore .link,
 #userDetailsPage #nav .bottom .infoMore .link {
-  margin-right: 5px;
-  font-size: 20px;
-  word-break: break-all;
-  font-weight: 500;
-  color: #898989;
-  text-decoration: inherit;
+    margin-right: 5px;
+    font-size: 20px;
+    word-break: break-all;
+    font-weight: 500;
+    color: #898989;
+    text-decoration: inherit;
 }
 #foryouPage #nav .bottom .infoMore .link:hover,
 #followingPage #nav .bottom .infoMore .link:hover,
 #userDetailsPage #nav .bottom .infoMore .link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 #foryouPage #nav .bottom .more,
 #followingPage #nav .bottom .more,
 #userDetailsPage #nav .bottom .more {
-  margin-top: 20px;
-  background-color: transparent;
-  border: 0;
-  font: inherit;
-  cursor: pointer;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
 }
 #foryouPage #nav .userList,
 #followingPage #nav .userList,
 #userDetailsPage #nav .userList {
-  margin-bottom: -20px;
+    margin-bottom: -20px;
 }
 #foryouPage #nav .userList .userItem,
 #followingPage #nav .userList .userItem,
 #userDetailsPage #nav .userList .userItem {
-  text-align: left;
-  list-style: none;
-  margin: -20px 0 10px 15px;
-  font-size: 20px;
-  width: 240px;
-  padding: 5px 0 5px 0;
+    text-align: left;
+    list-style: none;
+    margin: -20px 0 10px 15px;
+    font-size: 20px;
+    width: 240px;
+    padding: 5px 0 5px 0;
 }
 #foryouPage #nav .userList .userItem .itemUser,
 #followingPage #nav .userList .userItem .itemUser,
 #userDetailsPage #nav .userList .userItem .itemUser {
-  text-align: left;
-  list-style: none;
-  margin: 0 0 -10px -15px;
-  font-size: 20px;
-  width: 240px;
-  padding: 0.6em 0.8em;
+    text-align: left;
+    list-style: none;
+    margin: 0 0 -10px -15px;
+    font-size: 20px;
+    width: 240px;
+    padding: 0.6em 0.8em;
 }
 #foryouPage #nav .userList .userItem .itemUser:hover,
 #followingPage #nav .userList .userItem .itemUser:hover,
 #userDetailsPage #nav .userList .userItem .itemUser:hover {
-  background-color: #1b1b1b;
+    background-color: #1b1b1b;
 }
 #foryouPage #nav .userList .userItem .itemUser .userAvatar,
 #followingPage #nav .userList .userItem .itemUser .userAvatar,
 #userDetailsPage #nav .userList .userItem .itemUser .userAvatar {
-  display: flex;
+    display: flex;
 }
 #foryouPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon,
 #followingPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon,
 #userDetailsPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon {
-  flex: 20%;
-  max-width: 20%;
+    flex: 20%;
+    max-width: 20%;
 }
 #foryouPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon .avatarList,
 #followingPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon .avatarList,
 #userDetailsPage #nav .userList .userItem .itemUser .userAvatar .avatarIcon .avatarList {
-  border-radius: 50%;
-  width: 70%;
+    border-radius: 50%;
+    width: 70%;
 }
 #foryouPage #nav .userList .userItem .itemUser .userAvatar .infoUser,
 #followingPage #nav .userList .userItem .itemUser .userAvatar .infoUser,
 #userDetailsPage #nav .userList .userItem .itemUser .userAvatar .infoUser {
-  flex: 80%;
-  max-width: 80%;
+    flex: 80%;
+    max-width: 80%;
 }
 #foryouPage #nav .userList .userItem .itemUser .userAvatar .infoUser .nameAll,
 #followingPage #nav .userList .userItem .itemUser .userAvatar .infoUser .nameAll,
 #userDetailsPage #nav .userList .userItem .itemUser .userAvatar .infoUser .nameAll {
-  margin-top: -5px;
-  margin-bottom: -8px;
-  font-size: 90%;
-  word-break: break-word;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+    margin-top: -5px;
+    margin-bottom: -8px;
+    font-size: 90%;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 #foryouPage #nav .userList .moreUser,
 #followingPage #nav .userList .moreUser,
 #userDetailsPage #nav .userList .moreUser {
-  margin-left: 10px;
-  float: left;
-  background-color: transparent;
-  border: 0;
-  font: inherit;
-  cursor: pointer;
-  color: #fe2c55;
-  font-weight: 700;
+    margin-left: 10px;
+    float: left;
+    background-color: transparent;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+    color: #fe2c55;
+    font-weight: 700;
 }
 
 @media (prefers-color-scheme: light) {
-  #foryouPage #nav, #followingPage #nav, #userDetailsPage #nav {
-    background-color: #fff;
-  }
-  #foryouPage #nav::-webkit-scrollbar-thumb, #followingPage #nav::-webkit-scrollbar-thumb, #userDetailsPage #nav::-webkit-scrollbar-thumb {
-    background: #f1f1f2;
-    border-radius: 50px;
-  }
-  #foryouPage #nav .itemLinkAll .itemLink .mainLink .nav, #followingPage #nav .itemLinkAll .itemLink .mainLink .nav, #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav {
-    color: #000;
-  }
-  #foryouPage #nav .itemLinkAll .itemLink .mainLink .selected, #followingPage #nav .itemLinkAll .itemLink .mainLink .selected, #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .selected {
-    color: #ff3b5c;
-  }
-  #foryouPage #nav .itemLinkAll .itemLink:hover, #followingPage #nav .itemLinkAll .itemLink:hover, #userDetailsPage #nav .itemLinkAll .itemLink:hover {
-    background-color: #f8f8f8;
-  }
-  #foryouPage #nav .example .example-1::before, #followingPage #nav .example .example-1::before, #userDetailsPage #nav .example .example-1::before {
-    background: #e3e3e4;
-  }
-  #foryouPage #nav #btn__signin, #followingPage #nav #btn__signin, #userDetailsPage #nav #btn__signin {
-    background-color: #fff;
-  }
-  #foryouPage #nav .userList .userItem .itemUser:hover, #followingPage #nav .userList .userItem .itemUser:hover, #userDetailsPage #nav .userList .userItem .itemUser:hover {
-    background-color: #f8f8f8;
-  }
+    #foryouPage #nav,
+    #followingPage #nav,
+    #userDetailsPage #nav {
+        background-color: #fff;
+    }
+    #foryouPage #nav::-webkit-scrollbar-thumb,
+    #followingPage #nav::-webkit-scrollbar-thumb,
+    #userDetailsPage #nav::-webkit-scrollbar-thumb {
+        background: #f1f1f2;
+        border-radius: 50px;
+    }
+    #foryouPage #nav .itemLinkAll .itemLink .mainLink .nav,
+    #followingPage #nav .itemLinkAll .itemLink .mainLink .nav,
+    #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .nav {
+        color: #000;
+    }
+    #foryouPage #nav .itemLinkAll .itemLink .mainLink .selected,
+    #followingPage #nav .itemLinkAll .itemLink .mainLink .selected,
+    #userDetailsPage #nav .itemLinkAll .itemLink .mainLink .selected {
+        color: #ff3b5c;
+    }
+    #foryouPage #nav .itemLinkAll .itemLink:hover,
+    #followingPage #nav .itemLinkAll .itemLink:hover,
+    #userDetailsPage #nav .itemLinkAll .itemLink:hover {
+        background-color: #f8f8f8;
+    }
+    #foryouPage #nav .example .example-1::before,
+    #followingPage #nav .example .example-1::before,
+    #userDetailsPage #nav .example .example-1::before {
+        background: #e3e3e4;
+    }
+    #foryouPage #nav #btn__signin,
+    #followingPage #nav #btn__signin,
+    #userDetailsPage #nav #btn__signin {
+        background-color: #fff;
+    }
+    #foryouPage #nav .userList .userItem .itemUser:hover,
+    #followingPage #nav .userList .userItem .itemUser:hover,
+    #userDetailsPage #nav .userList .userItem .itemUser:hover {
+        background-color: #f8f8f8;
+    }
 }

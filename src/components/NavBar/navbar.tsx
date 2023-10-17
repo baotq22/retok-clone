@@ -13,53 +13,73 @@ import LoginInputModal from "../Modal/LoginInputModal"
 import ShortcutModal from "../Modal/ShortcutModal"
 
 export const NavBar = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     function logoutUser() {
-        dispatch(logout());
-        navigate("/");
-        window.location.reload();
+        dispatch(logout())
+        navigate("/")
+        window.location.reload()
     }
-    
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const openModal = () => { setIsModalOpen(true); }
-    const closeModal = () => { setIsModalOpen(false); }
 
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-    const openLoginModal = () => { setIsLoginModalOpen(true); setIsModalOpen(false); }
-    const closeLoginModal = () => { setIsLoginModalOpen(false); setIsModalOpen(true); }
-    const closeAllModal = () => { setIsLoginModalOpen(false); setIsModalOpen(false); }
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const openModal = () => {
+        setIsModalOpen(true)
+    }
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
 
-    const [isShortcutModalOpen, setIsShortcutModalOpen] = useState(false);
-    const openShortcutModal = () => { setIsShortcutModalOpen(true) }
-    const closeShortcutModal = () => { setIsShortcutModalOpen(false) }
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+    const openLoginModal = () => {
+        setIsLoginModalOpen(true)
+        setIsModalOpen(false)
+    }
+    const closeLoginModal = () => {
+        setIsLoginModalOpen(false)
+        setIsModalOpen(true)
+    }
+    const closeAllModal = () => {
+        setIsLoginModalOpen(false)
+        setIsModalOpen(false)
+    }
 
-    const [mode, setMode] = useState();
+    const [isShortcutModalOpen, setIsShortcutModalOpen] = useState(false)
+    const openShortcutModal = () => {
+        setIsShortcutModalOpen(true)
+    }
+    const closeShortcutModal = () => {
+        setIsShortcutModalOpen(false)
+    }
+
+    const [mode, setMode] = useState()
 
     const directToHomePage = () => {
-        navigate("/");
+        navigate("/")
         window.location.reload(false)
     }
 
     useEffect(() => {
-        window.matchMedia("(prefers-color-scheme: dark)")
-            .addEventListener("change", event => {
-                const colorScheme = event.matches ? "dark" : "light";
-                setMode(colorScheme);
-            });
-    }, []);
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+            const colorScheme = event.matches ? "dark" : "light"
+            setMode(colorScheme)
+        })
+    }, [])
 
-    const userLogin = useSelector(state => state.userLogin)
+    const userLogin = useSelector((state) => state.userLogin)
 
-    const userLogged = !userLogin?.username;
+    const userLogged = !userLogin?.username
 
-    let content;
+    let content
     if (userLogged) {
-        content =
+        content = (
             <>
-                <button id="btn__login" onClick={openModal}>Log in</button>
-                <button id="btn__upload" onClick={openModal}><i className="fa-solid fa-plus iconAction" style={{ marginRight: "5px" }}></i>Upload</button>
+                <button id="btn__login" onClick={openModal}>
+                    Log in
+                </button>
+                <button id="btn__upload" onClick={openModal}>
+                    <i className="fa-solid fa-plus iconAction" style={{ marginRight: "5px" }}></i>Upload
+                </button>
                 <LoginModal isOpen={isModalOpen} onClose={closeModal}>
                     <h2 style={{ margin: "60px 0 30px 0" }}>Log in to Retok</h2>
                     <div className="login_methods">
@@ -113,42 +133,122 @@ export const NavBar = () => {
                         </a>
                     </div>
                     <div className="license">
-                        <p>By continuing, you agree to Retok's <a href="#" className="links">Terms of Service</a> and confirm that you have read Retok's <a href="#" className="links">Privacy Policy</a>.</p>
+                        <p>
+                            By continuing, you agree to Retok's{" "}
+                            <a href="#" className="links">
+                                Terms of Service
+                            </a>{" "}
+                            and confirm that you have read Retok's{" "}
+                            <a href="#" className="links">
+                                Privacy Policy
+                            </a>
+                            .
+                        </p>
                     </div>
                     <div className="signUps">
-                        <p>Don't have an account? <a href="#" className="signUp">Sign Up</a></p>
+                        <p>
+                            Don't have an account?{" "}
+                            <a href="#" className="signUp">
+                                Sign Up
+                            </a>
+                        </p>
                     </div>
                 </LoginModal>
-                <LoginInputModal isLoginOpen={isLoginModalOpen} onLoginClose={closeLoginModal} onAllClose={closeAllModal} />
+                <LoginInputModal
+                    isLoginOpen={isLoginModalOpen}
+                    onLoginClose={closeLoginModal}
+                    onAllClose={closeAllModal}
+                />
             </>
+        )
     } else {
-        content =
+        content = (
             <>
                 <span className="menu-container">
-                    <span className="avatarNav"><img src={images} className="avatar" /></span>
+                    <span className="avatarNav">
+                        <img src={images} className="avatar" />
+                    </span>
                     <ul className="menu" style={{ listStyleType: "none" }}>
-                        <li onClick={() => navigate(`/userFollow/${userLogin?.id}`)}><span><i className="fa-regular fa-user" style={{ marginRight: "16px" }}></i></span><span>View profile</span></li>
-                        <li><span><i className="fa-regular fa-bookmark" style={{ marginRight: "18px" }}></i></span><span>Favourites</span></li>
-                        <li><span><i className="fa-solid fa-coins" style={{ marginRight: "14px" }}></i></span><span>Get coins</span></li>
-                        <li><span><i className="fa-regular fa-lightbulb" style={{ marginRight: "18px" }}></i></span><span>LIVE Creator Hub</span></li>
-                        <li><span><i className="fa-solid fa-gear" style={{ marginRight: "14px" }}></i></span><span>Setting</span></li>
-                        <li><span><i className="fa-solid fa-earth-americas" style={{ marginRight: "14px" }}></i></span><span>English</span></li>
-                        <li><span><i className="fa-regular fa-circle-question" style={{ marginRight: "14px" }}></i></span><span>Feedback and help</span></li>
-                        <li onClick={openShortcutModal}><span><i className="fa-regular fa-keyboard" style={{ marginRight: "12px" }}></i></span><span>Keyboard shortcuts</span></li>
-                        <li onClick={logoutUser}><span><i className="fa-solid fa-arrow-right-from-bracket" style={{ marginRight: "14px" }}></i></span><span>Logout</span></li>
+                        <li onClick={() => navigate(`/userFollow/${userLogin?.id}`)}>
+                            <span>
+                                <i className="fa-regular fa-user" style={{ marginRight: "16px" }}></i>
+                            </span>
+                            <span>View profile</span>
+                        </li>
+                        <li>
+                            <span>
+                                <i className="fa-regular fa-bookmark" style={{ marginRight: "18px" }}></i>
+                            </span>
+                            <span>Favourites</span>
+                        </li>
+                        <li>
+                            <span>
+                                <i className="fa-solid fa-coins" style={{ marginRight: "14px" }}></i>
+                            </span>
+                            <span>Get coins</span>
+                        </li>
+                        <li>
+                            <span>
+                                <i className="fa-regular fa-lightbulb" style={{ marginRight: "18px" }}></i>
+                            </span>
+                            <span>LIVE Creator Hub</span>
+                        </li>
+                        <li>
+                            <span>
+                                <i className="fa-solid fa-gear" style={{ marginRight: "14px" }}></i>
+                            </span>
+                            <span>Setting</span>
+                        </li>
+                        <li>
+                            <span>
+                                <i className="fa-solid fa-earth-americas" style={{ marginRight: "14px" }}></i>
+                            </span>
+                            <span>English</span>
+                        </li>
+                        <li>
+                            <span>
+                                <i className="fa-regular fa-circle-question" style={{ marginRight: "14px" }}></i>
+                            </span>
+                            <span>Feedback and help</span>
+                        </li>
+                        <li onClick={openShortcutModal}>
+                            <span>
+                                <i className="fa-regular fa-keyboard" style={{ marginRight: "12px" }}></i>
+                            </span>
+                            <span>Keyboard shortcuts</span>
+                        </li>
+                        <li onClick={logoutUser}>
+                            <span>
+                                <i className="fa-solid fa-arrow-right-from-bracket" style={{ marginRight: "14px" }}></i>
+                            </span>
+                            <span>Logout</span>
+                        </li>
                     </ul>
                     <ShortcutModal isShortcutOpen={isShortcutModalOpen} onShortcutClose={closeShortcutModal} />
                 </span>
-                <span className="iconNav" style={{cursor: "pointer"}}><i className="fa-regular fa-message iconAction"></i></span>
-                <span className="iconNav iconPlane" style={{cursor: "pointer"}}><i className="fa-regular fa-paper-plane iconAction"></i></span>
-                <button id="btn__upload"><i className="fa-solid fa-plus iconAction" style={{ marginRight: "5px" }}></i>Upload</button>
+                <span className="iconNav" style={{ cursor: "pointer" }}>
+                    <i className="fa-regular fa-message iconAction"></i>
+                </span>
+                <span className="iconNav iconPlane" style={{ cursor: "pointer" }}>
+                    <i className="fa-regular fa-paper-plane iconAction"></i>
+                </span>
+                <button id="btn__upload">
+                    <i className="fa-solid fa-plus iconAction" style={{ marginRight: "5px" }}></i>Upload
+                </button>
             </>
+        )
     }
 
     return (
         <header>
             <div id="header">
-                <img src={mode === "dark" ? logoDark : logoLight} id="logo" alt="Logo" style={{ cursor: "pointer" }} onClick={directToHomePage} />
+                <img
+                    src={mode === "dark" ? logoDark : logoLight}
+                    id="logo"
+                    alt="Logo"
+                    style={{ cursor: "pointer" }}
+                    onClick={directToHomePage}
+                />
                 <SearchBar />
                 {content}
             </div>

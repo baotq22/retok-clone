@@ -1,8 +1,8 @@
-import "../../library/fontawesome/css/all.min.css";
+import "../../library/fontawesome/css/all.min.css"
 import "../../styles/css/loginmodal.css"
 
 const LoginModal = ({ isOpen, onClose, children }) => {
-    if (!isOpen) return null;
+    if (!isOpen) return null
 
     return (
         <div className="modal-overlay">
