@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import avatar1 from '../../assets/avatar/583.jpg'
 import avatar2 from '../../assets/avatar/518.jpg'
 import avatar3 from '../../assets/avatar/867.jpg'
@@ -821,6 +821,10 @@ const VideoList = ({ userId }) => {
         )
     }
 
+    const preventFailedScreen = () => {
+        window.location.reload(false);
+    }
+
     return (
         <>
             <div className='videos__container'>
@@ -845,7 +849,7 @@ const VideoList = ({ userId }) => {
                         <p className='videoDesc'><CollapseVideo1 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
-                        <div className="videoBox">
+                        <div className="videoBox" onClick={preventFailedScreen}>
                             <Link to={`videoDetails/1`}>
                                 <AutoPlayVideo1 />
                             </Link>
@@ -879,7 +883,7 @@ const VideoList = ({ userId }) => {
                         <p className='videoDesc'><CollapseVideo2 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
-                        <div className="videoBox">
+                        <div className="videoBox" onClick={preventFailedScreen}>
                             <Link to={`/videoDetails/2`} >
                                 <AutoPlayVideo2 />
                             </Link>
@@ -913,7 +917,7 @@ const VideoList = ({ userId }) => {
                         <p className='videoDesc'><CollapseVideo3 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
-                        <div className="videoBox">
+                        <div className="videoBox" onClick={preventFailedScreen}>
                             <Link to={`/videoDetails/3`} >
                                 <AutoPlayVideo3 />
                             </Link>
@@ -947,7 +951,7 @@ const VideoList = ({ userId }) => {
                         <p className='videoDesc'><CollapseVideo4 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
-                        <div className="videoBox">
+                        <div className="videoBox" onClick={preventFailedScreen}>
                             <Link to={`/videoDetails/4`} >
                                 <AutoPlayVideo4 />
                             </Link>
@@ -981,7 +985,7 @@ const VideoList = ({ userId }) => {
                         <p className='videoDesc'><CollapseVideo5 text='The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients' maxLength={40} /></p>
                     </div>
                     <div className='videoDetails'>
-                        <div className="videoBox">
+                        <div className="videoBox" onClick={preventFailedScreen}>
                             <Link to={`/videoDetails/5`} >
                                 <AutoPlayVideo5 />
                             </Link>

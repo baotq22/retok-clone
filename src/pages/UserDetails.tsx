@@ -9,6 +9,7 @@ import '../styles/css/userdetails.css'
 import RightBottomActionButton from "../components/PageComponents/RightBottomActionButton";
 import AboutSidebar from "../components/Sidebar/AboutSidebar";
 import FollowingSideBar from "../components/Sidebar/FollowingSideBar";
+import MainSidebar from "../components/Sidebar/MainSidebar";
 
 const UserDetails = () => {
     const [videoList, setVideoList] = useState([]);
@@ -127,38 +128,7 @@ const UserDetails = () => {
         <div id='userDetailsPage'>
             <Navbar />
             <div id='nav'>
-                <ul className='itemLinkAll'>
-                    <li className='itemLink'>
-                        <Link to={`/`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-home'></i><span>For you</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink'>
-                        <Link to={`/following`} className='mainLink'>
-                            <div className="nav">
-                                <i className="icon fa-solid fa-user-group"></i><span>Following</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink'>
-                        <Link to={`/#`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink'>
-                        <Link to={`/#`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-video'></i><span>LIVE</span>
-                            </div>
-                        </Link>
-                    </li>
-                </ul>
-                <FollowingSideBar />
-                <AboutSidebar />
+                <MainSidebar />
             </div>
             <div id='detailedUser'>
                 <div className='detailedUserComponents'>

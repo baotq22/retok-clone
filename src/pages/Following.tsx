@@ -10,6 +10,7 @@ import { videoApis } from "../api/axios-instance";
 import AboutSidebar from "../components/Sidebar/AboutSidebar";
 import FollowingSideBar from "../components/Sidebar/FollowingSideBar";
 import VideoListFollowing from "../components/PageComponents/VideoListFollowing";
+import MainSidebar from "../components/Sidebar/MainSidebar";
 
 const ForYou = () => {
     const [videoList, setVideoList] = useState([])
@@ -33,10 +34,6 @@ const ForYou = () => {
     const userLogged = !userLogin?.username;
 
     const user_id = userLogin?.id;
-
-    const preventFailedScreen = () => {
-        window.location.reload(false);
-    }
 
     return (
         <div id='followingPage'>
@@ -75,38 +72,7 @@ const ForYou = () => {
             )
             }
             <div id='nav'>
-                <ul className='itemLinkAll'>
-                    <li className='itemLink' onClick={preventFailedScreen}>
-                        <Link to={`/`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-home'></i><span>For you</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink' onClick={preventFailedScreen}>
-                        <Link to={`/following`} className='mainLink'>
-                            <div className="nav selected">
-                                <i className="icon fa-solid fa-user-group"></i><span>Following</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink'>
-                        <Link to={`/#`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-compass'></i><span>Explore</span><span id='badge'>New</span>
-                            </div>
-                        </Link>
-                    </li>
-                    <li className='itemLink'>
-                        <Link to={`/#`} className='mainLink'>
-                            <div className="nav">
-                                <i className='icon fa-solid fa-video'></i><span>LIVE</span>
-                            </div>
-                        </Link>
-                    </li>
-                </ul>
-                <FollowingSideBar />
-                <AboutSidebar />
+                <MainSidebar />
             </div>
             <NavBar />
         </div>
