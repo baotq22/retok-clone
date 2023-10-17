@@ -1,9 +1,9 @@
-import '../../styles/css/GetAppModal.css'
-import qrCode from '../../assets/47624c235266dedd8e4d.png'
-import msstore from '../../assets/msstore.png'
-import appstore from '../../assets/appstore.png'
-import amazon from '../../assets/amazon.png'
-import ggplay from '../../assets/ggplay.png'
+import "../../styles/css/GetAppModal.css"
+import qrCode from "../../assets/47624c235266dedd8e4d.png"
+import msstore from "../../assets/msstore.png"
+import appstore from "../../assets/appstore.png"
+import amazon from "../../assets/amazon.png"
+import ggplay from "../../assets/ggplay.png"
 
 const GetAppModal = ({ isGetAppOpen, onGetAppClose }) => {
     if (!isGetAppOpen) return null;
@@ -11,13 +11,13 @@ const GetAppModal = ({ isGetAppOpen, onGetAppClose }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <button className='close-button' onClick={onGetAppClose}>
+                <button className="close-button" onClick={onGetAppClose}>
                     <i className="fa-solid fa-xmark"></i>
                 </button>
                 <h1 className="modal_title">Get the TikTok App</h1>
                 <h3 className="modal_description">Scan QR Code to download TikTok</h3>
                 <div className="qrContainer">
-                    <img src={qrCode} className='qrCode' />
+                    <img src={qrCode} className="qrCode" />
                 </div>
                 <h3 className="modal_description_download">Download from app stores</h3>
                 <div className="downloadSource">

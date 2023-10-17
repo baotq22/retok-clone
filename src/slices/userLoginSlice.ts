@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../api/axios-instance";
 
-export const login = createAsyncThunk('login', 
+export const login = createAsyncThunk("login", 
     async data => {
         // @ts-ignore
     const response = await api.get(`/users?username=${data.username}&&password=${data.password}`)
@@ -9,11 +9,11 @@ export const login = createAsyncThunk('login',
 })
 
 export const userLoginSlice = createSlice({
-    name: 'userLogin',
+    name: "userLogin",
     initialState: {
-        username: '',
-        password: '',
-        id: '',
+        username: "",
+        password: "",
+        id: "",
         isLoginSuccess: false,
         loading: false
     },
@@ -29,9 +29,9 @@ export const userLoginSlice = createSlice({
         },
         logout: (state) => {
             state.isLoginSuccess = false;
-            localStorage.removeItem('username');
-            localStorage.removeItem('password');
-            localStorage.removeItem('id');
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+            localStorage.removeItem("id");
         }
     },
     extraReducers(builder) {
@@ -41,9 +41,9 @@ export const userLoginSlice = createSlice({
                 state.password = action.payload[0].password;
                 state.id = action.payload[0].id;
                 state.isLoginSuccess = true;
-                localStorage.setItem('username', action.payload[0].username)
-                localStorage.setItem('password', action.payload[0].password)
-                localStorage.setItem('id', action.payload[0].id)
+                localStorage.setItem("username", action.payload[0].username)
+                localStorage.setItem("password", action.payload[0].password)
+                localStorage.setItem("id", action.payload[0].id)
             } else {
                 state.isLoginSuccess = false;
             }

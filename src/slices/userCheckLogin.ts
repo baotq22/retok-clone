@@ -8,7 +8,7 @@ export function userCheckLogin() {
 
     useEffect(() => {
         if (!userLogin?.isLoginSuccess) {
-            navigate('/login');
+            navigate("/login");
         }
     }, [userLogin?.isLoginSuccess])
 }

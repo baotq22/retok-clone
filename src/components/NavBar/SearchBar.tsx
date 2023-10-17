@@ -1,11 +1,11 @@
-import '../../styles/css/SearchBar.css'
-import '../../library/fontawesome/css/all.min.css'
+import "../../styles/css/SearchBar.css"
+import "../../library/fontawesome/css/all.min.css"
 
 const SearchBar = () => {
     return (
         <>
-            <input id='search_box' placeholder="Search"></input>
-            <button id='search_button'><i className="fa-solid fa-search iconAction" style={{marginRight: '5px' }}></i></button>
+            <input id="search_box" placeholder="Search"></input>
+            <button id="search_button"><i className="fa-solid fa-search iconAction" style={{marginRight: "5px" }}></i></button>
         </>
     )
 }

@@ -4,7 +4,7 @@ import {
     createComment as createCommentApi,
     deleteComment as deleteCommentApi
 } from "../../api/apiCmt"
-import Comment from './Comment'
+import Comment from "./Comment"
 import CommentForm from "./CommentForm";
 import CommentLS from "./CommentLS";
 
@@ -70,7 +70,7 @@ const Comments = ({ currentUserId }) => {
 
     return (
         <>
-            <div className='comment__container'>
+            <div className="comment__container">
                 {
                     userCmtsArray.map((userCmt, index) => (
                         <CommentLS key={index}
@@ -96,8 +96,8 @@ const Comments = ({ currentUserId }) => {
                     ))
                 }
             </div>
-            <div className='comment_input_container'>
-                <CommentForm submitLabel='Post' handleSubmit={addComment} />
+            <div className="comment_input_container">
+                <CommentForm submitLabel="Post" handleSubmit={addComment} />
             </div>
         </>
     )

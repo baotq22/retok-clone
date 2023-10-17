@@ -1,9 +1,9 @@
-import './App.css'
+import "./App.css"
 import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
-import ForYou from './pages/ForYou'
+import ForYou from "./pages/ForYou"
 import Following from "./pages/Following";
 import { Provider } from "react-redux";
 import store from "./slices/store";
@@ -17,47 +17,46 @@ import VideoDetails2 from "./pages/videodetails/VideoDetails2";
 import VideoDetails3 from "./pages/videodetails/VideoDetails3";
 import VideoDetails4 from "./pages/videodetails/VideoDetails4";
 import VideoDetails5 from "./pages/videodetails/VideoDetails5";
-import { NavBar } from "./components/NavBar/navbar";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <ForYou items={undefined} initialVisibleItems={undefined} />
+    path: "/",
+    element: <ForYou />
   },
   {
-    path: '/following',
+    path: "/following",
     element: <Following />
   },
   {
-    path: '/videos/:userId',
+    path: "/videos/:userId",
     element: <VideoDetails />
   },
   {
-    path: '/users/:userId',
+    path: "/users/:userId",
     element: <UserDetails />
   },
   {
-    path: '/userFollow/:userId',
+    path: "/userFollow/:userId",
     element: <UserFollowDetails />
   },
   {
-    path: '/videoDetails/1',
+    path: "/videoDetails/1",
     element: <VideoDetails1 />
   },
   {
-    path: '/videoDetails/2',
+    path: "/videoDetails/2",
     element: <VideoDetails2 />
   },
   {
-    path: '/videoDetails/3',
+    path: "/videoDetails/3",
     element: <VideoDetails3 />
   },
   {
-    path: '/videoDetails/4',
+    path: "/videoDetails/4",
     element: <VideoDetails4 />
   },
   {
-    path: '/videoDetails/5',
+    path: "/videoDetails/5",
     element: <VideoDetails5 />
   }
 ])
@@ -66,9 +65,9 @@ function App() {
   
 
   useEffect(() => {
-    const usernameLocalStorage = localStorage.getItem('username');
-    const passwordLocalStorage = localStorage.getItem('password');
-    const idLocalStorage = localStorage.getItem('id');
+    const usernameLocalStorage = localStorage.getItem("username");
+    const passwordLocalStorage = localStorage.getItem("password");
+    const idLocalStorage = localStorage.getItem("id");
     if (usernameLocalStorage && passwordLocalStorage) {
       store.dispatch(loginSuccess({
         username: usernameLocalStorage,

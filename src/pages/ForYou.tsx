@@ -1,14 +1,11 @@
-import '../styles/css/videos.css'
-import '../styles/css/sidebar.css'
+import "../styles/css/videos.css"
+import "../styles/css/sidebar.css"
 import NavBar from "../components/NavBar/navbar"
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import VideoList from "../components/PageComponents/VideoList";
 import RightBottomActionButton from "../components/PageComponents/RightBottomActionButton";
 import { videoApis } from "../api/axios-instance";
-import AboutSidebar from "../components/Sidebar/AboutSidebar";
-import FollowingSideBar from "../components/Sidebar/FollowingSideBar";
 import MainSidebar from "../components/Sidebar/MainSidebar";
 
 const ForYou = () => {
@@ -16,7 +13,7 @@ const ForYou = () => {
 
     const fetchVideos = async () => {
         try {
-            const res = await videoApis.get('videos');
+            const res = await videoApis.get("videos");
             setVideoList(res.data)
         } catch (e) {
             if (e.response && e.response.status == 429) {
@@ -35,15 +32,15 @@ const ForYou = () => {
     const user_id = userLogin?.id;
 
     return (
-        <div id='foryouPage'>
+        <div id="foryouPage">
             <NavBar />
-            <div id='foryou'>
-                <div id='video'>
+            <div id="foryou">
+                <div id="video">
                     <VideoList userId={user_id} />
                     <RightBottomActionButton />
                 </div>
             </div>
-            <div id='nav'>
+            <div id="nav">
                 <MainSidebar />
             </div>
         </div>

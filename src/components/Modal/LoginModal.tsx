@@ -1,13 +1,13 @@
-import '../../library/fontawesome/css/all.min.css';
-import '../../styles/css/loginmodal.css'
+import "../../library/fontawesome/css/all.min.css";
+import "../../styles/css/loginmodal.css"
 
 const LoginModal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
 
     return (
-        <div className='modal-overlay'>
-            <div className='modal-content'>
-                <button className='close-button' onClick={onClose}>
+        <div className="modal-overlay">
+            <div className="modal-content">
+                <button className="close-button" onClick={onClose}>
                     <i className="fa-solid fa-xmark"></i>
                 </button>
                 {children}
