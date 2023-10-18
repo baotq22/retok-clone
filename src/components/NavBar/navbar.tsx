@@ -56,7 +56,6 @@ export const NavBar = () => {
 
     const directToHomePage = () => {
         navigate("/")
-        window.location.reload(false)
     }
 
     useEffect(() => {

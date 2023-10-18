@@ -1,4 +1,3 @@
-#followingPage,
 #foryouPage {
     margin-top: 80px;
     max-width: 100%;
@@ -66,12 +65,13 @@
                         .videoBox {
                             .videos {
                                 margin-right: 10px;
-                                height: calc(450px + ((100vw - 768px) / 1152) * 200);
+                                height: calc(450px + ((93.33vw - 768px) / 1152) * 200);
                             }
 
                             .videoAction {
                                 float: right;
                                 margin-right: -60px;
+                                margin-top: -590px;
 
                                 .action_btn {
                                     width: 50px;
@@ -116,9 +116,7 @@
             }
         }
     }
-}
 
-#followingPage {
     #userNotLogin {
         justify-content: center;
         padding: 2rem;
@@ -191,7 +189,6 @@
 }
 
 @media (prefers-color-scheme: light) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -228,7 +225,6 @@
 }
 
 @media screen and (max-width: 2200px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -251,7 +247,7 @@
 }
 
 @media screen and (max-width: 2180px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 805px;
             margin-right: 505px;
@@ -260,7 +256,6 @@
 }
 
 @media screen and (max-width: 2160px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -283,7 +278,7 @@
 }
 
 @media screen and (max-width: 2150px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 790px;
             margin-right: 490px;
@@ -292,7 +287,6 @@
 }
 
 @media screen and (max-width: 2120px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -313,7 +307,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 775px;
             margin-right: 475px;
@@ -322,7 +316,7 @@
 }
 
 @media screen and (max-width: 2090px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 760px;
             margin-right: 460px;
@@ -331,7 +325,6 @@
 }
 
 @media screen and (max-width: 2080px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -354,7 +347,7 @@
 }
 
 @media screen and (max-width: 2060px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 745px;
             margin-right: 445px;
@@ -363,7 +356,6 @@
 }
 
 @media screen and (max-width: 2040px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -386,7 +378,7 @@
 }
 
 @media screen and (max-width: 2030px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 720px;
             margin-right: 420px;
@@ -395,7 +387,6 @@
 }
 
 @media screen and (max-width: 2000px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -416,7 +407,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 705px;
             margin-right: 405px;
@@ -425,7 +416,7 @@
 }
 
 @media screen and (max-width: 1970px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 690px;
             margin-right: 390px;
@@ -434,7 +425,6 @@
 }
 
 @media screen and (max-width: 1960px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -457,7 +447,7 @@
 }
 
 @media screen and (max-width: 1940px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 675px;
             margin-right: 385px;
@@ -466,7 +456,6 @@
 }
 
 @media screen and (max-width: 1920px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -489,7 +478,7 @@
 }
 
 @media screen and (max-width: 1910px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 660px;
             margin-right: 370px;
@@ -498,7 +487,6 @@
 }
 
 @media screen and (max-width: 1880px) {
-    #followingPage,
     #foryouPage {
         #foryou {
             #video {
@@ -519,7 +507,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 645px;
             margin-right: 355px;
@@ -528,7 +516,7 @@
 }
 
 @media screen and (max-width: 1850px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 630px;
             margin-right: 340px;
@@ -537,7 +525,7 @@
 }
 
 @media screen and (max-width: 1840px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -560,7 +548,7 @@
 }
 
 @media screen and (max-width: 1820px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 615px;
             margin-right: 325px;
@@ -569,7 +557,7 @@
 }
 
 @media screen and (max-width: 1800px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -592,7 +580,7 @@
 }
 
 @media screen and (max-width: 1790px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 595px;
             margin-right: 310px;
@@ -601,7 +589,7 @@
 }
 
 @media screen and (max-width: 1760px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -622,7 +610,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 580px;
             margin-right: 295px;
@@ -631,7 +619,7 @@
 }
 
 @media screen and (max-width: 1730px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 570px;
             margin-right: 280px;
@@ -640,7 +628,7 @@
 }
 
 @media screen and (max-width: 1720px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -661,7 +649,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 565px;
             margin-right: 275px;
@@ -670,7 +658,7 @@
 }
 
 @media screen and (max-width: 1700px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 550px;
             margin-right: 260px;
@@ -679,7 +667,7 @@
 }
 
 @media screen and (max-width: 1680px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -700,7 +688,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 540px;
             margin-right: 250px;
@@ -709,7 +697,7 @@
 }
 
 @media screen and (max-width: 1640px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -730,7 +718,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 520px;
             margin-right: 230px;
@@ -739,7 +727,7 @@
 }
 
 @media screen and (max-width: 1620px) {
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 515px;
             margin-right: 225px;
@@ -748,7 +736,7 @@
 }
 
 @media screen and (max-width: 1600px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -769,7 +757,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 510px;
             margin-right: 220px;
@@ -778,7 +766,7 @@
 }
 
 @media screen and (max-width: 1580px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -799,7 +787,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 500px;
             margin-right: 210px;
@@ -808,7 +796,7 @@
 }
 
 @media screen and (max-width: 1560px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -829,7 +817,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 490px;
             margin-right: 200px;
@@ -838,7 +826,7 @@
 }
 
 @media screen and (max-width: 1540px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -859,7 +847,7 @@
         }
     }
 
-    #followingPage {
+    #foryouPage {
         #userNotLogin {
             margin-left: 480px;
             margin-right: 190px;
@@ -868,7 +856,7 @@
 }
 
 @media screen and (max-width: 1500px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {
@@ -891,7 +879,7 @@
 }
 
 @media screen and (max-width: 1460px) {
-    #followingPage,
+
     #foryouPage {
         #foryou {
             #video {

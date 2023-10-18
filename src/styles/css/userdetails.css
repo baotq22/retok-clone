@@ -1,128 +1,102 @@
 #userDetailsPage {
-    display: flex;
-    margin-top: 80px;
-    max-width: 100%;
-    background-color: #121212;
+  display: flex;
+  margin-top: 80px;
+  max-width: 100%;
+  background-color: #121212;
 }
 #userDetailsPage #detailedUser {
-    flex: 75%;
-    margin: 0 0 0 300px;
+  flex: 75%;
+  margin: 0 0 0 300px;
 }
 #userDetailsPage #detailedUser .detailedUserComponents {
-    margin: 35px 35px 35px 35px;
+  margin: 35px 35px 35px 35px;
 }
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName {
-    display: flex;
+  display: flex;
 }
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName .detailedUserAvatar {
-    margin-top: 30px;
+  margin-top: 30px;
 }
-#userDetailsPage
-    #detailedUser
-    .detailedUserComponents
-    .detailedUserInfo
-    .detailedUserName
-    .detailedUserAvatar
-    .avatarCircle
-    .avatar {
-    border-radius: 50%;
-    margin-right: 20px;
+#userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName .detailedUserAvatar .avatarCircle .avatar {
+  border-radius: 50%;
+  margin-right: 20px;
 }
-#userDetailsPage
-    #detailedUser
-    .detailedUserComponents
-    .detailedUserInfo
-    .detailedUserName
-    .detailed__username
-    .detailUsername {
-    font-size: 35px;
-    margin-top: 20px;
+#userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName .detailed__username .detailUsername {
+  font-size: 35px;
+  margin-top: 20px;
 }
-#userDetailsPage
-    #detailedUser
-    .detailedUserComponents
-    .detailedUserInfo
-    .detailedUserName
-    .detailed__username
-    .detailFullname {
-    font-size: 20px;
-    margin-top: -40px;
+#userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName .detailed__username .detailFullname {
+  font-size: 20px;
+  margin-top: -40px;
 }
-#userDetailsPage
-    #detailedUser
-    .detailedUserComponents
-    .detailedUserInfo
-    .detailedUserName
-    .detailed__username
-    .button__action
-    .followBtn:hover {
-    background-color: #e53154;
+#userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedUserName .detailed__username .button__action .followBtn:hover {
+  background-color: #e53154;
 }
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedAmount {
-    display: flex;
-    font-weight: 100;
+  display: flex;
+  font-weight: 100;
 }
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedAmount div {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedAmount div b {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .user__desc {
-    font-size: 20px;
-    font-weight: 400;
+  font-size: 20px;
+  font-weight: 400;
 }
 #userDetailsPage #detailedUser .detailedUserComponents .detailedUserInfo .detailedAmount .advancedAction span {
-    float: right;
-    cursor: pointer;
-    margin-right: 20px;
+  float: right;
+  cursor: pointer;
+  margin-right: 20px;
 }
 #userDetailsPage #detailedUser .videosHeaders {
-    margin-left: 35px;
+  margin-left: 35px;
 }
 #userDetailsPage #detailedUser .userContainer .userVideo {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 #userDetailsPage #detailedUser .userContainer .userVideo .userInfo {
-    position: relative;
-    flex: calc(15% - 30px);
-    max-width: calc(15% - 30px);
-    margin: 0 0 0 15px;
-    padding: 20px 0 0 20px;
-    border-radius: 0 10px 10px 10px;
+  position: relative;
+  flex: calc(15% - 30px);
+  max-width: calc(15% - 30px);
+  margin: 0 0 0 15px;
+  padding: 20px 0 0 20px;
+  border-radius: 0 10px 10px 10px;
 }
 #userDetailsPage #detailedUser .userContainer .userVideo .userInfo .imgUser {
-    width: 230px;
-    height: 302px;
-    position: relative;
-    border-radius: 10px;
+  width: 230px;
+  height: 302px;
+  position: relative;
+  border-radius: 10px;
 }
 #userDetailsPage #detailedUser .userContainer .userVideo .userInfo .userFollow {
-    position: absolute;
-    bottom: 8px;
-    text-align: center;
-    margin-left: 15px;
-    margin-bottom: 35px;
+  position: absolute;
+  bottom: 8px;
+  text-align: center;
+  margin-left: 15px;
+  margin-bottom: 35px;
 }
 #userDetailsPage #detailedUser .userContainer .userVideo .userInfo .userFollow .detailedViewers {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 #userDetailsPage #detailedUser .userContainer .userVideo .userInfo .video__desc {
-    word-break: break-word;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 @media (prefers-color-scheme: light) {
-    #userDetailsPage {
-        background-color: #fff;
-    }
+  #userDetailsPage {
+    background-color: #fff;
+  }
 }
 @media screen and (max-width: 1540px) {
-    #userDetailsPage #detailedUser .userContainer .userVideo .userInfo {
-        flex: calc(20% - 30px);
-        max-width: calc(20% - 30px);
-    }
+  #userDetailsPage #detailedUser .userContainer .userVideo .userInfo {
+    flex: calc(20% - 30px);
+    max-width: calc(20% - 30px);
+  }
 }

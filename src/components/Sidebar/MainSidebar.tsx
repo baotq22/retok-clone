@@ -7,16 +7,12 @@ const MainSidebar = () => {
     const location = useLocation()
     const url = location.pathname
 
-    const preventFailedScreen = () => {
-        window.location.reload(false)
-    }
-
     let content
 
     if (url == "/") {
         content = (
             <>
-                <li className="itemLink" onClick={preventFailedScreen}>
+                <li className="itemLink">
                     <Link to={`/`} className="mainLink">
                         <div className="nav selected">
                             <i className="icon fa-solid fa-home"></i>
@@ -24,7 +20,7 @@ const MainSidebar = () => {
                         </div>
                     </Link>
                 </li>
-                <li className="itemLink" onClick={preventFailedScreen}>
+                <li className="itemLink">
                     <Link to={`/following`} className="mainLink">
                         <div className="nav">
                             <i className="icon fa-solid fa-user-group"></i>
@@ -37,7 +33,7 @@ const MainSidebar = () => {
     } else if (url == "/following") {
         content = (
             <>
-                <li className="itemLink" onClick={preventFailedScreen}>
+                <li className="itemLink">
                     <Link to={`/`} className="mainLink">
                         <div className="nav">
                             <i className="icon fa-solid fa-home"></i>
@@ -45,7 +41,7 @@ const MainSidebar = () => {
                         </div>
                     </Link>
                 </li>
-                <li className="itemLink" onClick={preventFailedScreen}>
+                <li className="itemLink">
                     <Link to={`/following`} className="mainLink">
                         <div className="nav selected">
                             <i className="icon fa-solid fa-user-group"></i>
@@ -58,7 +54,7 @@ const MainSidebar = () => {
     } else {
         content = (
             <>
-                <li className="itemLink" onClick={preventFailedScreen}>
+                <li className="itemLink">
                     <Link to={`/`} className="mainLink">
                         <div className="nav">
                             <i className="icon fa-solid fa-home"></i>
@@ -66,7 +62,7 @@ const MainSidebar = () => {
                         </div>
                     </Link>
                 </li>
-                <li className="itemLink" onClick={preventFailedScreen}>
+                <li className="itemLink">
                     <Link to={`/following`} className="mainLink">
                         <div className="nav">
                             <i className="icon fa-solid fa-user-group"></i>
@@ -213,8 +209,8 @@ const MainSidebar = () => {
                         </div>
                     </p>
                 )}
-                <button className="more" onClick={toggleContent}>
-                    {viewMore ? "See Less" : "See More"}
+                <button className="more" style={{ display: viewMore ? "none" : "" }} onClick={toggleContent}>
+                    {viewMore ? "" : "See More"}
                 </button>
                 <p className="info" style={{ paddingBottom: "30px" }}>
                     © 2023 ReTok

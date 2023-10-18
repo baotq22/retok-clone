@@ -1,145 +1,145 @@
 #header {
-    background-color: #121212;
-    width: 100%;
-    height: 70px;
-    top: 0;
-    right: 0;
-    position: fixed;
-    align-items: center;
-    padding-top: 20px;
-    flex-direction: row;
-    max-width: 100%;
-    text-align: center;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    box-shadow: rgba(255, 255, 255, 0.12) 0px 1px 1px;
+  background-color: #121212;
+  width: 100%;
+  height: 70px;
+  top: 0;
+  right: 0;
+  position: fixed;
+  align-items: center;
+  padding-top: 20px;
+  flex-direction: row;
+  max-width: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  box-shadow: rgba(255, 255, 255, 0.12) 0px 1px 1px;
 }
 #header #logo {
-    padding: 8px 0 0 30px;
-    float: left;
-    will-change: filter;
-    transition: filter 300ms;
+  padding: 8px 0 0 30px;
+  float: left;
+  will-change: filter;
+  transition: filter 300ms;
 }
 #header #logo:hover {
-    filter: drop-shadow(0 0 2em rgba(97, 218, 251, 0.6666666667));
+  filter: drop-shadow(0 0 2em rgba(97, 218, 251, 0.6666666667));
 }
 #header #btn__login {
-    float: right;
-    background-color: #f22459;
-    border-radius: 3px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    margin-right: 15px;
-    color: #fff;
+  float: right;
+  background-color: #f22459;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin-right: 15px;
+  color: #fff;
 }
 #header #btn__login:hover {
-    background-color: #e53154;
+  background-color: #e53154;
 }
 #header #btn__upload {
-    float: right;
-    background-color: #252525;
-    border-radius: 3px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    margin-right: 15px;
+  float: right;
+  background-color: #252525;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin-right: 15px;
 }
 #header #btn__upload:hover {
-    background-color: #1b1b1b;
+  background-color: #1b1b1b;
 }
 #header .menu-container .avatarNav {
-    float: right;
-    width: 6%;
-    height: 6%;
-    margin: 0 20px 0 -60px;
+  float: right;
+  width: 6%;
+  height: 6%;
+  margin: 0 20px 0 -60px;
 }
 #header .menu-container .avatarNav .avatar {
-    border-radius: 50%;
-    width: 40%;
-    margin-left: 40px;
-    cursor: pointer;
+  border-radius: 50%;
+  width: 40%;
+  margin-left: 40px;
+  cursor: pointer;
 }
 #header .menu-container .menu {
-    position: absolute;
-    background: #242526;
-    width: 180px;
-    line-height: 45px;
-    top: 85px;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    text-align: left;
+  position: absolute;
+  background: #242526;
+  width: 180px;
+  line-height: 45px;
+  top: 85px;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  text-align: left;
 }
 #header .menu-container:hover .menu {
-    transition: all 0.3s ease;
-    top: 65px;
-    opacity: 1;
-    visibility: visible;
-    right: 0;
-    margin-top: -10px;
+  transition: all 0.3s ease;
+  top: 65px;
+  opacity: 1;
+  visibility: visible;
+  right: 0;
+  margin-top: -10px;
 }
 #header .menu-container:hover .menu li {
-    margin-left: -20px;
-    cursor: pointer;
-    font-weight: 700;
-    height: 50px;
+  margin-left: -20px;
+  cursor: pointer;
+  font-weight: 700;
+  height: 50px;
 }
 #header .menu-container:hover .menu li:nth-child(1) {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 #header .menu-container:hover .menu li:nth-child(9) {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    margin-bottom: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 15px;
 }
 #header .menu-container:hover .menu li:hover {
-    background-color: #2e2e2e;
+  background-color: #2e2e2e;
 }
 #header .menu-container:hover .menu a:hover {
-    color: #3498db;
+  color: #3498db;
 }
 #header .iconNav {
-    float: right;
-    margin-right: 40px;
-    font-size: 30px;
+  float: right;
+  margin-right: 40px;
+  font-size: 30px;
 }
 #header .iconPlane {
-    margin-left: 15px;
+  margin-left: 15px;
 }
 
 @media (prefers-color-scheme: light) {
-    #header {
-        background-color: #fff;
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
-    }
-    #header .iconNav .iconAction {
-        color: #000;
-    }
-    #header #btn__upload {
-        background-color: #fff;
-        border: 1px solid #e3e3e4;
-    }
-    #header #btn__upload:hover {
-        background-color: #f8f8f8;
-    }
-    #header #btn__upload .iconAction {
-        color: #000;
-    }
-    #header .menu-container:hover .menu li:hover {
-        background-color: #f8f8f8;
-    }
-    #header .menu-container .menu {
-        background: #fff;
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
-    }
+  #header {
+    background-color: #fff;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
+  }
+  #header .iconNav .iconAction {
+    color: #000;
+  }
+  #header #btn__upload {
+    background-color: #fff;
+    border: 1px solid #e3e3e4;
+  }
+  #header #btn__upload:hover {
+    background-color: #f8f8f8;
+  }
+  #header #btn__upload .iconAction {
+    color: #000;
+  }
+  #header .menu-container:hover .menu li:hover {
+    background-color: #f8f8f8;
+  }
+  #header .menu-container .menu {
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+  }
 }

@@ -7,6 +7,7 @@ import {
 import Comment from "./Comment"
 import CommentForm from "./CommentForm"
 import CommentLS from "./CommentLS"
+import React from "react"
 
 const Comments = ({ currentUserId }) => {
     const [BEcomments, setBEcomments] = useState([])
@@ -23,23 +24,25 @@ const Comments = ({ currentUserId }) => {
         })
     }, [])
 
-    const userCmts = useMemo(() => {
-        return localStorage.getItem(`userCmt_${currentUserId}`)
-    }, [currentUserId])
+    // const userCmts = useMemo(() => {
+    //     return localStorage.getItem(`userCmt_${currentUserId}`)
+    // }, [currentUserId])
 
-    const userCmtsArray = JSON.parse(userCmts) || []
+    const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || [];
+
+    const userCmtsArray = userCmts || []
+
+    const getUser = localStorage.getItem("username");
 
     const saveCmtToLS = (comments) => {
         localStorage.setItem(`userCmt_${currentUserId}`, JSON.stringify(comments))
-        console.log(JSON.stringify(comments))
     }
 
     const addComment = (text, parentId) => {
-        const user_id = currentUserId
         createCommentApi(parentId).then((comment) => {
-            setBEcomments([comment, ...BEcomments])
             const updatedComments = [{ body: text, parentId }, ...userCmtsArray]
             saveCmtToLS(updatedComments)
+            setBEcomments([...BEcomments])
             setActiveCmt(null)
         })
     }
@@ -70,7 +73,6 @@ const Comments = ({ currentUserId }) => {
                     <CommentLS
                         key={index}
                         comment={userCmt}
-                        replies={getReplies(userCmt.id)}
                         currentUserId={currentUserId}
                         deleteComment={deleteComment}
                         activeCmt={activeCmt}
@@ -98,4 +100,4 @@ const Comments = ({ currentUserId }) => {
     )
 }
 
-export default Comments
+export default React.memo(Comments)

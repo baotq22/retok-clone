@@ -1,43 +1,61 @@
 #search_box {
-    font-weight: 400;
-    width: 500px;
-    font-size: 16px;
-    line-height: 40px;
-    border: none;
-    background: #2f2f2f;
-    outline: none;
-    margin-left: 140px;
-    padding: 0 20px;
-    color: rgba(255, 255, 255, 0.9);
-    border-radius: 50px 0 0 50px;
-    padding-top: 2px;
-    font-family: inherit;
+  font-weight: 400;
+  width: 500px;
+  font-size: 16px;
+  line-height: 40px;
+  border: none;
+  background: #2f2f2f;
+  outline: none;
+  margin-left: 140px;
+  padding: 0 20px;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 50px 0 0 50px;
+  padding-top: 2px;
+  font-family: inherit;
 }
 
 #search_button {
-    height: 42px;
-    border-radius: 0 50px 50px 0;
-    background: #2f2f2f;
-    border: 1px solid transparent;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    padding-top: 2px;
+  height: 42px;
+  border-radius: 0 50px 50px 0;
+  background: #2f2f2f;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  padding-top: 2px;
 }
 #search_button:hover {
-    background: #484848;
+  background: #484848;
 }
 
 @media (prefers-color-scheme: light) {
-    #search_box {
-        background: #f1f1f2;
-    }
-    #search_button {
-        background: #f1f1f2;
-    }
-    #search_button .iconAction {
-        color: #000;
-    }
+  #search_box {
+    background: #f1f1f2;
+  }
+  #search_button {
+    background: #f1f1f2;
+  }
+  #search_button .iconAction {
+    color: #000;
+  }
+}
+@media screen and (max-width: 2560px) {
+  #search_box {
+    padding-top: 2px;
+  }
+  #search_button {
+    padding-top: 3px;
+  }
+}
+@media screen and (max-width: 1920px) {
+  #search_button {
+    padding-top: 3px;
+  }
+}
+@media screen and (max-width: 1536px) {
+  #search_button {
+    padding-top: 2px;
+  }
 }

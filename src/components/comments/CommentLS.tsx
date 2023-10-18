@@ -1,10 +1,10 @@
 import { useState } from "react"
 import images from "../../assets/309431756_799936498003792_6138006382387941828_n.jpg"
 import CommentForm from "./CommentForm"
+import React from "react"
 
 const CommentLS = ({
     comment,
-    replies,
     currentUserId,
     deleteComment,
     activeCmt,
@@ -75,4 +75,4 @@ const CommentLS = ({
     )
 }
 
-export default CommentLS
+export default React.memo(CommentLS)

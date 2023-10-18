@@ -17,328 +17,284 @@ const getReactionStatus1 = (userId) => {
     const storedStatus1 = localStorage.getItem(`video-reaction1-${userId}`)
     return storedStatus1 === "liked1"
 }
-
 const setReactionStatus1 = (userId, isLiked1) => {
     localStorage.setItem(`video-reaction1-${userId}`, isLiked1 ? "liked1" : "not-liked1")
 }
-
 const getFollowStatus1 = (userId) => {
     const storedStatus1 = localStorage.getItem(`video-follow1-${userId}`)
     return storedStatus1 === "followed1"
 }
-
 const setFollowStatus1 = (userId, isFollowed1) => {
     localStorage.setItem(`video-follow1-${userId}`, isFollowed1 ? "followed1" : "not-followed1")
 }
-
 // video 2
 const getReactionStatus2 = (userId) => {
     const storedStatus2 = localStorage.getItem(`video-reaction2-${userId}`)
     return storedStatus2 === "liked2"
 }
-
 const setReactionStatus2 = (userId, isLiked2) => {
     localStorage.setItem(`video-reaction2-${userId}`, isLiked2 ? "liked2" : "not-liked2")
 }
-
 const getFollowStatus2 = (userId) => {
     const storedStatus2 = localStorage.getItem(`video-follow2-${userId}`)
     return storedStatus2 === "followed2"
 }
-
 const setFollowStatus2 = (userId, isFollowed2) => {
     localStorage.setItem(`video-follow2-${userId}`, isFollowed2 ? "followed2" : "not-followed2")
 }
-
 // video 3
 const getReactionStatus3 = (userId) => {
     const storedStatus3 = localStorage.getItem(`video-reaction3-${userId}`)
     return storedStatus3 === "liked3"
 }
-
 const setReactionStatus3 = (userId, isLiked3) => {
     localStorage.setItem(`video-reaction3-${userId}`, isLiked3 ? "liked3" : "not-liked3")
 }
-
 const getFollowStatus3 = (userId) => {
     const storedStatus3 = localStorage.getItem(`video-follow3-${userId}`)
     return storedStatus3 === "followed3"
 }
-
 const setFollowStatus3 = (userId, isFollowed3) => {
     localStorage.setItem(`video-follow3-${userId}`, isFollowed3 ? "followed3" : "not-followed3")
 }
-
 // video 4
 const getReactionStatus4 = (userId) => {
     const storedStatus4 = localStorage.getItem(`video-reaction4-${userId}`)
     return storedStatus4 === "liked4"
 }
-
 const setReactionStatus4 = (userId, isLiked4) => {
     localStorage.setItem(`video-reaction4-${userId}`, isLiked4 ? "liked4" : "not-liked4")
 }
-
 const getFollowStatus4 = (userId) => {
     const storedStatus4 = localStorage.getItem(`video-follow4-${userId}`)
     return storedStatus4 === "followed4"
 }
-
 const setFollowStatus4 = (userId, isFollowed4) => {
     localStorage.setItem(`video-follow4-${userId}`, isFollowed4 ? "followed4" : "not-followed4")
 }
-
 // video 5
 const getReactionStatus5 = (userId) => {
     const storedStatus5 = localStorage.getItem(`video-reaction5-${userId}`)
     return storedStatus5 === "liked5"
 }
-
 const setReactionStatus5 = (userId, isLiked5) => {
     localStorage.setItem(`video-reaction5-${userId}`, isLiked5 ? "liked5" : "not-liked5")
 }
-
 const getFollowStatus5 = (userId) => {
     const storedStatus5 = localStorage.getItem(`video-follow5-${userId}`)
     return storedStatus5 === "followed5"
 }
-
 const setFollowStatus5 = (userId, isFollowed5) => {
     localStorage.setItem(`video-follow5-${userId}`, isFollowed5 ? "followed5" : "not-followed5")
 }
 
 const AutoPlayVideo1 = () => {
-    const videoContainerRef = useRef(null)
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
     useEffect(() => {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.5
-        }
+        const videoElement = document.getElementById('videos1');
+        const videoContainer = document.getElementById('video-container1');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.play()
-                        setIsPlaying(true)
-                    }
-                } else {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.pause()
-                        setIsPlaying(false)
-                    }
+        const handleScroll = () => {
+            const videoHeight = videoContainer.clientHeight;
+            const videoTopOffset = videoContainer.offsetTop;
+            const viewportHeight = window.innerHeight - 200;
+            const scrollPosition = window.scrollY;
+            const lastScrollPosition = scrollPosition + viewportHeight;
+            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+
+            if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
+                if (isVideoPlaying) {
+                    videoElement.pause();
+                    setIsVideoPlaying(false);
                 }
-            })
-        }, options)
+            } else {
+                if (!isVideoPlaying) {
+                    videoElement.play();
+                    setIsVideoPlaying(true);
+                }
+            }
+        };
 
-        observer.observe(videoContainerRef.current)
+        window.addEventListener('scroll', handleScroll);
 
         return () => {
-            observer.unobserve(videoContainerRef.current)
-        }
-    }, [])
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isVideoPlaying]);
 
     return (
-        <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className="videos">
-                    <source src={Video1} type="video/mp4" />
-                </video>
-            </div>
-        </>
+        <div id="video-container1">
+            <video id="videos1" src={Video1} autoPlay muted controls loop className="videos" />
+        </div>
     )
 }
 
 const AutoPlayVideo2 = () => {
-    const videoContainerRef = useRef(null)
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
     useEffect(() => {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.5
-        }
+        const videoElement = document.getElementById('videos2');
+        const videoContainer = document.getElementById('video-container2');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.play()
-                        setIsPlaying(true)
-                    }
-                } else {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.pause()
-                        setIsPlaying(false)
-                    }
+        const handleScroll = () => {
+            const videoHeight = videoContainer.clientHeight;
+            const videoTopOffset = videoContainer.offsetTop;
+            const viewportHeight = window.innerHeight - 200;
+            const scrollPosition = window.scrollY;
+            const lastScrollPosition = scrollPosition + viewportHeight;
+            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+
+            if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
+                if (isVideoPlaying) {
+                    videoElement.pause();
+                    setIsVideoPlaying(false);
                 }
-            })
-        }, options)
+            } else {
+                if (!isVideoPlaying) {
+                    videoElement.play();
+                    setIsVideoPlaying(true);
+                }
+            }
+        };
 
-        observer.observe(videoContainerRef.current)
+        window.addEventListener('scroll', handleScroll);
 
         return () => {
-            observer.unobserve(videoContainerRef.current)
-        }
-    }, [])
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isVideoPlaying]);
 
     return (
-        <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className="videos">
-                    <source src={Video2} type="video/mp4" />
-                </video>
-            </div>
-        </>
+        <div id="video-container2">
+            <video id="videos2" src={Video2} autoPlay muted controls loop className="videos" />
+        </div>
     )
 }
 
 const AutoPlayVideo3 = () => {
-    const videoContainerRef = useRef(null)
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
     useEffect(() => {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.5
-        }
+        const videoElement = document.getElementById('videos3');
+        const videoContainer = document.getElementById('video-container3');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.play()
-                        setIsPlaying(true)
-                    }
-                } else {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.pause()
-                        setIsPlaying(false)
-                    }
+        const handleScroll = () => {
+            const videoHeight = videoContainer.clientHeight;
+            const videoTopOffset = videoContainer.offsetTop;
+            const viewportHeight = window.innerHeight - 200;
+            const scrollPosition = window.scrollY;
+            const lastScrollPosition = scrollPosition + viewportHeight;
+            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+
+            if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
+                if (isVideoPlaying) {
+                    videoElement.pause();
+                    setIsVideoPlaying(false);
                 }
-            })
-        }, options)
+            } else {
+                if (!isVideoPlaying) {
+                    videoElement.play();
+                    setIsVideoPlaying(true);
+                }
+            }
+        };
 
-        observer.observe(videoContainerRef.current)
+        window.addEventListener('scroll', handleScroll);
 
         return () => {
-            observer.unobserve(videoContainerRef.current)
-        }
-    }, [])
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isVideoPlaying]);
 
     return (
-        <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className="videos">
-                    <source src={Video3} type="video/mp4" />
-                </video>
-            </div>
-        </>
+        <div id="video-container3">
+            <video id="videos3" src={Video3} autoPlay muted controls loop className="videos" />
+        </div>
     )
 }
 
 const AutoPlayVideo4 = () => {
-    const videoContainerRef = useRef(null)
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
     useEffect(() => {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.5
-        }
+        const videoElement = document.getElementById('videos4');
+        const videoContainer = document.getElementById('video-container4');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.play()
-                        setIsPlaying(true)
-                    }
-                } else {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.pause()
-                        setIsPlaying(false)
-                    }
+        const handleScroll = () => {
+            const videoHeight = videoContainer.clientHeight;
+            const videoTopOffset = videoContainer.offsetTop;
+            const viewportHeight = window.innerHeight - 200;
+            const scrollPosition = window.scrollY;
+            const lastScrollPosition = scrollPosition + viewportHeight;
+            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+
+            if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
+                if (isVideoPlaying) {
+                    videoElement.pause();
+                    setIsVideoPlaying(false);
                 }
-            })
-        }, options)
+            } else {
+                if (!isVideoPlaying) {
+                    videoElement.play();
+                    setIsVideoPlaying(true);
+                }
+            }
+        };
 
-        observer.observe(videoContainerRef.current)
+        window.addEventListener('scroll', handleScroll);
 
         return () => {
-            observer.unobserve(videoContainerRef.current)
-        }
-    }, [])
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isVideoPlaying]);
 
     return (
-        <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className="videos">
-                    <source src={Video4} type="video/mp4" />
-                </video>
-            </div>
-        </>
+        <div id="video-container4">
+            <video id="videos4" src={Video4} autoPlay muted controls loop className="videos" />
+        </div>
     )
 }
 
 const AutoPlayVideo5 = () => {
-    const videoContainerRef = useRef(null)
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
     useEffect(() => {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.5
-        }
+        const videoElement = document.getElementById('videos5');
+        const videoContainer = document.getElementById('video-container5');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.play()
-                        setIsPlaying(true)
-                    }
-                } else {
-                    const videoElement = videoContainerRef.current.querySelector("video")
-                    if (videoElement) {
-                        videoElement.current.pause()
-                        setIsPlaying(false)
-                    }
+        const handleScroll = () => {
+            const videoHeight = videoContainer.clientHeight;
+            const videoTopOffset = videoContainer.offsetTop;
+            const viewportHeight = window.innerHeight - 200;
+            const scrollPosition = window.scrollY;
+            const lastScrollPosition = scrollPosition + viewportHeight;
+            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+
+            if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
+                if (isVideoPlaying) {
+                    videoElement.pause();
+                    setIsVideoPlaying(false);
                 }
-            })
-        }, options)
+            } else {
+                if (!isVideoPlaying) {
+                    videoElement.play();
+                    setIsVideoPlaying(true);
+                }
+            }
+        };
 
-        observer.observe(videoContainerRef.current)
+        window.addEventListener('scroll', handleScroll);
 
         return () => {
-            observer.unobserve(videoContainerRef.current)
-        }
-    }, [])
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isVideoPlaying]);
 
     return (
-        <>
-            <div ref={videoContainerRef}>
-                <video autoPlay muted controls loop className="videos">
-                    <source src={Video5} type="video/mp4" />
-                </video>
-            </div>
-        </>
+        <div id="video-container5">
+            <video id="videos5" src={Video5} autoPlay muted controls loop className="videos" />
+        </div>
     )
 }
 
@@ -572,7 +528,7 @@ const VideoListFollowing = ({ userId }) => {
     const userLogged = !userLogin?.username
     const actionBtnUnlogged = (
         <>
-            <div className="videoAction" style={{ marginTop: "-590px" }}>
+            <div className="videoAction" style={{ marginTop: "-650px" }}>
                 <button className="action_btn">
                     <span>
                         <i className="fa-solid fa-heart"></i>
@@ -581,7 +537,7 @@ const VideoListFollowing = ({ userId }) => {
                 <p className="actionAmount">
                     <strong>72</strong>
                 </p>
-                <button className="action_btn" onClick={() => navigate(`videoDetails/1`)}>
+                <button className="action_btn">
                     <span>
                         <i className="fa-solid fa-comment-dots"></i>
                     </span>
@@ -623,7 +579,7 @@ const VideoListFollowing = ({ userId }) => {
     } else {
         content1 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-590px" }}>
+                <div className="videoAction" style={{ marginTop: "-650px" }}>
                     <button className="action_btn" onClick={handleLikeClick1}>
                         <span>
                             {isLiked1 ? (
@@ -665,7 +621,7 @@ const VideoListFollowing = ({ userId }) => {
         )
         content2 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-590px" }}>
+                <div className="videoAction" style={{ marginTop: "-650px" }}>
                     <button className="action_btn" onClick={handleLikeClick2}>
                         <span>
                             {isLiked2 ? (
@@ -707,7 +663,7 @@ const VideoListFollowing = ({ userId }) => {
         )
         content3 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-590px" }}>
+                <div className="videoAction" style={{ marginTop: "-650px" }}>
                     <button className="action_btn" onClick={handleLikeClick3}>
                         <span>
                             {isLiked3 ? (
@@ -749,7 +705,7 @@ const VideoListFollowing = ({ userId }) => {
         )
         content4 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-590px" }}>
+                <div className="videoAction" style={{ marginTop: "-650px" }}>
                     <button className="action_btn" onClick={handleLikeClick4}>
                         <span>
                             {isLiked4 ? (
@@ -791,7 +747,7 @@ const VideoListFollowing = ({ userId }) => {
         )
         content5 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-590px" }}>
+                <div className="videoAction" style={{ marginTop: "-650px" }}>
                     <button className="action_btn" onClick={handleLikeClick5}>
                         <span>
                             {isLiked5 ? (

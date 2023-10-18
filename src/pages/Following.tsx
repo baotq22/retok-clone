@@ -9,57 +9,19 @@ import RightBottomActionButton from "../components/PageComponents/RightBottomAct
 import { videoApis } from "../api/axios-instance"
 import VideoListFollowing from "../components/PageComponents/VideoListFollowing"
 import MainSidebar from "../components/Sidebar/MainSidebar"
+import UserFeatured from "~/components/PageComponents/UserFeatured"
 
 const ForYou = () => {
-    const [videoList, setVideoList] = useState([])
-    const fetchVideos = async () => {
-        try {
-            const res = await videoApis.get("videos")
-            setVideoList(res.data)
-        } catch (e) {
-            if (e.response && e.response.status == 429) {
-                const retryDelay = 500
-                setTimeout(() => fetchVideos(), retryDelay)
-            } else {
-                console.log("fail")
-            }
-        }
-    }
-    useEffect(() => {
-        fetchVideos()
-    }, [])
     const userLogin = useSelector((state) => state.userLogin)
     const userLogged = !userLogin?.username
-
     const user_id = userLogin?.id
 
     return (
-        <div id="followingPage">
+        <div id="foryouPage">
             {userLogged ? (
                 <div id="userNotLogin">
                     <div className="userContainer">
-                        <div className="userVideo">
-                            {videoList.map((user, index) => (
-                                <div className="userInfo" key={index}>
-                                    <Link to={`/userFollow/${user.id}`}>
-                                        <img src={user?.imgVideo} className="imgUser" />
-                                    </Link>
-                                    <div className="userFollow">
-                                        <Link
-                                            to={`/userFollow/${user.id}`}
-                                            style={{ textDecoration: "0", color: "#fff" }}
-                                        >
-                                            <img src={user?.avatar} className="avatarUser" />
-                                            <h3 className="user">
-                                                <b>{user?.username}</b>
-                                            </h3>
-                                            <h4 className="user">{user?.fullname}</h4>
-                                        </Link>
-                                        <button className="followBtn">Follow</button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                        <UserFeatured />
                         <RightBottomActionButton />
                     </div>
                 </div>
