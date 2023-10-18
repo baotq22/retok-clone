@@ -16,15 +16,15 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
     const [error, setError] = useState("")
 
     async function loginClick() {
-        const username = User.current?.value;
-        const password = Pass.current?.value;
+        const username = User.current?.value
+        const password = Pass.current?.value
         try {
             // @ts-ignore
-            await dispatch(login({ username, password })).unwrap();
+            await dispatch(login({ username, password })).unwrap()
             if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
                 setError("Username or password doesn't match our records. Try again.")
             } else {
-                navigate("/");
+                navigate("/")
             }
         } catch (e) {
             setError("Username or password doesn't match our records. Try again.")

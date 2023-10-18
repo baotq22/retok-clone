@@ -114,11 +114,23 @@
   border-radius: 10px;
   margin-bottom: 15px;
 }
-#foryouPage #userNotLogin .userContainer .userVideo .userInfo .imgUser {
+#foryouPage #userNotLogin .userContainer .userVideo .userInfo .vidCont .imgUserStill {
   width: 230px;
   height: 302px;
   position: relative;
   border-radius: 10px;
+  object-fit: cover;
+}
+#foryouPage #userNotLogin .userContainer .userVideo .userInfo .vidCont .imgUserStill:hover {
+  opacity: 0;
+}
+#foryouPage #userNotLogin .userContainer .userVideo .userInfo .vidCont .imgUser {
+  width: 230px;
+  height: 302px;
+  position: relative;
+  border-radius: 10px;
+  object-fit: cover;
+  position: absolute;
 }
 #foryouPage #userNotLogin .userContainer .userVideo .userInfo .userFollow {
   position: absolute;

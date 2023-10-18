@@ -139,11 +139,28 @@
                     border-radius: 10px;
                     margin-bottom: 15px;
 
-                    .imgUser {
-                        width: 230px;
-                        height: 302px;
-                        position: relative;
-                        border-radius: 10px;
+                    .vidCont {
+
+                        .imgUserStill {
+                            width: 230px;
+                            height: 302px;
+                            position: relative;
+                            border-radius: 10px;
+                            object-fit: cover;
+
+                            &:hover {
+                                opacity: 0;
+                            }
+                        }
+                        
+                        .imgUser {
+                            width: 230px;
+                            height: 302px;
+                            position: relative;
+                            border-radius: 10px;
+                            object-fit: cover;
+                            position: absolute;
+                        }
                     }
 
                     .userFollow {
@@ -525,7 +542,6 @@
 }
 
 @media screen and (max-width: 1840px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -557,7 +573,6 @@
 }
 
 @media screen and (max-width: 1800px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -589,7 +604,6 @@
 }
 
 @media screen and (max-width: 1760px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -628,7 +642,6 @@
 }
 
 @media screen and (max-width: 1720px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -667,7 +680,6 @@
 }
 
 @media screen and (max-width: 1680px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -697,7 +709,6 @@
 }
 
 @media screen and (max-width: 1640px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -736,7 +747,6 @@
 }
 
 @media screen and (max-width: 1600px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -766,7 +776,6 @@
 }
 
 @media screen and (max-width: 1580px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -796,7 +805,6 @@
 }
 
 @media screen and (max-width: 1560px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -826,7 +834,6 @@
 }
 
 @media screen and (max-width: 1540px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -856,7 +863,6 @@
 }
 
 @media screen and (max-width: 1500px) {
-
     #foryouPage {
         #foryou {
             #video {
@@ -879,7 +885,6 @@
 }
 
 @media screen and (max-width: 1460px) {
-
     #foryouPage {
         #foryou {
             #video {

@@ -3,15 +3,7 @@ import images from "../../assets/309431756_799936498003792_6138006382387941828_n
 import CommentForm from "./CommentForm"
 import React from "react"
 
-const CommentLS = ({
-    comment,
-    currentUserId,
-    deleteComment,
-    activeCmt,
-    setActiveCmt,
-    addComment,
-    parentId = null
-}) => {
+const CommentLS = ({ comment, currentUserId, deleteComment, activeCmt, setActiveCmt, addComment, parentId = null }) => {
     const userName = localStorage.getItem("username")
     const canReply = Boolean(currentUserId)
     const fiveMinutes = 300000 // 300000 miliseconds = 300 seconds = 5 minutes

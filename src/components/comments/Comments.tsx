@@ -28,11 +28,11 @@ const Comments = ({ currentUserId }) => {
     //     return localStorage.getItem(`userCmt_${currentUserId}`)
     // }, [currentUserId])
 
-    const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || [];
+    const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || []
 
     const userCmtsArray = userCmts || []
 
-    const getUser = localStorage.getItem("username");
+    const getUser = localStorage.getItem("username")
 
     const saveCmtToLS = (comments) => {
         localStorage.setItem(`userCmt_${currentUserId}`, JSON.stringify(comments))

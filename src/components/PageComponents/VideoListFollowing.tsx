@@ -89,39 +89,39 @@ const setFollowStatus5 = (userId, isFollowed5) => {
 }
 
 const AutoPlayVideo1 = () => {
-    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true)
 
     useEffect(() => {
-        const videoElement = document.getElementById('videos1');
-        const videoContainer = document.getElementById('video-container1');
+        const videoElement = document.getElementById("videos1")
+        const videoContainer = document.getElementById("video-container1")
 
         const handleScroll = () => {
-            const videoHeight = videoContainer.clientHeight;
-            const videoTopOffset = videoContainer.offsetTop;
-            const viewportHeight = window.innerHeight - 200;
-            const scrollPosition = window.scrollY;
-            const lastScrollPosition = scrollPosition + viewportHeight;
-            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+            const videoHeight = videoContainer.clientHeight
+            const videoTopOffset = videoContainer.offsetTop
+            const viewportHeight = window.innerHeight - 200
+            const scrollPosition = window.scrollY
+            const lastScrollPosition = scrollPosition + viewportHeight
+            const videoMidpoint = videoTopOffset + videoHeight / 2
 
             if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
                 if (isVideoPlaying) {
-                    videoElement.pause();
-                    setIsVideoPlaying(false);
+                    videoElement.pause()
+                    setIsVideoPlaying(false)
                 }
             } else {
                 if (!isVideoPlaying) {
-                    videoElement.play();
-                    setIsVideoPlaying(true);
+                    videoElement.play()
+                    setIsVideoPlaying(true)
                 }
             }
-        };
+        }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll)
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [isVideoPlaying]);
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [isVideoPlaying])
 
     return (
         <div id="video-container1">
@@ -131,39 +131,39 @@ const AutoPlayVideo1 = () => {
 }
 
 const AutoPlayVideo2 = () => {
-    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true)
 
     useEffect(() => {
-        const videoElement = document.getElementById('videos2');
-        const videoContainer = document.getElementById('video-container2');
+        const videoElement = document.getElementById("videos2")
+        const videoContainer = document.getElementById("video-container2")
 
         const handleScroll = () => {
-            const videoHeight = videoContainer.clientHeight;
-            const videoTopOffset = videoContainer.offsetTop;
-            const viewportHeight = window.innerHeight - 200;
-            const scrollPosition = window.scrollY;
-            const lastScrollPosition = scrollPosition + viewportHeight;
-            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+            const videoHeight = videoContainer.clientHeight
+            const videoTopOffset = videoContainer.offsetTop
+            const viewportHeight = window.innerHeight - 200
+            const scrollPosition = window.scrollY
+            const lastScrollPosition = scrollPosition + viewportHeight
+            const videoMidpoint = videoTopOffset + videoHeight / 2
 
             if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
                 if (isVideoPlaying) {
-                    videoElement.pause();
-                    setIsVideoPlaying(false);
+                    videoElement.pause()
+                    setIsVideoPlaying(false)
                 }
             } else {
                 if (!isVideoPlaying) {
-                    videoElement.play();
-                    setIsVideoPlaying(true);
+                    videoElement.play()
+                    setIsVideoPlaying(true)
                 }
             }
-        };
+        }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll)
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [isVideoPlaying]);
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [isVideoPlaying])
 
     return (
         <div id="video-container2">
@@ -173,39 +173,39 @@ const AutoPlayVideo2 = () => {
 }
 
 const AutoPlayVideo3 = () => {
-    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true)
 
     useEffect(() => {
-        const videoElement = document.getElementById('videos3');
-        const videoContainer = document.getElementById('video-container3');
+        const videoElement = document.getElementById("videos3")
+        const videoContainer = document.getElementById("video-container3")
 
         const handleScroll = () => {
-            const videoHeight = videoContainer.clientHeight;
-            const videoTopOffset = videoContainer.offsetTop;
-            const viewportHeight = window.innerHeight - 200;
-            const scrollPosition = window.scrollY;
-            const lastScrollPosition = scrollPosition + viewportHeight;
-            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+            const videoHeight = videoContainer.clientHeight
+            const videoTopOffset = videoContainer.offsetTop
+            const viewportHeight = window.innerHeight - 200
+            const scrollPosition = window.scrollY
+            const lastScrollPosition = scrollPosition + viewportHeight
+            const videoMidpoint = videoTopOffset + videoHeight / 2
 
             if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
                 if (isVideoPlaying) {
-                    videoElement.pause();
-                    setIsVideoPlaying(false);
+                    videoElement.pause()
+                    setIsVideoPlaying(false)
                 }
             } else {
                 if (!isVideoPlaying) {
-                    videoElement.play();
-                    setIsVideoPlaying(true);
+                    videoElement.play()
+                    setIsVideoPlaying(true)
                 }
             }
-        };
+        }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll)
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [isVideoPlaying]);
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [isVideoPlaying])
 
     return (
         <div id="video-container3">
@@ -215,39 +215,39 @@ const AutoPlayVideo3 = () => {
 }
 
 const AutoPlayVideo4 = () => {
-    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true)
 
     useEffect(() => {
-        const videoElement = document.getElementById('videos4');
-        const videoContainer = document.getElementById('video-container4');
+        const videoElement = document.getElementById("videos4")
+        const videoContainer = document.getElementById("video-container4")
 
         const handleScroll = () => {
-            const videoHeight = videoContainer.clientHeight;
-            const videoTopOffset = videoContainer.offsetTop;
-            const viewportHeight = window.innerHeight - 200;
-            const scrollPosition = window.scrollY;
-            const lastScrollPosition = scrollPosition + viewportHeight;
-            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+            const videoHeight = videoContainer.clientHeight
+            const videoTopOffset = videoContainer.offsetTop
+            const viewportHeight = window.innerHeight - 200
+            const scrollPosition = window.scrollY
+            const lastScrollPosition = scrollPosition + viewportHeight
+            const videoMidpoint = videoTopOffset + videoHeight / 2
 
             if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
                 if (isVideoPlaying) {
-                    videoElement.pause();
-                    setIsVideoPlaying(false);
+                    videoElement.pause()
+                    setIsVideoPlaying(false)
                 }
             } else {
                 if (!isVideoPlaying) {
-                    videoElement.play();
-                    setIsVideoPlaying(true);
+                    videoElement.play()
+                    setIsVideoPlaying(true)
                 }
             }
-        };
+        }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll)
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [isVideoPlaying]);
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [isVideoPlaying])
 
     return (
         <div id="video-container4">
@@ -257,39 +257,39 @@ const AutoPlayVideo4 = () => {
 }
 
 const AutoPlayVideo5 = () => {
-    const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+    const [isVideoPlaying, setIsVideoPlaying] = useState(true)
 
     useEffect(() => {
-        const videoElement = document.getElementById('videos5');
-        const videoContainer = document.getElementById('video-container5');
+        const videoElement = document.getElementById("videos5")
+        const videoContainer = document.getElementById("video-container5")
 
         const handleScroll = () => {
-            const videoHeight = videoContainer.clientHeight;
-            const videoTopOffset = videoContainer.offsetTop;
-            const viewportHeight = window.innerHeight - 200;
-            const scrollPosition = window.scrollY;
-            const lastScrollPosition = scrollPosition + viewportHeight;
-            const videoMidpoint = videoTopOffset + (videoHeight / 2);
+            const videoHeight = videoContainer.clientHeight
+            const videoTopOffset = videoContainer.offsetTop
+            const viewportHeight = window.innerHeight - 200
+            const scrollPosition = window.scrollY
+            const lastScrollPosition = scrollPosition + viewportHeight
+            const videoMidpoint = videoTopOffset + videoHeight / 2
 
             if (scrollPosition >= videoMidpoint || lastScrollPosition <= videoMidpoint) {
                 if (isVideoPlaying) {
-                    videoElement.pause();
-                    setIsVideoPlaying(false);
+                    videoElement.pause()
+                    setIsVideoPlaying(false)
                 }
             } else {
                 if (!isVideoPlaying) {
-                    videoElement.play();
-                    setIsVideoPlaying(true);
+                    videoElement.play()
+                    setIsVideoPlaying(true)
                 }
             }
-        };
+        }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll)
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [isVideoPlaying]);
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [isVideoPlaying])
 
     return (
         <div id="video-container5">
