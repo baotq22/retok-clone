@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom"
 import Navbar from "../components/NavBar/navbar"
-import { useSelector } from "react-redux"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { videoApis } from "../api/axios-instance"
@@ -9,8 +8,25 @@ import "../styles/css/userdetails.css"
 import RightBottomActionButton from "../components/PageComponents/RightBottomActionButton"
 import MainSidebar from "../components/Sidebar/MainSidebar"
 
+type UserDetailArray = {
+    id: string
+    imgVideo: string
+    savedAmount: number
+    description: string
+}
+
+type UserDetailObject = {
+    avatar: string
+    username: string
+    fullname: string
+    followingAmount: number
+    followersAmount: number
+    reactAllAmount: number
+    description: string
+}
+
 const UserDetails = () => {
-    const [videoList, setVideoList] = useState([])
+    const [videoList, setVideoList] = useState<Array<UserDetailArray>>([])
     const fetchVideos = async () => {
         try {
             const res = await videoApis.get("videos")
@@ -28,7 +44,7 @@ const UserDetails = () => {
         fetchVideos()
     })
 
-    const [user, setUser] = useState()
+    const [user, setUser] = useState<UserDetailObject>()
 
     useEffect(() => {
         videoApis
@@ -42,8 +58,8 @@ const UserDetails = () => {
     const params = useParams()
     const userId = params.userId
 
-    const userLogin = useSelector((state) => state.userLogin)
-    const userFollowId = userLogin?.id == params.userId
+    const userLoginId = localStorage.getItem("id")
+    const userFollowId = userLoginId == params.userId
 
     const [isFollowing, setIsFollowing] = useState(false)
 

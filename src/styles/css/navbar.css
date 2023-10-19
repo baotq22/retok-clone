@@ -70,6 +70,17 @@
   margin-left: 40px;
   cursor: pointer;
 }
+#header .menu-container .downloadMenu {
+  position: absolute;
+  background: #242526;
+  min-width: 216px;
+  line-height: 45px;
+  top: 85px;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
 #header .menu-container .menu {
   position: absolute;
   background: #242526;
@@ -80,6 +91,55 @@
   visibility: hidden;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   text-align: left;
+}
+#header .menu-container:hover .downloadMenu {
+  transition: all 0.3s ease;
+  top: 65px;
+  opacity: 1;
+  visibility: visible;
+  right: 0;
+  border-radius: 0px 0px 12px 12px;
+}
+#header .menu-container:hover .downloadMenu #logo_download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+#header .menu-container:hover .downloadMenu .title_download {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+}
+#header .menu-container:hover .downloadMenu .button_download {
+  border: 0;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 59, 92);
+  min-width: 168px;
+  min-height: 48px;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 6px 8px;
+  user-select: none;
+  box-sizing: border-box;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  height: 48px;
+  border-radius: 0px 0px 12px 12px;
+  margin-top: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+#header .menu-container:hover .downloadMenu .button_download:hover {
+  background-color: #ef2950;
 }
 #header .menu-container:hover .menu {
   transition: all 0.3s ease;
@@ -113,6 +173,15 @@
   margin-right: 40px;
   font-size: 30px;
 }
+#header .icon_Nav {
+  float: right;
+  font-size: 30px;
+}
+#header .iconNavs {
+  float: right;
+  margin-right: 40px;
+  margin-top: 7px;
+}
 #header .iconPlane {
   margin-left: 15px;
 }
@@ -125,6 +194,9 @@
   #header .iconNav .iconAction {
     color: #000;
   }
+  #header .iconNav .iconActions {
+    font-size: 30px;
+  }
   #header #btn__upload {
     background-color: #fff;
     border: 1px solid #e3e3e4;
@@ -135,10 +207,17 @@
   #header #btn__upload .iconAction {
     color: #000;
   }
+  #header .menu-container:hover .downloadMenu .title_download {
+    color: #000;
+  }
   #header .menu-container:hover .menu li:hover {
     background-color: #f8f8f8;
   }
   #header .menu-container .menu {
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+  }
+  #header .menu-container .downloadMenu {
     background: #fff;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
   }

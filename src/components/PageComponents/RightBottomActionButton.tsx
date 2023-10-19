@@ -30,8 +30,8 @@ const RightBottomActionButton = () => {
                 <button onClick={scrollToTop} className="RightBottomActionButton">
                     <i className="fa-solid fa-forward-step fa-rotate-270"></i>
                 </button>
+                <GetAppModal isGetAppOpen={isModalGetAppOpen} onGetAppClose={closeModal} />
             </div>
-            <GetAppModal isGetAppOpen={isModalGetAppOpen} onGetAppClose={closeModal} />
         </>
     )
 }

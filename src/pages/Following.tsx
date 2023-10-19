@@ -2,16 +2,15 @@ import "../styles/css/videos.css"
 import "../styles/css/sidebar.css"
 import NavBar from "../components/NavBar/navbar"
 import "../library/fontawesome/css/all.min.css"
-import { useSelector } from "react-redux"
 import RightBottomActionButton from "../components/PageComponents/RightBottomActionButton"
 import VideoListFollowing from "../components/PageComponents/VideoListFollowing"
 import MainSidebar from "../components/Sidebar/MainSidebar"
 import UserFeatured from "~/components/PageComponents/UserFeatured"
 
 const ForYou = () => {
-    const userLogin = useSelector((state) => state.userLogin)
-    const userLogged = !userLogin?.username
-    const user_id = userLogin?.id
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
+    const user_id = localStorage.getItem("id")
 
     return (
         <div id="foryouPage">

@@ -6,11 +6,13 @@ import "../../library/fontawesome/css/all.min.css"
 import LoginModal from "../Modal/LoginModal"
 import { memo, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import images from "../../assets/309431756_799936498003792_6138006382387941828_n.jpg"
 import { logout } from "../../slices/userLoginSlice"
 import LoginInputModal from "../Modal/LoginInputModal"
 import ShortcutModal from "../Modal/ShortcutModal"
+import UserHover from "./UserHover"
+import DownloadApp from "./DownloadApp"
 
 export const NavBar = () => {
     const navigate = useNavigate()
@@ -44,14 +46,6 @@ export const NavBar = () => {
         setIsModalOpen(false)
     }
 
-    const [isShortcutModalOpen, setIsShortcutModalOpen] = useState(false)
-    const openShortcutModal = () => {
-        setIsShortcutModalOpen(true)
-    }
-    const closeShortcutModal = () => {
-        setIsShortcutModalOpen(false)
-    }
-
     const [mode, setMode] = useState()
 
     const directToHomePage = () => {
@@ -65,14 +59,21 @@ export const NavBar = () => {
         })
     }, [])
 
-    const userLogin = useSelector((state) => state.userLogin)
-
-    const userLogged = !userLogin?.username
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
 
     let content
     if (userLogged) {
         content = (
             <>
+                <span className="iconNavs menu-container" style={{ cursor: "pointer", marginLeft: "0px" }}>
+                    <i className="fa-solid fa-ellipsis-vertical icon_Nav iconActions"></i>
+                    <UserHover />
+                </span>
+                <span className="iconNav iconPlane menu-container" style={{ cursor: "pointer" }}>
+                    <i className="fa-solid fa-laptop iconAction"></i>
+                    <DownloadApp />
+                </span>
                 <button id="btn__login" onClick={openModal}>
                     Log in
                 </button>
@@ -144,8 +145,8 @@ export const NavBar = () => {
                             .
                         </p>
                     </div>
-                    <div className="signUps">
-                        <p>
+                    <div className="sign__up">
+                        <p className="sign_ups">
                             Don't have an account?{" "}
                             <a href="#" className="signUp">
                                 Sign Up
@@ -167,63 +168,7 @@ export const NavBar = () => {
                     <span className="avatarNav">
                         <img src={images} className="avatar" />
                     </span>
-                    <ul className="menu" style={{ listStyleType: "none" }}>
-                        <li onClick={() => navigate(`/userFollow/${userLogin?.id}`)}>
-                            <span>
-                                <i className="fa-regular fa-user" style={{ marginRight: "16px" }}></i>
-                            </span>
-                            <span>View profile</span>
-                        </li>
-                        <li>
-                            <span>
-                                <i className="fa-regular fa-bookmark" style={{ marginRight: "18px" }}></i>
-                            </span>
-                            <span>Favourites</span>
-                        </li>
-                        <li>
-                            <span>
-                                <i className="fa-solid fa-coins" style={{ marginRight: "14px" }}></i>
-                            </span>
-                            <span>Get coins</span>
-                        </li>
-                        <li>
-                            <span>
-                                <i className="fa-regular fa-lightbulb" style={{ marginRight: "18px" }}></i>
-                            </span>
-                            <span>LIVE Creator Hub</span>
-                        </li>
-                        <li>
-                            <span>
-                                <i className="fa-solid fa-gear" style={{ marginRight: "14px" }}></i>
-                            </span>
-                            <span>Setting</span>
-                        </li>
-                        <li>
-                            <span>
-                                <i className="fa-solid fa-earth-americas" style={{ marginRight: "14px" }}></i>
-                            </span>
-                            <span>English</span>
-                        </li>
-                        <li>
-                            <span>
-                                <i className="fa-regular fa-circle-question" style={{ marginRight: "14px" }}></i>
-                            </span>
-                            <span>Feedback and help</span>
-                        </li>
-                        <li onClick={openShortcutModal}>
-                            <span>
-                                <i className="fa-regular fa-keyboard" style={{ marginRight: "12px" }}></i>
-                            </span>
-                            <span>Keyboard shortcuts</span>
-                        </li>
-                        <li onClick={logoutUser}>
-                            <span>
-                                <i className="fa-solid fa-arrow-right-from-bracket" style={{ marginRight: "14px" }}></i>
-                            </span>
-                            <span>Logout</span>
-                        </li>
-                    </ul>
-                    <ShortcutModal isShortcutOpen={isShortcutModalOpen} onShortcutClose={closeShortcutModal} />
+                    <UserHover />
                 </span>
                 <span className="iconNav" style={{ cursor: "pointer" }}>
                     <i className="fa-regular fa-message iconAction"></i>

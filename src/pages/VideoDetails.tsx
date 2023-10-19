@@ -7,12 +7,22 @@ import "../styles/css/videodetails.css"
 import Comments from "../components/comments/Comments"
 import axios from "axios"
 
+type UserDetailObject = {
+    avatar: string
+    username: string
+    fullname: string
+    savedAmount: number
+    commentAmount: number
+    reactAmount: number
+    description: string
+}
+
 const VideoDetails = () => {
     const escapeBack = () => {
         navigate(`/`)
     }
     useEffect(() => {
-        const keyDownHandler = (event) => {
+        const keyDownHandler = (event: { key: string }) => {
             console.log(event.key)
             if (event.key === "Escape") {
                 escapeBack()
@@ -26,7 +36,7 @@ const VideoDetails = () => {
         }
     }, [])
 
-    const [video, setVideo] = useState()
+    const [video, setVideo] = useState<UserDetailObject>()
 
     const params = useParams()
     const userId = params.userId

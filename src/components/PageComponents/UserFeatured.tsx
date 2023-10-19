@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { videoApis } from "~/api/axios-instance"
-import Video1 from "../../assets/videos/1.mp4"
-import Video2 from "../../assets/videos/2.mp4"
-import Video3 from "../../assets/videos/3.mp4"
-import Video4 from "../../assets/videos/4.mp4"
-import Video5 from "../../assets/videos/5.mp4"
 import imageStill from "../../assets/videos/4-0.png"
 import gif from "../../assets/videos/4.gif"
 
+type UserDetailObject = {
+    id: string
+    avatar: string
+    username: string
+    fullname: string
+}
+
 const UserFeatured = () => {
-    const [videoList, setVideoList] = useState([])
+    const [videoList, setVideoList] = useState<Array<UserDetailObject>>([])
     const maxLength = 15
     const fetchVideos = async () => {
         try {

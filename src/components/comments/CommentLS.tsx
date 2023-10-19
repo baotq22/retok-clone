@@ -23,39 +23,36 @@ const CommentLS = ({ comment, currentUserId, deleteComment, activeCmt, setActive
                     <img src={images} className="avatarComment" />
                 </div>
                 <div className="infoComment">
-                    <span style={{ fontSize: "20px" }}>
+                    <span className="userCmt">
                         <b>{userName}</b>
                     </span>
                     <div className="mainComment">{comment.body}</div>
                     <div className="reaction_comment">
                         <button className="follow_btn" onClick={cmtReactionAction}>
                             {isReactedCmt ? (
-                                <i className="fa-solid fa-heart" style={{ fontSize: "17px", color: "#fe22459" }}></i>
+                                <i className="fa-solid fa-heart" style={{ color: "#fe22459" }}></i>
                             ) : (
-                                <i className="fa-solid fa-heart" style={{ fontSize: "17px" }}></i>
+                                <i className="fa-solid fa-heart"></i>
                             )}
                         </button>
                         <div className="actionAmount">{comment.reactionAmount}</div>
                     </div>
                     <span>{createdAt}</span>
                     {canReply && (
-                        <span
-                            style={{ cursor: "pointer" }}
-                            onClick={() => setActiveCmt({ id: comment.id, type: "replying" })}
-                        >
+                        <span className="actionBtn" onClick={() => setActiveCmt({ id: comment.id, type: "replying" })}>
                             {" "}
                             Reply
                         </span>
                     )}
                     {canDelete && (
-                        <span style={{ cursor: "pointer" }} onClick={() => deleteComment(comment.id)}>
+                        <span className="actionBtn" onClick={() => deleteComment(comment.id)}>
                             {" "}
                             Delete
                         </span>
                     )}
                     {isReplying && (
                         <>
-                            <CommentForm submitLabel="Reply" handleSubmit={(text) => addComment(text, replyId)} />
+                            <CommentForm submitLabel="Reply" handleSubmit={(text: any) => addComment(text, replyId)} />
                             <button className="cancelCmt" onClick={() => setActiveCmt(null)}>
                                 <i className="fa-solid fa-xmark"></i>
                             </button>

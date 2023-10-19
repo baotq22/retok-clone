@@ -1,17 +1,16 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
 
 const CommentForm = ({ handleSubmit, submitLabel }) => {
     const [text, setText] = useState("")
     const isInputDisabled = text.length === 0
-    const onSubmit = (event) => {
+    const onSubmit = (event: { preventDefault: () => void }) => {
         event.preventDefault()
         handleSubmit(text)
         setText("")
     }
 
-    const userLogin = useSelector((state) => state.userLogin)
-    const userLogged = !userLogin?.username
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
 
     let content
 
@@ -37,10 +36,10 @@ const CommentForm = ({ handleSubmit, submitLabel }) => {
                             onChange={(e) => setText(e.target.value)}
                         ></input>
                         <button className="mention_button">
-                            <i className="fa-solid fa-at" style={{ marginRight: "5px" }}></i>
+                            <i className="fa-solid fa-at"></i>
                         </button>
                         <button className="emoji_button">
-                            <i className="fa-regular fa-face-smile" style={{ marginRight: "5px" }}></i>
+                            <i className="fa-regular fa-face-smile"></i>
                         </button>
                         <button className="postBtn" disabled={isInputDisabled}>
                             {submitLabel}

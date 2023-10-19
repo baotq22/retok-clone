@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import LoginModal from "../Modal/LoginModal"
 import LoginInputModal from "../Modal/LoginInputModal"
 import { videoApis } from "../../api/axios-instance"
 
+type UserDetailObject = {
+    id: string
+    avatar: string
+    username: string
+    fullname: string
+}
+
 const FollowingSideBar = () => {
     const navigate = useNavigate()
-    const [videoList, setVideoList] = useState([])
+    const [videoList, setVideoList] = useState<Array<UserDetailObject>>([])
     const [viewMoreUser, setViewMoreUser] = useState(false)
     const toogleUser = () => {
         setViewMoreUser(!viewMoreUser)
@@ -53,8 +59,8 @@ const FollowingSideBar = () => {
         fetchVideos()
     }, [])
 
-    const userLogin = useSelector((state) => state.userLogin)
-    const userLogged = !userLogin?.username
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
     let content
     if (userLogged) {
         content = (
@@ -138,8 +144,8 @@ const FollowingSideBar = () => {
                                 .
                             </p>
                         </div>
-                        <div className="signUps">
-                            <p>
+                        <div className="sign__up">
+                            <p className="sign_ups">
                                 Don't have an account?{" "}
                                 <a href="#" className="signUp">
                                     Sign Up

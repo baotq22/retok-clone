@@ -11,23 +11,49 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const isInputDisabled = username.length === 0 || password.length === 0
+
     const { isLoginSuccess } = useSelector((state) => state.userLogin)
 
     const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
+    let loadingContent
+    if (loading) {
+        loadingContent = (
+            <>
+                <button className="btnLogin">
+                    <i className="fa-solid fa-spinner fa-spin"></i>
+                </button>
+            </>
+        )
+    } else {
+        loadingContent = (
+            <>
+                <button disabled={isInputDisabled} onClick={loginClick} className="btnLogin">
+                    Log in
+                </button>
+            </>
+        )
+    }
 
     async function loginClick() {
         const username = User.current?.value
         const password = Pass.current?.value
+        setLoading(true);
         try {
             // @ts-ignore
             await dispatch(login({ username, password })).unwrap()
             if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
-                setError("Username or password doesn't match our records. Try again.")
+                setError("Username or password doesn't match our records. Try again.");
             } else {
-                navigate("/")
+                navigate("/");
             }
         } catch (e) {
             setError("Username or password doesn't match our records. Try again.")
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -49,19 +75,14 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
             setApiCountry(data)
         })
     }, [])
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const isInputDisabled = username.length === 0 || password.length === 0
 
     // useEffect(() => {
     //     const keyDownHandler = event => {
-    //         const user = username;
-    //         const pass = password;
     //         if (event.key === "Enter") {
-    //             if (user.length === 0 || pass.length === 0) {
-    //                 setError("Username or password doesn't match our records. Try again.");
+    //             if (localStorage.getItem("username") && localStorage.getItem("password")) {
+    //                 navigate("/")
     //             } else {
-    //                 loginClick();
+    //                 setError("Username or password doesn't match our records. Try again.")
     //             }
     //         }
     //     }
@@ -82,19 +103,17 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
                 <button className="close-button" onClick={onAllClose}>
                     <i className="fa-solid fa-xmark"></i>
                 </button>
-                <h1 style={{ fontSize: "200%", marginTop: "40px" }}>Log in</h1>
-                <div>
-                    <span style={{ float: "left", marginLeft: "7px" }}>
-                        {isChanged ? "Email or username" : "Phone"}
-                    </span>
-                    <span style={{ float: "right", marginRight: "7px", cursor: "pointer" }} onClick={changeLoginMethod}>
+                <h2 className="modal_titles">Log in</h2>
+                <div className="login_method">
+                    <span className="loginMethod">{isChanged ? "Email or username" : "Phone"}</span>
+                    <span className="changeLoginMethod" onClick={changeLoginMethod}>
                         {isChanged ? "Log in with phone" : "Log in with email or username"}
                     </span>
                 </div>
                 <br />
                 <div className="inputContainer">
                     {isChanged ? (
-                        <div className="input_container" style={{ marginTop: "15px" }}>
+                        <div className="input_container">
                             <input
                                 type="text"
                                 value={username}
@@ -117,13 +136,14 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
                             <div className="forgotPwd">
                                 <span>Forgot password</span>
                             </div>
-                            <button disabled={isInputDisabled} onClick={loginClick} className="btnLogin">
+                            {loadingContent}
+                            {/* <button disabled={isInputDisabled} onClick={loginClick} className="btnLogin">
                                 Log in
-                            </button>
+                            </button> */}
                         </div>
                     ) : (
                         <>
-                            <div className="input_container" style={{ marginTop: "15px" }}>
+                            <div className="input_container">
                                 <select className="countryDropDownList">
                                     {rootCountry.map((rootCountries) => (
                                         <option>
@@ -133,22 +153,23 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
                                 </select>
                                 <input className="phoneNoBox" type="text" placeholder="Phone number" />
                             </div>
-                            <div className="input_container" style={{ marginTop: "15px" }}>
+                            <div className="input_container">
                                 <input className="sixDigitCodeBox" type="text" placeholder="Enter 6-digit code" />
                                 <button className="sendbtn">Send Code</button>
                             </div>
+                            <div className="inputValidate">{error && <span>{error}</span>}</div>
                             <div className="forgotPwd">
-                                <span>Login with password</span>
+                                <span className="forgotPwdBtn">Login with password</span>
                             </div>
                             <button disabled className="btnLogin">
                                 Log in
                             </button>
                         </>
                     )}
-                    <div className="signUps" style={{ marginTop: "90px", borderTop: "1px solid #e3e3e4" }}>
-                        <p style={{ textDecoration: 0, fontWeight: "600" }}>
-                            Don"t have an account?{" "}
-                            <a href="#" style={{ textDecoration: 0, fontWeight: "600", color: "#fe2c55" }}>
+                    <div className="signUps">
+                        <p className="sign_ups">
+                            Don't have an account?{" "}
+                            <a href="#" className="signUp">
                                 Sign Up
                             </a>
                         </p>

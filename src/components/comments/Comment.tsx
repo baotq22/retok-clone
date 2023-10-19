@@ -47,16 +47,13 @@ const Comment = ({
                     </div>
                     <span>{createdAt}</span>
                     {canReply && (
-                        <span
-                            style={{ cursor: "pointer" }}
-                            onClick={() => setActiveCmt({ id: comment.id, type: "replying" })}
-                        >
+                        <span className="actionBtn" onClick={() => setActiveCmt({ id: comment.id, type: "replying" })}>
                             {" "}
                             Reply
                         </span>
                     )}
                     {canDelete && (
-                        <span style={{ cursor: "pointer" }} onClick={() => deleteComment(comment.id)}>
+                        <span className="actionBtn" onClick={() => deleteComment(comment.id)}>
                             {" "}
                             Delete
                         </span>

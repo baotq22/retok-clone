@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import avatar1 from "../../assets/avatar/583.jpg"
 import avatar2 from "../../assets/avatar/518.jpg"
@@ -10,7 +10,6 @@ import Video2 from "../../assets/videos/2.mp4"
 import Video3 from "../../assets/videos/3.mp4"
 import Video4 from "../../assets/videos/4.mp4"
 import Video5 from "../../assets/videos/5.mp4"
-import { useSelector } from "react-redux"
 
 // video 1
 const getReactionStatus1 = (userId) => {
@@ -479,8 +478,8 @@ const VideoListFollowing = ({ userId }) => {
         setIsLiked5(getReactionStatus5(userId))
     }, [userId])
 
-    const userLogin = useSelector((state) => state.userLogin)
-    const userLogged = !userLogin?.username
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
     const actionBtnUnlogged = (
         <>
             <div className="videoAction" style={{ marginTop: "-650px" }}>

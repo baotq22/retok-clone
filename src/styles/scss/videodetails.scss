@@ -235,11 +235,16 @@
                                 background-color: transparent;
                                 border: 0;
                                 margin-left: 3px;
+                                font-size: 17px;
                             }
 
                             .actionAmount {
                                 margin: 3px 0 0 6px;
                             }
+                        }
+
+                        .actionBtn {
+                            cursor: pointer;
                         }
                     }
                 }
