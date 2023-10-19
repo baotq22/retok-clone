@@ -81,24 +81,7 @@ const UserFollowDetails = () => {
     if (userFollowId) {
         followandEditBtn = (
             <div className="button__action">
-                <button
-                    className="followBtn"
-                    style={{
-                        marginTop: "-20px",
-                        backgroundColor: "#252525",
-                        borderRadius: "3px",
-                        marginRight: "10px",
-                        border: "1px solid #fff",
-                        padding: "0.6em 0",
-                        fontSize: "1em",
-                        fontWeight: "500",
-                        fontFamily: "inherit",
-                        color: "#fff",
-                        cursor: "pointer",
-                        width: "210px",
-                        transition: "border-color 0.25s"
-                    }}
-                >
+                <button className="editBtn">
                     <i className="fa-regular fa-pen-to-square" style={{ marginRight: "8px" }}></i>Edit Profile
                 </button>
             </div>
@@ -135,10 +118,10 @@ const UserFollowDetails = () => {
             <Navbar />
             <div id="nav">
                 <MainSidebar />
+                <RightBottomActionButton />
             </div>
             <div id="detailedUser">
                 <div className="detailedUserComponents">
-                    <RightBottomActionButton />
                     <div className="detailedUserInfo">
                         <div className="detailedUserName">
                             <div className="detailedUserAvatar">
@@ -193,7 +176,7 @@ const UserFollowDetails = () => {
                                             to={`/userFollow/${user.id}`}
                                             style={{ textDecoration: "0", color: "#fff" }}
                                         >
-                                            <i className="fa-solid fa-play fa-fade"></i>
+                                            <i className="fa-solid fa-play"></i>
                                             <span className="detailedViewers">{user?.savedAmount}</span>
                                         </Link>
                                     </div>

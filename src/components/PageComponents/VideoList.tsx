@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import avatar1 from "../../assets/avatar/583.jpg"
 import avatar2 from "../../assets/avatar/518.jpg"
 import avatar3 from "../../assets/avatar/867.jpg"
@@ -484,11 +484,6 @@ const VideoList = ({ userId }) => {
         }
     }
 
-    useEffect(() => {
-        setIsLiked1(getReactionStatus1(userId))
-        setIsFollowed1(getFollowStatus1(userId))
-    }, [userId])
-
     //video 2
     const [isLiked2, setIsLiked2] = useState(getReactionStatus2(userId))
     const [isFollowed2, setIsFollowed2] = useState(getFollowStatus2(userId))
@@ -512,11 +507,6 @@ const VideoList = ({ userId }) => {
             setFollowStatus2(userId, true)
         }
     }
-
-    useEffect(() => {
-        setIsLiked2(getReactionStatus2(userId))
-        setIsFollowed2(getFollowStatus2(userId))
-    }, [userId])
 
     //video 3
     const [isLiked3, setIsLiked3] = useState(getReactionStatus3(userId))
@@ -542,11 +532,6 @@ const VideoList = ({ userId }) => {
         }
     }
 
-    useEffect(() => {
-        setIsLiked3(getReactionStatus3(userId))
-        setIsFollowed3(getFollowStatus3(userId))
-    }, [userId])
-
     //video 4
     const [isLiked4, setIsLiked4] = useState(getReactionStatus4(userId))
     const [isFollowed4, setIsFollowed4] = useState(getFollowStatus4(userId))
@@ -570,11 +555,6 @@ const VideoList = ({ userId }) => {
             setFollowStatus4(userId, true)
         }
     }
-
-    useEffect(() => {
-        setIsLiked4(getReactionStatus4(userId))
-        setIsFollowed4(getFollowStatus4(userId))
-    }, [userId])
 
     //video 5
     const [isLiked5, setIsLiked5] = useState(getReactionStatus5(userId))
@@ -601,8 +581,16 @@ const VideoList = ({ userId }) => {
     }
 
     useEffect(() => {
+        setIsLiked1(getReactionStatus1(userId))
+        setIsFollowed1(getFollowStatus1(userId))
+        setIsLiked2(getReactionStatus2(userId))
+        setIsFollowed2(getFollowStatus2(userId))
+        setIsLiked3(getReactionStatus3(userId))
+        setIsFollowed3(getFollowStatus3(userId))
+        setIsLiked4(getReactionStatus4(userId))
+        setIsFollowed4(getFollowStatus4(userId))
         setIsLiked5(getReactionStatus5(userId))
-        setIsFollowed5(getReactionStatus5(userId))
+        setIsFollowed5(getFollowStatus5(userId))
     }, [userId])
 
     const followBtnStyleActive = {
@@ -682,11 +670,9 @@ const VideoList = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked1 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/1`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
@@ -724,11 +710,9 @@ const VideoList = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked2 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/2`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
@@ -766,11 +750,9 @@ const VideoList = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked3 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/3`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
@@ -808,11 +790,9 @@ const VideoList = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked4 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/4`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
@@ -850,11 +830,9 @@ const VideoList = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked5 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/5`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>

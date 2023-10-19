@@ -82,7 +82,7 @@ const FollowingSideBar = () => {
                                     <span>Use phone / email / username</span>
                                 </div>
                             </a>
-                            <a className="loginMethods" onClick={() => navigate(`/login`)}>
+                            <a className="loginMethods">
                                 <div className="loginMethod">
                                     <i
                                         className="fa-brands fa-facebook"

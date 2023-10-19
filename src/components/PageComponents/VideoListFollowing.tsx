@@ -20,13 +20,6 @@ const getReactionStatus1 = (userId) => {
 const setReactionStatus1 = (userId, isLiked1) => {
     localStorage.setItem(`video-reaction1-${userId}`, isLiked1 ? "liked1" : "not-liked1")
 }
-const getFollowStatus1 = (userId) => {
-    const storedStatus1 = localStorage.getItem(`video-follow1-${userId}`)
-    return storedStatus1 === "followed1"
-}
-const setFollowStatus1 = (userId, isFollowed1) => {
-    localStorage.setItem(`video-follow1-${userId}`, isFollowed1 ? "followed1" : "not-followed1")
-}
 // video 2
 const getReactionStatus2 = (userId) => {
     const storedStatus2 = localStorage.getItem(`video-reaction2-${userId}`)
@@ -34,13 +27,6 @@ const getReactionStatus2 = (userId) => {
 }
 const setReactionStatus2 = (userId, isLiked2) => {
     localStorage.setItem(`video-reaction2-${userId}`, isLiked2 ? "liked2" : "not-liked2")
-}
-const getFollowStatus2 = (userId) => {
-    const storedStatus2 = localStorage.getItem(`video-follow2-${userId}`)
-    return storedStatus2 === "followed2"
-}
-const setFollowStatus2 = (userId, isFollowed2) => {
-    localStorage.setItem(`video-follow2-${userId}`, isFollowed2 ? "followed2" : "not-followed2")
 }
 // video 3
 const getReactionStatus3 = (userId) => {
@@ -50,13 +36,6 @@ const getReactionStatus3 = (userId) => {
 const setReactionStatus3 = (userId, isLiked3) => {
     localStorage.setItem(`video-reaction3-${userId}`, isLiked3 ? "liked3" : "not-liked3")
 }
-const getFollowStatus3 = (userId) => {
-    const storedStatus3 = localStorage.getItem(`video-follow3-${userId}`)
-    return storedStatus3 === "followed3"
-}
-const setFollowStatus3 = (userId, isFollowed3) => {
-    localStorage.setItem(`video-follow3-${userId}`, isFollowed3 ? "followed3" : "not-followed3")
-}
 // video 4
 const getReactionStatus4 = (userId) => {
     const storedStatus4 = localStorage.getItem(`video-reaction4-${userId}`)
@@ -65,13 +44,6 @@ const getReactionStatus4 = (userId) => {
 const setReactionStatus4 = (userId, isLiked4) => {
     localStorage.setItem(`video-reaction4-${userId}`, isLiked4 ? "liked4" : "not-liked4")
 }
-const getFollowStatus4 = (userId) => {
-    const storedStatus4 = localStorage.getItem(`video-follow4-${userId}`)
-    return storedStatus4 === "followed4"
-}
-const setFollowStatus4 = (userId, isFollowed4) => {
-    localStorage.setItem(`video-follow4-${userId}`, isFollowed4 ? "followed4" : "not-followed4")
-}
 // video 5
 const getReactionStatus5 = (userId) => {
     const storedStatus5 = localStorage.getItem(`video-reaction5-${userId}`)
@@ -79,13 +51,6 @@ const getReactionStatus5 = (userId) => {
 }
 const setReactionStatus5 = (userId, isLiked5) => {
     localStorage.setItem(`video-reaction5-${userId}`, isLiked5 ? "liked5" : "not-liked5")
-}
-const getFollowStatus5 = (userId) => {
-    const storedStatus5 = localStorage.getItem(`video-follow5-${userId}`)
-    return storedStatus5 === "followed5"
-}
-const setFollowStatus5 = (userId, isFollowed5) => {
-    localStorage.setItem(`video-follow5-${userId}`, isFollowed5 ? "followed5" : "not-followed5")
 }
 
 const AutoPlayVideo1 = () => {
@@ -443,7 +408,6 @@ const VideoListFollowing = ({ userId }) => {
     const navigate = useNavigate()
     //video 1
     const [isLiked1, setIsLiked1] = useState(getReactionStatus1(userId))
-    const [isFollowed1, setIsFollowed1] = useState(getFollowStatus1(userId))
 
     const handleLikeClick1 = () => {
         if (isLiked1) {
@@ -457,7 +421,6 @@ const VideoListFollowing = ({ userId }) => {
 
     //video 2
     const [isLiked2, setIsLiked2] = useState(getReactionStatus2(userId))
-    const [isFollowed2, setIsFollowed2] = useState(getFollowStatus2(userId))
 
     const handleLikeClick2 = () => {
         if (isLiked2) {
@@ -471,7 +434,6 @@ const VideoListFollowing = ({ userId }) => {
 
     //video 3
     const [isLiked3, setIsLiked3] = useState(getReactionStatus3(userId))
-    const [isFollowed3, setIsFollowed3] = useState(getFollowStatus3(userId))
 
     const handleLikeClick3 = () => {
         if (isLiked3) {
@@ -485,7 +447,6 @@ const VideoListFollowing = ({ userId }) => {
 
     //video 4
     const [isLiked4, setIsLiked4] = useState(getReactionStatus4(userId))
-    const [isFollowed4, setIsFollowed4] = useState(getFollowStatus4(userId))
 
     const handleLikeClick4 = () => {
         if (isLiked4) {
@@ -499,7 +460,6 @@ const VideoListFollowing = ({ userId }) => {
 
     //video 5
     const [isLiked5, setIsLiked5] = useState(getReactionStatus5(userId))
-    const [isFollowed5, setIsFollowed5] = useState(getFollowStatus5(userId))
 
     const handleLikeClick5 = () => {
         if (isLiked5) {
@@ -513,15 +473,10 @@ const VideoListFollowing = ({ userId }) => {
 
     useEffect(() => {
         setIsLiked1(getReactionStatus1(userId))
-        setIsFollowed1(getFollowStatus1(userId))
         setIsLiked2(getReactionStatus2(userId))
-        setIsFollowed2(getFollowStatus2(userId))
         setIsLiked3(getReactionStatus3(userId))
-        setIsFollowed3(getFollowStatus3(userId))
         setIsLiked4(getReactionStatus4(userId))
-        setIsFollowed4(getFollowStatus4(userId))
         setIsLiked5(getReactionStatus5(userId))
-        setIsFollowed5(getReactionStatus5(userId))
     }, [userId])
 
     const userLogin = useSelector((state) => state.userLogin)
@@ -587,11 +542,9 @@ const VideoListFollowing = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked1 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/1`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
@@ -629,11 +582,9 @@ const VideoListFollowing = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked2 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/2`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
@@ -671,11 +622,9 @@ const VideoListFollowing = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked3 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/3`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
@@ -713,11 +662,9 @@ const VideoListFollowing = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked4 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/4`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
@@ -755,11 +702,9 @@ const VideoListFollowing = ({ userId }) => {
                             ) : (
                                 <i className="fa-solid fa-heart"></i>
                             )}
-                            {/* <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i> */}
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked5 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    {/* <button className="action_btn" onClick={() => navigate(`/videos/${video?.id}`)}> */}
                     <button className="action_btn" onClick={() => navigate(`videoDetails/5`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>

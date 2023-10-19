@@ -11,7 +11,7 @@ import gif from "../../assets/videos/4.gif"
 
 const UserFeatured = () => {
     const [videoList, setVideoList] = useState([])
-    const maxLength = 15;
+    const maxLength = 15
     const fetchVideos = async () => {
         try {
             const res = await videoApis.get("videos")

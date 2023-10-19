@@ -16,11 +16,11 @@ const ForYou = () => {
             <div id="foryou">
                 <div id="video">
                     <VideoList userId={user_id} />
-                    <RightBottomActionButton />
                 </div>
             </div>
             <div id="nav">
                 <MainSidebar />
+                <RightBottomActionButton />
             </div>
         </div>
     )
