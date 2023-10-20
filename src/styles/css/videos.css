@@ -195,6 +195,7 @@
     margin: 0 350px;
   }
   #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -690px;
     padding-top: 305px;
   }
 }
@@ -214,6 +215,14 @@
   #foryouPage #userNotLogin {
     margin-left: 775px;
     margin-right: 475px;
+  }
+}
+@media screen and (max-width: 2100px) {
+  #foryouPage #foryou #video {
+    margin: 0 340px;
+  }
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -680px;
   }
 }
 @media screen and (max-width: 2090px) {
@@ -241,6 +250,7 @@
     margin: 0 320px;
   }
   #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -670px;
     padding-top: 290px;
   }
 }
@@ -260,6 +270,14 @@
   #foryouPage #userNotLogin {
     margin-left: 705px;
     margin-right: 405px;
+  }
+}
+@media screen and (max-width: 1980px) {
+  #foryouPage #foryou #video {
+    margin: 0 290px;
+  }
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -660px;
   }
 }
 @media screen and (max-width: 1970px) {
@@ -309,6 +327,12 @@
   }
 }
 @media screen and (max-width: 1850px) {
+  #foryouPage #foryou #video {
+    margin: 0 270px;
+  }
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -640px;
+  }
   #foryouPage #userNotLogin {
     margin-left: 630px;
     margin-right: 340px;
@@ -342,6 +366,18 @@
     margin-right: 310px;
   }
 }
+@media screen and (max-width: 1780px) {
+  #foryouPage #foryou #video {
+    margin: 0 250px;
+  }
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -630px;
+  }
+  #foryouPage #userNotLogin {
+    margin-left: 580px;
+    margin-right: 295px;
+  }
+}
 @media screen and (max-width: 1760px) {
   #foryouPage #foryou #video {
     margin: 0 250px;
@@ -365,6 +401,7 @@
     margin: 0 240px;
   }
   #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -620px;
     padding-top: 250px;
   }
   #foryouPage #userNotLogin {
@@ -390,6 +427,14 @@
     margin-right: 250px;
   }
 }
+@media screen and (max-width: 1660px) {
+  #foryouPage #foryou #video {
+    margin: 0 230px;
+  }
+  #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -610px;
+  }
+}
 @media screen and (max-width: 1640px) {
   #foryouPage #foryou #video {
     margin: 0 220px;
@@ -413,6 +458,7 @@
     margin: 0 210px;
   }
   #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -600px;
     padding-top: 235px;
   }
   #foryouPage #userNotLogin {
@@ -449,6 +495,7 @@
     margin: 0 130px;
   }
   #foryouPage #foryou #video .videos__container .videoContainer .videoDetails .videoBox .videoAction {
+    margin-top: -590px;
     padding-top: 215px;
   }
   #foryouPage #userNotLogin {

@@ -482,7 +482,7 @@ const VideoListFollowing = ({ userId }) => {
     const userLogged = !userLogin
     const actionBtnUnlogged = (
         <>
-            <div className="videoAction" style={{ marginTop: "-650px" }}>
+            <div className="videoAction">
                 <button className="action_btn">
                     <span>
                         <i className="fa-solid fa-heart"></i>
@@ -533,7 +533,7 @@ const VideoListFollowing = ({ userId }) => {
     } else {
         content1 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-650px" }}>
+                <div className="videoAction">
                     <button className="action_btn" onClick={handleLikeClick1}>
                         <span>
                             {isLiked1 ? (
@@ -573,7 +573,7 @@ const VideoListFollowing = ({ userId }) => {
         )
         content2 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-650px" }}>
+                <div className="videoAction">
                     <button className="action_btn" onClick={handleLikeClick2}>
                         <span>
                             {isLiked2 ? (
@@ -613,7 +613,7 @@ const VideoListFollowing = ({ userId }) => {
         )
         content3 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-650px" }}>
+                <div className="videoAction">
                     <button className="action_btn" onClick={handleLikeClick3}>
                         <span>
                             {isLiked3 ? (
@@ -653,7 +653,7 @@ const VideoListFollowing = ({ userId }) => {
         )
         content4 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-650px" }}>
+                <div className="videoAction">
                     <button className="action_btn" onClick={handleLikeClick4}>
                         <span>
                             {isLiked4 ? (
@@ -693,7 +693,7 @@ const VideoListFollowing = ({ userId }) => {
         )
         content5 = (
             <>
-                <div className="videoAction" style={{ marginTop: "-650px" }}>
+                <div className="videoAction">
                     <button className="action_btn" onClick={handleLikeClick5}>
                         <span>
                             {isLiked5 ? (

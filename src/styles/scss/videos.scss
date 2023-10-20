@@ -282,6 +282,7 @@
                         .videoDetails {
                             .videoBox {
                                 .videoAction {
+                                    margin-top: -690px;
                                     padding-top: 305px;
                                 }
                             }
@@ -327,6 +328,28 @@
         #userNotLogin {
             margin-left: 775px;
             margin-right: 475px;
+        }
+    }
+}
+
+@media screen and (max-width: 2100px) {
+    #foryouPage {
+        #foryou {
+            #video {
+                margin: 0 340px;
+
+                .videos__container {
+                    .videoContainer {
+                        .videoDetails {
+                            .videoBox {
+                                .videoAction {
+                                    margin-top: -680px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -382,6 +405,7 @@
                         .videoDetails {
                             .videoBox {
                                 .videoAction {
+                                    margin-top: -670px;
                                     padding-top: 290px;
                                 }
                             }
@@ -427,6 +451,28 @@
         #userNotLogin {
             margin-left: 705px;
             margin-right: 405px;
+        }
+    }
+}
+
+@media screen and (max-width: 1980px) {
+    #foryouPage {
+        #foryou {
+            #video {
+                margin: 0 290px;
+
+                .videos__container {
+                    .videoContainer {
+                        .videoDetails {
+                            .videoBox {
+                                .videoAction {
+                                    margin-top: -660px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -533,6 +579,26 @@
 
 @media screen and (max-width: 1850px) {
     #foryouPage {
+        #foryou {
+            #video {
+                margin: 0 270px;
+
+                .videos__container {
+                    .videoContainer {
+                        .videoDetails {
+                            .videoBox {
+                                .videoAction {
+                                    margin-top: -640px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #foryouPage {
         #userNotLogin {
             margin-left: 630px;
             margin-right: 340px;
@@ -602,6 +668,35 @@
     }
 }
 
+@media screen and (max-width: 1780px) {
+    #foryouPage {
+        #foryou {
+            #video {
+                margin: 0 250px;
+
+                .videos__container {
+                    .videoContainer {
+                        .videoDetails {
+                            .videoBox {
+                                .videoAction {
+                                    margin-top: -630px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #foryouPage {
+        #userNotLogin {
+            margin-left: 580px;
+            margin-right: 295px;
+        }
+    }
+}
+
 @media screen and (max-width: 1760px) {
     #foryouPage {
         #foryou {
@@ -651,6 +746,7 @@
                         .videoDetails {
                             .videoBox {
                                 .videoAction {
+                                    margin-top: -620px;
                                     padding-top: 250px;
                                 }
                             }
@@ -707,6 +803,28 @@
     }
 }
 
+@media screen and (max-width: 1660px) {
+    #foryouPage {
+        #foryou {
+            #video {
+                margin: 0 230px;
+
+                .videos__container {
+                    .videoContainer {
+                        .videoDetails {
+                            .videoBox {
+                                .videoAction {
+                                    margin-top: -610px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 1640px) {
     #foryouPage {
         #foryou {
@@ -756,6 +874,7 @@
                         .videoDetails {
                             .videoBox {
                                 .videoAction {
+                                    margin-top: -600px;
                                     padding-top: 235px;
                                 }
                             }
@@ -843,6 +962,7 @@
                         .videoDetails {
                             .videoBox {
                                 .videoAction {
+                                    margin-top: -590px;
                                     padding-top: 215px;
                                 }
                             }
