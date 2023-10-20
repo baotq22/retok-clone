@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import LoginModal from "../Modal/LoginModal"
 import LoginInputModal from "../Modal/LoginInputModal"
 import { videoApis } from "../../api/axios-instance"
+import Skeleton from '@mui/material/Skeleton';
 
 type UserDetailObject = {
     id: string
@@ -43,6 +44,7 @@ const FollowingSideBar = () => {
     }
 
     const fetchVideos = async () => {
+        setLoading(true)
         try {
             const res = await videoApis.get("videos")
             setVideoList(res.data)
@@ -53,6 +55,8 @@ const FollowingSideBar = () => {
             } else {
                 console.log("fail")
             }
+        } finally {
+            setLoading(false)
         }
     }
     useEffect(() => {
@@ -60,6 +64,7 @@ const FollowingSideBar = () => {
     }, [])
 
     const [loading, setLoading] = useState(false);
+    let loadingContent
 
     const userLogin = localStorage.getItem("username")
     const userLogged = !userLogin
@@ -174,49 +179,71 @@ const FollowingSideBar = () => {
                         Following accounts
                     </h3>
                     <div className="userList">
-                        <ul className="userItem" style={{ cursor: "pointer" }}>
-                            {videoList.slice(0, 10).map((user, index) => (
-                                <li key={index} className="itemUser" onClick={() => navigate(`/users/${user?.id}`)}>
-                                    <div className="userAvatar">
-                                        <span className="avatarIcon">
-                                            <img src={user?.avatar} className="avatarList" />
-                                        </span>
-                                        <span className="infoUser">
-                                            <p className="nameAll">
-                                                <b>{user?.username}</b>
-                                            </p>
-                                            <p className="nameAll">{user?.fullname}</p>
-                                        </span>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                        {viewMoreUser && (
-                            <ul className="userItem" style={{ cursor: "pointer" }}>
-                                {videoList.slice(11, 20).map((user, index) => (
-                                    <li key={index} className="itemUser" onClick={() => navigate(`/users/${user?.id}`)}>
+                        {loading ? (
+                            <>
+                                <ul className="userItem">
+                                    <li className="itemUser">
                                         <div className="userAvatar">
                                             <span className="avatarIcon">
-                                                <img src={user?.avatar} className="avatarList" />
+                                                <Skeleton variant="circular" width={40} height={40} />
                                             </span>
                                             <span className="infoUser">
-                                                <p className="nameAll">
-                                                    <b>{user?.username}</b>
+                                                <p className="nameAll" style={{marginBottom: '1px'}}>
+                                                    <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
                                                 </p>
-                                                <p className="nameAll">{user?.fullname}</p>
+                                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
                                             </span>
                                         </div>
                                     </li>
-                                ))}
-                            </ul>
+                                </ul>
+                            </>
+                        ) : (
+                            <>
+                                <ul className="userItem" style={{ cursor: "pointer" }}>
+                                    {videoList.slice(0, 10).map((user, index) => (
+                                        <li key={index} className="itemUser" onClick={() => navigate(`/users/${user?.id}`)}>
+                                            <div className="userAvatar">
+                                                <span className="avatarIcon">
+                                                    <img src={user?.avatar} className="avatarList" />
+                                                </span>
+                                                <span className="infoUser">
+                                                    <p className="nameAll">
+                                                        <b>{user?.username}</b>
+                                                    </p>
+                                                    <p className="nameAll">{user?.fullname}</p>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                                {viewMoreUser && (
+                                    <ul className="userItem" style={{ cursor: "pointer" }}>
+                                        {videoList.slice(11, 20).map((user, index) => (
+                                            <li key={index} className="itemUser" onClick={() => navigate(`/users/${user?.id}`)}>
+                                                <div className="userAvatar">
+                                                    <span className="avatarIcon">
+                                                        <img src={user?.avatar} className="avatarList" />
+                                                    </span>
+                                                    <span className="infoUser">
+                                                        <p className="nameAll">
+                                                            <b>{user?.username}</b>
+                                                        </p>
+                                                        <p className="nameAll">{user?.fullname}</p>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                                <button
+                                    className="moreUser"
+                                    style={{ display: viewMoreUser ? "none" : "" }}
+                                    onClick={toogleUser}
+                                >
+                                    {viewMoreUser ? "" : "See More"}
+                                </button>
+                            </>
                         )}
-                        <button
-                            className="moreUser"
-                            style={{ display: viewMoreUser ? "none" : "" }}
-                            onClick={toogleUser}
-                        >
-                            {viewMoreUser ? "" : "See More"}
-                        </button>
                     </div>
                     <div className="example">
                         <p className="example-1"></p>

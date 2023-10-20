@@ -79,6 +79,9 @@ const MainSidebar = () => {
         setViewMore(!viewMore)
     }
 
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
+
     return (
         <>
             <ul className="itemLinkAll">
@@ -88,7 +91,7 @@ const MainSidebar = () => {
                         <div className="nav">
                             <i className="icon fa-solid fa-compass"></i>
                             <span>Explore</span>
-                            <span id="badge">New</span>
+                            {userLogged ? <span id="badge">New</span> : ""}
                         </div>
                     </Link>
                 </li>

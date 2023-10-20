@@ -13,7 +13,12 @@
     "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\""
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.14",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.2",
     "@reduxjs/toolkit": "^1.9.5",
+    "@syncfusion/ej2-react-notifications": "^23.1.40",
     "axios": "^1.5.0",
     "immer": "^10.0.2",
     "primereact": "^9.6.2",
@@ -27,7 +32,7 @@
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "reselect": "^4.1.8",
-    "styled-components": "^6.0.8",
+    "styled-components": "^6.1.0",
     "video-react": "^0.16.0"
   },
   "devDependencies": {
