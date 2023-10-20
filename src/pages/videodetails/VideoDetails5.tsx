@@ -58,7 +58,6 @@ const VideoDetails5 = () => {
     }, [])
 
     const navigate = useNavigate()
-    const storedIdLogin = localStorage.getItem("id")
 
     const [isLiked5, setIsLiked5] = useState(getReactionStatus5())
     const [isFollowed5, setIsFollowed5] = useState(getFollowStatus5())
@@ -88,6 +87,10 @@ const VideoDetails5 = () => {
         setIsFollowed5(getReactionStatus5())
     }, [])
 
+    const user_id = localStorage.getItem("id")
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
+
     return (
         <div id="videoDetailsContainer">
             <div className="videoInfo">
@@ -116,23 +119,46 @@ const VideoDetails5 = () => {
                             {/* </Link> */}
                         </div>
                         <div className="infoContainer">
-                            <button
-                                className="followBttn"
-                                style={{
-                                    float: "right",
-                                    width: "80px",
-                                    height: "40px",
-                                    backgroundColor: isFollowed5 ? "#252525" : "#f22459",
-                                    border: isFollowed5 ? "1px solid #2f2f2f" : "1px solid transparent",
-                                    borderRadius: "5px",
-                                    marginRight: "10px",
-                                    fontFamily: "inherit",
-                                    cursor: "pointer"
-                                }}
-                                onClick={handleFollowClick5}
-                            >
-                                {isFollowed5 ? "Following" : "Follow"}
-                            </button>
+                            {userLogged ? (
+                                <>
+                                    <button
+                                        className="followBttn"
+                                        style={{
+                                            float: "right",
+                                            width: "80px",
+                                            height: "40px",
+                                            backgroundColor: "#f22459",
+                                            border: "1px solid #2f2f2f",
+                                            borderRadius: "5px",
+                                            marginRight: "10px",
+                                            fontFamily: "inherit",
+                                            cursor: "pointer"
+                                        }}
+                                    >
+                                        Follow
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <button
+                                        className="followBttn"
+                                        style={{
+                                            float: "right",
+                                            width: "80px",
+                                            height: "40px",
+                                            backgroundColor: isFollowed5 ? "#252525" : "#f22459",
+                                            border: isFollowed5 ? "1px solid #2f2f2f" : "1px solid transparent",
+                                            borderRadius: "5px",
+                                            marginRight: "10px",
+                                            fontFamily: "inherit",
+                                            cursor: "pointer"
+                                        }}
+                                        onClick={handleFollowClick5}
+                                    >
+                                        {isFollowed5 ? "Following" : "Follow"}
+                                    </button>
+                                </>
+                            )}
                             {/* <Link to={`/users/${userId}`} style={{ textDecoration: "0", color: "#fff" }}> */}
                             <span>
                                 <b>Terrell_OKeefe3</b>
@@ -150,13 +176,21 @@ const VideoDetails5 = () => {
                     <div className="actionContainer">
                         <div className="videoActions">
                             <button className="action_btn" onClick={handleLikeClick5}>
-                                <span>
-                                    {isLiked5 ? (
-                                        <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
-                                    ) : (
+                                {userLogged ? (
+                                    <>
                                         <i className="fa-solid fa-heart"></i>
-                                    )}
-                                </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>
+                                            {isLiked5 ? (
+                                                <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
+                                            ) : (
+                                                <i className="fa-solid fa-heart"></i>
+                                            )}
+                                        </span>
+                                    </>
+                                )}
                             </button>
                             <div className="actionAmount">{isLiked5 ? <strong>73</strong> : <strong>72</strong>}</div>
 
@@ -212,7 +246,7 @@ const VideoDetails5 = () => {
                         </div>
                     </div>
                     <h2>Comments (25)</h2>
-                    <Comments currentUserId="1" />
+                    <Comments currentUserId={user_id} />
                 </div>
             </div>
         </div>

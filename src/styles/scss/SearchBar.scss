@@ -12,6 +12,10 @@
     border-radius: 50px 0 0 50px;
     padding-top: 2px;
     font-family: inherit;
+
+    &:hover {
+        border: 1px solid #595959;
+    }
 }
 
 #search_button {
@@ -25,9 +29,12 @@
     cursor: pointer;
     transition: border-color 0.25s;
     padding-top: 2px;
+    color: #767676;
 
     &:hover {
         background: #484848;
+        color: #fff;
+        border: 1px solid #595959;
     }
 }
 

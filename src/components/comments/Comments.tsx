@@ -12,7 +12,7 @@ import React from "react"
 const Comments = ({ currentUserId }) => {
     const [BEcomments, setBEcomments] = useState([])
     const [activeCmt, setActiveCmt] = useState(null)
-    const rootComments = BEcomments.filter((BEcomment) => BEcomment.parentId === null)
+    const rootComments = BEcomments.filter((BEcomment) => BEcomment.parentId === null);
     const getReplies = (commentId) => {
         return BEcomments.filter((BEcomment) => BEcomment.parentId === commentId).sort(
             (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
@@ -24,55 +24,72 @@ const Comments = ({ currentUserId }) => {
         })
     }, [])
 
-    // const userCmts = useMemo(() => {
-    //     return localStorage.getItem(`userCmt_${currentUserId}`)
-    // }, [currentUserId])
 
-    const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || []
+    // const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || []
+    // const userCmtsArray = userCmts || []
+    const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || [];
 
-    const userCmtsArray = userCmts || []
+    const otherUserComments = [];
+    for (let userId = 1; userId <= 2; userId++) {
+        if (userId !== currentUserId) {
+            const otherUserCmts = JSON.parse(localStorage.getItem(`userCmt_${userId}`)) || [];
+            otherUserComments.push(...otherUserCmts);
+        }
+    }
 
     const getUser = localStorage.getItem("username")
 
-    const saveCmtToLS = (comments) => {
-        localStorage.setItem(`userCmt_${currentUserId}`, JSON.stringify(comments))
-    }
-
     const addComment = (text, parentId) => {
-        createCommentApi(parentId).then((comment) => {
-            const updatedComments = [{ body: text, parentId }, ...userCmtsArray]
-            saveCmtToLS(updatedComments)
-            setBEcomments([...BEcomments])
-            setActiveCmt(null)
-        })
-    }
+        createCommentApi(text, parentId).then((comment) => {
+            const updatedComments = [{ body: text, parentId, username: getUser, userId: currentUserId }, ...userCmts];
+            saveCmtToLS(updatedComments);
+            setBEcomments([...BEcomments]);
+            setActiveCmt(null);
+        });
+    };
 
-    useEffect(() => {
-        getCmtsApi().then((data) => {
-            setBEcomments(data)
-        })
-        if (currentUserId) {
-            const userCmts = localStorage.getItem(`userCmt_${currentUserId}`)
-            if (userCmts) {
-                const parsedCmt = JSON.parse(userCmts)
-            }
-        }
-    }, [currentUserId])
+    // useEffect(() => {
+    //     getCmtsApi().then((data) => {
+    //         setBEcomments(data)
+    //     })
+    //     if (currentUserId) {
+    //         const userCmts = localStorage.getItem(`userCmt_${currentUserId}`)
+    //         if (userCmts) {
+    //             const parsedCmt = JSON.parse(userCmts)
+    //             setUserCmtsArray(parsedCmt)
+    //         }
+    //     }
+    // }, [currentUserId])
 
     const deleteComment = (commentId) => {
         deleteCommentApi(commentId).then(() => {
-            const updatedBEcomments = BEcomments.filter((BEComment) => BEComment.id !== commentId)
-            setBEcomments(updatedBEcomments)
-        })
-    }
+            const updatedBEcomments = BEcomments.filter((BEComment) => BEComment.id !== commentId);
+            setBEcomments(updatedBEcomments);
+        });
+    };
+
+    const saveCmtToLS = (comments) => {
+        localStorage.setItem(`userCmt_${currentUserId}`, JSON.stringify(comments));
+    };
 
     return (
         <>
             <div className="comment__container">
-                {userCmtsArray.map((userCmt, index) => (
+                {/* {userCmts.map((userCmt, index) => (
                     <CommentLS
                         key={index}
                         comment={userCmt}
+                        currentUserId={currentUserId}
+                        deleteComment={deleteComment}
+                        activeCmt={activeCmt}
+                        setActiveCmt={setActiveCmt}
+                        addComment={addComment}
+                    />
+                ))} */}
+                {otherUserComments.map((otherUserCmt, index) => (
+                    <CommentLS
+                        key={index}
+                        comment={otherUserCmt}
                         currentUserId={currentUserId}
                         deleteComment={deleteComment}
                         activeCmt={activeCmt}

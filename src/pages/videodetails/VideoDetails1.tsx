@@ -58,7 +58,6 @@ const VideoDetails1 = () => {
     }, [])
 
     const navigate = useNavigate()
-    const storedIdLogin = localStorage.getItem("id")
 
     const [isLiked1, setIsLiked1] = useState(getReactionStatus1())
     const [isFollowed1, setIsFollowed1] = useState(getFollowStatus1())
@@ -88,6 +87,10 @@ const VideoDetails1 = () => {
         setIsFollowed1(getFollowStatus1())
     }, [])
 
+    const user_id = localStorage.getItem("id")
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
+
     return (
         <div id="videoDetailsContainer">
             <div className="videoInfo">
@@ -114,24 +117,46 @@ const VideoDetails1 = () => {
                             {/* </Link> */}
                         </div>
                         <div className="infoContainer">
-                            <button
-                                className="followBttn"
-                                style={{
-                                    float: "right",
-                                    width: "80px",
-                                    height: "40px",
-                                    backgroundColor: isFollowed1 ? "#252525" : "#f22459",
-                                    border: isFollowed1 ? "1px solid #2f2f2f" : "1px solid transparent",
-                                    borderRadius: "5px",
-                                    marginRight: "10px",
-                                    fontFamily: "inherit",
-                                    cursor: "pointer",
-                                    color: "#fff"
-                                }}
-                                onClick={handleFollowClick1}
-                            >
-                                {isFollowed1 ? "Following" : "Follow"}
-                            </button>
+                            {userLogged ? (
+                                <>
+                                    <button
+                                        className="followBttn"
+                                        style={{
+                                            float: "right",
+                                            width: "80px",
+                                            height: "40px",
+                                            backgroundColor: "#f22459",
+                                            border: "1px solid #2f2f2f",
+                                            borderRadius: "5px",
+                                            marginRight: "10px",
+                                            fontFamily: "inherit",
+                                            cursor: "pointer"
+                                        }}
+                                    >
+                                        Follow
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <button
+                                        className="followBttn"
+                                        style={{
+                                            float: "right",
+                                            width: "80px",
+                                            height: "40px",
+                                            backgroundColor: isFollowed1 ? "#252525" : "#f22459",
+                                            border: isFollowed1 ? "1px solid #2f2f2f" : "1px solid transparent",
+                                            borderRadius: "5px",
+                                            marginRight: "10px",
+                                            fontFamily: "inherit",
+                                            cursor: "pointer"
+                                        }}
+                                        onClick={handleFollowClick1}
+                                    >
+                                        {isFollowed1 ? "Following" : "Follow"}
+                                    </button>
+                                </>
+                            )}
                             {/* <Link to={`/users/${userId}`} style={{ textDecoration: "0", color: "#fff" }}> */}
                             <span>
                                 <b>Andre57</b>
@@ -149,16 +174,31 @@ const VideoDetails1 = () => {
                     <div className="actionContainer">
                         <div className="videoActions">
                             <button className="action_btn" onClick={handleLikeClick1}>
-                                <span>
-                                    {isLiked1 ? (
-                                        <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
-                                    ) : (
+                                {userLogged ? (
+                                    <>
                                         <i className="fa-solid fa-heart"></i>
-                                    )}
-                                </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>
+                                            {isLiked1 ? (
+                                                <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
+                                            ) : (
+                                                <i className="fa-solid fa-heart"></i>
+                                            )}
+                                        </span>
+                                    </>
+                                )}
                             </button>
-                            <div className="actionAmount">{isLiked1 ? <strong>73</strong> : <strong>72</strong>}</div>
-
+                            <div className="actionAmount">
+                                {userLogged ? (
+                                    <>
+                                        <strong>72</strong>
+                                    </>
+                                ) : (
+                                    <>{isLiked1 ? <strong>73</strong> : <strong>72</strong>}</>
+                                )}
+                            </div>
                             <button className="action_btn">
                                 <span>
                                     <i className="fa-solid fa-comment-dots" style={{ fontSize: "20px" }}></i>
@@ -211,7 +251,7 @@ const VideoDetails1 = () => {
                         </div>
                     </div>
                     <h2>Comments (25)</h2>
-                    <Comments currentUserId={storedIdLogin} />
+                    <Comments currentUserId={user_id} />
                 </div>
             </div>
         </div>

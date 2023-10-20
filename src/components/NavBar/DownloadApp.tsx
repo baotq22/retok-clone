@@ -16,10 +16,7 @@ const DownloadApp = () => {
         <>
             <div className="downloadMenu" style={{ listStyleType: "none" }}>
                 <div id="logo_download">
-                    <img
-                        src={mode === "dark" ? logoDark : logoLight}
-                        alt="Logo"
-                    />
+                    <img src={mode === "dark" ? logoDark : logoLight} alt="Logo" />
                 </div>
                 <p className="title_download">TikTok desktop app</p>
                 <button className="button_download">Download</button>

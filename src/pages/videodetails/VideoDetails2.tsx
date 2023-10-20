@@ -64,7 +64,6 @@ const VideoDetails2 = () => {
     }, [])
 
     const navigate = useNavigate()
-    const storedIdLogin = localStorage.getItem("id")
 
     const [isLiked2, setIsLiked2] = useState(getReactionStatus2())
     const [isFollowed2, setIsFollowed2] = useState(getFollowStatus2())
@@ -93,6 +92,10 @@ const VideoDetails2 = () => {
         setIsLiked2(getReactionStatus2())
         setIsFollowed2(getFollowStatus2())
     }, [])
+
+    const user_id = localStorage.getItem("id")
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
 
     return (
         <div id="videoDetailsContainer">
@@ -126,23 +129,46 @@ const VideoDetails2 = () => {
                         </div>
                         <div className="infoContainer">
                             {/* <Link to={`/users/${userId}`} style={{ textDecoration: "0", color: "#fff" }}> */}
-                            <button
-                                className="followBttn"
-                                style={{
-                                    float: "right",
-                                    width: "80px",
-                                    height: "40px",
-                                    backgroundColor: isFollowed2 ? "#252525" : "#f22459",
-                                    border: isFollowed2 ? "1px solid #2f2f2f" : "1px solid transparent",
-                                    borderRadius: "5px",
-                                    marginRight: "10px",
-                                    fontFamily: "inherit",
-                                    cursor: "pointer"
-                                }}
-                                onClick={handleFollowClick2}
-                            >
-                                {isFollowed2 ? "Following" : "Follow"}
-                            </button>
+                            {userLogged ? (
+                                <>
+                                    <button
+                                        className="followBttn"
+                                        style={{
+                                            float: "right",
+                                            width: "80px",
+                                            height: "40px",
+                                            backgroundColor: "#f22459",
+                                            border: "1px solid #2f2f2f",
+                                            borderRadius: "5px",
+                                            marginRight: "10px",
+                                            fontFamily: "inherit",
+                                            cursor: "pointer"
+                                        }}
+                                    >
+                                        Follow
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <button
+                                        className="followBttn"
+                                        style={{
+                                            float: "right",
+                                            width: "80px",
+                                            height: "40px",
+                                            backgroundColor: isFollowed2 ? "#252525" : "#f22459",
+                                            border: isFollowed2 ? "1px solid #2f2f2f" : "1px solid transparent",
+                                            borderRadius: "5px",
+                                            marginRight: "10px",
+                                            fontFamily: "inherit",
+                                            cursor: "pointer"
+                                        }}
+                                        onClick={handleFollowClick2}
+                                    >
+                                        {isFollowed2 ? "Following" : "Follow"}
+                                    </button>
+                                </>
+                            )}
                             <span>
                                 <b>Chris.Franecki48</b>
                             </span>
@@ -159,16 +185,31 @@ const VideoDetails2 = () => {
                     <div className="actionContainer">
                         <div className="videoActions">
                             <button className="action_btn" onClick={handleLikeClick2}>
-                                <span>
-                                    {isLiked2 ? (
-                                        <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
-                                    ) : (
+                                {userLogged ? (
+                                    <>
                                         <i className="fa-solid fa-heart"></i>
-                                    )}
-                                </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>
+                                            {isLiked2 ? (
+                                                <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
+                                            ) : (
+                                                <i className="fa-solid fa-heart"></i>
+                                            )}
+                                        </span>
+                                    </>
+                                )}
                             </button>
-                            <div className="actionAmount">{isLiked2 ? <strong>73</strong> : <strong>72</strong>}</div>
-
+                            <div className="actionAmount">
+                                {userLogged ? (
+                                    <>
+                                        <strong>72</strong>
+                                    </>
+                                ) : (
+                                    <>{isLiked2 ? <strong>73</strong> : <strong>72</strong>}</>
+                                )}
+                            </div>
                             <button className="action_btn">
                                 <span>
                                     <i className="fa-solid fa-comment-dots" style={{ fontSize: "20px" }}></i>
@@ -177,7 +218,6 @@ const VideoDetails2 = () => {
                             <div className="actionAmount">
                                 <strong>25</strong>
                             </div>
-
                             <button className="action_btn">
                                 <span>
                                     <i className="fa-solid fa-bookmark" style={{ fontSize: "20px" }}></i>
@@ -221,7 +261,7 @@ const VideoDetails2 = () => {
                         </div>
                     </div>
                     <h2>Comments (25)</h2>
-                    <Comments currentUserId="1" />
+                    <Comments currentUserId={user_id} />
                 </div>
             </div>
         </div>

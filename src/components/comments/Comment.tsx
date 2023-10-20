@@ -38,9 +38,9 @@ const Comment = ({
                     <div className="reaction_comment">
                         <button className="follow_btn" onClick={cmtReactionAction}>
                             {isReactedCmt ? (
-                                <i className="fa-solid fa-heart" style={{ fontSize: "17px", color: "#fe22459" }}></i>
+                                <i className="fa-solid fa-heart" style={{ color: "#fe22459" }}></i>
                             ) : (
-                                <i className="fa-solid fa-heart" style={{ fontSize: "17px" }}></i>
+                                <i className="fa-solid fa-heart"></i>
                             )}
                         </button>
                         <div className="actionAmount">{comment.reactionAmount}</div>

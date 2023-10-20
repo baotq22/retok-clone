@@ -25,7 +25,7 @@ const UserHover = () => {
 
     const userLogin = localStorage.getItem("username")
     const userLogged = !userLogin
-    let content;
+    let content
 
     if (userLogged) {
         content = (
@@ -123,11 +123,7 @@ const UserHover = () => {
         )
     }
 
-    return (
-        <>
-            {content}
-        </>
-    )
+    return <>{content}</>
 }
 
 export default UserHover

@@ -59,6 +59,8 @@ const FollowingSideBar = () => {
         fetchVideos()
     }, [])
 
+    const [loading, setLoading] = useState(false);
+
     const userLogin = localStorage.getItem("username")
     const userLogged = !userLogin
     let content

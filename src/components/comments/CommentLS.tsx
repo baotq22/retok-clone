@@ -24,7 +24,7 @@ const CommentLS = ({ comment, currentUserId, deleteComment, activeCmt, setActive
                 </div>
                 <div className="infoComment">
                     <span className="userCmt">
-                        <b>{userName}</b>
+                        <b>{comment.username}</b>
                     </span>
                     <div className="mainComment">{comment.body}</div>
                     <div className="reaction_comment">
@@ -35,7 +35,7 @@ const CommentLS = ({ comment, currentUserId, deleteComment, activeCmt, setActive
                                 <i className="fa-solid fa-heart"></i>
                             )}
                         </button>
-                        <div className="actionAmount">{comment.reactionAmount}</div>
+                        <div className="actionAmount">0</div>
                     </div>
                     <span>{createdAt}</span>
                     {canReply && (

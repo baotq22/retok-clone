@@ -64,7 +64,6 @@ const VideoDetails4 = () => {
     }, [])
 
     const navigate = useNavigate()
-    const storedIdLogin = localStorage.getItem("id")
 
     const [isLiked4, setIsLiked4] = useState(getReactionStatus4())
     const [isFollowed4, setIsFollowed4] = useState(getFollowStatus4())
@@ -93,6 +92,10 @@ const VideoDetails4 = () => {
         setIsLiked4(getReactionStatus4())
         setIsFollowed4(getFollowStatus4())
     }, [])
+
+    const user_id = localStorage.getItem("id")
+    const userLogin = localStorage.getItem("username")
+    const userLogged = !userLogin
 
     return (
         <div id="videoDetailsContainer">
@@ -125,23 +128,46 @@ const VideoDetails4 = () => {
                             {/* </Link> */}
                         </div>
                         <div className="infoContainer">
-                            <button
-                                className="followBttn"
-                                style={{
-                                    float: "right",
-                                    width: "80px",
-                                    height: "40px",
-                                    backgroundColor: isFollowed4 ? "#252525" : "#f22459",
-                                    border: isFollowed4 ? "1px solid #2f2f2f" : "1px solid transparent",
-                                    borderRadius: "5px",
-                                    marginRight: "10px",
-                                    fontFamily: "inherit",
-                                    cursor: "pointer"
-                                }}
-                                onClick={handleFollowClick4}
-                            >
-                                {isFollowed4 ? "Following" : "Follow"}
-                            </button>
+                            {userLogged ? (
+                                <>
+                                    <button
+                                        className="followBttn"
+                                        style={{
+                                            float: "right",
+                                            width: "80px",
+                                            height: "40px",
+                                            backgroundColor: "#f22459",
+                                            border: "1px solid #2f2f2f",
+                                            borderRadius: "5px",
+                                            marginRight: "10px",
+                                            fontFamily: "inherit",
+                                            cursor: "pointer"
+                                        }}
+                                    >
+                                        Follow
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <button
+                                        className="followBttn"
+                                        style={{
+                                            float: "right",
+                                            width: "80px",
+                                            height: "40px",
+                                            backgroundColor: isFollowed4 ? "#252525" : "#f22459",
+                                            border: isFollowed4 ? "1px solid #2f2f2f" : "1px solid transparent",
+                                            borderRadius: "5px",
+                                            marginRight: "10px",
+                                            fontFamily: "inherit",
+                                            cursor: "pointer"
+                                        }}
+                                        onClick={handleFollowClick4}
+                                    >
+                                        {isFollowed4 ? "Following" : "Follow"}
+                                    </button>
+                                </>
+                            )}
                             {/* <Link to={`/users/${userId}`} style={{ textDecoration: "0", color: "#fff" }}> */}
                             <span>
                                 <b>Jonathon_Kuvalis18</b>
@@ -159,13 +185,21 @@ const VideoDetails4 = () => {
                     <div className="actionContainer">
                         <div className="videoActions">
                             <button className="action_btn" onClick={handleLikeClick4}>
-                                <span>
-                                    {isLiked4 ? (
-                                        <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
-                                    ) : (
+                                {userLogged ? (
+                                    <>
                                         <i className="fa-solid fa-heart"></i>
-                                    )}
-                                </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>
+                                            {isLiked4 ? (
+                                                <i className="fa-solid fa-heart" style={{ color: "#fe2c55" }}></i>
+                                            ) : (
+                                                <i className="fa-solid fa-heart"></i>
+                                            )}
+                                        </span>
+                                    </>
+                                )}
                             </button>
                             <div className="actionAmount">{isLiked4 ? <strong>73</strong> : <strong>72</strong>}</div>
 
@@ -221,7 +255,7 @@ const VideoDetails4 = () => {
                         </div>
                     </div>
                     <h2>Comments (25)</h2>
-                    <Comments currentUserId="1" />
+                    <Comments currentUserId={user_id} />
                 </div>
             </div>
         </div>
