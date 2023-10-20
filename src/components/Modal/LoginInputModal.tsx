@@ -19,6 +19,29 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
 
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
+
+    const handleClear = () => {
+        setUsername("");
+        setPassword("");
+        setLoading(false);
+        setError("");
+    }
+
+    useEffect(() => {
+        const keyDownHandler = (event) => {
+            if (event.key === "Escape") {
+                onLoginClose();
+                handleClear();
+            }
+        }
+
+        document.addEventListener("keydown", keyDownHandler)
+
+        return () => {
+            document.removeEventListener("keydown", keyDownHandler)
+        }
+    }, []);
+
     let loadingContent
     if (loading) {
         loadingContent = (
@@ -48,7 +71,8 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
             if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
                 setError("Username or password doesn't match our records. Try again.")
             } else {
-                navigate("/")
+                navigate("/");
+                handleClear();
             }
         } catch (e) {
             setError("Username or password doesn't match our records. Try again.")
@@ -65,7 +89,8 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
 
     const [isChanged, setIsChanged] = useState(false)
     const changeLoginMethod = () => {
-        setIsChanged((current) => !current)
+        setIsChanged((current) => !current);
+        handleClear();
     }
 
     const [apiCountry, setApiCountry] = useState([])
@@ -75,22 +100,6 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
             setApiCountry(data)
         })
     }, [])
-
-    // useEffect(() => {
-    //     const keyDownHandler = event => {
-    //         if (event.key === "Enter") {
-    //             if (localStorage.getItem("username") && localStorage.getItem("password")) {
-    //                 navigate("/")
-    //             } else {
-    //                 setError("Username or password doesn't match our records. Try again.")
-    //             }
-    //         }
-    //     }
-    //     document.addEventListener("keydown", keyDownHandler);
-    //     return () => {
-    //         document.removeEventListener("keydown", keyDownHandler);
-    //     }
-    // }, [])
 
     if (!isLoginOpen) return null
 

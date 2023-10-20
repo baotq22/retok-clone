@@ -4,9 +4,24 @@ import msstore from "../../assets/msstore.png"
 import appstore from "../../assets/appstore.png"
 import amazon from "../../assets/amazon.png"
 import ggplay from "../../assets/ggplay.png"
+import { useEffect } from "react"
 
 const GetAppModal = ({ isGetAppOpen, onGetAppClose }) => {
     if (!isGetAppOpen) return null
+
+    useEffect(() => {
+        const keyDownHandler = (event) => {
+            if (event.key === "Escape") {
+                onGetAppClose()
+            }
+        }
+
+        document.addEventListener("keydown", keyDownHandler)
+
+        return () => {
+            document.removeEventListener("keydown", keyDownHandler)
+        }
+    }, []);
 
     return (
         <div className="modal-overlay">

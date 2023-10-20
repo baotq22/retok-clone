@@ -1,7 +1,21 @@
+import { useEffect } from "react";
 import "../../styles/css/ShortcutModal.css"
 
 const ShortcutModal = ({ isShortcutOpen, onShortcutClose }) => {
     if (!isShortcutOpen) return null
+    useEffect(() => {
+        const keyDownHandler = (event) => {
+            if (event.key === "Escape") {
+                onShortcutClose()
+            }
+        }
+
+        document.addEventListener("keydown", keyDownHandler)
+
+        return () => {
+            document.removeEventListener("keydown", keyDownHandler)
+        }
+    }, []);
     return (
         <>
             <div className="modal-overlay">

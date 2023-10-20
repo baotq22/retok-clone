@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 import {
     getComments as getCmtsApi,
     createComment as createCommentApi,
@@ -8,6 +8,7 @@ import Comment from "./Comment"
 import CommentForm from "./CommentForm"
 import CommentLS from "./CommentLS"
 import React from "react"
+import { api } from "~/api/axios-instance"
 
 const Comments = ({ currentUserId }) => {
     const [BEcomments, setBEcomments] = useState([])
@@ -24,13 +25,23 @@ const Comments = ({ currentUserId }) => {
         })
     }, [])
 
+    const [userList, setUserList] = useState([])
+    const fetchVideos = async () => {
+        const res = await api.get("users")
+        setUserList(res.data)
+    }
+    useEffect(() => {
+        fetchVideos();
+    }, [])
+
+    console.log(userList.length)
 
     // const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || []
     // const userCmtsArray = userCmts || []
     const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || [];
 
     const otherUserComments = [];
-    for (let userId = 1; userId <= 2; userId++) {
+    for (let userId = 1; userId <= userList.length; userId++) {
         if (userId !== currentUserId) {
             const otherUserCmts = JSON.parse(localStorage.getItem(`userCmt_${userId}`)) || [];
             otherUserComments.push(...otherUserCmts);

@@ -6,23 +6,13 @@ import "../../library/fontawesome/css/all.min.css"
 import LoginModal from "../Modal/LoginModal"
 import { memo, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
 import images from "../../assets/309431756_799936498003792_6138006382387941828_n.jpg"
-import { logout } from "../../slices/userLoginSlice"
 import LoginInputModal from "../Modal/LoginInputModal"
-import ShortcutModal from "../Modal/ShortcutModal"
 import UserHover from "./UserHover"
 import DownloadApp from "./DownloadApp"
 
 export const NavBar = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
-
-    function logoutUser() {
-        dispatch(logout())
-        navigate("/")
-        window.location.reload()
-    }
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const openModal = () => {

@@ -15,9 +15,10 @@ type UserDetailObject = {
 const UserFeatured = () => {
     const [videoList, setVideoList] = useState<Array<UserDetailObject>>([])
     const maxLength = 15
+    const [loading, setLoading] = useState(false);
     const fetchVideos = async () => {
-        setLoading(true)
         try {
+            setLoading(true)
             const res = await videoApis.get("videos")
             setVideoList(res.data)
         } catch (e) {
@@ -31,11 +32,10 @@ const UserFeatured = () => {
             setLoading(false)
         }
     }
+    
     useEffect(() => {
         fetchVideos()
     }, [])
-
-    const [loading, setLoading] = useState(false);
 
     return (
         <div className="userVideo">

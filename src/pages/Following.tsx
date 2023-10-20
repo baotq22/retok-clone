@@ -29,8 +29,8 @@ const ForYou = () => {
             )}
             <div id="nav">
                 <MainSidebar />
-                <RightBottomActionButton />
             </div>
+            <RightBottomActionButton />
             <NavBar />
         </div>
     )

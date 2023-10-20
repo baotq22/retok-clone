@@ -18,8 +18,8 @@ const ForYou = () => {
             </div>
             <div id="nav">
                 <MainSidebar />
-                <RightBottomActionButton />
             </div>
+            <RightBottomActionButton />
         </div>
     )
 }

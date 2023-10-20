@@ -544,7 +544,7 @@ const VideoListFollowing = ({ userId }) => {
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked1 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    <button className="action_btn" onClick={() => navigate(`videoDetails/1`)}>
+                    <button className="action_btn" onClick={() => navigate(`/videoDetails/1`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
                         </span>
@@ -584,7 +584,7 @@ const VideoListFollowing = ({ userId }) => {
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked2 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    <button className="action_btn" onClick={() => navigate(`videoDetails/2`)}>
+                    <button className="action_btn" onClick={() => navigate(`/videoDetails/2`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
                         </span>
@@ -624,7 +624,7 @@ const VideoListFollowing = ({ userId }) => {
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked3 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    <button className="action_btn" onClick={() => navigate(`videoDetails/3`)}>
+                    <button className="action_btn" onClick={() => navigate(`/videoDetails/3`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
                         </span>
@@ -664,7 +664,7 @@ const VideoListFollowing = ({ userId }) => {
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked4 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    <button className="action_btn" onClick={() => navigate(`videoDetails/4`)}>
+                    <button className="action_btn" onClick={() => navigate(`/videoDetails/4`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
                         </span>
@@ -704,7 +704,7 @@ const VideoListFollowing = ({ userId }) => {
                         </span>
                     </button>
                     <p className="actionAmount">{isLiked5 ? <strong>73</strong> : <strong>72</strong>}</p>
-                    <button className="action_btn" onClick={() => navigate(`videoDetails/5`)}>
+                    <button className="action_btn" onClick={() => navigate(`/videoDetails/5`)}>
                         <span>
                             <i className="fa-solid fa-comment-dots"></i>
                         </span>
