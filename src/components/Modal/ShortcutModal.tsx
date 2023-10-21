@@ -4,7 +4,7 @@ import "../../styles/css/ShortcutModal.css"
 const ShortcutModal = ({ isShortcutOpen, onShortcutClose }) => {
     if (!isShortcutOpen) return null
     useEffect(() => {
-        const keyDownHandler = (event) => {
+        const keyDownHandler = (event: { key: string; }) => {
             if (event.key === "Escape") {
                 onShortcutClose()
             }

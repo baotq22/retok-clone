@@ -5,6 +5,11 @@ import { login } from "../../slices/userLoginSlice"
 import "../../styles/css/loginmodal.css"
 import { getAllCountry as getAllCountryApi } from "../../api/countryApi"
 
+type rootCountries = {
+    name: string;
+    dial_code: string;
+}
+
 const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
     const User = useRef(null)
     const Pass = useRef(null)
@@ -28,7 +33,7 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
     }
 
     useEffect(() => {
-        const keyDownHandler = (event) => {
+        const keyDownHandler = (event: { key: string }) => {
             if (event.key === "Escape") {
                 onLoginClose();
                 handleClear();
@@ -93,7 +98,7 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
         handleClear();
     }
 
-    const [apiCountry, setApiCountry] = useState([])
+    const [apiCountry, setApiCountry] = useState<Array<rootCountries>>([])
     const rootCountry = apiCountry
     useEffect(() => {
         getAllCountryApi().then((data) => {
@@ -146,9 +151,6 @@ const LoginInputModal = ({ isLoginOpen, onLoginClose, onAllClose }) => {
                                 <span>Forgot password</span>
                             </div>
                             {loadingContent}
-                            {/* <button disabled={isInputDisabled} onClick={loginClick} className="btnLogin">
-                                Log in
-                            </button> */}
                         </div>
                     ) : (
                         <>

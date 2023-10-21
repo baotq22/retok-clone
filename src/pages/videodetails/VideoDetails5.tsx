@@ -90,6 +90,7 @@ const VideoDetails5 = () => {
     const user_id = localStorage.getItem("id")
     const userLogin = localStorage.getItem("username")
     const userLogged = !userLogin
+    const video_id = 5;
 
     return (
         <div id="videoDetailsContainer">
@@ -246,7 +247,7 @@ const VideoDetails5 = () => {
                         </div>
                     </div>
                     <h2>Comments (25)</h2>
-                    <Comments currentUserId={user_id} />
+                    <Comments currentUserId={user_id} videoId={video_id} />
                 </div>
             </div>
         </div>

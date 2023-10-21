@@ -10,7 +10,7 @@ const GetAppModal = ({ isGetAppOpen, onGetAppClose }) => {
     if (!isGetAppOpen) return null
 
     useEffect(() => {
-        const keyDownHandler = (event) => {
+        const keyDownHandler = (event: { key: string }) => {
             if (event.key === "Escape") {
                 onGetAppClose()
             }

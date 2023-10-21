@@ -9,7 +9,7 @@ import CommentForm from "./CommentForm"
 import CommentLS from "./CommentLS"
 import React from "react"
 
-const Comments = ({ currentUserId }) => {
+const Comments = ({ currentUserId, videoId }) => {
     const [BEcomments, setBEcomments] = useState([])
     const [activeCmt, setActiveCmt] = useState(null)
     const rootComments = BEcomments.filter((BEcomment) => BEcomment.parentId === null);
@@ -20,20 +20,19 @@ const Comments = ({ currentUserId }) => {
                 (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
             )
     }
+
     useEffect(() => {
         getCmtsApi().then((data) => {
             setBEcomments(data)
         })
     }, [])
 
-    // const userCmts = JSON.parse(localStorage.getItem(`userCmt_${currentUserId}`)) || []
-    // const userCmtsArray = userCmts || []
-    const userCmts = JSON.parse(localStorage.getItem(`userCmt`)) || [];
+    const userCmts = JSON.parse(localStorage.getItem(`userCmt_${videoId}`)) || [];
 
     const otherUserComments = [];
     for (let userId = 1; userId <= 1; userId++) {
         if (userId !== currentUserId) {
-            const otherUserCmts = JSON.parse(localStorage.getItem(`userCmt`)) || [];
+            const otherUserCmts = JSON.parse(localStorage.getItem(`userCmt_${videoId}`)) || [];
             otherUserComments.push(...otherUserCmts);
         }
     }
@@ -42,12 +41,17 @@ const Comments = ({ currentUserId }) => {
 
     const addComment = (text, parentId) => {
         createCommentApi(text, parentId).then((comment) => {
-            const updatedComments = [{ body: text, parentId, username: getUser, userId: currentUserId }, ...userCmts];
+            const updatedComments = [{ body: text, parentId, username: getUser, userId: currentUserId, video_id: videoId }, ...userCmts];
             saveCmtToLS(updatedComments);
             setBEcomments([...BEcomments]);
             setActiveCmt(null);
         });
     };
+
+    useEffect(() => {
+        const currentVideoComments = userCmts.filter((comment) => comment.video_id === videoId);
+        setBEcomments(currentVideoComments);
+    }, [videoId]);
 
     const deleteComment = (commentId) => {
         deleteCommentApi(commentId).then(() => {
@@ -57,7 +61,7 @@ const Comments = ({ currentUserId }) => {
     };
 
     const saveCmtToLS = (comments) => {
-        localStorage.setItem(`userCmt`, JSON.stringify(comments));
+        localStorage.setItem(`userCmt_${videoId}`, JSON.stringify(comments));
     };
 
     return (
@@ -72,6 +76,7 @@ const Comments = ({ currentUserId }) => {
                         activeCmt={activeCmt}
                         setActiveCmt={setActiveCmt}
                         addComment={addComment}
+                        videoId={videoId}
                     />
                 ))}
                 {rootComments.map((rootComment) => (

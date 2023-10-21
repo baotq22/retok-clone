@@ -6,7 +6,7 @@ const LoginModal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null
 
     useEffect(() => {
-        const keyDownHandler = (event) => {
+        const keyDownHandler = (event: { key: string; }) => {
             if (event.key === "Escape") {
                 onClose()
             }
