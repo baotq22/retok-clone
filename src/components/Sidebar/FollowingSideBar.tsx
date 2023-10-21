@@ -185,13 +185,13 @@ const FollowingSideBar = () => {
                                     <li className="itemUser">
                                         <div className="userAvatar">
                                             <span className="avatarIcon">
-                                                <Skeleton variant="circular" width={40} height={40} />
+                                                <Skeleton variant="circular" width={40} height={40} sx={{bgcolor: 'grey.800'}} />
                                             </span>
                                             <span className="infoUser">
                                                 <p className="nameAll" style={{marginBottom: '1px'}}>
-                                                    <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                                    <Skeleton variant="text" sx={{ fontSize: '1rem', bgcolor: 'grey.800' }} />
                                                 </p>
-                                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                                <Skeleton variant="text" sx={{ fontSize: '1rem', bgcolor: 'grey.800' }} />
                                             </span>
                                         </div>
                                     </li>
